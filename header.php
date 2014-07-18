@@ -21,8 +21,8 @@
       echo wp_title( ' | ', 'false', 'right' ); bloginfo( 'name' );
     } ?></title>
     
+	<script src="//www.washington.edu/static/alert.js" type="text/javascript"></script>
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ; ?>/css/app.css" />
-    
     <link rel="icon" href="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/icons/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/icons/apple-touch-icon-144x144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/icons/apple-touch-icon-114x114-precomposed.png">
@@ -32,6 +32,7 @@
     <?php wp_head(); ?>
   </head>
   <body <?php body_class(); ?>>
+	<div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
   <?php do_action('foundationPress_after_body'); ?>
   
   <div class="off-canvas-wrap" data-offcanvas>
@@ -53,14 +54,48 @@
   <aside class="left-off-canvas-menu">
     <?php foundationPress_mobile_off_canvas(); ?>
   </aside>
+	<nav id="top-nav">
+		<div class="container layout-container">
+			<div class="top-menu normal-top-menu">
+				<?php wp_nav_menu(array(
+					'theme_location' => 'uw-links',
+					'depth' => 1,
+					'menu_id' => 'menu-university',
+					'container' => false,
+					'fallback_cb' => false
+				)) ?> 
+			  
+			  	<?php wp_nav_menu(array(
+					'theme_location' => 'top-links', 
+					'depth' => 1,
+					'menu_id' => 'menu-top',
+					'container' => false, 
+					'walker' => new CoEnv_Top_Menu_Walker(),
+					'fallback_cb' => false
+				)); ?>
+
+				<?php get_search_form() ?>
+
+				<?php wp_nav_menu(array(
+					'theme_location' => 'top-buttons', 
+					'depth' => 1, 
+					'menu_id' => 'menu-buttons',
+					'container' => false,
+					'fallback_cb' => false
+				)); ?>
+
+			</div><!-- .top-menu -->
+		</div><!-- .container -->
+	</nav><!-- #top-nav -->
+	
+	<ul class="title-area">
+    	<li class="name">
+        	<h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+        </li>          
+    </ul>
   
         <div class="top-bar-container contain-to-grid show-for-medium-up">
             <nav class="top-bar" data-topbar="">
-                <ul class="title-area">
-                    <li class="name">
-                        <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-                    </li>          
-                </ul>
                 <section class="top-bar-section">
                     <?php foundationPress_top_bar_l(); ?>
                     <?php foundationPress_top_bar_r(); ?>

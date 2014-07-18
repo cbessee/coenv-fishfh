@@ -7,7 +7,13 @@
 register_nav_menus(array(
     'top-bar-l' => 'Left Top Bar', // registers the menu in the WordPress admin menu editor
     'top-bar-r' => 'Right Top Bar',
-    'mobile-off-canvas' => 'Mobile'
+    'mobile-off-canvas' => 'Mobile',
+		'uw-links' => 'UW links',
+		'top-links' => 'Top links',
+		'top-buttons' => 'Top buttons',
+    'footer-top-links' => 'Footer Top Links',
+		'footer-links' => 'Footer links',
+		'footer-units' => 'Footer academic units'
 ));
 
 

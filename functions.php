@@ -1,9 +1,4 @@
 <?php
-/*
-Author: Ole Fredrik Lie
-URL: http://olefredrik.com
-*/
-
 
 // Various clean up functions
 require_once('library/cleanup.php'); 
@@ -16,6 +11,8 @@ require_once('library/navigation.php');
 
 // Add menu walker
 require_once('library/menu-walker.php');
+require_once('library/walker-top-menu.php');
+
 
 // Create widget areas in sidebar and footer
 require_once('library/widget-areas.php');
