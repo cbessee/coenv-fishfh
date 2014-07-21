@@ -2,6 +2,6 @@
   <div class="field-wrap">
 	<label for="s">Search Field</label>
     <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search this site" />
-    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
+    <button type="submit"><i class="fi-magnifying-glass"></i><span>Search</span></button>
   </div>
 </form>

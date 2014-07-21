@@ -55,8 +55,8 @@
   <aside class="left-off-canvas-menu">
     <?php foundationPress_mobile_off_canvas(); ?>
   </aside>
-	<nav id="top-nav">
-		<div class="container layout-container">
+	<nav id="top-nav" class="show-for-medium-up">
+		<div class="row">
 			<div class="top-menu normal-top-menu">
 				<?php wp_nav_menu(array(
 					'theme_location' => 'uw-links',
@@ -86,14 +86,28 @@
 				)); ?>
 
 			</div><!-- .top-menu -->
-		</div><!-- .container -->
+		</div><!-- .row -->
 	</nav><!-- #top-nav -->
 	
-	<ul class="title-area">
-    	<li class="name">
-        	<h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-        </li>          
-    </ul>
+	<div class="row">
+	  <div class="large-12 columns">
+		<ul class="title-area">
+			<li class="name">
+				<h1 id="logo">
+				  <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
+					  <span><?php bloginfo('name') ?></span>
+					  <!--[if lt IE 9]>
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="<?php bloginfo('name') ?> Logo" />
+					  <![endif]-->
+					  <!--[if gt IE 8]><!-->
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" alt="<?php bloginfo('name') ?> Logo" />
+					  <!--<![endif]-->
+				  </a>
+			  	</h1>
+				</li>          
+			</ul>
+		</div>
+	</div>
   
         <div class="top-bar-container contain-to-grid show-for-medium-up">
             <nav class="top-bar" data-topbar="">

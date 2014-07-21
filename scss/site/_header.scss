@@ -1,0 +1,10 @@
+#logo {
+	span {
+		@extend .visuallyhidden;
+	}
+}
+
+.title-area {
+	list-style: none;
+	margin-left: 0;
+}

@@ -60,8 +60,33 @@ module.exports = function(grunt) {
 
       sass: {
         files: 'scss/**/*.scss',
-        tasks: ['sass']
-      }
+        tasks: ['sass'],
+				options: {
+					livereload: true
+				}
+      },
+			css: {
+				files: 'css/**/*.css',
+				options: {
+					livereload: true
+				}
+			},
+			scripts: {
+				files: ['js/**/*.js'],
+				tasks: [ 'uglify' ],
+				options: {
+					livereload: true
+				}
+			},
+			files: {
+				files: [
+					'**/*.{html,php}'
+				],
+				options: {
+					livereload: true
+				}
+			}
+			
     }
   });
 
