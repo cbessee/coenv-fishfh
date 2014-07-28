@@ -5,10 +5,13 @@
 	@extend .clearfix;
 	@include rem('padding', 2, 0);
 	background: $bg-dk;
-	font-size: rem-calc(12)!important;
 
 	a:hover {
 		color: #fff !important;
+	}
+	
+	ul, ol, dl {
+			font-size: rem-calc(12)!important;
 	}
 
 	.site-footer__header {
@@ -169,6 +172,7 @@
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
+		font-size: rem-calc(12)!important;
 
 		a {
 			color: #bbb;

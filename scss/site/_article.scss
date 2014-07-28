@@ -5,11 +5,6 @@
 
 .article {
 	position: relative;
-	@include rem('padding', 1);
-
-	@media #{$medium-up} {
-		@include rem('padding', 2, 0, 2, 3);
-	}
 
 	@media print {
 		padding: 0;

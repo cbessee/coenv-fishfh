@@ -32,21 +32,24 @@ h2 {
 
 h3 {
 	@include rem('margin', 0, 0); // 8
-	@include rem('line-height', 1.5); // 32
-	@include rem('font-size', 1.5); // 24
+	@include rem('line-height', 2); // 32
+	@include rem('font-size', 1.75); // 24
 	@include serif();
 }
 
 h4 {
 	@include rem('margin', 0);
-	@include rem('line-height', 1.5);
-	@include rem('font-size', 1.125); // 18
+	@include rem('line-height', 1.8);
+	@include rem('font-size', 1.25); // 18
+	@include serif();
 }
 
 h5 {
 	@include rem('margin', 0);
-	@include rem('line-height', 1.5);
+	@include rem('line-height', 1.8);
 	@include rem('font-size', 1);
+	font-weight: 600;
+	text-transform: uppercase;
 }
 
 h6 {

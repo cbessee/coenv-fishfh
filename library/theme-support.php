@@ -26,3 +26,28 @@ function FoundationPress_theme_support() {
 
 add_action('after_setup_theme', 'FoundationPress_theme_support'); 
 ?>
+
+<?php
+/**
+ * Remove comment RSS
+ */
+remove_action( 'wp_head','feed_links', 2 );
+remove_action( 'wp_head','feed_links_extra', 3 );
+add_action( 'wp_head', 'reinsert_rss_feed', 1 );
+
+function reinsert_rss_feed() {
+	echo '<link rel="alternate" type="application/rss+xml" title="' . get_bloginfo('sitename') . ' &raquo; RSS Feed" href="' . get_bloginfo('rss2_url') . '" />';
+}
+
+/**
+ * Blank search searches for ' ' instead.
+ **/
+if(!is_admin()){
+	add_action('init', 'search_query_fix');
+	function search_query_fix(){
+		if(isset($_GET['s']) && $_GET['s']==''){
+			$_GET['s']=' ';
+		}
+	}
+}
+?>
