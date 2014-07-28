@@ -9,6 +9,11 @@
     -webkit-font-smoothing: antialiased;
 }
 
+/*	Asset paths
+		======================================================================== */
+$images-path: '../../img/';
+$fonts-path: '../../fonts/';
+
 /* ==========================================================================
    From HTML5Boilerplate
    http://html5boilerplate.com/
@@ -148,6 +153,10 @@ body {
     img {
         page-break-inside: avoid;
     }
+	
+		.th {
+			border: none!important;
+		}
 
     img {
         max-width: 100% !important;

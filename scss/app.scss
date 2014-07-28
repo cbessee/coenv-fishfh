@@ -1,6 +1,6 @@
 /* Global config */
-@import "config/variables"; // Your custom variables
 @import "config/colors"; // Your custom color scheme
+@import "config/fonts"; // Your custom fonts
 @import "config/mixins"; // Your custom mixins
 @import "config/settings"; // Default foundation settings file. Uncomment each setting you need to change
 @import "config/defaults"; // Default styles file. Global styles.
@@ -11,8 +11,10 @@
 /* Site structure */
 @import "site/structure"; // Your site structure
 @import "site/top-menu"; // top standard header
+@import "site/main-menu"; // top standard header
 @import "site/forms"; // form fields
 @import "site/header"; // header styles
-
-/* Foundation Icon Font 3 */
-@import "assets/foundation-icons/foundation-icons";
+@import "site/buttons"; // button styles
+@import "site/footer"; // footer styles
+@import "site/article"; // article styles
+@import "site/type"; // type styles

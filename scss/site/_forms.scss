@@ -44,7 +44,7 @@ form {
 		input,
 		button {
 			display: inline-block;
-			vertical-align: middle;
+			vertical-align: top;
 			@include font-size(12);
 			border-radius: 0;
 			@include rem('height', $field-wrap-height);
