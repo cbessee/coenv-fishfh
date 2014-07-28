@@ -13,6 +13,10 @@
 	ul, ol, dl {
 			font-size: rem-calc(12)!important;
 	}
+	
+	h1 {
+		margin-top: rem-calc(8);
+	}
 
 	.site-footer__header {
 		@include rem('margin-bottom', 1);
@@ -26,22 +30,11 @@
 			position: relative;
 			z-index: 0;
 			margin: 0;
-			@include font-size(18);
 			font-weight: 400;
 			color: #ccc;
-
-			&:after {
-				content: "";
-				display: block;
-				position: absolute;
-				z-index: -1;
-				top: 50%;
-				width: 100%;
-				height: 1px;
-				background: lighten( $bg-dk, 5% );
-				border-top: 1px solid darken( $bg-dk, 5% );
-			}
-
+			@include font-size(16);
+			@include sans;
+			
 			span {
 				@include rem('padding-right', 0.5);
 				background: $bg-dk;
@@ -60,7 +53,6 @@
 		@media #{$medium-up} {
 			float: right;
 			@include rem('padding-left', 3);
-			@include col-3;
 		}
 
 		@media print {
@@ -78,13 +70,6 @@
 			column-count: 2;
 			-webkit-column-count: 2;
 			-moz-column-count: 2;
-
-
-			@media #{$medium-up} {
-				column-count: 3;
-				-webkit-column-count: 3;
-				-moz-column-count: 3;
-			}
 
 			li {
 			//	@include rem('margin', 0, 0, 0.5);
@@ -106,7 +91,6 @@
 
 	.footer__info {
 		color: $text-very-lt;
-		@include col-1;
 		@media #{$medium-up} {
 			float: left;
 		}
@@ -165,14 +149,12 @@
 	.uw-footer {
 		clear: both;
 		@extend .clearfix;
-		@include font-size(10);
 		@include rem('padding', 2, 0, 0);
 		background: none;
 		color: #bbb;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
-		font-size: rem-calc(12)!important;
 
 		a {
 			color: #bbb;
@@ -180,7 +162,7 @@
 		}
 
 		.copyright {
-
+			font-size: rem-calc(10)!important;
 			@media #{$medium-up} {
 				float: left;
 				display: inline-block;
@@ -204,6 +186,7 @@
 
 			li {
 				display: inline-block;
+				font-size: rem-calc(10)!important;
 
 				@media #{$medium-up} {
 					@include rem('margin', 0, 0, 0, 1);

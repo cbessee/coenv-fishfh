@@ -2,9 +2,9 @@
 	<footer id="footer" role="contentinfo" class="site-footer">
 		<?php do_action('foundationPress_before_footer'); ?>
 		<div class="row">
-			<div class="large-12 columns">
+			<div class="medium-6 columns">				
 				<header class="site-footer__header">
-						<h1><span>University of Washington College of the Environment</span></h1>
+						<h1><span><?php bloginfo('name') ?></span></h1>
 				</header>
 
 					<div class="footer__info">
@@ -18,9 +18,20 @@
 									'fallback_cb' => false
 							)); ?>
 					</div>
-
-					<nav class="footer-nav">
-							<!--<h1 class="footer-nav__title">Units and programs</h1>-->
+				</div>
+			<div class="medium-6 columns right">
+				<nav class="footer-nav">
+							<h1 id="logo">
+									<a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment">
+											<span>UW College of the Environment</span>
+											<!--[if lt IE 9]>
+													<img src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.png" alt="UW College of the Environment" />
+											<![endif]-->
+											<!--[if gt IE 8]><!-->
+													<img src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" alt="UW College of the Environment" />
+											<!--<![endif]-->
+									</a>
+							</h1>
 							<?php wp_nav_menu( array(
 									'theme_location' => 'footer-units',
 									'depth' => 1,
@@ -29,7 +40,9 @@
 									'fallback_cb' => false
 							) ) ?>
 					</nav>
-
+				</div>
+			
+				<div class="medium-12 columns">
 					<div class="uw-footer">
 							<p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
 
@@ -42,6 +55,7 @@
 							) ) ?>
 					</div>
 				</div>
+			</div>
 		</div><!-- .container -->
 	</footer><!-- #footer -->
 </row>
