@@ -5,20 +5,28 @@
 			<div class="medium-6 columns">				
 				<header class="site-footer__header">
 						<h1><span><?php bloginfo('name') ?></span></h1>
+					<?php if (get_option('mail_address')) { ?><a href="http://maps.google.com/?q=<?php echo get_option('mail_address'); ?>" title="Google Maps link"><p><?php echo get_option('mail_address'); ?></p></a><?php } ?>
+					<?php if (get_option('public_email_address')) { ?><a href="mailto:<?php echo get_option('public_email_address'); ?>" title="Send us an Email"><p><?php echo get_option('public_email_address'); } ?></a>
+					<?php if (get_option('phone')) { ?> | <?php echo get_option('phone'); ?></p><?php } ?>
 				</header>
-
-					<div class="footer__info">
-							<?php get_search_form() ?>
-							<?php wp_nav_menu(array(
-									'theme_location' => 'footer-top-links', 
-									'depth' => 1,
-									'menu_class' => 'top-links',
-									'container' => false, 
-									'walker' => new CoEnv_Top_Menu_Walker(),
-									'fallback_cb' => false
-							)); ?>
+				<div class="footer__info">
+					<?php get_search_form() ?>
+					<div class="social-buttons">
+					<?php if (get_option('facebook')) { ?>
+						<a class="button" href="<?php echo get_option('facebook'); ?>" title="Join us on Facebook">
+							<i class="fi-social-facebook"></i>
+						</a><?php } ?>
+					<?php if (get_option('twitter')) { ?>
+						<a class="button" href="<?php echo get_option('twitter'); ?>" title="Join us on Twitter">
+								<i class="fi-social-twitter"></i>
+						</a><?php } ?>
+					<?php if (get_option('youtube')) { ?>
+						<a class="button" href="<?php echo get_option('youtube'); ?>" title="Join us on YouTube">
+								<i class="fi-social-youtube"></i>
+						</a><?php } ?>
 					</div>
 				</div>
+			</div>
 			<div class="medium-6 columns right">
 				<nav class="footer-nav">
 							<h1 id="logo">
@@ -44,9 +52,8 @@
 			
 				<div class="medium-12 columns">
 					<div class="uw-footer">
-							<p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
-
-							<?php wp_nav_menu( array(
+							<p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a> | <a href="/wp-admin" name="Staff Login">Staff Login</a></p>
+						<?php wp_nav_menu( array(
 									'theme_location' => 'footer-links',
 									'depth' => 1,
 									'menu_class' => 'menu-footer-links',

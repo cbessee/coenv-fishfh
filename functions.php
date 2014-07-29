@@ -29,4 +29,7 @@ require_once('library/theme-support.php');
 // Photo functions
 require_once('library/photos.php');
 
+// Setting fields for address, phone, social media
+require_once('library/admin-setting-fields.php');
+
 ?>

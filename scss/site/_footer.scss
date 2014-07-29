@@ -26,7 +26,6 @@
 		}
 
 		h1 {
-			display: none;
 			position: relative;
 			z-index: 0;
 			margin: 0;
@@ -40,11 +39,18 @@
 				background: $bg-dk;
 			}
 
-			@media #{$medium-up} {
-				display: block;
-			}
-
 		} // h1
+	
+		p {
+			margin: 0;
+			color: #bbb;
+			
+			a {
+				text-decoration: none;
+				color: #bbb;
+			}
+			
+		} // p
 
 	} // header
 
@@ -97,7 +103,6 @@
 
 		form {
 			display: block;
-			@include rem('margin', 0, 0, 1);
 
 			@media print {
 				display: none;
@@ -127,6 +132,22 @@
 			} // button[type="submit"]
 
 		} // form
+
+		.social-buttons {
+			.button {
+				background: #666;
+				padding: rem-calc(3.5) rem-calc(9);
+
+				i {
+					@include font-size(16);
+					color: #eee;
+				}
+
+				&:hover i {
+					color: #fff;
+				}
+			}
+		}
 
 		.top-links {
 			margin: 0;
@@ -162,7 +183,8 @@
 		}
 
 		.copyright {
-			font-size: rem-calc(10)!important;
+			font-size: rem-calc(10);
+			margin-top: rem-calc(3);
 			@media #{$medium-up} {
 				float: left;
 				display: inline-block;
