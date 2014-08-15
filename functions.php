@@ -1,7 +1,6 @@
 <?php
-
 // Various clean up functions
-require_once('library/cleanup.php'); 
+require_once('library/cleanup.php');
 
 // Required for Foundation to work properly
 require_once('library/foundation.php');
@@ -12,7 +11,6 @@ require_once('library/navigation.php');
 // Add menu walker
 require_once('library/menu-walker.php');
 require_once('library/walker-top-menu.php');
-
 
 // Create widget areas in sidebar and footer
 require_once('library/widget-areas.php');
@@ -31,5 +29,4 @@ require_once('library/photos.php');
 
 // Setting fields for address, phone, social media
 require_once('library/admin-setting-fields.php');
-
 ?>
