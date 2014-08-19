@@ -75,18 +75,6 @@
 
 		}
 		
-		.share-twitter {
-			@extend .icon-twitter;
-		}
-
-		.share-facebook {
-			@extend .icon-facebook;
-		}
-		
-		.share-email {
-			@extend .icon-mail;
-		}
-		
 		&:after {
 			content: '';
 			display: block;

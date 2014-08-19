@@ -76,7 +76,7 @@
 			},
 			{
 				name: 'Email',
-				className: 'email',
+				className: 'paperclip',
 				url: 'mailto:?subject=' + this.articleTitle + '&body=Check%20out%20this%20article%20from%20the%20UW%20College%20of%20the%20Environment:%20' + this.articleShortLink
 			}
 		];
@@ -85,7 +85,7 @@
 		this.$modal.append('<div class="share-modal-inner"><ul class="share-modal-content"></ul></div>');
 
 		for ( var i = 0, len = services.length; i < len; i++ ) {
-			this.$modal.find('.share-modal-content').append('<a href="' + services[ i ].url + '" ><li class="social-link share-' + services[ i ].className + '"></li></a>');
+			this.$modal.find('.share-modal-content').append('<a href="' + services[ i ].url + '" ><li class="social-link share-' + services[ i ].className + '"><i class="fi-social-' + services[ i ].className + '"></i></li></a>');
 		}
 	};
 
