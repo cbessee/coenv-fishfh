@@ -12,7 +12,6 @@ register_nav_menus(array(
 		'top-links' => 'Top links',
 		'top-buttons' => 'Top buttons',
 		'footer-links' => 'Footer links',
-		'footer-units' => 'Footer academic units'
 ));
 
 

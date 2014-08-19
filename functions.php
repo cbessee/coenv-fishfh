@@ -12,6 +12,9 @@ require_once('library/navigation.php');
 require_once('library/menu-walker.php');
 require_once('library/walker-top-menu.php');
 
+// Second-level menus
+require_once('library/navigation-lvl2.php');
+
 // Create widget areas in sidebar and footer
 require_once('library/widget-areas.php');
 

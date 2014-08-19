@@ -40,13 +40,21 @@
 											<!--<![endif]-->
 									</a>
 							</h1>
-							<?php wp_nav_menu( array(
-									'theme_location' => 'footer-units',
-									'depth' => 1,
-									'menu_class' => 'menu-footer-units',
-									'container' => false,
-									'fallback_cb' => false
-							) ) ?>
+							<ul class="menu-footer-units">
+								<li><a target="_blank" href="http://fish.washington.edu/">Aquatic and Fishery Sciences</a></li>
+								<li><a target="_blank" href="http://www.atmos.washington.edu/">Atmospheric Sciences</a></li>
+								<li><a target="_blank" href="http://www.ess.washington.edu/">Earth and Space Sciences</a></li>
+								<li><a target="_blank" href="http://www.sefs.washington.edu/">Environmental and Forest Sciences</a></li>
+								<li><a target="_blank" href="http://depts.washington.edu/smea/front">Marine and Environmental Affairs</a></li>
+								<li><a target="_blank" href="http://www.ocean.washington.edu/">Oceanography</a></li>
+								<li><a target="_blank" href="http://depts.washington.edu/poeweb/">Program on the Environment</a></li>
+								<li><a target="_blank" href="http://cses.washington.edu/cig/">Climate Impacts Group</a></li>
+								<li><a target="_blank" href="http://depts.washington.edu/fhl/">Friday Harbor Labs</a></li>
+								<li><a target="_blank" href="http://jisao.washington.edu/">Joint Institute for the Study of the Atmosphere and Ocean</a></li>
+								<li><a target="_blank" href="http://depts.washington.edu/uwbg/">UW Botanic Gardens</a></li>
+								<li><a target="_blank" href="http://www.waspacegrant.org/">Washington NASA Space Grant</a></li>
+								<li><a target="_blank" href="http://wsg.washington.edu/">Washington Sea Grant</a></li>
+							</ul>
 					</nav>
 				</div>
 			
