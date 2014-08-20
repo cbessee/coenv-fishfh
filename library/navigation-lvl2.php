@@ -18,7 +18,7 @@ function coenv_base_hierarchical_submenu_get_children($post, $current_page) {
     // Get all immediate children of this page
     $children = get_pages('child_of=' . $post->ID . '&parent=' . $post->ID . '&sort_column=menu_order&sort_order=ASC');
     if ($children) {
-        $menu = "\n<ul>\n";
+        $menu = "\n<ul class=\"side-nav\">\n";
         foreach ($children as $child) {
             // If the child is the viewed page or one of its ancestors, highlight it
             if (in_array($child->ID, get_post_ancestors($current_page)) || ($child->ID == $current_page->ID)) {
