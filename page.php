@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <div class="row">
+	<?php the_breadcrumb(); ?>
 	<div class="small-12 large-8 columns" role="main">
 	
 	<?php do_action('foundationPress_before_content'); ?>

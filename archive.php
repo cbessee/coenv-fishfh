@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <div class="row">
+	<?php the_breadcrumb(); ?>
 <!-- Row for main content area -->
 	<div class="small-12 large-8 columns" role="main">
 	
