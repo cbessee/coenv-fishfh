@@ -18,6 +18,9 @@ require_once('library/navigation-lvl2.php');
 // Create widget areas in sidebar and footer
 require_once('library/widget-areas.php');
 
+// Add standard widgets
+require_once('library/widgets.php');
+
 // Return entry meta information for posts
 require_once('library/entry-meta.php');
 

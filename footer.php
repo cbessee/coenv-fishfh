@@ -30,15 +30,15 @@
 			<div class="medium-6 columns right">
 				<nav class="footer-nav">
 							<h1 id="logo">
-									<a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment">
-											<span>UW College of the Environment</span>
-											<!--[if lt IE 9]>
-													<img src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.png" alt="UW College of the Environment" />
-											<![endif]-->
-											<!--[if gt IE 8]><!-->
-													<img src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" alt="UW College of the Environment" />
-											<!--<![endif]-->
-									</a>
+								<a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment">
+										<span>UW College of the Environment</span>
+										<!--[if lt IE 9]>
+												<img src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.png" alt="UW College of the Environment" />
+										<![endif]-->
+										<!--[if gt IE 8]><!-->
+												<img src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" alt="UW College of the Environment" />
+										<!--<![endif]-->
+								</a>
 							</h1>
 							<ul class="menu-footer-units">
 								<li><a target="_blank" href="http://fish.washington.edu/">Aquatic and Fishery Sciences</a></li>
@@ -60,14 +60,14 @@
 			
 				<div class="medium-12 columns">
 					<div class="uw-footer">
-							<p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a> | <a href="/wp-admin" name="Staff Login">Staff Login</a></p>
-						<?php wp_nav_menu( array(
-									'theme_location' => 'footer-links',
-									'depth' => 1,
-									'menu_class' => 'menu-footer-links',
-									'container' => false,
-									'fallback_cb' => false
-							) ) ?>
+						<p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a> | <a href="/wp-admin" name="Staff Login">Staff Login</a></p>
+						<ul id="menu-footer-links" class="menu-footer-links">
+							<li><a target="_blank" href="http://www.washington.edu/admin/hr/jobs/">Jobs</a></li>
+							<li><a target="_blank" href="http://myuw.washington.edu/">My UW</a></li>
+							<li><a target="_blank" href="http://www.washington.edu/admin/rules/wac/rulesindex.html">Rules Docket</a></li>
+							<li><a target="_blank" href="http://www.washington.edu/online/privacy/">Privacy</a></li>
+							<li><a target="_blank" href="http://www.washington.edu/online/terms/">Terms</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
