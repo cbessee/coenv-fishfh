@@ -7,6 +7,7 @@
 
 	<header class="article__header">
         <div class="article__meta">
+			<?php the_breadcrumb(); ?>
    		<?php if ( !is_page() ) : ?>
 			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
 			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"

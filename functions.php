@@ -3,6 +3,9 @@
 require_once('library/cleanup.php');
 
 // Required for Foundation to work properly
+require_once('library/breadcrumbs.php');
+
+// Required for Foundation to work properly
 require_once('library/foundation.php');
 
 // Register all navigation menus
