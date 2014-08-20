@@ -66,17 +66,17 @@
 		var services = [
 			{
 				name: 'Twitter',
-				className: 'twitter',
+				className: 'social-twitter',
 				url: 'http://twitter.com/home?status=' + this.articleTitle + ' ' + this.articleShortLink + ' from @UW_CoEnv" target="_blank'
 			},
 			{
 				name: 'Facebook',
-				className: 'facebook',
+				className: 'social-facebook',
 				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '&p[images][0]=&p[title]=' + this.articleTitle + ' from UW College of the Environment" target="_blank'
 			},
 			{
 				name: 'Email',
-				className: 'paperclip',
+				className: 'mail',
 				url: 'mailto:?subject=' + this.articleTitle + '&body=Check%20out%20this%20article%20from%20the%20UW%20College%20of%20the%20Environment:%20' + this.articleShortLink
 			}
 		];
@@ -85,7 +85,7 @@
 		this.$modal.append('<div class="share-modal-inner"><ul class="share-modal-content"></ul></div>');
 
 		for ( var i = 0, len = services.length; i < len; i++ ) {
-			this.$modal.find('.share-modal-content').append('<a href="' + services[ i ].url + '" ><li class="social-link share-' + services[ i ].className + '"><i class="fi-social-' + services[ i ].className + '"></i></li></a>');
+			this.$modal.find('.share-modal-content').append('<a href="' + services[ i ].url + '" ><li class="social-link share-' + services[ i ].className + '"><i class="fi-' + services[ i ].className + '"></i></li></a>');
 		}
 	};
 

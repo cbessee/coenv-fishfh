@@ -21,7 +21,6 @@
 
 	i {
 		position: relative;
-		top: 0.05em;
 		left: -0.3em;
 	}
 
@@ -30,7 +29,7 @@
 .share-modal {
 	position: absolute;
 	z-index: -99999;
-	right: 30px;
+	right: 0px;
 	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
 	-webkit-transform-origin: 50% 0;
@@ -56,7 +55,7 @@
 		list-style: none;
 
 		li {
-			font-size: 20px;
+			font-size: 15px;
 			cursor: pointer;
 			width: 60px;
 			padding: 12px 0;
@@ -90,16 +89,19 @@
         }
 	}
 
-		li[class*=share-twitter] {
+		li[class*=share-social-twitter] {
 		    background: #6cdfea;
 	    }
 	
-		li[class*=share-email] {
+		li[class*=share-mail] {
 		    background: #e34429;
 	    }
 
 		i {
-			@include font-size(16);
+			@include font-size(24);
+			position: absolute;
+			top: rem-calc(5);
+			margin-left: rem-calc(-10);
 		}
 
 } // .sharing
