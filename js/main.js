@@ -5,6 +5,9 @@ jQuery(function ($) {
 		
 		// share buttons
 		$('.share').coenvshare();
+		
+		// lightbox
+		$('a').nivoLightbox();
 
 	}
 
