@@ -22,7 +22,7 @@ function coenv_base_hierarchical_submenu_get_children($post, $current_page) {
         foreach ($children as $child) {
             // If the child is the viewed page or one of its ancestors, highlight it
             if (in_array($child->ID, get_post_ancestors($current_page)) || ($child->ID == $current_page->ID)) {
-                $menu .= '<li class="sel"><a href="' . get_permalink($child) . '" class="sel"><strong>' . $child->post_title . '</strong></a>';
+                $menu .= '<li class="active"><a href="' . get_permalink($child) . '" class="active">' . $child->post_title . '</a>';
             } else {
                 $menu .= '<li><a href="' . get_permalink($child) . '">' . $child->post_title . '</a>';
             }

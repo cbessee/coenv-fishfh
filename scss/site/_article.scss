@@ -5,6 +5,7 @@
 
 .article {
 	position: relative;
+	margin-bottom: rem-calc(36);
 
 	@media print {
 		padding: 0;
