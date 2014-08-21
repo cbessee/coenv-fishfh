@@ -9,13 +9,7 @@ function the_breadcrumb() {
         echo 'Home';
         echo '</a></li>';
         if (is_category() || is_single()) {
-            echo '<li>';
-            the_category(' </li><li> ');
-            if (is_single()) {
-                echo '</li><li>';
-                the_title();
-                echo '</li>';
-            }
+            echo '<li><a href="news">News</a></li>';
         } elseif (is_page()) {
             if($post->post_parent){
                 $anc = get_post_ancestors( $post->ID );
