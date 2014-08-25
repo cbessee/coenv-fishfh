@@ -16,7 +16,24 @@ function coenv_base_hierarchical_submenu($post) {
 function coenv_base_hierarchical_submenu_get_children($post, $current_page) {
     $menu = '';
     // Get all immediate children of this page
-    $children = get_pages('child_of=' . $post->ID . '&parent=' . $post->ID . '&sort_column=menu_order&sort_order=ASC');
+    $args = array(
+        'sort_order' => 'ASC',
+        'sort_column' => 'menu_order',
+        'hierarchical' => 0,
+        'exclude' => '',
+        'include' => '',
+        'meta_key' => '',
+        'meta_value' => '',
+        'authors' => '',
+        'child_of' => $post->ID,
+        'parent' => $post->ID,
+        'exclude_tree' => '',
+        'number' => '',
+        'offset' => 0,
+        'post_type' => 'page',
+        'post_status' => 'publish'
+    ); 
+    $children = get_pages($args);
     if ($children) {
         $menu = "\n<ul class=\"side-nav\">\n";
         foreach ($children as $child) {

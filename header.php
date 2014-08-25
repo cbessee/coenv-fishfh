@@ -2,6 +2,7 @@
 <html class="no-js" <?php language_attributes(); ?> >
   <head>
     <meta charset="utf-8" />
+    <meta name='robots' content='noindex,follow' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php if ( is_category() ) {
       echo 'Category Archive for &quot;'; single_cat_title(); echo '&quot; | '; bloginfo( 'name' );
@@ -98,15 +99,9 @@
 	  <div class="large-12 columns">
 		<ul class="title-area">
 			<li class="name">
-				<h1 id="logo">
+				<h1>
 				  <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
-					  <span><?php bloginfo('name') ?></span>
-					  <!--[if lt IE 9]>
-						<img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="<?php bloginfo('name') ?> Logo" />
-					  <![endif]-->
-					  <!--[if gt IE 8]><!-->
-						<img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" alt="<?php bloginfo('name') ?> Logo" />
-					  <!--<![endif]-->
+					  <span><?php bloginfo('name') ?></span> 
 				  </a>
 			  	</h1>
 				</li>          

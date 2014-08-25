@@ -1,7 +1,11 @@
 <?php get_header(); ?>
 
 <div class="row">
-	<?php the_breadcrumb(); ?>
+	<?php 
+	if (!is_front_page()):
+	the_breadcrumb(); 
+	endif;
+	?>
 	<div class="small-12 large-8 columns" role="main">
 	
 	<?php do_action('foundationPress_before_content'); ?>
