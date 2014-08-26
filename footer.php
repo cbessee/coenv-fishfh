@@ -71,7 +71,6 @@
 					</div>
 				</div>
 			</div>
-		</div><!-- .container -->
 	</footer><!-- #footer -->
 </row>
 

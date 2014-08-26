@@ -70,7 +70,7 @@ function foundationPress_mobile_off_canvas() {
         'after' => '',                                  // after each link </a>
         'link_before' => '',                            // before each link text
         'link_after' => '',                             // after each link text
-        'depth' => 5,                                   // limit the depth of the nav
+        'depth' => 2,                                   // limit the depth of the nav
         'fallback_cb' => false,                         // fallback function (see below)
         'walker' => new top_bar_walker()
     ));
