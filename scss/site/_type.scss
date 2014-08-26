@@ -11,7 +11,7 @@
 
 @mixin serif() {
   font: {
-    family: "Skolar", Georgia, serif;
+    family: Georgia, serif;
   }
 }
 
@@ -49,7 +49,6 @@ h5 {
 	@include rem('line-height', 1.8);
 	@include rem('font-size', 1);
 	font-weight: 600;
-	text-transform: uppercase;
 }
 
 h6 {
