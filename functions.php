@@ -1,6 +1,6 @@
 <?php
 // Various clean up functions
-require_once('library/cleanup.php');
+//require_once('library/cleanup.php');
 
 // Required for Foundation to work properly
 require_once('library/breadcrumbs.php');
