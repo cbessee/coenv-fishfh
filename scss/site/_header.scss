@@ -8,3 +8,7 @@
 	list-style: none;
 	margin-left: 0;
 }
+
+.breadcrumbs>* {
+	line-height: rem-calc(16);
+}

@@ -52,6 +52,7 @@
 		display: none;
 		
 		@media #{$medium-up} {
+			display: block;
 			float: right;
 			@include rem('padding-left', 3);
 		}
