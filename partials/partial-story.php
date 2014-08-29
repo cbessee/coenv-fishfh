@@ -30,21 +30,20 @@
             </div>
 			<div class="post-info">
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
-				<?php //$categories = get_the_category_list(' ') ?>
-					<?php //if ( $categories ) : ?>
-						<!--<div class="article__categories">
-							 | <?php //echo $categories ?>
+				<?php $categories = get_the_category_list(', ') ?>
+					<?php if ( $categories ) : ?>
+						<div class="article__categories">
+							 | <?php echo $categories ?>
 						</div>
-				</div>-->
- 				<?php //endif ?> 
+ 				<?php endif ?> 
             </div>
 		<?php endif ?>
 		</div>
 
 		<?php if ( is_page() || is_single() ) : ?>
-			<h1 class="article__title"><?php the_title() ?></h1>
+			<h2 class="article__title"><?php the_title() ?></h2>
 		<?php else : ?>
-			<h1 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h1>
+			<h2 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h2>
 		<?php endif ?>
 
 	</header>

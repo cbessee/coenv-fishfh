@@ -80,4 +80,17 @@ function coenv_base_change_post_object() {
 add_action( 'admin_menu', 'coenv_base_change_post_label' );
 add_action( 'init', 'coenv_base_change_post_object' );
 
+// Hide news widget titles
+
+add_filter('widget_title','my_widget_title'); 
+function my_widget_title($t)
+{
+
+    return null;
+}
+
+
+
+
+
 ?>

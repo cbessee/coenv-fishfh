@@ -1,6 +1,10 @@
 <?php get_header(); ?>
 <div class="row">
+	<div class="breadcrumbs"><?php bcn_display(); ?></div>
 	<div class="small-12 large-8 columns" role="main">
+		<div class="section-title">News</div>
+		<?php dynamic_sidebar("before-content"); ?>
+
 		
 	<?php if ( have_posts() ) : ?>
 		
