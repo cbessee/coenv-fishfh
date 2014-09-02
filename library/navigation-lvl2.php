@@ -19,7 +19,7 @@ function coenv_base_hierarchical_submenu_get_children($post, $current_page) {
     $args = array(
         'sort_order' => 'ASC',
         'sort_column' => 'menu_order',
-        'hierarchical' => 0,
+        'hierarchical' => 1,
         'exclude' => '',
         'include' => '',
         'meta_key' => '',
