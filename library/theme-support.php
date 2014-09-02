@@ -49,7 +49,10 @@ if(!is_admin()){
 	}
 }
 
-// Change 'Post' to 'News'
+/**
+ * Change 'Post' to 'News'
+ **/
+
 function coenv_base_change_post_label() {
     global $menu;
     global $submenu;
@@ -59,6 +62,7 @@ function coenv_base_change_post_label() {
     $submenu['edit.php'][16][0] = 'News Tags';
     echo '';
 }
+
 function coenv_base_change_post_object() {
     global $wp_post_types;
     $labels = &$wp_post_types['post']->labels;
@@ -80,17 +84,40 @@ function coenv_base_change_post_object() {
 add_action( 'admin_menu', 'coenv_base_change_post_label' );
 add_action( 'init', 'coenv_base_change_post_object' );
 
-// Hide news widget titles
+/**
+ * Does the current page, post, etc. have a parent?
+ **/
 
-add_filter('widget_title','my_widget_title'); 
-function my_widget_title($t)
-{
+function coenv_base_post_parent($id) {
+    
+    if (get_post($id)->post_parent != 0):
+        return 1;
+    else :
+        return 0;
+    endif;
 
-    return null;
 }
 
 
+/**
+ * Section title
+ **/
 
+function coenv_base_section_title($id) {
 
+    $coenv_post = get_post($id);
+    //print_r($coenv_post);
+    $coenv_post_section = get_post(array_pop(get_post_ancestors($id)));
+
+    if (coenv_base_post_parent($id)):
+        $section_title = '<div class="columns large-12 section-title">' . $coenv_post_section->post_title . '</div>';
+    elseif (!is_front_page()):
+        $section_title = '<div class="columns large-12 section-title"><h1>' . $coenv_post_section->post_title . '</h1></div>';
+    endif;
+        echo $section_title;
+
+    
+
+}
 
 ?>

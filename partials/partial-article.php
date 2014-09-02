@@ -23,7 +23,7 @@
  				<?php endif ?> 
             </div>
 		<?php endif ?>
-		<?php if ( !is_front_page() ): ?>
+		<?php if ( coenv_base_post_parent(get_the_id())): ?>
 		<?php if ( is_page() || is_single()) : ?>
 			<h1 class="article__title"><?php the_title() ?></h1>
 		<?php else : ?>

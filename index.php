@@ -1,8 +1,9 @@
 <?php get_header(); ?>
 <div class="row">
+	<div class="section-title">News &amp; Events</div>
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
 	<div class="small-12 large-8 columns" role="main">
-		<div class="section-title">News</div>
+		<h1 class="article__title">News</h1>
 		<?php dynamic_sidebar("before-content"); ?>
 
 		
