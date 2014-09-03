@@ -1,4 +1,10 @@
 <?php
+
+
+/*
+ * Register custom content types
+ */
+
 function coenv_base_post_types_init() {
   register_post_type( 'coenv_base_faculty',
     array(
@@ -7,6 +13,7 @@ function coenv_base_post_types_init() {
       'singular_name' => __( 'Faculty' ),
       'add_new_item' => __( 'Add New Faculty' ),
       ),
+    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
     'public' => true,
     'has_archive' => true,
     'show_ui' => true
@@ -15,6 +22,16 @@ function coenv_base_post_types_init() {
 }
 
 add_action( 'init', 'coenv_base_post_types_init' );
+
+/*
+ * Hide metaboxes as needed
+ */
+
+function coenv_base_metabox(){
+  remove_meta_box('tagsdiv_buildings', 'faculty', 'side');
+}
+
+add_action( 'add_meta_boxes', 'coenv_base_metabox', 0 );
 
 /*
  * Add fields to faculty post type

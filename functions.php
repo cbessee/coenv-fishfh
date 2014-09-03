@@ -42,7 +42,4 @@ require_once('library/admin-setting-fields.php');
 // Custom content types
 require_once('library/content-types.php');
 
-// Custom taxonomies
-require_once('library/taxonomies.php');
-
 ?>
