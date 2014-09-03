@@ -6,7 +6,7 @@
  */
 
 function coenv_base_post_types_init() {
-  register_post_type( 'coenv_base_faculty',
+  register_post_type( 'faculty',
     array(
       'labels' => array(    
       'name' => __( 'Faculty' ),
@@ -22,16 +22,6 @@ function coenv_base_post_types_init() {
 }
 
 add_action( 'init', 'coenv_base_post_types_init' );
-
-/*
- * Hide metaboxes as needed
- */
-
-function coenv_base_metabox(){
-  remove_meta_box('tagsdiv_buildings', 'faculty', 'side');
-}
-
-add_action( 'add_meta_boxes', 'coenv_base_metabox', 0 );
 
 /*
  * Add fields to faculty post type
@@ -110,11 +100,81 @@ function coenv_base_fields_faculty_init() {
           'append' => '',
         ),
         array (
-          'key' => 'field_54065047d2d57',
-          'label' => 'Phone number',
-          'name' => 'phone_number',
+          'key' => 'field_54077e2cf5805',
+          'label' => 'Phone numbers',
+          'name' => 'phone_numbers',
+          'type' => 'repeater',
+          'instructions' => 'Please enter the phone number(s) for this faculty member. ',
+          'sub_fields' => array (
+            array (
+              'key' => 'field_54077e6cf5806',
+              'label' => 'Number',
+              'name' => 'number',
+              'type' => 'text',
+              'instructions' => 'e.g., (206) 999-999',
+              'column_width' => 100,
+              'default_value' => '',
+              'placeholder' => '',
+              'prepend' => '',
+              'append' => '',
+              'formatting' => 'none',
+              'maxlength' => '',
+            ),
+            array (
+              'key' => 'field_54077e96f5807',
+              'label' => 'Label',
+              'name' => 'label',
+              'type' => 'select',
+              'instructions' => 'Please choose a label for this number',
+              'column_width' => 100,
+              'choices' => array (
+                'office' => 'Office',
+                'mobile' => 'Mobile',
+                'fax' => 'Fax',
+                'tty' => 'TTY',
+                'Other' => 'Other',
+              ),
+              'default_value' => '',
+              'allow_null' => 0,
+              'multiple' => 0,
+            ),
+            array (
+              'key' => 'field_54077f8a57a5f',
+              'label' => 'Other label',
+              'name' => 'other_label',
+              'type' => 'text',
+              'instructions' => 'Please enter your custom label. The label must be 5 characters or less. All labels are wrapped in a parenthesis and converted to lowercase.',
+              'conditional_logic' => array (
+                'status' => 1,
+                'rules' => array (
+                  array (
+                    'field' => 'field_54077e96f5807',
+                    'operator' => '==',
+                    'value' => 'Other',
+                  ),
+                ),
+                'allorany' => 'all',
+              ),
+              'column_width' => '',
+              'default_value' => '',
+              'placeholder' => '',
+              'prepend' => '',
+              'append' => '',
+              'formatting' => 'none',
+              'maxlength' => '',
+            ),
+          ),
+          'row_min' => 1,
+          'row_limit' => 4,
+          'layout' => 'row',
+          'button_label' => 'Add number',
+        ),
+        array (
+          'key' => 'field_540652446cb99',
+          'label' => 'Job Title',
+          'name' => 'job_title',
           'type' => 'text',
-          'instructions' => 'e.g., (206) 999-9999',
+          'instructions' => 'e.g., Professor, Associate Professor',
           'required' => 1,
           'default_value' => '',
           'placeholder' => '',
@@ -127,13 +187,20 @@ function coenv_base_fields_faculty_init() {
           'key' => 'field_5406508d17264',
           'label' => 'Building',
           'name' => 'building',
-          'type' => 'taxonomy',
+          'type' => 'select',
+          'choices' => array (
+            'RTB' => 'Benjamin Hall Interdisciplinary Research Building (RTB)',
+            'BLD' => 'Bloedel Hall (BLD)',
+            'FSH' => 'Fishery Sciences (FSH)',
+            'FTR' => 'Fisheries Teaching and Research Building (FTR)',
+            'FHL' => 'Friday Harbor Labs',
+            'KIN' => 'Kincaid Hall (KIN)',
+            'MAR' => 'Marine Studies Building (MAR)',
+            'MSB' => 'Marine Sciences Building (MSB)',
+          ),
           'instructions' => 'Select the primary building for this faculty member.',
-          'taxonomy' => 'buildings',
-          'field_type' => 'select',
-          'allow_null' => 0,
-          'load_save_terms' => 1,
-          'return_format' => 'id',
+          'default_value' => '',
+          'allow_null' => 1,
           'multiple' => 0,
         ),
         array (
@@ -189,6 +256,33 @@ function coenv_base_fields_faculty_init() {
           'maxlength' => '',
         ),
         array (
+          'key' => 'field_540784eba0b3e',
+          'label' => 'Faculty advising',
+          'name' => 'available_for_advising',
+          'type' => 'checkbox',
+          'choices' => array (
+            'yes' => 'This faculty member is available for advising.',
+          ),
+          'default_value' => '',
+          'layout' => 'horizontal',
+        ),
+        array (
+        'key' => 'field_54078884fb956',
+        'label' => 'Faculty type',
+        'name' => 'faculty_type',
+        'type' => 'select',
+        'required' => 1,
+        'choices' => array (
+          'teaching-research' => 'Teaching and Research',
+          'research-associates' => 'Research Associates (Post-Docs)',
+          'adjunct' => 'Adjunct Faculty',
+          'emeritus' => 'Emeritus/Retired Faculty',
+        ),
+        'default_value' => '',
+        'allow_null' => 0,
+        'multiple' => 0,
+      ),
+        array (
           'key' => 'field_540651f36cbcb',
           'label' => 'Selected publications',
           'name' => 'selected_publications',
@@ -220,7 +314,7 @@ function coenv_base_fields_faculty_init() {
           array (
             'param' => 'post_type',
             'operator' => '==',
-            'value' => 'coenv_base_faculty',
+            'value' => 'faculty',
             'order_no' => 0,
             'group_no' => 0,
           ),
