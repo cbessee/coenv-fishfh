@@ -144,3 +144,27 @@ figcaption {
  */
 
 // Insert styles here
+
+
+.back-to-top {
+    position: fixed;
+    bottom: 4em;
+    right: 30%;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+    z-index: 100;
+}
+
+.back-to-top:hover {    
+    background-color: rgba(135, 135, 135, 0.50);
+}
+
+
+
+
+
+

@@ -24,7 +24,7 @@
 			<?php do_action('foundationPress_page_after_comments'); ?>
 		</article>
 	<?php endwhile;?>
-
+	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
 
 	</div>
