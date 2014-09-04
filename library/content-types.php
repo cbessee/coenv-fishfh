@@ -132,10 +132,10 @@ function coenv_base_fields_faculty_init() {
                 'mobile' => 'Mobile',
                 'fax' => 'Fax',
                 'tty' => 'TTY',
-                'Other' => 'Other',
+                'other' => 'Other',
               ),
               'default_value' => '',
-              'allow_null' => 0,
+              'allow_null' => 1,
               'multiple' => 0,
             ),
             array (
@@ -150,7 +150,7 @@ function coenv_base_fields_faculty_init() {
                   array (
                     'field' => 'field_54077e96f5807',
                     'operator' => '==',
-                    'value' => 'Other',
+                    'value' => 'other',
                   ),
                 ),
                 'allorany' => 'all',
@@ -230,11 +230,38 @@ function coenv_base_fields_faculty_init() {
           'maxlength' => '',
         ),
         array (
+        'key' => 'field_54078884fb956',
+        'label' => 'Faculty type',
+        'name' => 'faculty_type',
+        'type' => 'select',
+        'required' => 0,
+        'choices' => array (
+          'teaching-research' => 'Teaching and Research',
+          'research-associates' => 'Research Associates (Post-Docs)',
+          'adjunct' => 'Adjunct Faculty',
+          'emeritus' => 'Emeritus/Retired Faculty',
+        ),
+        'default_value' => '',
+        'allow_null' => 1,
+        'multiple' => 0,
+        ),
+        array (
           'key' => 'field_5406519be18db',
           'label' => 'SciVal URL',
           'name' => 'scival_url',
           'type' => 'text',
           'instructions' => 'Enter the full url of the faculty member\'s SciVal page (e.g., http://www.experts.scival.com/uwashington/expert.asp?n=First+M.+Last&u_id=999).',
+          'conditional_logic' => array (
+                'status' => 1,
+                'rules' => array (
+                  array (
+                    'field' => 'field_54078884fb956',
+                    'operator' => '==',
+                    'value' => 'teaching-research',
+                  ),
+                ),
+                'allorany' => 'all',
+              ),
           'default_value' => '',
           'placeholder' => '',
           'prepend' => '',
@@ -248,6 +275,17 @@ function coenv_base_fields_faculty_init() {
           'name' => 'twitter_url',
           'type' => 'text',
           'instructions' => 'Enter the full url of the faculty member\'s Twitter page (e.g., http://twitter.com/faculty_id).',
+          'conditional_logic' => array (
+                'status' => 1,
+                'rules' => array (
+                  array (
+                    'field' => 'field_54078884fb956',
+                    'operator' => '==',
+                    'value' => 'teaching-research',
+                  ),
+                ),
+                'allorany' => 'all',
+              ),
           'default_value' => '',
           'placeholder' => '',
           'prepend' => '',
@@ -263,31 +301,37 @@ function coenv_base_fields_faculty_init() {
           'choices' => array (
             'yes' => 'This faculty member is available for advising.',
           ),
+          'conditional_logic' => array (
+                'status' => 1,
+                'rules' => array (
+                  array (
+                    'field' => 'field_54078884fb956',
+                    'operator' => '==',
+                    'value' => 'teaching-research',
+                  ),
+                ),
+                'allorany' => 'all',
+              ),
           'default_value' => '',
           'layout' => 'horizontal',
         ),
-        array (
-        'key' => 'field_54078884fb956',
-        'label' => 'Faculty type',
-        'name' => 'faculty_type',
-        'type' => 'select',
-        'required' => 1,
-        'choices' => array (
-          'teaching-research' => 'Teaching and Research',
-          'research-associates' => 'Research Associates (Post-Docs)',
-          'adjunct' => 'Adjunct Faculty',
-          'emeritus' => 'Emeritus/Retired Faculty',
-        ),
-        'default_value' => '',
-        'allow_null' => 0,
-        'multiple' => 0,
-      ),
         array (
           'key' => 'field_540651f36cbcb',
           'label' => 'Selected publications',
           'name' => 'selected_publications',
           'type' => 'repeater',
           'instructions' => 'Enter each of the faculty member\'s publications. Use a consistent format.',
+          'conditional_logic' => array (
+                'status' => 1,
+                'rules' => array (
+                  array (
+                    'field' => 'field_54078884fb956',
+                    'operator' => '==',
+                    'value' => 'teaching-research',
+                  ),
+                ),
+                'allorany' => 'all',
+              ),
           'sub_fields' => array (
             array (
               'key' => 'field_540652446cbcc',
