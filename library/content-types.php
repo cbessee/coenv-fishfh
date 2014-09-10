@@ -13,10 +13,12 @@ function coenv_base_post_types_init() {
       'singular_name' => __( 'Faculty' ),
       'add_new_item' => __( 'Add New Faculty' ),
       ),
+    'hierarchical' => true,
     'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
     'public' => true,
-    'has_archive' => true,
-    'show_ui' => true
+    'has_archive' => false,
+    'show_ui' => true,
+    'rewrite' => array('slug' => 'faculty'),
     )
   );
 }
