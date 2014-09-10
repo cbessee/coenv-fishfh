@@ -1,0 +1,85 @@
+article.type-faculty {
+
+	h2, h3, h4, p, ul {
+	}
+
+	.faculty-info {
+		background-color: #f4f4f4;
+		border: 1px solid #ddd;
+		margin-left: rem-calc(20px);
+		padding-bottom: rem-calc(10px);
+		width: rem-calc(200px);
+		p {
+			margin: 0;
+			padding: rem-calc(10px);
+		}
+		ul {
+			margin: 0;
+			padding-right: rem-calc(10px);
+			padding-bottom: rem-calc(10px);
+			padding-left: rem-calc(10px);
+
+			li {
+				list-style: none;
+			}
+		}
+		.faculty-name {
+			@include rem('font-size', 1.5);
+			font-weight: bold;
+		}
+		.faculty-website {
+			padding-bottom: 0;
+		}
+	}
+	.faculty-advising {
+		border-top: 1px solid #DDDDDD;
+		float: left;
+		@include rem('margin-top',1);
+		@include rem('padding-top',1);
+	}
+	.faculty-pubs ul {
+	    margin-left: rem-calc(30px);
+		
+			li {
+				float: left;
+				line-height: 1.6;
+	    		margin-bottom: rem-calc(10px);
+			}
+	}
+
+}
+.faculty-list-teach .faculty-list-item {
+	float: left;
+	margin-right: rem-calc(20px);
+	min-height: rem-calc(325px);
+	width: rem-calc(200px);
+
+	div {
+		line-height: 1.4;
+	}
+
+}
+.faculty-list-research .faculty-list {
+	display:table;
+
+}
+.faculty-list-research .faculty-list .faculty-list-item {
+	display:table-row;
+
+	.faculty-name h3 {
+		font-weight: normal;
+		font-size: 1rem;
+		@include sans;
+	}
+
+	&.even {
+		background-color: #F9F9F9;
+	}
+}
+.faculty-list-research .faculty-list .faculty-list-item div {
+	display:table-cell;
+    width:25%;
+}
+
+
+

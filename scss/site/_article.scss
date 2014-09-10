@@ -81,6 +81,12 @@
 .article__content {
     @extend .clearfix;
 
+    li {
+    	line-height: 1.6;
+    	margin-bottom: rem-calc(5px);
+
+    }
+
 	h1 {
 		@include serif;
 		@include font-size(24);
