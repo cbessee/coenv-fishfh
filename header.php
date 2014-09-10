@@ -31,8 +31,8 @@
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-touch-icon-57x57-precomposed.png">
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-touch-icon.png">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/foundation-icons/foundation-icons.css">
-		<script type="text/javascript" src="//use.typekit.net/dyq8fxo.js"></script>
-		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		<!--<script type="text/javascript" src="//use.typekit.net/dyq8fxo.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
 		<script src="//www.washington.edu/static/alert.js" type="text/javascript"></script>
 
 	
