@@ -1,5 +1,22 @@
 <?php
 
+
+if (function_exists('register_sidebar')) {
+        $opts   = array(
+        'name'          =>  'IndexWidgets',
+        'before_widget' =>  '<div id="%1$s2" class="home_box %2$s">',
+        'after_widget'  =>  '</div></div>',
+        'before_title'  =>  '<h2>',
+        'after_title'   =>  '</h2><div class="home_box_body">'
+    );
+    register_sidebar($opts);
+}
+
+
+
+
+
+
 /*
  * Faculty research areas
  * In progress
@@ -32,19 +49,21 @@ class coenv_base_fac_cats extends WP_Widget {
           if ( ! empty( $instance['title'] ) ) {
                echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
           }
-          echo '<p>Sort faculty by research or focus area.</p>';
+          if ( ! empty( $instance['textarea'] ) ) {
+               echo $args['before_text'] . apply_filters( 'widget_text', $instance['textarea'] ). $args['after_text'];
+          }
                     $cats_args  = array(
                       'orderby' => 'name',
                       'order' => 'ASC',
                       'taxonomy' => 'research_areas'
                       );
                     $cats = get_categories($cats_args);
-                    //if ($fac_cats) {
+                    if ($cats) {
                          echo '<ul class="fac-cats">';
                          foreach($cats as $cat) { 
                               echo '<li class="button"><a href="/faculty/?fac-cat=' . $cat->slug . '">' . $cat->name . '</a></li>';
                          }
-                    //}
+                    }
           echo $args['after_widget'];
      }
 
@@ -56,16 +75,28 @@ class coenv_base_fac_cats extends WP_Widget {
       * @param array $instance Previously saved values from database.
       */
      public function form( $instance ) {
+      //var_dump($instance);
+
           if ( isset( $instance[ 'title' ] ) ) {
                $title = $instance[ 'title' ];
           }
           else {
                $title = __( 'New title', 'text_domain' );
           }
+          if ( isset( $instance[ 'textarea' ] ) ) {
+               $textarea = $instance[ 'textarea' ];
+          }
+          else {
+               $textarea = __( '', 'text_domain' );
+          }
           ?>
           <p>
           <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
           <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+          </p>
+          <p>
+          <label for="<?php echo $this->get_field_id( 'textarea' ); ?>"><?php _e( 'Description:' ); ?></label> 
+          <textarea class="widefat" id="<?php echo $this->get_field_id( 'textarea' ); ?>" name="<?php echo $this->get_field_name( 'textarea' ); ?>" type="text"><?php echo $textarea; ?></textarea>
           </p>
           <?php 
      }
@@ -83,6 +114,8 @@ class coenv_base_fac_cats extends WP_Widget {
      public function update( $new_instance, $old_instance ) {
           $instance = array();
           $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+          $instance['textarea'] = ( ! empty( $new_instance['textarea'] ) ) ? strip_tags( $new_instance['textarea'] ) : '';
+
 
           return $instance;
      }
