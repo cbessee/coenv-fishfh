@@ -1,25 +1,44 @@
 <?php
 
+/*
+ * Register widget areas and define format
+ */
 
-if (function_exists('register_sidebar')) {
-        $opts   = array(
-        'name'          =>  'IndexWidgets',
-        'before_widget' =>  '<div id="%1$s2" class="home_box %2$s">',
-        'after_widget'  =>  '</div></div>',
-        'before_title'  =>  '<h2>',
-        'after_title'   =>  '</h2><div class="home_box_body">'
-    );
-    register_sidebar($opts);
+function coenv_base_sidebar_widgets() {
+  register_sidebar(array(
+      'id' => 'sidebar-widgets',
+      'name' => __('Sidebar widgets', 'foundationpress'),
+      'description' => __('Drag widgets to this container.', 'foundationpress'),
+      'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">',
+      'after_widget' => '</div></article>',
+      'before_title' => '<h4>',
+      'after_title' => '</h4>'
+  ));
+
+  register_sidebar(array(
+      'id' => 'footer-widgets',
+      'name' => __('Footer widgets', 'foundationpress'),
+      'description' => __('Drag widgets to this container', 'foundationpress'),
+      'before_widget' => '<article id="%1$s" class="large-4 columns widget %2$s">',
+      'after_widget' => '</article>',
+      'before_title' => '<h4>',
+      'after_title' => '</h4>'      
+  ));
+
+  register_sidebar(array(
+      'id' => 'before-content',
+      'name' => __('Before content', 'foundationpress'),
+      'description' => __('Drag widgets to this container', 'foundationpress')     
+  ));
+
+
 }
 
-
-
-
+add_action( 'widgets_init', 'coenv_base_sidebar_widgets' );
 
 
 /*
  * Faculty research areas
- * In progress
  */
 
 class coenv_base_fac_cats extends WP_Widget {
@@ -81,7 +100,7 @@ class coenv_base_fac_cats extends WP_Widget {
                $title = $instance[ 'title' ];
           }
           else {
-               $title = __( 'New title', 'text_domain' );
+               $title = __( 'Sort faculty by research area', 'text_domain' );
           }
           if ( isset( $instance[ 'textarea' ] ) ) {
                $textarea = $instance[ 'textarea' ];
