@@ -11,7 +11,9 @@ function coenv_base_post_types_init() {
       'labels' => array(    
       'name' => __( 'Faculty' ),
       'singular_name' => __( 'Faculty' ),
-      'add_new_item' => __( 'Add New Faculty' ),
+      'add_new_item' => __( 'Add Faculty'),
+      'edit_item' => __( 'Edit Faculty Member'),
+      'new_item' => __( 'New Faculty'),
       ),
     'hierarchical' => true,
     'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
@@ -19,6 +21,24 @@ function coenv_base_post_types_init() {
     'has_archive' => false,
     'show_ui' => true,
     'rewrite' => array('slug' => 'faculty'),
+    )
+
+  );
+  register_post_type( 'features',
+    array(
+      'labels' => array(    
+      'name' => __( 'Homepage Features' ),
+      'singular_name' => __( 'Homepage Feature' ),
+      'add_new_item' => __( 'Add Homepage Feature'),
+      'edit_item' => __( 'Edit Homepage Feature'),
+      'new_item' => __( 'New Homepage Feature'),
+      ),
+    'hierarchical' => true,
+    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+    'public' => true,
+    'has_archive' => false,
+    'show_ui' => true,
+    'rewrite' => array('slug' => 'features'),
     )
   );
 }

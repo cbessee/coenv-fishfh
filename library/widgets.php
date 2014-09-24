@@ -53,6 +53,7 @@ class coenv_base_fac_cats extends WP_Widget {
                array( 'description' => __( 'Allows filtering of faculty based on research area', 'text_domain' ), ) // Args
           );
      }
+     
 
      /**
       * Front-end display of widget.
@@ -65,6 +66,7 @@ class coenv_base_fac_cats extends WP_Widget {
      public function widget( $args, $instance ) {
      
           echo $args['before_widget'];
+          
           if ( ! empty( $instance['title'] ) ) {
                echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
           }
@@ -78,9 +80,9 @@ class coenv_base_fac_cats extends WP_Widget {
                       );
                     $cats = get_categories($cats_args);
                     if ($cats) {
-                         echo '<ul class="fac-cats">';
+                         echo '<ul class="fac-cats inline-list">';
                          foreach($cats as $cat) { 
-                              echo '<li class="button"><a href="/faculty/?fac-cat=' . $cat->slug . '">' . $cat->name . '</a></li>';
+                              echo '<li><a class="button" href="/faculty/?fac-cat=' . $cat->slug . '">' . $cat->name . '</a></li>';
                          }
                     }
           echo $args['after_widget'];
@@ -108,6 +110,7 @@ class coenv_base_fac_cats extends WP_Widget {
           else {
                $textarea = __( '', 'text_domain' );
           }
+          
           ?>
           <p>
           <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
@@ -117,6 +120,7 @@ class coenv_base_fac_cats extends WP_Widget {
           <label for="<?php echo $this->get_field_id( 'textarea' ); ?>"><?php _e( 'Description:' ); ?></label> 
           <textarea class="widefat" id="<?php echo $this->get_field_id( 'textarea' ); ?>" name="<?php echo $this->get_field_name( 'textarea' ); ?>" type="text"><?php echo $textarea; ?></textarea>
           </p>
+         
           <?php 
      }
 

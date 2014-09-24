@@ -5,3 +5,15 @@
 		line-height: 10px;
 	}
 }
+#sidebar {
+	.inline-list {
+		margin-left: 0;
+	}
+	.inline-list>li {
+		margin: 0;
+		margin-right: rem-calc(5);
+	}
+}
+ul.fac-cats {
+	margin-top: rem-calc(15);
+}

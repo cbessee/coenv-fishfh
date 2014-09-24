@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="row">
-	<div class="columns large-12 section-title"><h1>Faculty</h1></div>
+	<div class="columns large-12 section-title"><h1><a href="/faculty">Faculty</a></h1></div>
 	<div class="breadcrumbs"><!-- Breadcrumb NavXT 5.1.1 -->
 		<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to School of Aquatic and Fishery Sciences." href="http://dev.fish.washington.edu" class="home">Home</a></span><a property="v:title" href="/faculty">Faculty</a></span><span typeof="v:Breadcrumb"><span property="v:title"><?php the_title(); ?></span></span>
 	</div>

@@ -14,7 +14,7 @@
 
 	h1 {
 		@include rem('line-height', 3); // 48
-		@include font-size(24);
+		@include font-size(32);
 		margin: 0;
 		padding: 0;
 	}

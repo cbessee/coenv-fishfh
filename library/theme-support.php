@@ -49,10 +49,9 @@ if(!is_admin()){
 	}
 }
 
-/**
+/*
  * Change 'Post' to 'News'
- **/
-
+ */
 function coenv_base_change_post_label() {
     global $menu;
     global $submenu;
@@ -84,10 +83,9 @@ function coenv_base_change_post_object() {
 add_action( 'admin_menu', 'coenv_base_change_post_label' );
 add_action( 'init', 'coenv_base_change_post_object' );
 
-/**
+/*
  * Does the current page, post, etc. have a parent?
- **/
-
+ */
 function coenv_base_post_parent($id) {
     
     if (get_post($id)->post_parent != 0):
@@ -95,14 +93,11 @@ function coenv_base_post_parent($id) {
     else :
         return 0;
     endif;
-
 }
 
-
-/**
+/*
  * Section title
- **/
-
+ */
 function coenv_base_section_title($id) {
 
     $coenv_post = get_post($id);
@@ -110,14 +105,9 @@ function coenv_base_section_title($id) {
     $coenv_post_section = get_post(array_pop(get_post_ancestors($id)));
 
     if (coenv_base_post_parent($id)):
-        $section_title = '<div class="columns large-12 section-title">' . $coenv_post_section->post_title . '</div>';
+        $section_title = '<div class="columns large-12 section-title"><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></div>';
     elseif (!is_front_page()):
-        $section_title = '<div class="columns large-12 section-title"><h1>' . $coenv_post_section->post_title . '</h1></div>';
+        $section_title = '<div class="columns large-12 section-title"><h1><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h1></div>';
     endif;
         echo $section_title;
-
-    
-
-}
-
-?>
+    }
