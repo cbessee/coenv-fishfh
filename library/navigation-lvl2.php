@@ -3,7 +3,8 @@
   * Hierarchical sub menus for second-level navigation
   */
 
-function coenv_base_hierarchical_submenu($post) {
+function coenv_base_hierarchical_submenu($postid) {
+    $post = get_post($postid);
     $top_post = $post;
     // If the post has ancestors, get its ultimate parent and make that the top post
     if ($post->post_parent && $post->ancestors) {
@@ -35,6 +36,7 @@ function coenv_base_hierarchical_submenu_get_children($post, $current_page) {
     ); 
     $children = get_pages($args);
     if ($children) {
+        // Include a title here if needed
         $menu = "\n<ul class=\"side-nav\">\n";
         foreach ($children as $child) {
             // If the child is the viewed page or one of its ancestors, highlight it

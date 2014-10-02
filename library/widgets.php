@@ -150,3 +150,51 @@ function register_coenv_base_fac_cats() {
     register_widget( 'coenv_base_fac_cats' );
 }
 add_action( 'widgets_init', 'register_coenv_base_fac_cats' );
+
+/*
+ * Sub-navigation
+ */
+
+class coenv_base_subnav extends WP_Widget {
+
+     /**
+      * Register widget with WordPress.
+      */
+     function __construct() {
+          parent::__construct(
+               'coenv_base_subnav', // Base ID
+               __('Sub-navigation', 'text_domain'), // Name
+               array( 'description' => __( 'Sub-navigation for each section, usually placed in the sidebar.', 'text_domain' ), ) // Args
+          );
+     }
+     
+
+     /**
+      * Front-end display of widget.
+      *
+      * @see WP_Widget::widget()
+      *
+      * @param array $args     Widget arguments.
+      * @param array $instance Saved values from database.
+      */
+     public function widget( $args, $instance ) {
+     
+          echo $args['before_widget'];
+          echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
+          echo $args['after_widget'];
+     }   
+
+} 
+
+function register_coenv_base_subnav() {
+    register_widget( 'coenv_base_subnav' );
+}
+add_action( 'widgets_init', 'register_coenv_base_subnav' );
+
+
+
+
+
+
+
+
