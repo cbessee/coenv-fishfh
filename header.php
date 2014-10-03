@@ -112,8 +112,20 @@
         <div class="top-bar-container contain-to-grid show-for-medium-up">
             <nav class="top-bar" data-topbar="">
                 <section class="top-bar-section">
-                    <?php foundationPress_top_bar_l(); ?>
-                    <?php foundationPress_top_bar_r(); ?>
+                    <ul id="menu-main-menu" class="top-bar-menu left">
+                    <?php
+                      add_filter( 'page_css_class', 'add_parent_class', 10, 4 );
+                      wp_list_pages( array(
+                          'max-depth' => 3,
+                          'walker' => new top_bar_new_walker(),
+                          'title_li' => false,
+                          'sort_column' => 'menu_order, post_title',
+                          'post_type'    => 'page',
+                          'exclude' => '20,44'
+                      ) );
+                      remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
+                      ?>
+                    </ul>
                 </section>
             </nav>
         </div>
@@ -122,3 +134,4 @@
 
 <section class="container" role="document">
   <?php do_action('foundationPress_after_header'); ?>
+  

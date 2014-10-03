@@ -38,4 +38,30 @@ class top_bar_walker extends Walker_Nav_Menu {
     }
     
 }
+
+/**
+ * Customize the output of menus for Foundation top bar
+ */
+
+class top_bar_new_walker extends Walker_Page {
+
+    function start_lvl( &$output, $depth = 0, $args = array() ) {
+        $output .= "\n<ul class=\"sub-menu dropdown\">\n";
+    }
+    
+}
+
+/**
+ * Add classes for Foundation menu
+ * Filter is called in header.php
+ */
+function add_parent_class( $css_class, $page, $depth, $args ) {
+    if (!empty($args['has_children'])) {
+        $css_class[] = 'has-dropdown';
+    }
+    if (in_array('current_page_parent', $css_class)) {
+        $css_class[] = 'active';
+    }
+    return $css_class;
+}
 ?>
