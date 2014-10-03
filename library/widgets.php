@@ -182,7 +182,28 @@ class coenv_base_subnav extends WP_Widget {
           echo $args['before_widget'];
           echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
           echo $args['after_widget'];
-     }   
+     }  
+     /**
+      * Back-end widget form.
+      *
+      * @see WP_Widget::form()
+      *
+      * @param array $instance Previously saved values from database.
+      */
+     public function form( $instance ) {
+      //var_dump($instance);
+
+      if ( isset( $instance[ 'title' ] ) ) {
+           $title = $instance[ 'title' ];
+      }
+      ?>
+      <p>
+      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+      </p>
+     
+      <?php 
+     } 
 
 } 
 
