@@ -19,9 +19,13 @@ get_header(); ?>
 				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'FoundationPress'), 'after' => '</p></nav>' )); ?>
 				<p><?php the_tags(); ?></p>
 			</footer>
-			<?php comments_template(); ?>
 		</article>
 	<?php endwhile; // End the loop ?>
+	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+		<div id="after-content" class="after-content widget-area" role="complementary">
+			<?php dynamic_sidebar( 'after-content' ); ?>
+		</div><!-- #after-content -->
+	<?php endif; ?>
 
 	</div>
 </div>

@@ -20,10 +20,13 @@
 				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'FoundationPress'), 'after' => '</p></nav>' )); ?>
 				<p><?php the_tags(); ?></p>
 			</footer>
-			<?php do_action('foundationPress_page_before_comments'); ?>
-			<?php do_action('foundationPress_page_after_comments'); ?>
 		</article>
 	<?php endwhile;?>
+	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+		<div id="after-content" class="after-content widget-area" role="complementary">
+			<?php dynamic_sidebar( 'after-content' ); ?>
+		</div><!-- #after-content -->
+	<?php endif; ?>
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
 

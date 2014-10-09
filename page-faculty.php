@@ -239,6 +239,11 @@ while ( $teach_research_query->have_posts() ) :
 	</div>
 </div>
 <?php } ?>
+	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+		<div id="after-content" class="after-content widget-area" role="complementary">
+			<?php dynamic_sidebar( 'after-content' ); ?>
+		</div><!-- #after-content -->
+	<?php endif; ?>
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
 

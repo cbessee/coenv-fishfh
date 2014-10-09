@@ -30,6 +30,11 @@ function coenv_base_sidebar_widgets() {
       'name' => __('Before content', 'foundationpress'),
       'description' => __('Drag widgets to this container', 'foundationpress')     
   ));
+  register_sidebar(array(
+      'id' => 'after-content',
+      'name' => __('After content', 'foundationpress'),
+      'description' => __('Drag widgets to this container', 'foundationpress')     
+  ));
 
 
 }
