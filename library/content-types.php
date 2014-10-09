@@ -44,3 +44,20 @@ function coenv_base_post_types_init() {
 }
 
 add_action( 'init', 'coenv_base_post_types_init' );
+add_action('init', 'hide_editor', 100);
+
+function hide_editor() {
+  remove_post_type_support( 'content_block', 'editor' );
+} 
+
+
+
+
+
+
+
+
+
+
+
+

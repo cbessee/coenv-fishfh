@@ -49,7 +49,7 @@ class coenv_base_fac_cats extends WP_Widget {
      function __construct() {
           parent::__construct(
                'coenv_base_fac_cats', // Base ID
-               __('Faculty category filter', 'text_domain'), // Name
+               __('Faculty category filter (COENV)', 'text_domain'), // Name
                array( 'description' => __( 'Allows filtering of faculty based on research area', 'text_domain' ), ) // Args
           );
      }
@@ -163,7 +163,7 @@ class coenv_base_subnav extends WP_Widget {
      function __construct() {
           parent::__construct(
                'coenv_base_subnav', // Base ID
-               __('Sub-navigation', 'text_domain'), // Name
+               __('Sub-navigation (COENV)', 'text_domain'), // Name
                array( 'description' => __( 'Sub-navigation for each section, usually placed in the sidebar.', 'text_domain' ), ) // Args
           );
      }
@@ -211,11 +211,3 @@ function register_coenv_base_subnav() {
     register_widget( 'coenv_base_subnav' );
 }
 add_action( 'widgets_init', 'register_coenv_base_subnav' );
-
-
-
-
-
-
-
-
