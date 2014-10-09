@@ -5,13 +5,12 @@ if ( !$apply_content_filters ) { // Don't apply the content filter if checkbox s
 $link_type = get_field( "link_type", $content_post -> ID );
 $link_type_internal = get_field( "link_page", $content_post -> ID );
 echo $before_widget;
-echo do_shortcode( $content ); // This is where the actual content of the custom post is being displayed
+if ( $show_featured_image ) {
+		echo get_the_post_thumbnail( $content_post -> ID );
+	}
 if ( $show_custom_post_title ) {
 	echo $before_title;
 	echo apply_filters( 'widget_title',$content_post->post_title);
-	if ( $show_featured_image ) {
-		echo get_the_post_thumbnail( $content_post -> ID );
-	}
 	echo $after_title; // This is the line that displays the title (only if show title is set)
 }
 echo get_field('block_text', $content_post -> ID);
