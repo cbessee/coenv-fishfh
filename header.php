@@ -121,7 +121,7 @@
                           'title_li' => false,
                           'sort_column' => 'menu_order, post_title',
                           'post_type'    => 'page',
-                          'exclude' => '20,44,14'
+                          'exclude' => '20,44,14,27'
                       ) );
                       remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
                       ?>
