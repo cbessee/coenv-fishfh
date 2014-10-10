@@ -2,3 +2,30 @@
 	display: inline;
 	margin-right: 1rem;
 }
+ul.widget-area li {
+	list-style: none;
+	margin: 0;
+	padding: 0;	
+}
+ul.widget-area.before-content h2.widgettitle {
+	font-size: 1.25rem;
+	margin-bottom: .5rem;
+	margin-top: 0;
+	padding-bottom: 0;
+}
+ul.fac-cats {
+	margin: 0;
+	padding: 0;
+}
+ul.fac-cats li {
+	display: inline;
+	margin-right: .5rem;
+	margin-bottom: .5rem;
+}
+ul.widget-area.before-content .button {
+	margin-bottom: .5rem;
+}
+.faculty-list-teach .panel {
+	border: 0;
+	padding: .5rem 1rem;
+}

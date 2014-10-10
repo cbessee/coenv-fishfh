@@ -49,6 +49,7 @@ module.exports = function(grunt) {
           'js/foundation/js/foundation.min.js',
           'js/init-foundation.js',
 		  'js/nivo-lightbox/nivo-lightbox.min.js',
+		  'js/slick.js/slick/slick.min.js',
 		  'js/share.js',
 		  'js/main.js'
         ],
@@ -100,6 +101,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('build', ['sass']);
-  grunt.registerTask('default', ['copy', 'uglify', 'concat', 'watch','sass']);
+  grunt.registerTask('default', ['copy', 'uglify', 'concat', 'sass', 'watch']);
 
 }
