@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/foundation-icons/foundation-icons.css">
 		<!--<script type="text/javascript" src="//use.typekit.net/dyq8fxo.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
-		<script src="//www.washington.edu/static/alert.js" type="text/javascript"></script>
 
 	
     <?php wp_head(); ?>
