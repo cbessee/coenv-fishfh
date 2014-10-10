@@ -1,7 +1,9 @@
 {
-  "name": "foundation-libsass-template",
+  "name": "coenv-base-theme",
+  "version": "1.0.0",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
-	"nivo-lightbox"
+    "foundation": "master",
+    "nivo-lightbox": "latest",
+    "slick.js": "~1.3.11"
   }
 }
