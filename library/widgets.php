@@ -85,10 +85,12 @@ class coenv_base_fac_cats extends WP_Widget {
                       );
                     $cats = get_categories($cats_args);
                     if ($cats) {
-                         echo '<ul class="fac-cats inline-list">';
+                         echo '<ul class="fac-cats">';
+                         echo '<li><a class="button" href="/faculty">All Research Areas</a></li>';
                          foreach($cats as $cat) { 
                               echo '<li><a class="button" href="/faculty/?fac-cat=' . $cat->slug . '">' . $cat->name . '</a></li>';
                          }
+                         echo '</ul>';
                     }
           echo $args['after_widget'];
      }

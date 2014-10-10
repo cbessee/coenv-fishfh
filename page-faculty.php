@@ -1,32 +1,9 @@
-<?php get_header(); ?>
-<div class="row">
-	<div class="columns large-12 section-title">
-		<h1><a href="/faculty"><?php echo the_title(); ?></a></h1>
-	</div>
-	<?php if (!is_front_page() && function_exists('bcn_display')): ?>
-	<div class="breadcrumbs"><?php bcn_display(); ?></div>
-	<?php
-	$fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
-	if ($fac_cat) {
-	?>
-		<div class="panel">
-			Teaching and research faculty members working in <strong><?php echo $fac_cat->name; ?></strong>
-			<div class="right"><a class="button" href="/faculty">Back to all faculty</a></div>
-		</div>
-	<?php
-}
-	endif;
-	?>
-	<div class="small-12 large-8 columns" role="main">
-
-	<?php do_action('foundationPress_before_content'); ?>
-	<?php dynamic_sidebar("before-content"); ?>
-	<?php
-
-	/**
-	* Faculty loop
-	*/
-	$teach_research_args = array(
+<?php
+$fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
+/**
+* Faculty loop
+*/
+$teach_research_args = array(
 	'post_type'	=> 'faculty',
 	'post_status' => 'publish',
 	'posts_per_page' => -1,
@@ -35,13 +12,30 @@
 	'orderby' => 'meta_value',
 	'order' => 'ASC',
 	'meta_query' => array(
-	
 	),
-	);
-	$teach_research_query = new WP_Query( $teach_research_args );
-	if ($teach_research_query->have_posts()) {
-	?>
+);
+$teach_research_query = new WP_Query( $teach_research_args );
+
+?>
+<?php get_header(); ?>
+<div class="row">
+	<div class="columns large-12 section-title">
+		<h1><a href="/faculty"><?php echo the_title(); ?></a></h1>
+	</div>
+	<?php if (!is_front_page() && function_exists('bcn_display')): ?>
+	<div class="breadcrumbs"><?php bcn_display(); ?></div>
+	<?php endif; ?>
+	<div class="small-12 large-8 columns" role="main">
+
+	<?php do_action('foundationPress_before_content'); ?>
+	<ul class="widget-area before-content">
+	<?php dynamic_sidebar("before-content"); ?>
+	</ul>
+	<?php if ($teach_research_query->have_posts()): ?>
 	<div class="faculty-list-teach clearfix">
+		<?php if ($fac_cat): ?>
+		<div class="panel">Faculty members working in <strong><?php echo $fac_cat->name; ?></strong></div>
+		<?php endif; ?>
 		<?php
 		# The Loop
 		while ( $teach_research_query->have_posts() ) :
@@ -69,7 +63,7 @@
 		endwhile;
 		wp_reset_postdata();?>
 	</div>
-	<?php } ?>
+	<?php endif; ?>
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 	<div id="after-content" class="after-content widget-area" role="complementary">
 		<?php dynamic_sidebar( 'after-content' ); ?>
