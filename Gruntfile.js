@@ -100,6 +100,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('build', ['sass']);
-  grunt.registerTask('default', ['copy', 'uglify', 'concat', 'watch','sass']);
+  grunt.registerTask('default', ['copy', 'uglify', 'concat', 'sass', 'watch']);
 
 }
