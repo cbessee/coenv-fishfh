@@ -283,40 +283,36 @@ class CoEnv_Widget_Events extends WP_Widget {
 
 					<?php if ( $events_url != '' ) : ?>
                                    
-						<a href="<?php echo $events_url; ?>" title="View All Events">More &raquo;</a>
+						<a href="<?php echo $events_url; ?>" class="button right" title="View All Events">More &raquo;</a>
 					<?php endif ?>
 
 				<?php echo $after_title ?>
+
+			<ul class="event-list">
 
 			<?php if ( count( $events ) ) : ?>
 
 				<?php foreach ( $events as $key => $event ) : ?>
 
-					<article class="event">
 
-						<a href="<?php echo $event['url'] ?>">
-							<div>
+						<li>
+							<a href="<?php echo $event['url'] ?>">
+							<p class="date"><i class="icon-calendar"></i> <?php echo $event['date'] ?></p>
+							<p class="title"><?php echo $event['title'] ?></p>
+							</a>
+						</li>
 
-								<footer class="meta">
-									<p class="date"><i class="icon-calendar"></i> <?php echo $event['date'] ?></p>
-								</footer>
-
-								<header>
-									<h3><?php echo $event['title'] ?></h3>
-								</header>
-
-							</div>
-						</a>
-
-					</article>
+			
 
 				<?php endforeach ?>
 
 			<?php else : ?>
 
-				<p>No events found.</p>
+				<li><p>No events found.</p></li>
 
 			<?php endif ?>
+				
+			</ul>
 
 			<?php echo $after_widget ?>
 		
