@@ -21,6 +21,7 @@ function coenv_base_post_types_init() {
     'has_archive' => false,
     'show_ui' => true,
     'rewrite' => array('slug' => 'faculty'),
+	'menu_icon' => 'dashicons-id',
     )
 
   );
@@ -39,6 +40,7 @@ function coenv_base_post_types_init() {
     'has_archive' => false,
     'show_ui' => true,
     'rewrite' => array('slug' => 'features'),
+	'menu_icon' => 'dashicons-slides',
     )
   );
 }
