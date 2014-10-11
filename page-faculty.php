@@ -1,23 +1,6 @@
-<?php
-$fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
-/**
-* Faculty loop
-*/
-$teach_research_args = array(
-	'post_type'	=> 'faculty',
-	'post_status' => 'publish',
-	'posts_per_page' => -1,
-	'term' => $fac_cat->slug,
-	'meta_key' => 'last_name',
-	'orderby' => 'meta_value',
-	'order' => 'ASC',
-	'meta_query' => array(
-	),
-);
-$teach_research_query = new WP_Query( $teach_research_args );
 
-?>
 <?php get_header(); ?>
+<?php echo $fac_cat->slug; ?>
 <div class="row">
 	<div class="columns large-12 section-title">
 		<h1><a href="/faculty"><?php echo the_title(); ?></a></h1>
@@ -31,8 +14,33 @@ $teach_research_query = new WP_Query( $teach_research_args );
 	<ul class="widget-area before-content">
 	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
+	<?php
+$fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
+/**
+* Faculty loop
+*/
+$teach_research_args = array(
+	'post_type'	=> 'faculty',
+	'post_status' => 'publish',
+	'posts_per_page' => -1,
+	'taxonomy' => 'research_areas',
+	'term' => $fac_cat->slug,
+	'meta_key' => 'last_name',
+	'orderby' => 'meta_value',
+	'order' => 'ASC',
+	'meta_query' => array(
+		array(
+			'key'     => 'last_name',
+			'compare' => 'IN',
+		),
+	),
+);
+$teach_research_query = new WP_Query( $teach_research_args );
+
+?>
 	<?php if ($teach_research_query->have_posts()): ?>
 	<div class="faculty-list-teach clearfix">
+
 		<?php if ($fac_cat): ?>
 		<div class="panel">Faculty members working in <strong><?php echo $fac_cat->name; ?></strong></div>
 		<?php endif; ?>

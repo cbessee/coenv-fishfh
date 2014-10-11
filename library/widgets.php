@@ -69,6 +69,8 @@ class coenv_base_fac_cats extends WP_Widget {
       * @param array $instance Saved values from database.
       */
      public function widget( $args, $instance ) {
+          $fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
+          $fac_cat = $fac_cat->slug;
      
           echo $args['before_widget'];
           
@@ -86,7 +88,9 @@ class coenv_base_fac_cats extends WP_Widget {
                     $cats = get_categories($cats_args);
                     if ($cats) {
                          echo '<ul class="fac-cats">';
-                         echo '<li><a class="button" href="/faculty">All Research Areas</a></li>';
+                         if ($fac_cat):
+                              echo '<li><a class="button" href="/faculty">All Research Areas</a></li>';
+                         endif;
                          foreach($cats as $cat) { 
                               echo '<li><a class="button" href="/faculty/?fac-cat=' . $cat->slug . '">' . $cat->name . '</a></li>';
                          }
