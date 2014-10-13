@@ -9,7 +9,7 @@
 	"jquery": "latest",
 	"lodash": "latest",
 	"sizzle": "latest",
-	"modernizr": "latest"
+	"modernizr": "latest",
 	"jquery.cookie": "latest",
 	"jquery-placeholder": "latest"
   }
