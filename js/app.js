@@ -246,6 +246,10 @@ var c=b.delta_x<0?r+1:r-1;b.active=!0,p._goto(c)}}}).on("touchend.fndtn.orbit",f
 		// lightbox
 		$('a').nivoLightbox();
 
+		// slick slider
+		$('.homepage-features').slick({
+			
+		});
 	}
 
 });

@@ -9,6 +9,10 @@ jQuery(function ($) {
 		// lightbox
 		$('a').nivoLightbox();
 
+		// slick slider
+		$('.homepage-features').slick({
+			
+		});
 	}
 
 });

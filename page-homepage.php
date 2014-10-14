@@ -21,16 +21,24 @@
 			# The Loop
 			while ( $feature_query->have_posts() ) :
 				$feature_query->the_post();
-
-			$feature_link_type = get_field('feature_link_type');
-			$feature_link_type_internal = get_field('feature_link_page');
-			$feature_color = get_field('feature_color');
-			$feature_image = get_the_post_thumbnail();
-			$feature_caption = get_post(get_post_thumbnail_id());
-			$feature_caption = $feature_caption->post_excerpt;
+			if (get_field('feature_add_links')) {
+				$feature_link_type = get_field('feature_link_type');
+				$feature_link_type_internal = get_field('feature_link_page');
+			}
+			if (get_field('feature_color')) {
+				$feature_color = get_field('feature_color');
+			}
+			if (get_field('feature_excerpt')) {
+				$feature_excerpt = get_field('feature_excerpt');
+			}
+			if (get_the_post_thumbnail()) {
+				$feature_image = get_the_post_thumbnail();
+				$feature_caption = get_post(get_post_thumbnail_id());
+				$feature_caption = $feature_caption->post_excerpt;
+			}
 			$rows = get_field('feature_add_links');
 			?>
-<article class="feature loading">
+<div class="feature">
 
 	<div class="feature-image">
 		<?php echo $feature_image ?>
@@ -45,7 +53,7 @@
 				
 				<h2><?php echo get_the_title(); ?> </h2>
 				
-				<p><?php echo get_field('feature_excerpt'); ?> </p>
+				<p><?php echo $feature_excerpt ?> </p>
 				
 				<?php
 					if($rows)
@@ -75,7 +83,7 @@
 
 	</div><!-- .feature-info-container -->
 
-</article><!-- .feature -->
+</div><!-- .feature -->
 <?php
 			endwhile;
 			wp_reset_postdata(); ?>
