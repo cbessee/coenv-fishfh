@@ -12,7 +12,7 @@
 		$feature_args = array(
 			'post_type'	=> 'features',
 			'post_status' => 'publish',
-			'posts_per_page' => 3,
+			'posts_per_page' => 4,
 			);
 		$feature_query = new WP_Query( $feature_args ); ?>
 		<?php //if ($feature_query->have_posts()) { ?>
@@ -22,14 +22,64 @@
 			while ( $feature_query->have_posts() ) :
 				$feature_query->the_post();
 
-				echo '<div class="feature">';
-					echo '<h3>' . get_the_title() . '</h3>';
-					the_content();
-				echo '</div>';
+			$feature_link_type = get_field('feature_link_type');
+			$feature_link_type_internal = get_field('feature_link_page');
+			$feature_color = get_field('feature_color');
+			$feature_image = get_the_post_thumbnail();
+			$feature_caption = get_post(get_post_thumbnail_id());
+			$feature_caption = $feature_caption->post_excerpt;
+			$rows = get_field('feature_add_links');
+			?>
+<article class="feature loading">
+
+	<div class="feature-image">
+		<?php echo $feature_image ?>
+		<p class="feature-image-caption"><?php echo $feature_caption ?></p>
+	</div>
+
+	<div class="feature-info-container">
+
+		<div class="feature-info" style="background-color: <?php echo $feature_color ?>">
+
+			<div class="feature-content">
+				
+				<h2><?php echo get_the_title(); ?> </h2>
+				
+				<p><?php echo get_field('feature_excerpt'); ?> </p>
+				
+				<?php
+					if($rows)
+					{
+						echo '<ul class="links">';
+						foreach($rows as $row)
+						{
+							if($row['feature_link_type'] == 'internal') {
+								$link_title =  $row['feature_link_to_a_page_on_this_site'][0]['feature_link_title_internal'];
+								$link_url = get_permalink($row['feature_link_to_a_page_on_this_site'][0]['feature_select_page'][0]);
+								$link_target = 'self';
+								echo '<li><a  class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
+							} elseif ($row['feature_link_type'] == 'external') {
+								$link_title = $row['feature_link_to_an_external_site'][0]['feature_link_title'];
+								$link_url = $row['feature_link_to_an_external_site'][0]['feature_link_url'];
+								$link_target ='blank';
+								echo '<li><a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
+							} 
+						}
+						echo '</ul>';
+					}
+				?>
+
+			</div><!-- .feature-content -->
+
+		</div><!-- .feature-info -->
+
+	</div><!-- .feature-info-container -->
+
+</article><!-- .feature -->
+<?php
 			endwhile;
-			wp_reset_postdata();?>
+			wp_reset_postdata(); ?>
 			</div>
-		<?php //} ?>
 
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 		<div id="after-content" class="after-content widget-area" role="complementary">
