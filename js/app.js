@@ -248,7 +248,10 @@ var c=b.delta_x<0?r+1:r-1;b.active=!0,p._goto(c)}}}).on("touchend.fndtn.orbit",f
 
 		// slick slider
 		$('.homepage-features').slick({
-			
+			autoplay: false,
+			autoplaySpeed: 3000,
+			dots: true,
+			pauseOnDotsHover: true
 		});
 	}
 

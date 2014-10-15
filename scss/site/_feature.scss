@@ -1,0 +1,41 @@
+.feature {
+	color: $white;
+		
+	ul li {
+		list-style-type: none;
+	}
+	
+	.feature-image {
+		width: 100%;
+		padding-top: 40%;
+		max-height: rem-calc(350);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+	
+	.feature-info-container {
+		
+		.feature-info {
+			width: 100%;
+			padding: rem-calc(16);
+			height: rem-calc(170);		
+		}
+		
+		h2 {
+			margin: 0;
+			color: $white;
+		
+		}
+		
+		.button {
+			margin-left: rem-calc(5);
+		}
+		
+		.feature-image-caption {
+		font-size: rem-calc(10);
+		margin-right: rem-calc(16);
+		}
+		
+	}
+}

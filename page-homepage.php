@@ -32,21 +32,20 @@
 				$feature_excerpt = get_field('feature_excerpt');
 			}
 			if (get_the_post_thumbnail()) {
-				$feature_image = get_the_post_thumbnail();
+				$feature_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail-size', true);
 				$feature_caption = get_post(get_post_thumbnail_id());
 				$feature_caption = $feature_caption->post_excerpt;
 			}
 			$rows = get_field('feature_add_links');
 			?>
+				
 <div class="feature">
 
-	<div class="feature-image">
-		<?php echo $feature_image ?>
-		<p class="feature-image-caption"><?php echo $feature_caption ?></p>
+	<div class="feature-image" style="background-image:url(<?php echo $feature_image[0] ?>);">
 	</div>
 
 	<div class="feature-info-container">
-
+		<p class="feature-image-caption right"><?php echo $feature_caption ?></p>
 		<div class="feature-info" style="background-color: <?php echo $feature_color ?>">
 
 			<div class="feature-content">
@@ -58,22 +57,19 @@
 				<?php
 					if($rows)
 					{
-						echo '<ul class="links">';
-						foreach($rows as $row)
-						{
+						foreach($rows as $row) {
 							if($row['feature_link_type'] == 'internal') {
 								$link_title =  $row['feature_link_to_a_page_on_this_site'][0]['feature_link_title_internal'];
 								$link_url = get_permalink($row['feature_link_to_a_page_on_this_site'][0]['feature_select_page'][0]);
 								$link_target = 'self';
-								echo '<li><a  class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
+								echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
 							} elseif ($row['feature_link_type'] == 'external') {
 								$link_title = $row['feature_link_to_an_external_site'][0]['feature_link_title'];
 								$link_url = $row['feature_link_to_an_external_site'][0]['feature_link_url'];
 								$link_target ='blank';
-								echo '<li><a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
+								echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
 							} 
 						}
-						echo '</ul>';
 					}
 				?>
 
