@@ -64,9 +64,11 @@ $teach_research_query = new WP_Query( $teach_research_args );
 		echo '<div class="faculty-list-item">';
 		echo '<a href="' . $faculty_link . '"><img src="' . $faculty_img_src . '"" alt="' . get_the_title() . '" /></a>';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
+		/*
 		echo '<div class="faculty-title">' . $first_faculty_title . '</div>';
 		echo '<div class="faculty-email"><a href="' . $faculty_email . '">' . $faculty_email . '</a></div>';
 		echo '<div class="faculty-phone">' . $first_faculty_phone . '</div>';
+		*/
 		echo '</div>';
 		endwhile;
 		wp_reset_postdata();?>
