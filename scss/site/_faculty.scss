@@ -68,13 +68,12 @@ article.type-faculty {
 	float: left;
 	margin-bottom: rem-calc(18px);
 	margin-right: rem-calc(18px);
-	width: rem-calc(153px);
-
-	div {
-		line-height: 1.4;
-	}
+	width: rem-calc(120px);
+	min-height: 12rem;
 	h3 {
-	font-size: 1.40rem;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	margin-top: .5rem;
 	}
 
 
