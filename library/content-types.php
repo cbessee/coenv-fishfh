@@ -43,7 +43,7 @@ function coenv_base_post_types_init() {
 	'menu_icon' => 'dashicons-slides',
     )
   );
-  register_post_type( 'Publications',
+  register_post_type( 'publications',
     array(
       'labels' => array(    
       'name' => __( 'Publications' ),
