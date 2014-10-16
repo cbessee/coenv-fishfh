@@ -43,6 +43,24 @@ function coenv_base_post_types_init() {
 	'menu_icon' => 'dashicons-slides',
     )
   );
+  register_post_type( 'Publications',
+    array(
+      'labels' => array(    
+      'name' => __( 'Publications' ),
+      'singular_name' => __( 'Publication' ),
+      'add_new_item' => __( 'Add Publication'),
+      'edit_item' => __( 'Edit Publication'),
+      'new_item' => __( 'New Publication'),
+      ),
+    'hierarchical' => true,
+    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+    'public' => true,
+    'has_archive' => false,
+    'show_ui' => true,
+    'rewrite' => array('slug' => 'publications'),
+	'menu_icon' => 'dashicons-book',
+    )
+  );
 }
 
 add_action( 'init', 'coenv_base_post_types_init' );
