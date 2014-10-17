@@ -41,3 +41,6 @@ require_once('library/content-types.php');
 
 // Faculty functions
 require_once('library/faculty.php');
+
+// Custom taxonomies functions
+require_once('library/taxonomies.php');
