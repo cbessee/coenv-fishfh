@@ -38,7 +38,7 @@ $publication_args = array(
 	# 'taxonomy' => 'research_areas',
 	'term' => $pub_slug->slug,
 	'meta_key' => $year,
-	'orderby' => 'meta_value_number title',
+	'orderby' => 'meta_value_number',
 	'order' => 'ASC',
 );
 $publication_query = new WP_Query( $publication_args );
@@ -66,7 +66,7 @@ $publication_query = new WP_Query( $publication_args );
 		echo '<div class="publication-list-item">';
 		echo '<h4><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>';
 		echo '<div class="citation">' . $publication_citation . '</div>';
-		echo '<div class="abstract"><a class="button" href="' . get_the_permalink() .'">View Abstract</a></div>';
+		echo '<div class="publication-links right">';
 		if($rows) {
 			foreach($rows as $row) {
 				if($row['publication_link_type'] == 'upload') {
@@ -77,10 +77,18 @@ $publication_query = new WP_Query( $publication_args );
 			}
 		}
 		echo '</div>';
+		echo '<div class="abstract"><a class="button" href="' . get_the_permalink() .'">View Abstract</a></div>';
+		echo '</div>';
 		endwhile;
 		wp_reset_postdata();?>
 	</div>
 	<?php endif; ?>
+	<?php if ( function_exists('FoundationPress_pagination') ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
+		<nav id="post-nav">
+			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'FoundationPress' ) ); ?></div>
+			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
+		</nav>
+	<?php } ?>
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 	<div id="after-content" class="after-content widget-area" role="complementary">
 		<?php dynamic_sidebar( 'after-content' ); ?>
