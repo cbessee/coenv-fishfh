@@ -66,7 +66,7 @@ $publication_query = new WP_Query( $publication_args );
 		echo '<div class="publication-list-item">';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
 		echo '<div class="citation">' . $publication_citation . '</div>';
-		echo '<div class="abstract"><a href="' . get_the_permalink() . '">' . View Abstract . '</a></div>';
+		echo '<div class="abstract"><a href="' . get_the_permalink() . '"View Abstract</a></div>';
 		if($rows) {
 			foreach($rows as $row) {
 				if($row['publication_link_type'] == 'upload') {
