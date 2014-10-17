@@ -62,19 +62,17 @@ $publication_query = new WP_Query( $publication_args );
 		$publication_query->the_post();
 		$publication_link = get_the_permalink();
 		$publication_citation = get_field('publication_citation');
-		$rows = get_field('publication_link_type');
+		$rows = get_field('publication_link');
 		echo '<div class="publication-list-item">';
-		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
+		echo '<h4><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h4>';
 		echo '<div class="citation">' . $publication_citation . '</div>';
-		echo '<div class="abstract"><a href="' . get_the_permalink() . '"View Abstract</a></div>';
+		echo '<div class="abstract"><a class="button" href="' . get_the_permalink() .'">View Abstract</a></div>';
 		if($rows) {
 			foreach($rows as $row) {
 				if($row['publication_link_type'] == 'upload') {
-					$link_url = $row['publiation_upload_file'][0];
-					echo '<a class="button" href="' . $link_url . '" target="_blank">Download PDF</a>';
+					echo '<a class="button" href="' . $row['publication_upload_file'] . '" target="_blank">Download PDF</a>';
 				} elseif ($row['publication_link_type'] == 'link') {
-					$link_url = $row['publiation_upload_file'][0];
-					echo '<a class="button" href="' . $link_url . '" target="_blank">Link to file</a>';
+					echo '<a class="button" href="' . $row['publication_link_url'] . '" target="_blank">Link to file</a>';
 				} 
 			}
 		}
