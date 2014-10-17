@@ -29,5 +29,17 @@ function pub_tax() {
 			)
 		)
 	);
+	register_taxonomy(
+		'publication_research_themes',
+		'publications',
+		array(
+			'label' => __( 'Research Theme' ),
+			'rewrite' => array( 'slug' => 'theme' ),
+			'capabilities' => array(
+				'assign_terms' => 'edit_guides',
+				'edit_terms' => 'publish_guides'
+			)
+		)
+	);
 }
 add_action( 'init', 'pub_tax' );
