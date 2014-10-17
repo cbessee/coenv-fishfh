@@ -21,7 +21,7 @@ function pub_tax() {
 		'publication_date',
 		'publications',
 		array(
-			'label' => __( 'Publication Date' ),
+			'label' => __( 'Publication Dates' ),
 			'rewrite' => array( 'slug' => 'year' ),
 			'capabilities' => array(
 				'assign_terms' => 'edit_guides',
@@ -33,7 +33,7 @@ function pub_tax() {
 		'publication_research_themes',
 		'publications',
 		array(
-			'label' => __( 'Research Theme' ),
+			'label' => __( 'Research Themes' ),
 			'rewrite' => array( 'slug' => 'theme' ),
 			'capabilities' => array(
 				'assign_terms' => 'edit_guides',
