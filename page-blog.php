@@ -49,10 +49,10 @@ $blog_query = new WP_Query( $blog_args );
 		echo '<div class="blog-links right">';
 		if($rows) {
 			foreach($rows as $row) {
-				if($row['publication_link_type'] == 'upload') {
-					echo '<a class="button" href="' . $row['publication_upload_file'] . '" target="_blank">Download PDF</a>';
-				} elseif ($row['publication_link_type'] == 'link') {
-					echo '<a class="button" href="' . $row['publication_link_url'] . '" target="_blank">Link to file</a>';
+				if($row['blog_link_type'] == 'upload') {
+					echo '<a class="button" href="' . $row['blog_upload_file'] . '" target="_blank">' . $row['blog_file_link_text'] . '</a>';
+				} elseif ($row['blog_link_type'] == 'link') {
+					echo '<a class="button" href="' . $row['blog_link_url'] . '" target="_blank">' . $row['blog_link_text'] . '</a>';
 				} 
 			}
 		}

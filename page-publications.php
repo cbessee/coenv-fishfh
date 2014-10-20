@@ -3,7 +3,7 @@
 <?php $pub_slug->slug; ?>
 <div class="row">
 	<div class="columns large-12 section-title">
-		<h1><a href="/publications"><?php echo the_title(); ?></a></h1>
+		<h1><a href="/research/publications"><?php echo the_title(); ?></a></h1>
 	</div>
 	<?php if (!is_front_page() && function_exists('bcn_display')): ?>
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
@@ -72,7 +72,7 @@ $publication_query = new WP_Query( $publication_args );
 				if($row['publication_link_type'] == 'upload') {
 					echo '<a class="button" href="' . $row['publication_upload_file'] . '" target="_blank">Download PDF</a>';
 				} elseif ($row['publication_link_type'] == 'link') {
-					echo '<a class="button" href="' . $row['publication_link_url'] . '" target="_blank">Link to file</a>';
+					echo '<a class="button" href="' . $row['publication_link_url'] . '" target="_blank">' . $row['publication_link_text'] . '</a>';
 				} 
 			}
 		}
