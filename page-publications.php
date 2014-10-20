@@ -1,4 +1,3 @@
-
 <?php get_header(); ?>
 <?php $pub_slug->slug; ?>
 <div class="row">

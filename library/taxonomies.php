@@ -125,7 +125,7 @@ function blog_tax() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'blog_category', array( 'blog' ), $blog_args );
+	register_taxonomy( 'blog_category', array( 'student_blog' ), $blog_args );
 	
 	$blog_labels_2 = array(
 		'name'                       => _x( 'Blog Tags', 'Taxonomy General Name', 'text_domain' ),
@@ -153,7 +153,7 @@ function blog_tax() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'blog_post_tag', array( 'blog' ), $blog_args_2 );
+	register_taxonomy( 'blog_post_tag', array( 'student_blog' ), $blog_args_2 );
 	
 }
 

@@ -1,4 +1,3 @@
-
 <?php get_header(); ?>
 <?php echo $fac_cat->slug; ?>
 <div class="row">

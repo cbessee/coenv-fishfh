@@ -1,9 +1,8 @@
-
 <?php get_header(); ?>
 <?php $blog_slug->slug; ?>
 <div class="row">
 	<div class="columns large-12 section-title">
-		<h1><a href="/blog"><?php echo the_title(); ?></a></h1>
+		<h1><a href="/student-blog"><?php echo the_title(); ?></a></h1>
 	</div>
 	<?php if (!is_front_page() && function_exists('bcn_display')): ?>
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
@@ -21,13 +20,10 @@ $blog_cat = get_term_by( 'slug', (string) $_GET['blog-slug'], 'blog_category' );
 */
 
 $blog_args = array(
-	'post_type'	=> 'blog',
-	'post_status' => 'publish',
-	'posts_per_page' => -1,
-	'taxonomy' => 'blog_category',
-	'meta_key' => 'date',
-	'orderby' => 'meta_value',
-	'order' => 'ASC',
+	'post_type'	=> 'student_blog',
+	'posts_per_page' => 20,
+	# 'taxonomy' => 'blog_category',
+	'term' => $blog_slug->slug
 );
 $blog_query = new WP_Query( $blog_args );
 
