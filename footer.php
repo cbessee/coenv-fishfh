@@ -4,11 +4,13 @@
 		<div class="row">
 			<div class="medium-6 columns">				
 				<header class="site-footer__header">
-						<h1><span><?php bloginfo('name') ?></span></h1>
-					<?php if (get_option('mail_address')) { ?><a href="http://maps.google.com/?q=<?php echo get_option('mail_address'); ?>" title="Google Maps link"><p><?php echo get_option('mail_address'); ?></p></a><?php } ?>
-					<?php if (get_option('public_email_address')) { ?><a href="mailto:<?php echo get_option('public_email_address'); ?>" title="Send us an Email"><p><?php echo get_option('public_email_address'); } ?></a>
-					<?php if (get_option('phone')) { ?> | <?php echo get_option('phone'); ?></p><?php } ?>
+					<h2><?php bloginfo('name') ?></h2>
 				</header>
+				<div class="unit-contact">
+					<?php if (get_option('mail_address')) { ?><p><a href="http://maps.google.com/?q=<?php echo get_option('mail_address'); ?>" title="Google Maps link"><?php echo get_option('mail_address'); ?></a></p><?php } ?>
+					<?php if (get_option('public_email_address')) { ?><p><a href="mailto:<?php echo get_option('public_email_address'); ?>" title="Send us an Email"><?php echo get_option('public_email_address'); } ?></a>
+					<?php if (get_option('phone')) { ?> | <?php echo get_option('phone'); ?></p><?php } ?>
+				</div>
 				<div class="footer__info">
 					<?php get_search_form() ?>
 					<div class="social-buttons">
@@ -29,32 +31,24 @@
 			</div>
 			<div class="medium-6 columns right">
 				<nav class="footer-nav">
-							<h1 id="logo">
-								<a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment">
-										<span>UW College of the Environment</span>
-										<!--[if lt IE 9]>
-												<img src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.png" alt="UW College of the Environment" />
-										<![endif]-->
-										<!--[if gt IE 8]><!-->
-												<img src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" alt="UW College of the Environment" />
-										<!--<![endif]-->
-								</a>
-							</h1>
-							<ul class="menu-footer-units">
-								<li><a target="_blank" href="http://fish.washington.edu/">Aquatic and Fishery Sciences</a></li>
-								<li><a target="_blank" href="http://www.atmos.washington.edu/">Atmospheric Sciences</a></li>
-								<li><a target="_blank" href="http://www.ess.washington.edu/">Earth and Space Sciences</a></li>
-								<li><a target="_blank" href="http://www.sefs.washington.edu/">Environmental and Forest Sciences</a></li>
-								<li><a target="_blank" href="http://depts.washington.edu/smea/front">Marine and Environmental Affairs</a></li>
-								<li><a target="_blank" href="http://www.ocean.washington.edu/">Oceanography</a></li>
-								<li><a target="_blank" href="http://depts.washington.edu/poeweb/">Program on the Environment</a></li>
-								<li><a target="_blank" href="http://cses.washington.edu/cig/">Climate Impacts Group</a></li>
-								<li><a target="_blank" href="http://depts.washington.edu/fhl/">Friday Harbor Labs</a></li>
-								<li><a target="_blank" href="http://jisao.washington.edu/">Joint Institute for the Study of the Atmosphere and Ocean</a></li>
-								<li><a target="_blank" href="http://depts.washington.edu/uwbg/">UW Botanic Gardens</a></li>
-								<li><a target="_blank" href="http://www.waspacegrant.org/">Washington NASA Space Grant</a></li>
-								<li><a target="_blank" href="http://wsg.washington.edu/">Washington Sea Grant</a></li>
-							</ul>
+					<header class="site-footer__header">
+						<h2 id="logo"><a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment">UW College of the Environment</a></h2>
+					</header>
+						<ul class="menu-footer-units">
+							<li><a target="_blank" href="http://fish.washington.edu/">Aquatic and Fishery Sciences</a></li>
+							<li><a target="_blank" href="http://www.atmos.washington.edu/">Atmospheric Sciences</a></li>
+							<li><a target="_blank" href="http://www.ess.washington.edu/">Earth and Space Sciences</a></li>
+							<li><a target="_blank" href="http://www.sefs.washington.edu/">Environmental and Forest Sciences</a></li>
+							<li><a target="_blank" href="http://depts.washington.edu/smea/front">Marine and Environmental Affairs</a></li>
+							<li><a target="_blank" href="http://www.ocean.washington.edu/">Oceanography</a></li>
+							<li><a target="_blank" href="http://depts.washington.edu/poeweb/">Program on the Environment</a></li>
+							<li><a target="_blank" href="http://cses.washington.edu/cig/">Climate Impacts Group</a></li>
+							<li><a target="_blank" href="http://depts.washington.edu/fhl/">Friday Harbor Labs</a></li>
+							<li><a target="_blank" href="http://jisao.washington.edu/">Joint Institute for the Study of the Atmosphere and Ocean</a></li>
+							<li><a target="_blank" href="http://depts.washington.edu/uwbg/">UW Botanic Gardens</a></li>
+							<li><a target="_blank" href="http://www.waspacegrant.org/">Washington NASA Space Grant</a></li>
+							<li><a target="_blank" href="http://wsg.washington.edu/">Washington Sea Grant</a></li>
+						</ul>
 					</nav>
 				</div>
 			
