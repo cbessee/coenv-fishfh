@@ -90,4 +90,71 @@ function pub_tax() {
 	);
 	register_taxonomy( 'publication_theme', array( 'publications' ), $args_3 );
 }
+
 add_action( 'init', 'pub_tax' );
+
+/**
+* Custom Taxonomies for Blog Posts
+**/
+
+function blog_tax() {
+
+	$blog_labels = array(
+		'name'                       => _x( 'Blog Categories', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Blog Category', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Blog Categories', 'text_domain' ),
+		'all_items'                  => __( 'All Blog Categories', 'text_domain' ),
+		'parent_item'                => __( 'Parent Blog Category', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Blog Category:', 'text_domain' ),
+		'new_item_name'              => __( 'New Blog Category', 'text_domain' ),
+		'add_new_item'               => __( 'Add Blog Category', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Blog Category', 'text_domain' ),
+		'update_item'                => __( 'Update Blog Category', 'text_domain' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'text_domain' ),
+		'search_items'               => __( 'Search Blog Categories', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove blog categories', 'text_domain' ),
+		'choose_from_most_used'      => __( 'Choose from the most cited blog categoriesblog categories', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+	);
+	$blog_args = array(
+		'labels'                     => $blog_labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'blog_category', array( 'blog' ), $blog_args );
+	
+	$blog_labels_2 = array(
+		'name'                       => _x( 'Blog Tags', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Blog Tag', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Blog Tags', 'text_domain' ),
+		'all_items'                  => __( 'All Blog Tags', 'text_domain' ),
+		'parent_item'                => __( 'Parent Blog Tag', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Blog Tag:', 'text_domain' ),
+		'new_item_name'              => __( 'New Blog Tag', 'text_domain' ),
+		'add_new_item'               => __( 'Add Blog Tag', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Blog Tag', 'text_domain' ),
+		'update_item'                => __( 'Update Blog Tag', 'text_domain' ),
+		'separate_items_with_commas' => __( 'Separate blog tags with commas', 'text_domain' ),
+		'search_items'               => __( 'Search blog tags', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove blog tags', 'text_domain' ),
+		'choose_from_most_used'      => __( 'Choose from the most commonly used blog tags', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+	);
+	$blog_args_2 = array(
+		'labels'                     => $blog_labels_2,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'blog_post_tag', array( 'blog' ), $blog_args_2 );
+	
+}
+
+add_action( 'init', 'blog_tax' );

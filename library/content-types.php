@@ -61,6 +61,24 @@ function coenv_base_post_types_init() {
 	'menu_icon' => 'dashicons-book',
     )
   );
+  register_post_type( 'blog',
+    array(
+      'labels' => array(    
+      'name' => __( 'Blog' ),
+      'singular_name' => __( 'Blog Post' ),
+      'add_new_item' => __( 'Add Blog Post'),
+      'edit_item' => __( 'Edit Blog Post'),
+      'new_item' => __( 'New Blog Post'),
+      ),
+    'hierarchical' => true,
+    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+    'public' => true,
+    'has_archive' => false,
+    'show_ui' => true,
+    'rewrite' => array('slug' => 'blog'),
+	'menu_icon' => 'dashicons-exerpt-view',
+    )
+  );
 }
 
 add_action( 'init', 'coenv_base_post_types_init' );
