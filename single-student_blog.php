@@ -22,9 +22,6 @@ Template Name: Student Blog
 	<div class="news clearfix">
 
 		<?php
-		# The Loop
-		while ( have_posts() ) : the_post();
-		$blog_query->the_post();
 		$rows = get_field('blog_link');
 		$blog_post_tags = wp_get_post_terms($post->ID , 'blog_post_tag', array("fields" => "all"));
 		$blog_categories = wp_get_post_terms($post->ID , 'blog_category', array("fields" => "all"));
@@ -35,9 +32,10 @@ Template Name: Student Blog
 		echo '</h5></div>';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
 		echo '<div class="post">';
+		# The Loop
+		while ( have_posts() ) : the_post();
 		echo the_content();
-		echo '<a class="button" href="' . get_the_permalink() . '">Read more</a>';
-		'</div>';
+		endwhile;
 		echo '<div class="blog-links right">';
 		if($rows) {
 			foreach($rows as $row) {
@@ -55,7 +53,7 @@ Template Name: Student Blog
 		echo '</h5></div>';
 		echo '</div>';
 		echo '</div>';
-		endwhile;
+
 		wp_reset_postdata();?>
 	</div>
 	<?php if ( function_exists('FoundationPress_pagination') ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
