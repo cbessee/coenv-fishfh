@@ -61,7 +61,7 @@ function coenv_base_post_types_init() {
 	'menu_icon' => 'dashicons-book',
     )
   );
-  register_post_type( 'blog',
+  register_post_type( 'student_blog',
     array(
       'labels' => array(    
       'name' => __( 'Blog' ),
@@ -75,7 +75,7 @@ function coenv_base_post_types_init() {
     'public' => true,
     'has_archive' => false,
     'show_ui' => true,
-    'rewrite' => array('slug' => 'blog'),
+    'rewrite' => array('slug' => 'student_blog'),
 	'menu_icon' => 'dashicons-exerpt-view',
     )
   );

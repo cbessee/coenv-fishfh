@@ -1,4 +1,3 @@
-
 <?php get_header(); ?>
 <?php echo $fac_cat->slug; ?>
 <div class="row">
@@ -8,7 +7,7 @@
 	<?php if (!is_front_page() && function_exists('bcn_display')): ?>
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
 	<?php endif; ?>
-	<div class="small-12 large-8 columns" role="main">
+	<div class="small-12 medium-8 columns" role="main">
 
 	<?php do_action('foundationPress_before_content'); ?>
 	<ul class="widget-area before-content">
