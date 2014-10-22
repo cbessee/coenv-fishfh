@@ -8,7 +8,7 @@
 	<header class="article__header">
         <div class="article__meta">
    		<?php if ( !is_page() ) : ?>
-			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+			<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
 			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
 			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
             </div>
