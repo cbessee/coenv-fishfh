@@ -115,12 +115,12 @@
                     <?php
                       add_filter( 'page_css_class', 'add_parent_class', 10, 4 );
                       wp_list_pages( array(
-                          'max-depth' => 3,
+                          'depth' => 0,
                           'walker' => new top_bar_new_walker(),
                           'title_li' => false,
                           'sort_column' => 'menu_order, post_title',
                           'post_type'    => 'page',
-                          'exclude' => '20,44,14,27'
+                          'exclude' => coenv_base_menu_exclude(),
                       ) );
                       remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
                       ?>
