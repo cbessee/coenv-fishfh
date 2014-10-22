@@ -8,7 +8,7 @@ Template Name: Publications Page
 <?php $pub_slug->slug; ?>
 <div class="row">
 	<div class="columns large-12 section-title">
-		<h1><a href="/research/publications"><?php echo the_title(); ?></a></h1>
+		<h1><a href="/research">Research</a></h1>
 	</div>
 	<?php if (!is_front_page() && function_exists('bcn_display')): ?>
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
