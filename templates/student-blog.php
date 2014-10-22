@@ -45,14 +45,11 @@ $blog_query = new WP_Query( $blog_args );
 		while ( $blog_query->have_posts() ) :
 		$blog_query->the_post();
 		$rows = get_field('blog_link');
-		$blog_categories = wp_get_post_terms($post->ID , 'blog_category', array("fields" => "all"));
 		echo '<div class="blog-list-item">';
 		echo '<div class="blog-meta"><h5>';
 		echo get_the_date('M j, Y');
-		if (isset ($blog_categories)) {
 		echo ' | ';
-		foreach ($blog_categories as $blog_category) {
-			echo '<a href="'. get_term_link($blog_category) .'">' . $blog_category->name . ' </a>'; }}
+		echo get_the_term_list( $post->ID, 'blog_category', '', ', ', '' );
 		echo '</h5></div>';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
 		echo '<div class="post">';

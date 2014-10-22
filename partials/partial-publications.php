@@ -10,6 +10,9 @@
 	<header class="article__header">
         <div class="article__meta">
    		<?php if ( is_single() ) : ?>
+			<div class="blog-meta"><h5>
+			<?php echo get_the_date('Y')?> | <?php echo get_the_term_list( $post->ID, 'publication_theme', '', ', ', '' ); ?>
+			</h5></div>
 			<div class="share clearfix right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
 			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
 			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>

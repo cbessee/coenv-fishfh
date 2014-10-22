@@ -14,21 +14,21 @@ Template Name: Student Blog
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
 	<?php endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
-
-	<?php do_action('foundationPress_before_content'); ?>
-	<ul class="widget-area before-content">
-	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
 	<div class="news clearfix">
 
 		<?php
 		$rows = get_field('blog_link');
-		$blog_post_tags = wp_get_post_terms($post->ID , 'blog_post_tag', array("fields" => "all"));
-		$blog_categories = wp_get_post_terms($post->ID , 'blog_category', array("fields" => "all"));
 		echo '<div class="blog-list-item">';
 		echo '<div class="blog-meta"><h5>';
-		foreach ($blog_categories as $blog_category) {
-			echo '<a href="'. get_term_link($blog_category) .'">' . $blog_category->name . ' </a>'; }
+		echo get_the_date('M j, Y');
+		echo ' | ';
+		echo get_the_term_list( $post->ID, 'blog_category', '', ', ', '' );
+		?>
+		<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
+		<?php
 		echo '</h5></div>';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
 		echo '<div class="post">';
@@ -47,10 +47,10 @@ Template Name: Student Blog
 			}
 		}
 		echo '</div>';
-		echo '<div class="blog-tags"><h5>';
-		foreach ($blog_post_tags as $blog_post_tag) {
-		echo '<a class="button tag" href="'. get_term_link($blog_post_tag) .'">' . $blog_post_tag->name . ' </a>'; }
-		echo '</h5></div>';
+		echo '<div class="blog-tags"><p>';
+		echo 'Tagged: ';
+		echo get_the_term_list( $post->ID, 'blog_post_tag', '', ', ', '' );
+		echo '<p></div>';
 		echo '</div>';
 		echo '</div>';
 
