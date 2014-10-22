@@ -21,7 +21,7 @@ function coenv_base_hierarchical_submenu_get_children($post, $current_page) {
         'sort_order' => 'ASC',
         'sort_column' => 'menu_order',
         'hierarchical' => 1,
-        'exclude' => '20,44',
+        'exclude' => coenv_base_menu_exclude(),
         'child_of' => $post->ID,
         'parent' => $post->ID,
         'exclude_tree' => '',

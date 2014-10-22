@@ -14,17 +14,6 @@ function coenv_base_sidebar_widgets() {
       'before_title' => '<h4>',
       'after_title' => '</h4>'
   ));
-
-  register_sidebar(array(
-      'id' => 'footer-widgets',
-      'name' => __('Footer widgets', 'foundationpress'),
-      'description' => __('Drag widgets to this container', 'foundationpress'),
-      'before_widget' => '<article id="%1$s" class="large-4 columns widget %2$s">',
-      'after_widget' => '</article>',
-      'before_title' => '<h4>',
-      'after_title' => '</h4>'      
-  ));
-
   register_sidebar(array(
       'id' => 'before-content',
       'name' => __('Before content', 'foundationpress'),
@@ -360,6 +349,44 @@ class CoEnv_Widget_Events extends WP_Widget {
 		$instance['events_url'] = strip_tags( $new_instance['events_url'] );
 		 
 		return $instance;
+	}
+
+}
+/**
+ * Adds a widget area for each section.
+ */
+add_action( 'widgets_init', 'coenv_base_widgets_init' );
+
+function coenv_base_widgets_init() {
+
+	$before_widget	= '<section id="%1$s" class="widget %2$s">';
+	$before_title 	= '<header class="section-header"><h2>';
+	$after_title	= '</h2></header> <!-- end .section-header -->';
+	$after_widget	= '</section> <!-- end #%1$s -->';
+
+	// this will return only top-level pages
+	$pages = get_pages('parent=0&sort_column=menu_order&sort_order=ASC');
+
+	// remove specific pages by page name
+	$pages_to_remove = array( );
+
+	if ( empty( $pages ) ) {
+		return false;
+	}
+
+	foreach( $pages as $page ) {
+		$main = get_field('show_in_main_menu',$page->ID);
+		// remove specific pages
+		if( $main == '1') {
+			register_sidebar( array(
+				'name' 			=> $page->post_title,
+				'id'			=> 'sidebar-' . $page->ID,
+				'before_widget' => $before_widget,
+				'after_widget'	=> $after_widget,
+				'before_title' 	=> $before_title,
+				'after_title'	=> $after_title
+			) );
+		}
 	}
 
 }

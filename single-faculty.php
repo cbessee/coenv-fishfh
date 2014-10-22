@@ -9,6 +9,7 @@
 	<?php do_action('foundationPress_before_content'); ?>
 			<?php do_action('foundationPress_post_before_entry_content'); ?>
 			<div class="entry-content">
+
 			<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>
