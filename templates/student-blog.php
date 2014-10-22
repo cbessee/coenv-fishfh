@@ -2,8 +2,6 @@
 /*
 Template Name: Student Blog
 */
-
-
 ?>
 
 <?php get_header(); ?>
