@@ -12,32 +12,12 @@ $faculty_fname = $faculty_fields["first_name"];
 $faculty_lname = $faculty_fields["last_name"];
 $faculty_name = $faculty_fname . ' ' . $faculty_lname;
 $faculty_cv = $faculty_fields["curriculum_vitae"];
+$faculty_pubs = $faculty_fields["selected_publications"];
 
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
-	<header class="article__header">
-        <div class="article__meta">
-   		<?php if ( is_single() ) : ?>
-			<div class="share clearfix" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
-            </div>
-        <?php endif ?>
-        </div>
-        <div class="faculty-title clearfix">
-			<h1 class="article__title left">
-			<?php if ( is_page() || is_single()) : ?>
-				<?php the_title() ?>
-			<?php else : ?>
-				<a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a>
-			<?php endif ?>
-			</h1>
-			<div class="faculty-website right"><a class="button" href="#" target="_blank">Visit <?php echo coenv_base_apostophe_fname($faculty_fname); ?> website</a></div>
-		</div>
-		<div class="article__categories"><?php coenv_base_fac_terms($post->ID); ?></div>
-
-	</header>
+	
 
 	<section class="article__content">
 		<div class="faculty-info right">
@@ -92,17 +72,46 @@ $faculty_cv = $faculty_fields["curriculum_vitae"];
 			if ($faculty_cv) {
 				echo '<li class="cv"><a href="' . $faculty_cv . '">Curriculum Vitae (CV)</a></li>';
 			}
-			if ($faculty_website_url) {
-				echo '<li class="faculty-website"><a class="button [radius round]" href="' . $faculty_website_url . '">Visit this faculty member\'s website</a></li>';
+			if ($faculty_website_url) { ?>
+				<li class="faculty-website"><a class="button" href="#" target="_blank">Visit <?php echo coenv_base_apostophe_fname($faculty_fname); ?> website</a></li>
+			<?php
 			}
 			echo '</ul>';
-			?>	
+			?>
+				
+		</div>
+		<header class="article__header">
+        <div class="article__meta">
+   		<?php if ( is_single() ) : ?>
+			<div class="share" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+			data-article-permalink="<?php echo the_permalink(); ?>"><a class="button" href="#">Share</a>
+            </div>
+        <?php endif ?>
+        </div>
+        <div class="faculty-title">
+			<h1 class="article__title">
+			<?php if ( is_page() || is_single()) : ?>
+				<?php the_title() ?>
+			<?php else : ?>
+				<a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a>
+			<?php endif ?>
+			</h1>
+			
+		</div>
+
+	</header>
+		<div class="article__categories">
+			<h2>Research areas</h2>
+			<?php coenv_base_fac_terms($post->ID); ?>
 		</div>
 		<?php the_content() ?>
+		<?php if ($faculty_pubs): ?>
 		<div class="faculty-pubs">
 			<h2>Selected publications</h3>
-			<?php echo the_field('selected_publications'); ?>
+			<?php echo $faculty_pubs; ?>
 		</div>
+		<?php endif; ?>
 	</section>
     <?php
     remove_filter( 'the_title', 'wptexturize' );
