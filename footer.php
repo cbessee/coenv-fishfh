@@ -54,7 +54,13 @@
 			
 				<div class="medium-12 columns">
 					<div class="uw-footer">
-						<p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a> | <a href="/wp-admin" name="Staff Login">Staff Login</a></p>
+						<p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a> | 
+							<?php if (is_user_logged_in()) { ?>
+								<a href="<?php echo wp_logout_url( home_url() ); ?>" title="Logout">Log out</a>	
+							<?php } else { ?>
+								<a href="<?php echo wp_login_url(); ?>" title="Staff Login">Staff login</a>
+							<?php } ?>
+						</p>
 						<ul id="menu-footer-links" class="menu-footer-links">
 							<li><a target="_blank" href="http://www.washington.edu/admin/hr/jobs/">Jobs</a></li>
 							<li><a target="_blank" href="http://myuw.washington.edu/">My UW</a></li>
