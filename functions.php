@@ -128,7 +128,7 @@ function coenv_base_get_ancestor($attr = 'ID') {
 
 // page/post ids to exclude from the main menu
 function coenv_base_menu_exclude() {
-	return '20,44,14,27';
+	return array('20','44','14','27');
 }
 
 define( 'FACULTY_PAGE_PARENT_ID', '31' );

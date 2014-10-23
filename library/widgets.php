@@ -359,34 +359,32 @@ add_action( 'widgets_init', 'coenv_base_widgets_init' );
 
 function coenv_base_widgets_init() {
 
-	$before_widget	= '<section id="%1$s" class="widget %2$s">';
-	$before_title 	= '<header class="section-header"><h2>';
-	$after_title	= '</h2></header> <!-- end .section-header -->';
-	$after_widget	= '</section> <!-- end #%1$s -->';
+  $before_widget  = '<section id="%1$s" class="widget %2$s">';
+  $before_title   = '<header class="section-header"><h2>';
+  $after_title  = '</h2></header> <!-- end .section-header -->';
+  $after_widget = '</section> <!-- end #%1$s -->';
 
-	// this will return only top-level pages
-	$pages = get_pages('parent=0&sort_column=menu_order&sort_order=ASC');
+  // this will return only top-level pages
+  $pages = get_pages('parent=0&sort_column=menu_order&sort_order=ASC');
+  // remove specific pages by page name
+  $pages_to_remove = coenv_base_menu_exclude();
 
-	// remove specific pages by page name
-	$pages_to_remove = array( );
+  if ( empty( $pages ) ) {
+    return false;
+  }
 
-	if ( empty( $pages ) ) {
-		return false;
-	}
-
-	foreach( $pages as $page ) {
-		$main = get_field('show_in_main_menu',$page->ID);
-		// remove specific pages
-		if( $main == '1') {
-			register_sidebar( array(
-				'name' 			=> $page->post_title,
-				'id'			=> 'sidebar-' . $page->ID,
-				'before_widget' => $before_widget,
-				'after_widget'	=> $after_widget,
-				'before_title' 	=> $before_title,
-				'after_title'	=> $after_title
-			) );
-		}
-	}
+  foreach( $pages as $page ) {
+    // remove specific pages
+    if( !in_array( $page->ID, $pages_to_remove ) ) {
+      register_sidebar( array(
+        'name'      => $page->post_title,
+        'id'      => 'sidebar-' . $page->ID,
+        'before_widget' => $before_widget,
+        'after_widget'  => $after_widget,
+        'before_title'  => $before_title,
+        'after_title' => $after_title
+      ) );
+    }
+  }
 
 }

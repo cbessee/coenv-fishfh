@@ -113,6 +113,7 @@
                 <section class="top-bar-section">
                     <ul id="menu-main-menu" class="top-bar-menu left">
                     <?php
+                      $exclude = implode(',',coenv_base_menu_exclude());
                       add_filter( 'page_css_class', 'add_parent_class', 10, 4 );
                       wp_list_pages( array(
                           'depth' => 0,
@@ -120,7 +121,7 @@
                           'title_li' => false,
                           'sort_column' => 'menu_order, post_title',
                           'post_type'    => 'page',
-                          'exclude' => coenv_base_menu_exclude(),
+                          'exclude' => $exclude,
                       ) );
                       remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
                       ?>
