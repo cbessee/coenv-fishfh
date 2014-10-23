@@ -125,8 +125,3 @@ function coenv_base_get_ancestor($attr = 'ID') {
 		return $ancestor->$attr;
 	}
 }
-
-// page/post ids to exclude from the main menu
-function coenv_base_menu_exclude() {
-	return '20,44,14,27';
-}
