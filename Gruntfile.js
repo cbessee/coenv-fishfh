@@ -48,10 +48,11 @@ module.exports = function(grunt) {
         src: [
           'js/foundation/js/foundation.min.js',
           'js/init-foundation.js',
-		  'js/nivo-lightbox/nivo-lightbox.min.js',
-		  'js/slick.js/slick/slick.min.js',
-		  'js/share.js',
-		  'js/main.js'
+		      'js/nivo-lightbox/nivo-lightbox.min.js',
+		      'js/slick.js/slick/slick.min.js',
+		      'js/share.js',
+		      'js/main.js',
+          'js/wp-menufix.js',
         ],
 
         dest: 'js/app.js',
@@ -76,7 +77,7 @@ module.exports = function(grunt) {
 				}
 			},
 			scripts: {
-				files: ['js/**/*.js'],
+				files: ['js/**/*.js','js/wp-menufix.js'],
 				tasks: [ 'uglify' ],
 				options: {
 					livereload: true
