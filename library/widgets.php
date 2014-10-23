@@ -5,24 +5,66 @@
  */
 
 function coenv_base_sidebar_widgets() {
+
+  $before_widget  = '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">';
+  $before_title   = '<h4>';
+  $after_title  = '</h4>';
+  $after_widget = '</div></article> <!-- end #%1$s -->';
+
   register_sidebar(array(
       'id' => 'sidebar-widgets',
-      'name' => __('Sidebar widgets', 'foundationpress'),
+      'name' => __('Sidebar / All', 'foundationpress'),
       'description' => __('Drag widgets to this container.', 'foundationpress'),
-      'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">',
-      'after_widget' => '</div></article>',
-      'before_title' => '<h4>',
-      'after_title' => '</h4>'
+      'before_widget' => $before_widget,
+      'after_widget' => $after_widget,
+      'before_title' => $before_title,
+      'after_title' => $after_title
   ));
+
+  /**
+   * Adds a widget area for each section.
+   */
+
+  // this will return only top-level pages
+  $pages = get_pages('parent=0&sort_column=menu_order&sort_order=ASC');
+  $pages_to_remove = coenv_base_menu_exclude();
+
+  if ( empty( $pages ) ) {
+    return false;
+  }
+
+  foreach( $pages as $page ) {
+    // remove specific pages
+    if( !in_array( $page->ID, $pages_to_remove ) ) {
+      register_sidebar( array(
+        'id' => 'sidebar-' . $page->ID,
+        'name' => 'Sidebar / ' . $page->post_title,
+        'description' => __('Drag widgets to this container.', 'foundationpress'),
+        'before_widget' => $before_widget,
+        'after_widget'  => $after_widget,
+        'before_title'  => $before_title,
+        'after_title' => $after_title
+      ) );
+    }
+  }
+
   register_sidebar(array(
       'id' => 'before-content',
-      'name' => __('Before content', 'foundationpress'),
-      'description' => __('Drag widgets to this container', 'foundationpress')     
+      'name' => __('Body / Before content', 'foundationpress'),
+      'description' => __('Drag widgets to this container', 'foundationpress'),
+      'before_widget' => $before_widget,
+      'after_widget' => $after_widget,
+      'before_title' => $before_title,
+      'after_title' => $after_title   
   ));
   register_sidebar(array(
       'id' => 'after-content',
-      'name' => __('After content', 'foundationpress'),
-      'description' => __('Drag widgets to this container', 'foundationpress')     
+      'name' => __('Body / After content', 'foundationpress'),
+      'description' => __('Drag widgets to this container', 'foundationpress'),
+      'before_widget' => $before_widget,
+      'after_widget' => $after_widget,
+      'before_title' => $before_title,
+      'after_title' => $after_title     
   ));
 
 
@@ -350,41 +392,5 @@ class CoEnv_Widget_Events extends WP_Widget {
 		 
 		return $instance;
 	}
-
-}
-/**
- * Adds a widget area for each section.
- */
-add_action( 'widgets_init', 'coenv_base_widgets_init' );
-
-function coenv_base_widgets_init() {
-
-  $before_widget  = '<section id="%1$s" class="widget %2$s">';
-  $before_title   = '<header class="section-header"><h2>';
-  $after_title  = '</h2></header> <!-- end .section-header -->';
-  $after_widget = '</section> <!-- end #%1$s -->';
-
-  // this will return only top-level pages
-  $pages = get_pages('parent=0&sort_column=menu_order&sort_order=ASC');
-  // remove specific pages by page name
-  $pages_to_remove = coenv_base_menu_exclude();
-
-  if ( empty( $pages ) ) {
-    return false;
-  }
-
-  foreach( $pages as $page ) {
-    // remove specific pages
-    if( !in_array( $page->ID, $pages_to_remove ) ) {
-      register_sidebar( array(
-        'name'      => $page->post_title,
-        'id'      => 'sidebar-' . $page->ID,
-        'before_widget' => $before_widget,
-        'after_widget'  => $after_widget,
-        'before_title'  => $before_title,
-        'after_title' => $after_title
-      ) );
-    }
-  }
 
 }
