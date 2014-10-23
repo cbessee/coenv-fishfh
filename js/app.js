@@ -255,4 +255,9 @@ var b={start_page_x:a.touches[0].pageX,start_page_y:a.touches[0].pageY,start_tim
 		});
 	}
 
+
+});;jQuery(function ($) {
+	'use strict';
+	$( ".single-faculty li.page-item-35" ).removeClass( "active" );
+	$( ".single-faculty li.page-item-31" ).addClass( "active" );
 });
