@@ -15,13 +15,13 @@ function coenv_base_post_types_init() {
       'edit_item' => __( 'Edit Faculty Member'),
       'new_item' => __( 'New Faculty'),
       ),
-    'hierarchical' => true,
+    //'hierarchical' => true,
     'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
     'public' => true,
     'has_archive' => false,
     'show_ui' => true,
-    'rewrite' => array('slug' => 'faculty'),
-	'menu_icon' => 'dashicons-id',
+    //'rewrite' => array('slug' => 'faculty'),
+	  'menu_icon' => 'dashicons-id',
     )
 
   );
