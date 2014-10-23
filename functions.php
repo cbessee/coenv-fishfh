@@ -125,3 +125,36 @@ function coenv_base_get_ancestor($attr = 'ID') {
 		return $ancestor->$attr;
 	}
 }
+
+// page/post ids to exclude from the main menu
+function coenv_base_menu_exclude() {
+	return '20,44,14,27';
+}
+
+define( 'FACULTY_PAGE_PARENT_ID', '31' );
+ 
+add_action( 'wp_insert_post_data', 'coenv_base_fac_parent', '99', 2  ); 
+ 
+/**
+ * saveStaffParent
+ *
+ * @author  Joe Sexton <joe@webtipblog.com>
+ * @param   array $data
+ * @param   array $postarr
+ * @return  array
+ */
+function coenv_base_fac_parent( $data, $postarr ) {
+    global $post;
+ 
+ 
+    // verify if this is an auto save routine.
+    // If it is our form has not been submitted, so we dont want to do anything
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+        return $data;
+ 
+    if ( $post->post_type == "faculty" ){
+        $data['post_parent'] = FACULTY_PAGE_PARENT_ID;
+    }
+ 
+    return $data;
+}
