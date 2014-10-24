@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: Faculty Index
+*/
+?>
+
 <?php get_header(); ?>
 <?php echo $fac_cat->slug; ?>
 <div class="row">
@@ -73,9 +79,9 @@ $teach_research_query = new WP_Query( $teach_research_args );
 		wp_reset_postdata();?>
 	</div>
 	<?php endif; ?>
-	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+	<?php if ( is_active_sidebar( 'after_content' ) ) : ?>
 	<div id="after-content" class="after-content widget-area" role="complementary">
-		<?php dynamic_sidebar( 'after-content' ); ?>
+		<?php dynamic_sidebar( 'after_content' ); ?>
 	</div><!-- #after-content -->
 	<?php endif; ?>
 	<a href="#" class="back-to-top">Back to Top</a>
