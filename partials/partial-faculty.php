@@ -13,15 +13,13 @@ $faculty_lname = $faculty_fields["last_name"];
 $faculty_name = $faculty_fname . ' ' . $faculty_lname;
 $faculty_cv = $faculty_fields["curriculum_vitae"];
 $faculty_pubs = $faculty_fields["selected_publications"];
+$faculty_img = get_the_post_thumbnail($page->ID, 'med');
 
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
-
-	
-
 	<section class="article__content">
 		<div class="faculty-info right">
-			<?php echo get_the_post_thumbnail($page->ID, 'faculty_med'); ?>
+			<?php echo $faculty_img; ?>
 			<p class="faculty-name"><?php echo $faculty_name; ?></p>
 			<?php echo '<ul class="faculty_contact_fields">';
 			if( have_rows('job_titles') ) {
