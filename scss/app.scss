@@ -32,3 +32,50 @@
 /* College Customizations */
 @import "site/faculty";
 @import "site/lists";
+
+
+
+// Sort into separate .scss files
+#sidebar .widget_custom_post_widget {
+	width: 360px;
+}
+
+
+#sidebar .widget_img {
+	float: left;
+	width: 120px;
+}
+#sidebar .widget_content {
+	float: left;
+	margin-left: 15px;
+	width: 190px;
+}
+#sidebar .widget_links li a {
+	width: 48%;
+	margin: 0;
+	&:first-child {
+		margin-right: 2%;
+	}
+}
+.widget_custom_post_widget ul.widget_links {
+	float: right;
+	text-align: right;
+	width: 100%;
+}
+.widget_custom_post_widget ul.widget_links li {
+	display: inline;
+}
+ul.widget-area li {
+	list-style: none;
+	margin: 0;
+	padding: 0;	
+}
+ul.widget-area.before-content h2.widgettitle {
+	font-size: 1.25rem;
+	margin-bottom: .5rem;
+	margin-top: 0;
+	padding-bottom: 0;
+}
+ul.widget-area.before-content .button {
+	margin-bottom: .5rem;
+}
