@@ -169,3 +169,21 @@ function coenv_base_fac_parent( $data, $postarr ) {
  
     return $data;
 }
+
+
+/* 
+ * Remove underline from both Full and Basic TinyMCE toolbars in ACF
+ */
+add_filter( 'acf/fields/wysiwyg/toolbars' , 'coenv_base_acf_toolbar'  );
+function coenv_base_acf_toolbar( $toolbars ) {
+
+	if( ($key = array_search('underline' , $toolbars['Basic' ][1])) !== false ) {
+	    unset( $toolbars['Basic' ][1][$key] );
+	}
+	if( ($key = array_search('underline' , $toolbars['Full' ][2])) !== false ) {
+	    unset( $toolbars['Full' ][2][$key] );
+	}
+
+	// return $toolbars - IMPORTANT!
+	return $toolbars;
+}
