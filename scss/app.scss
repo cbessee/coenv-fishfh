@@ -49,6 +49,39 @@
 	float: left;
 	margin-left: 15px;
 	width: 190px;
+
+	p {
+		font-size: 1rem;
+	}
+}
+#after-content .widget_custom_post_widget {
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+	padding-top: 1rem;
+}
+#after-content .widget_content {
+	float: left;
+	margin-left: 0;
+	width: 80%;
+
+	p {
+	margin-bottom: 0;
+	}
+}
+#after-content .widget_links {
+	float: left;
+	width: 80%;
+}
+#after-content .widget_links li a {
+	width: auto;
+	margin: 0;
+	&:first-child {
+		margin-right: 5px;
+	}
+}
+#after-content .widget_img {
+	float: left;
+	width: 20%;
 }
 #sidebar .widget_links li a {
 	width: 48%;
@@ -78,4 +111,8 @@ ul.widget-area.before-content h2.widgettitle {
 }
 ul.widget-area.before-content .button {
 	margin-bottom: .5rem;
+}
+body.page-template-templatesfaculty-php .pager {
+	width: 100%;
+	float: left;
 }

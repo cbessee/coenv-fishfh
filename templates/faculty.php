@@ -36,7 +36,7 @@ $wp_query->query;
 $teach_research_args = array(
 	'post_type'	=> 'faculty',
 	'post_status' => 'publish',
-	'posts_per_page' => 4,
+	'posts_per_page' => -1,
 	'taxonomy' => 'research_areas',
 	'term' => $fac_cat->slug,
 	'meta_key' => 'last_name',
