@@ -13,7 +13,7 @@ function coenv_admin_settings() {
 	add_settings_field( 'public_email_address', 'Public Email Address', 'coenv_setting_public_email_address', 'general' );
 	register_setting( 'general', 'public_email_address' );
 	
-		add_option( 'phone' );
+	add_option( 'phone' );
 	add_settings_field( 'phone', 'Phone Number', 'coenv_setting_phone', 'general' );
 	register_setting( 'general', 'phone' );
 

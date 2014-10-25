@@ -14,8 +14,6 @@ function coenv_base_fac_terms($id) {
 		echo '</ul>';
 	}
 }
-add_image_size( 'faculty_med', '240', '240' );
-add_image_size( 'faculty_sm', '153', '153' );
 
 /*
  * Return grammatically correct first names.
