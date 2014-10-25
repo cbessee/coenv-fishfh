@@ -14,25 +14,35 @@ Template Name: Faculty Index
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
 	<?php endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
-
+	<?php if ( is_active_sidebar( 'before-content' ) ) : ?>
 	<?php do_action('foundationPress_before_content'); ?>
 	<ul class="widget-area before-content">
 	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
+	<?php endif; ?>
 	<?php
 $fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+
+$temp = $wp_query;
+$wp_query = null;
+$wp_query = new WP_Query();
+$wp_query->query;
+
 /**
 * Faculty loop
 */
 $teach_research_args = array(
 	'post_type'	=> 'faculty',
 	'post_status' => 'publish',
-	'posts_per_page' => -1,
+	'posts_per_page' => 4,
 	'taxonomy' => 'research_areas',
 	'term' => $fac_cat->slug,
 	'meta_key' => 'last_name',
 	'orderby' => 'meta_value',
 	'order' => 'ASC',
+	'paged'=>$paged,
 	'meta_query' => array(
 		array(
 			'key'     => 'last_name',
@@ -40,10 +50,10 @@ $teach_research_args = array(
 		),
 	),
 );
-$teach_research_query = new WP_Query( $teach_research_args );
+$wp_query = new WP_Query( $teach_research_args );
 
 ?>
-	<?php if ($teach_research_query->have_posts()): ?>
+	<?php if ($wp_query->have_posts()): ?>
 	<div class="faculty-list-teach clearfix">
 
 		<?php if ($fac_cat): ?>
@@ -51,8 +61,8 @@ $teach_research_query = new WP_Query( $teach_research_args );
 		<?php endif; ?>
 		<?php
 		# The Loop
-		while ( $teach_research_query->have_posts() ) :
-		$teach_research_query->the_post();
+		while ( $wp_query->have_posts() ) :
+		$wp_query->the_post();
 		$faculty_thumb = get_the_post_thumbnail(get_the_ID(),'faculty_sm');
 		$faculty_link = get_the_permalink();
 		$faculty_phone_rows = get_field('phone_number');
@@ -69,25 +79,31 @@ $teach_research_query = new WP_Query( $teach_research_args );
 		echo '<div class="faculty-list-item">';
 		echo '<a href="' . $faculty_link . '"><img src="' . $faculty_img_src . '"" alt="' . get_the_title() . '" /></a>';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
-		/*
-		echo '<div class="faculty-title">' . $first_faculty_title . '</div>';
-		echo '<div class="faculty-email"><a href="' . $faculty_email . '">' . $faculty_email . '</a></div>';
-		echo '<div class="faculty-phone">' . $first_faculty_phone . '</div>';
-		*/
 		echo '</div>';
 		endwhile;
-		wp_reset_postdata();?>
+		?>
+				<div class="pager">
+					<!--
+  <div class="alignleft"><?php //previous_posts_link('&laquo; Previous') ?></div>
+  <div class="alignright"><?php //next_posts_link('More &raquo;') ?></div>
+-->
+				<?php coenv_base_num_pagination($wp_query->max_num_pages);?>
+  </div>
+		
+
 	</div>
 	<?php endif; ?>
-	<?php if ( is_active_sidebar( 'after_content' ) ) : ?>
-	<div id="after-content" class="after-content widget-area" role="complementary">
-		<?php dynamic_sidebar( 'after_content' ); ?>
-	</div><!-- #after-content -->
+
+	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+	<?php do_action('foundationPress_after_content'); ?>
+	<ul class="widget-area after-content">
+	<?php dynamic_sidebar("after-content"); ?>
+	</ul>
 	<?php endif; ?>
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
-
 	</div>
+	<?php wp_reset_postdata();?>
 <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
