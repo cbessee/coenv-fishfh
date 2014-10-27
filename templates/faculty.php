@@ -41,7 +41,7 @@ $teach_research_args = array(
 	'meta_key' => 'last_name',
 	'orderby' => 'meta_value',
 	'order' => 'ASC',
-	'paged'=>$paged,
+	'paged' => $paged,
 	'meta_query' => array(
 		array(
 			'key'     => 'last_name',

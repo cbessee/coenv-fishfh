@@ -5,6 +5,8 @@ Template Name: Full Width
 get_header(); ?>
 <div class="row">
 	<div class="small-12 large-12 columns" role="main">
+	<?php do_action('foundationPress_before_content'); ?>
+	<?php dynamic_sidebar("before-content"); ?>
 	
 	<?php /* Start loop */ ?>
 	<?php while (have_posts()) : the_post(); ?>

@@ -39,12 +39,13 @@ add_filter('posts_orderby','alter_pub_order',1,2);
 $publication_args = array(
 	'post_type'	=> 'publications',
 	'post_status' => 'publish',
-	'posts_per_page' => -1,
+	'posts_per_page' => 20,
 	# 'taxonomy' => 'research_areas',
 	'term' => $pub_slug->slug,
 	'meta_key' => $year,
 	'orderby' => 'meta_value_number',
 	'order' => 'ASC',
+	'paged'=>$paged
 );
 $publication_query = new WP_Query( $publication_args );
 
