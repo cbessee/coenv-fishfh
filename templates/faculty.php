@@ -24,7 +24,6 @@ Template Name: Faculty Index
 $fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-
 $temp = $wp_query;
 $wp_query = null;
 $wp_query = new WP_Query();
@@ -105,7 +104,7 @@ $wp_query = new WP_Query( $teach_research_args );
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
 	</div>
-	<?php wp_reset_postdata();?>
+	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
 <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
