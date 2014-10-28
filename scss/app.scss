@@ -120,11 +120,14 @@ body.page-template-templatesfaculty-php .pager {
 	ul,ol {
 		margin-left: 4rem;	
 	}
-	#gallery-1 img {
+	#gallery img {
 		border: 0;
 	}
 	.gallery {
-		margin-bottom: 1rem;
+		margin-bottom: 1rem !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		margin-top: auto !important;
 	}
 	.gallery .gallery-item {
 		margin: 0;
