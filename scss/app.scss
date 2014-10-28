@@ -38,19 +38,18 @@
 
 // Sort into separate .scss files
 #sidebar .widget_custom_post_widget {
-	width: 360px;
+padding-left: 2%;
 }
 
 
 #sidebar .widget_img {
 	float: left;
-	width: 120px;
+	width: 35%;
 }
 #sidebar .widget_content {
 	float: left;
 	margin-left: 15px;
-	width: 190px;
-
+	width: 60%;
 	p {
 		font-size: 1rem;
 	}
@@ -121,8 +120,8 @@ body.page-template-templatesfaculty-php .pager {
 	ul,ol {
 		margin-left: 4rem;	
 	}
-	.gallery img {
-		border: 0;
+	div[id^="gallery-"] img {
+		border: 0 !important;
 	}
 	.gallery {
 		margin-bottom: 1rem !important;

@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 <div class="row">
 	<div class="columns large-12 section-title"><h1><a href="/research/publications">Publications</a></h1></div>
-	<div class="breadcrumbs"><!-- Breadcrumb NavXT 5.1.1 -->
-		<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to School of Aquatic and Fishery Sciences." href="http://dev.fish.washington.edu" class="home">Home</a></span><a property="v:title" href="/research">Research</a><a property="v:title" href="/research/publications">Publications</a></span>
-	</div>
+	<?php //if (!is_front_page() && function_exists('bcn_display')): ?>
+	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
+	<?php //endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
 	
 	<?php do_action('foundationPress_before_content'); ?>

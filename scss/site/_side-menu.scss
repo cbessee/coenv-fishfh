@@ -1,9 +1,27 @@
+.widget_coenv_base_subnav div {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
 .side-nav {
-	.side-nav{
 		margin: 0 0 0 20px;
 		padding: 0;
 		line-height: 10px;
-	}
+
+		li {
+			background-color: #f4f4f4;
+			border-left: 1px solid #dddddd;
+			border-right: 1px solid #dddddd;
+			border-bottom: 1px solid #dddddd;
+			padding: 0;
+			margin: 0;
+			font-size: 1.25rem;
+			@include serif;
+
+			a {
+				display: block;
+				line-height: 125%;
+			}
+		}
 }
 #sidebar {
 	.inline-list {
@@ -16,4 +34,7 @@
 }
 ul.fac-cats {
 	margin-top: rem-calc(15);
+}
+.side-nav li.active a:first-child:not(.button) {
+	@include serif;
 }
