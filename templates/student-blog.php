@@ -14,22 +14,31 @@ Template Name: Student Blog
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
 	<?php endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
-
+	<?php do_action('foundationPress_before_content'); ?>
+	<?php dynamic_sidebar("before-content"); ?>
 	<?php do_action('foundationPress_before_content'); ?>
 	<ul class="widget-area before-content">
 	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
 	<?php
 $blog_cat = get_term_by( 'slug', (string) $_GET['blog_slug'], 'blog_category' );
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+$temp = $wp_query;
+$wp_query = null;
+$wp_query = new WP_Query();
+$wp_query->query;
+
 /**
 * Blog Post loop
 */
 
 $blog_args = array(
 	'post_type'	=> 'student_blog',
-	'posts_per_page' => 5,
+	'posts_per_page' => 1,
 	# 'taxonomy' => 'blog_category',
-	'term' => $blog_slug->slug
+	'term' => $blog_slug->slug,
+	'paged'=> $paged
 );
 $blog_query = new WP_Query( $blog_args );
 
@@ -70,15 +79,18 @@ $blog_query = new WP_Query( $blog_args );
 		echo '</div>';
 		echo '</div>';
 		endwhile;
-		wp_reset_postdata();?>
+		?>
 	</div>
-	<?php endif; ?>
+	<div class="pager">
+	<?php /* Display navigation to next/previous pages when applicable */ ?>
 	<?php if ( function_exists('FoundationPress_pagination') ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
 			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'FoundationPress' ) ); ?></div>
 			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
 		</nav>
 	<?php } ?>
+  </div>
+	<?php endif; ?>
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 	<div id="after-content" class="after-content widget-area" role="complementary">
 		<?php dynamic_sidebar( 'after-content' ); ?>
@@ -88,6 +100,7 @@ $blog_query = new WP_Query( $blog_args );
 	<?php do_action('foundationPress_after_content'); ?>
 
 	</div>
+<?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
 <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

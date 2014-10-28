@@ -14,6 +14,8 @@ Template Name: Student Blog
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
 	<?php endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
+	<?php do_action('foundationPress_before_content'); ?>
+	<?php do_action('foundationPress_post_before_entry_content'); ?>
 	</ul>
 	<div class="news clearfix">
 		<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
