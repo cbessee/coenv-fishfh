@@ -4,7 +4,7 @@ function FoundationPress_pagination() {
 	global $wp_query;
  
 	$big = 999999999; // This needs to be an unlikely integer
- 
+ 	
 	// For more options and info view the docs for paginate_links()
 	// http://codex.wordpress.org/Function_Reference/paginate_links
 	$paginate_links = paginate_links( array(

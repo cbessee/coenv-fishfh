@@ -1,0 +1,13 @@
+// Events Widget
+
+.event-list {
+	list-style: none;
+	
+	.date {
+		margin-bottom: 0;
+	}
+	
+	.title {
+		margin-bottom: rem-calc(10);
+	}
+}

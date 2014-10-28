@@ -14,20 +14,20 @@ Template Name: Student Blog
 	<div class="breadcrumbs"><?php bcn_display(); ?></div>
 	<?php endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
-	<?php do_action('foundationPress_before_content'); ?>
-	<?php dynamic_sidebar("before-content"); ?>
+<?php if ( is_active_sidebar( 'before-content' ) ) : ?>
 	<?php do_action('foundationPress_before_content'); ?>
 	<ul class="widget-area before-content">
 	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
+	<?php endif; ?>
 	<?php
 $blog_cat = get_term_by( 'slug', (string) $_GET['blog_slug'], 'blog_category' );
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-$temp = $wp_query;
-$wp_query = null;
-$wp_query = new WP_Query();
-$wp_query->query;
+$temp = $blog_query;
+$blog_query = null;
+$blog_query = new WP_Query();
+$blog_query->query;
 
 /**
 * Blog Post loop
@@ -35,7 +35,8 @@ $wp_query->query;
 
 $blog_args = array(
 	'post_type'	=> 'student_blog',
-	'posts_per_page' => 1,
+	'post_status' => 'publish',
+	'posts_per_page' => 5,
 	# 'taxonomy' => 'blog_category',
 	'term' => $blog_slug->slug,
 	'paged'=> $paged
@@ -91,16 +92,19 @@ $blog_query = new WP_Query( $blog_args );
 	<?php } ?>
   </div>
 	<?php endif; ?>
-	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
-	<div id="after-content" class="after-content widget-area" role="complementary">
-		<?php dynamic_sidebar( 'after-content' ); ?>
-	</div><!-- #after-content -->
+		
+<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+	<?php do_action('foundationPress_after_content'); ?>
+	<ul class="widget-area after-content">
+	<?php dynamic_sidebar("after-content"); ?>
+	</ul>
 	<?php endif; ?>
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
-
 	</div>
-<?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
+	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
 <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
+
+

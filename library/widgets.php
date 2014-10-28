@@ -334,7 +334,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 
 						<li>
 							<a href="<?php echo $event['url'] ?>">
-							<p class="date"><i class="icon-calendar"></i> <?php echo $event['date'] ?></p>
+							<p class="date"><i class="foundicon-calendar"></i> <?php echo $event['date'] ?></p>
 							<p class="title"><?php echo $event['title'] ?></p>
 							</a>
 						</li>
