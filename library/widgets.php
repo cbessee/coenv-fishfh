@@ -7,6 +7,8 @@
 function coenv_base_sidebar_widgets() {
 
   $before_widget  = '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">';
+  $before_widget_two_columns  = '<article id="%1$s" class="row widget %2$s"><div class="small-6 columns">';
+  $before_widget_three_columns  = '<article id="%1$s" class="row widget %2$s"><div class="small-4 columns">';
   $before_title   = '<h4>';
   $after_title  = '</h4>';
   $after_widget = '</div></article> <!-- end #%1$s -->';
@@ -79,7 +81,7 @@ function coenv_base_sidebar_widgets() {
       'id' => 'home-columns',
       'name' => __('Home / After Main Content 3-Columns', 'foundationpress'),
       'description' => __('Drag widgets to this container', 'foundationpress'),
-      'before_widget' => $before_widget,
+      'before_widget' => $before_widget_three_columns,
       'after_widget' => $after_widget,
       'before_title' => $before_title,
       'after_title' => $after_title     
