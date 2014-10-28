@@ -89,6 +89,18 @@ Template Name: Homepage
 			endwhile;
 			wp_reset_postdata(); ?>
 			</div>
+		
+	<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
+		<div id="home-content" class="home-content widget-area" role="complementary">
+			<?php dynamic_sidebar( 'home-content' ); ?>
+		</div><!-- #home-content -->
+	<?php endif; ?>
+		
+	<?php if ( is_active_sidebar( 'home-columns' ) ) : ?>
+		<div id="home-columns" class="home-columns widget-area" role="complementary">
+			<?php dynamic_sidebar( 'home-columns' ); ?>
+		</div><!-- #after-content -->
+	<?php endif; ?>
 
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 		<div id="after-content" class="after-content widget-area" role="complementary">

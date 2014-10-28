@@ -66,6 +66,24 @@ function coenv_base_sidebar_widgets() {
       'before_title' => $before_title,
       'after_title' => $after_title     
   ));
+  register_sidebar(array(
+      'id' => 'home-content',
+      'name' => __('Home / Main Content after Feature', 'foundationpress'),
+      'description' => __('Drag widgets to this container', 'foundationpress'),
+      'before_widget' => $before_widget,
+      'after_widget' => $after_widget,
+      'before_title' => $before_title,
+      'after_title' => $after_title     
+  ));
+  register_sidebar(array(
+      'id' => 'home-columns',
+      'name' => __('Home / After Main Content 3-Columns', 'foundationpress'),
+      'description' => __('Drag widgets to this container', 'foundationpress'),
+      'before_widget' => $before_widget,
+      'after_widget' => $after_widget,
+      'before_title' => $before_title,
+      'after_title' => $after_title     
+  ));
 
 
 }
