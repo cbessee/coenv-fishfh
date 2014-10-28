@@ -116,3 +116,18 @@ body.page-template-templatesfaculty-php .pager {
 	width: 100%;
 	float: left;
 }
+.article__content {
+	ul,ol {
+		margin-left: 4rem;	
+	}
+	#gallery-1 img {
+		border: 0;
+	}
+	.gallery .gallery-item {
+		margin: 0;
+		padding: 0;
+		color: #ffffff;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+		background-color: #363533;
+	}
+}
