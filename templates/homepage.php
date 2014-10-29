@@ -97,7 +97,7 @@ Template Name: Homepage
 	<?php endif; ?>
 		
 	<?php if ( is_active_sidebar( 'home-columns' ) ) : ?>
-		<div id="home-columns" class="home-columns widget-area" role="complementary">
+		<hr /><div id="home-columns" class="home-columns widget-area" role="complementary">
 			<?php dynamic_sidebar( 'home-columns' ); ?>
 		</div><!-- #after-content -->
 	<?php endif; ?>
