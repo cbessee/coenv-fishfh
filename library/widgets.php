@@ -340,7 +340,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 
 					<?php if ( $events_url != '' ) : ?>
                                    
-						<a href="<?php echo $events_url; ?>" class="button right" title="View All Events">More</a>
+						<a href="<?php echo $events_url; ?>" class="button right" title="View All Events">More &raquo;</a>
 					<?php endif ?>
 
 				<?php echo $after_title ?>
@@ -414,3 +414,145 @@ class CoEnv_Widget_Events extends WP_Widget {
 	}
 
 }
+
+/*
+ * Faculty research areas
+ */
+
+class coenv_base_blog_cats extends WP_Widget {
+
+     /**
+      * Register widget with WordPress.
+      */
+     function __construct() {
+          parent::__construct(
+               'coenv_base_blog_cats', // Base ID
+               __('Blog category filter (COENV)', 'text_domain'), // Name
+               array( 'description' => __( 'Allows filtering of blog posts base on blog category', 'text_domain' ), ) // Args
+          );
+     }
+     
+
+     /**
+      * Front-end display of widget.
+      *
+      * @see WP_Widget::widget()
+      *
+      * @param array $args     Widget arguments.
+      * @param array $instance Saved values from database.
+      */
+     public function widget( $args, $instance ) {
+          $blog_cat = get_term_by( 'slug', (string) $_GET['blog-cat'], 'blog_categories' );
+          $blog_cat = $blog_cat->slug;
+     
+          echo $args['before_widget'];
+          
+          if ( ! empty( $instance['title'] ) ) {
+               echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+          }
+          if ( ! empty( $instance['textarea'] ) ) {
+               echo $args['before_text'] . apply_filters( 'widget_text', $instance['textarea'] ). $args['after_text'];
+          }
+                    $cats_args  = array(
+                      'orderby' => 'name',
+                      'order' => 'ASC',
+                      'taxonomy' => 'blog_category'
+                      );
+                    $cats = get_categories($cats_args);
+                    if ($cats) {
+                         echo '<ul class="blog-cats inline-list">';
+                         foreach($cats as $cat) { 
+                              echo '<li><a class="button" href="/students/student-blog/?blog-cat=' . $cat->slug . '">' . $cat->name . '</a></li>';
+                         }
+                         echo '</ul>';
+                    }
+          echo $args['after_widget'];
+     }
+
+     /**
+      * Back-end widget form.
+      *
+      * @see WP_Widget::form()
+      *
+      * @param array $instance Previously saved values from database.
+      */
+     public function form( $instance ) {
+      //var_dump($instance);
+
+          if ( isset( $instance[ 'title' ] ) ) {
+               $title = $instance[ 'title' ];
+          }
+          else {
+               $title = __( 'Categories', 'text_domain' );
+          }
+          if ( isset( $instance[ 'textarea' ] ) ) {
+               $textarea = $instance[ 'textarea' ];
+          }
+          else {
+               $textarea = __( '', 'text_domain' );
+          }
+          
+          ?>
+          <p>
+          <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+          <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+          </p>
+          <p>
+          <label for="<?php echo $this->get_field_id( 'textarea' ); ?>"><?php _e( 'Description:' ); ?></label> 
+          <textarea class="widefat" id="<?php echo $this->get_field_id( 'textarea' ); ?>" name="<?php echo $this->get_field_name( 'textarea' ); ?>" type="text"><?php echo $textarea; ?></textarea>
+          </p>
+         
+          <?php 
+     }
+
+     /**
+      * Sanitize widget form values as they are saved.
+      *
+      * @see WP_Widget::update()
+      *
+      * @param array $new_instance Values just sent to be saved.
+      * @param array $old_instance Previously saved values from database.
+      *
+      * @return array Updated safe values to be saved.
+      */
+     public function update( $new_instance, $old_instance ) {
+          $instance = array();
+          $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+          $instance['textarea'] = ( ! empty( $new_instance['textarea'] ) ) ? strip_tags( $new_instance['textarea'] ) : '';
+
+
+          return $instance;
+     }
+
+} // class coenv_base_fac_cats
+
+// register coenv_base_fac_cats widget
+function register_coenv_base_blog_cats() {
+    register_widget( 'coenv_base_blog_cats' );
+}
+add_action( 'widgets_init', 'register_coenv_base_blog_cats' );
+
+
+
+
+
+
+
+
+$args = array(
+  'type'                     => 'post',
+  'child_of'                 => 0,
+  'parent'                   => '',
+  'orderby'                  => 'name',
+  'order'                    => 'ASC',
+  'hide_empty'               => 1,
+  'hierarchical'             => 1,
+  'exclude'                  => '',
+  'include'                  => '',
+  'number'                   => '',
+  'taxonomy'                 => 'category',
+  'pad_counts'               => false 
+
+); 
+
+

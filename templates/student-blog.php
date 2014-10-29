@@ -7,9 +7,7 @@ Template Name: Student Blog
 <?php get_header(); ?>
 <?php $blog_slug->slug; ?>
 <div class="row">
-	<div class="columns large-12 section-title">
-		<h1><a href="/students/student-blog">Students</a></h1>
-	</div>
+	<?php coenv_base_section_title($post->ID); ?>
 	<?php //if (!is_front_page() && function_exists('bcn_display')): ?>
 	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
 	<?php //endif; ?>
@@ -21,14 +19,16 @@ Template Name: Student Blog
 	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
 	<?php endif; ?>
+	<h1 class="article__title"><?php the_title() . $_GET['blog-cat']; ?></h1>
+	<hr>
 	<?php
-$blog_cat = get_term_by( 'slug', (string) $_GET['blog_slug'], 'blog_category' );
+$blog_cat = get_term_by( 'slug', (string) $_GET['blog-cat'], 'blog_category' );
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-$temp = $blog_query;
-$blog_query = null;
-$blog_query = new WP_Query();
-$blog_query->query;
+$temp = $wp_query;
+$wp_query = null;
+$wp_query = new WP_Query();
+$wp_query->query;
 
 /**
 * Blog Post loop
@@ -38,14 +38,14 @@ $blog_args = array(
 	'post_type'	=> 'student_blog',
 	'post_status' => 'publish',
 	'posts_per_page' => 5,
-	# 'taxonomy' => 'blog_category',
-	'term' => $blog_slug->slug,
+    'taxonomy' => 'blog_category',
+	'term' => $blog_cat->slug,
 	'paged'=> $paged
 );
-$blog_query = new WP_Query( $blog_args );
+$wp_query = new WP_Query( $blog_args );
 
 ?>
-	<?php if ($blog_query->have_posts()): ?>
+	<?php if ($wp_query->have_posts()): ?>
 	<div class="news clearfix">
 
 		<?php if ($blog_cat): ?>
@@ -53,16 +53,23 @@ $blog_query = new WP_Query( $blog_args );
 		<?php endif; ?>
 		<?php
 		# The Loop
-		while ( $blog_query->have_posts() ) :
-		$blog_query->the_post();
+		while ( $wp_query->have_posts() ) :
+		$wp_query->the_post();
 		$rows = get_field('blog_link');
+		$terms = wp_get_post_terms( get_the_ID(), 'blog_category');
 		echo '<div class="blog-list-item">';
-		echo '<div class="blog-meta"><h5>';
-		echo get_the_date('M j, Y');
-		echo ' | ';
-		echo get_the_term_list( $post->ID, 'blog_category', '', ', ', '' );
-		echo '</h5></div>';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
+		echo '<div class="blog-meta">';
+		echo '<p>' . get_the_date('M j, Y') .' / ';
+		$termlist = '';
+		foreach ($terms as $term) {
+		 $termlist .= '<a href="/students/student-blog/?blog-cat=' . $term->slug . '">' . $term->name . '</a>, ';
+		}
+		$termlist = rtrim($termlist,', ');
+		echo $termlist;
+		 echo '</p>';
+		
+		echo '</div>';
 		echo '<div class="post">';
 		echo the_excerpt();
 		echo '<a class="button" href="' . get_the_permalink() . '">Read more</a>';
@@ -105,6 +112,7 @@ $blog_query = new WP_Query( $blog_args );
 	<?php do_action('foundationPress_after_content'); ?>
 	</div>
 	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
+	    	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
 <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

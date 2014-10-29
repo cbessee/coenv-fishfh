@@ -187,3 +187,17 @@ function coenv_base_acf_toolbar( $toolbars ) {
 	// return $toolbars - IMPORTANT!
 	return $toolbars;
 }
+
+/* 
+ * Return blog taxonomy terms.
+ */
+function coenv_base_blog_terms($id) {
+	$blog_terms = wp_get_post_terms( $id, 'student_blog' );
+	if ($blog_terms) {
+		echo '<ul class="blog-terms inline-list">';
+		foreach ($blog_terms as $term) {
+			echo '<li><a class="button" href="/students/student-blog/?blog-cat=' . $term->slug . '">' . $term->name . '</a></li>';
+		}
+		echo '</ul>';
+	}
+}
