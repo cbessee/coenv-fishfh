@@ -137,3 +137,33 @@ body.page-template-templatesfaculty-php .pager {
 		background-color: #363533;
 	}
 }
+
+/* 
+ * mobile menu
+ */
+  .left-off-canvas-menu #menu-main-menu {
+  	padding: 1.5rem;
+  }
+ .left-off-canvas-menu #menu-main-menu li a {
+	color: #fff;
+}
+
+
+
+.title-area h1 {
+	margin-bottom: 0;
+}
+ul.units {
+	font-size: 1.50rem;
+	padding-left: 0;
+	margin-bottom: 4rem;
+	margin-left: 0;
+	margin-top: .5rem;
+
+	 li {
+	 	@include serif;
+		float: left;
+		list-style: none;
+
+	}
+}
