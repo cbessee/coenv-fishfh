@@ -14,6 +14,7 @@ Template Name: Student Blog
 	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
 	<?php //endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
+	<div class="entry-content">
 <?php if ( is_active_sidebar( 'before-content' ) ) : ?>
 	<?php do_action('foundationPress_before_content'); ?>
 	<ul class="widget-area before-content">
@@ -90,6 +91,7 @@ $blog_query = new WP_Query( $blog_args );
 			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
 		</nav>
 	<?php } ?>
+</div>
   </div>
 	<?php endif; ?>
 		

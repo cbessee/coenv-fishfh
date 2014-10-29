@@ -58,6 +58,25 @@
   </nav>
 
   <aside class="left-off-canvas-menu">
+     <nav class="mobile-menu">
+                <section>
+                    <ul id="menu-main-menu" class="top-bar-menu left">
+                    <?php
+                      $exclude = implode(',',coenv_base_menu_exclude());
+                      add_filter( 'page_css_class', 'add_parent_class', 10, 4 );
+                      wp_list_pages( array(
+                          'depth' => 0,
+                          'walker' => new top_bar_new_walker(),
+                          'title_li' => false,
+                          'sort_column' => 'menu_order, post_title',
+                          'post_type'    => 'page',
+                          'exclude' => $exclude,
+                      ) );
+                      remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
+                      ?>
+                    </ul>
+                </section>
+              </nav>
     <?php foundationPress_mobile_off_canvas(); ?>
   </aside>
 	<nav id="top-nav" class="show-for-medium-up">
@@ -103,6 +122,13 @@
 					  <span><?php bloginfo('name') ?></span> 
 				  </a>
 			  	</h1>
+            <ul class="units">
+              <?php
+              if (get_option('unit_name_0')) : echo '<li><a href="' . get_option('unit_url_0') . '">' . get_option('unit_name_0') . '</a></li>'; endif;
+              if (get_option('unit_name_1')) : echo '<li>/<a href="' . get_option('unit_url_1') . '">' . get_option('unit_name_1') . '</a></li>'; endif;
+              if (get_option('unit_name_2')) : echo '<li>/<a href="' . get_option('unit_url_2') . '">' . get_option('unit_name_2') . '</a></li>'; endif;
+              ?>
+          </ul>
 				</li>          
 			</ul>
 		</div>

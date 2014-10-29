@@ -5,6 +5,30 @@
 add_action( 'admin_init', 'coenv_admin_settings' );
 function coenv_admin_settings() {
 	
+	add_option( 'unit_name_0' );
+	add_settings_field( 'unit_name_0', 'Unit name (position 1)', 'coenv_setting_unit_name_0', 'general' );
+	register_setting( 'general', 'unit_name_0' );
+
+	add_option( 'unit_url_0' );
+	add_settings_field( 'unit_url_0', 'Unit url (position 1)', 'coenv_setting_unit_url_0', 'general' );
+	register_setting( 'general', 'unit_url_0' );
+
+	add_option( 'unit_name_1' );
+	add_settings_field( 'unit_name_1', 'Unit name (position 2)', 'coenv_setting_unit_name_1', 'general' );
+	register_setting( 'general', 'unit_name_1' );
+
+	add_option( 'unit_url_1' );
+	add_settings_field( 'unit_url_1', 'Unit url (position 2)', 'coenv_setting_unit_url_1', 'general' );
+	register_setting( 'general', 'unit_url_1' );
+
+	add_option( 'unit_name_2' );
+	add_settings_field( 'unit_name_2', 'Unit name (position 3)', 'coenv_setting_unit_name_2', 'general' );
+	register_setting( 'general', 'unit_name_2' );
+
+	add_option( 'unit_url_2' );
+	add_settings_field( 'unit_url_2', 'Unit url (position 3)', 'coenv_setting_unit_url_2', 'general' );
+	register_setting( 'general', 'unit_url_2' );
+
 	add_option( 'mail_address' );
 	add_settings_field( 'mail_address', 'Mailing Address', 'coenv_setting_mail_address', 'general' );
 	register_setting( 'general', 'mail_address' );
@@ -32,6 +56,49 @@ function coenv_admin_settings() {
 	add_option( 'youtube' );
 	add_settings_field( 'youtube', 'YouTube', 'coenv_setting_youtube', 'general' );
 	register_setting( 'general', 'youtube' );
+}
+
+/**
+ * Unit name settings
+ */
+function coenv_setting_unit_name_0() {
+	$value_0 = get_option('unit_name_0');
+
+	?>	
+		<input name="unit_name_0" type="text" id="unit_name_0" value="<?php echo $value_0; ?>" class="regular-text">
+	<?php
+}
+function coenv_setting_unit_name_1() {
+	$value_1 = get_option('unit_name_1');
+	?>	
+		<input name="unit_name_1" type="text" id="unit_name_1" value="<?php echo $value_1; ?>" class="regular-text">
+	<?php
+}
+function coenv_setting_unit_name_2() {
+	$value_1 = get_option('unit_name_2');
+	?>	
+		<input name="unit_name_2" type="text" id="unit_name_2" value="<?php echo $value_1; ?>" class="regular-text">
+	<?php
+}
+
+function coenv_setting_unit_url_0() {
+	$value_0 = get_option('unit_url_0');
+
+	?>	
+		<input name="unit_url_0" type="text" id="unit_url_0" value="<?php echo $value_0; ?>" class="regular-text">
+	<?php
+}
+function coenv_setting_unit_url_1() {
+	$value_1 = get_option('unit_url_1');
+	?>	
+		<input name="unit_url_1" type="text" id="unit_url_1" value="<?php echo $value_1; ?>" class="regular-text">
+	<?php
+}
+function coenv_setting_unit_url_2() {
+	$value_1 = get_option('unit_url_2');
+	?>	
+		<input name="unit_url_2" type="text" id="unit_url_2" value="<?php echo $value_1; ?>" class="regular-text">
+	<?php
 }
 
 /**
