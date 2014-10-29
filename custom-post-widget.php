@@ -24,25 +24,7 @@ $rows = get_field('add_links', $content_post -> ID);
  * Print the widget
  */
 echo $before_widget;
-if ( $link_position = 'title' ) {
-		if($rows) {
-			echo '<ul class="widget_links">';
-			foreach($rows as $row) {
-				if($row['link_type'] == 'internal') {
-					$link_title =  $row['link_to_a_page_on_this_site'][0]['link_title_internal'];
-					$link_url = get_permalink($row['link_to_a_page_on_this_site'][0]['select_page'][0]);
-					$link_target = 'self';	
-					echo '<li><a class="button" title="' . $link_title . '" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
-				} elseif ($row['link_type'] == 'external') {
-					$link_title = $row['link_to_an_external_site'][0]['link_title'];
-					$link_url = $row['link_to_an_external_site'][0]['link_url'];
-					$link_target ='blank';
-					echo '<li><a class="button"  title="' . $link_title . '" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
-				} 
-			}
-			echo '</ul>';
-		}
-	}
+
 if ( $show_featured_image ) {
 	echo '<div class="widget_img">';
 	echo $widget_img;
