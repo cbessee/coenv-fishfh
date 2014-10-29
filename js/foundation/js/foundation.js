@@ -636,7 +636,6 @@
       live_validate : true,
       focus_on_invalid : true,
       error_labels: true, // labels with a for="inputId" will recieve an `error` class
-      error_class: 'error',
       timeout : 1000,
       patterns : {
         alpha: /^[a-zA-Z]+$/,
@@ -720,7 +719,7 @@
     reset : function (form) {
       form.removeAttr(this.invalid_attr);
       $(this.invalid_attr, form).removeAttr(this.invalid_attr);
-      $('.' + this.settings.error_class, form).not('small').removeClass(this.settings.error_class);
+      $('.error', form).not('small').removeClass('error');
     },
 
     validate : function (els, e, is_ajax) {
@@ -834,9 +833,9 @@
             this.S(el).removeAttr(this.invalid_attr);
             el.setAttribute('aria-invalid', 'false');
             el.removeAttribute('aria-describedby');
-            parent.removeClass(this.settings.error_class);
+            parent.removeClass('error');
             if (label.length > 0 && this.settings.error_labels) {
-              label.removeClass(this.settings.error_class).removeAttr('role');
+              label.removeClass('error').removeAttr('role');
             }
             $(el).triggerHandler('valid');
           } else {
@@ -844,14 +843,14 @@
             el.setAttribute('aria-invalid', 'true');
 
             // Try to find the error associated with the input
-            var errorElem = parent.find('small.'+this.settings.error_class, 'span.'+this.settings.error_class);
+            var errorElem = parent.find('small.error, span.error');
             var errorID = errorElem.length > 0 ? errorElem[0].id : "";
             if (errorID.length > 0) el.setAttribute('aria-describedby', errorID);
 
             // el.setAttribute('aria-describedby', $(el).find('.error')[0].id);
-            parent.addClass(this.settings.error_class);
+            parent.addClass('error');
             if (label.length > 0 && this.settings.error_labels) {
-              label.addClass(this.settings.error_class).attr('role', 'alert');
+              label.addClass('error').attr('role', 'alert');
             }
             $(el).triggerHandler('invalid');
           }
@@ -867,9 +866,9 @@
           valid = (el.is(':checked') || !required);
 
       if (valid) {
-        el.removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
+        el.removeAttr(this.invalid_attr).parent().removeClass('error');
       } else {
-        el.attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
+        el.attr(this.invalid_attr, '').parent().addClass('error');
       }
 
       return valid;
@@ -889,9 +888,9 @@
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < count; i++) {
         if (valid) {
-          this.S(group[i]).removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
+          this.S(group[i]).removeAttr(this.invalid_attr).parent().removeClass('error');
         } else {
-          this.S(group[i]).attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
+          this.S(group[i]).attr(this.invalid_attr, '').parent().addClass('error');
         }
       }
 
@@ -905,12 +904,12 @@
 
       if (valid) {
         this.S(el).removeAttr(this.invalid_attr);
-        parent.removeClass(this.settings.error_class);
-        if (label.length > 0 && settings.error_labels) label.removeClass(this.settings.error_class);
+        parent.removeClass('error');
+        if (label.length > 0 && settings.error_labels) label.removeClass('error');
       } else {
         this.S(el).attr(this.invalid_attr, '');
-        parent.addClass(this.settings.error_class);
-        if (label.length > 0 && settings.error_labels) label.addClass(this.settings.error_class);
+        parent.addClass('error');
+        if (label.length > 0 && settings.error_labels) label.addClass('error');
       }
 
       return valid;
@@ -922,9 +921,9 @@
         valid = others.filter(':checked').length > 0;
 
       if (valid) {
-        el.removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
+        el.removeAttr(this.invalid_attr).parent().removeClass('error');
       } else {
-        el.attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
+        el.attr(this.invalid_attr, '').parent().addClass('error');
       }
 
       if (!doNotValidateOthers) {
@@ -4163,7 +4162,7 @@
           e.preventDefault();
 
           if (!self.locked) {
-            var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init') || self.settings,
+            var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init'),
                 bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
 
             if (bg_clicked) {
