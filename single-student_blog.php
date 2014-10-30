@@ -63,6 +63,25 @@ Template Name: Student Blog
 			}
 		}
 		echo '</div>';
+		echo '<a class="left" style="margin-right: 2rem;" href="' . get_the_permalink() . '">';
+
+		if ( has_post_thumbnail() ) {
+			$img_id = get_post_thumbnail_id($post->ID); // This gets just the ID of the img
+			$image = wp_get_attachment_image_src($img_id, $optional_size); // Get URL of the image, and size can be set here too (same as with get_the_post_thumbnail, I think)
+			$alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+
+
+
+			$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+		echo '<a href="' . $large_image_url[0] . '" title="' . $alt_text . '">';
+
+
+
+
+
+		the_post_thumbnail( 'large' );
+		echo '</a>';
+}
 		echo '</div>';
 		echo '</div>';
 
