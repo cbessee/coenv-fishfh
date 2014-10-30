@@ -140,10 +140,7 @@ article.type-faculty {
 	padding: 0;
 	margin: 0 0 .5rem 0;
 }
-.faculty-list-teach .panel {
-	border: 0;
-	padding: .5rem 1rem;
-}
+
 ul.fac-cats,
 ul.fac-terms {
 
@@ -155,9 +152,6 @@ ul.fac-terms {
 		margin: 0 .5rem .5rem 0;
 		padding: 0;
 
-		a.button {
-			margin: 0;
-		}
 	}
 }
 
@@ -168,6 +162,9 @@ ul.fac-terms {
 }
 #coenv_base_fac_cats-2 ul li {
 	margin-right: .5rem;
+}
+div.faculty-list-teach {
+	margin-top: 2rem;
 }
 
 

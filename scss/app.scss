@@ -56,7 +56,6 @@ padding-left: 2%;
 }
 #after-content .widget_custom_post_widget {
 	margin-bottom: 1.5rem;
-	margin-top: 1.5rem;
 	padding-top: 1rem;
 }
 #after-content .widget_content {
@@ -188,7 +187,17 @@ ul.blog-terms {
 aside#sidebar {
 	padding-right: 0;
 }
-.blog-cats .button {
+.blog-cats .button,
+.fac-cats .button {
 	margin-bottom: .75rem;
 }
-
+.panel {
+	border: 0;
+	padding: .5rem 1rem;
+}
+#sidebar article.widget ul {
+	margin-top: rem-calc(15);
+}
+#sidebar article.widget_coenv_base_subnav.widget ul {
+	margin-top: 0;
+}
