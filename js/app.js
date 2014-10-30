@@ -275,14 +275,19 @@ var c=b.delta_x<0?r+1:r-1;b.active=!0,p._goto(c)}}}).on("touchend.fndtn.orbit",f
 		
 		
 		var autoplay = $('.homepage-features').slickGetOption('autoplay');
+		if (autoplay==null || autoplay===false) {
+                $('.playpause').html('<i class="fi-play"></i>');
+            } else {
+                $('.playpause').html('<i class="fi-pause"></i>');
+			}
 		
 		$('.playpause').click(function() {
             if (autoplay==null || autoplay===false) {
-                $(this).html('<i class="fi-play"></i>');
+                $(this).html('<i class="fi-pause"></i>');
 				$('.homepage-features').slickPlay();
 				autoplay = true;
             } else {
-                $(this).html('<i class="fi-pause"></i>');
+                $(this).html('<i class="fi-play"></i>');
 				$('.homepage-features').slickPause();
 				autoplay = false;
             }
