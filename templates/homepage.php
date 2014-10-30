@@ -21,6 +21,7 @@ Template Name: Homepage
 			);
 		$feature_query = new WP_Query( $feature_args ); ?>
 		<?php //if ($feature_query->have_posts()) { ?>
+		<div class="playpause right"><i class="fi-play" alt="toggle autoplay"></i></div>
 			<div class="homepage-features">
 			<?php
 			# The Loop
@@ -45,7 +46,6 @@ Template Name: Homepage
 			?>
 				
 <div class="feature">
-
 	<div class="feature-image" style="background-image:url(<?php echo $feature_image[0] ?>);">
 	</div>
 

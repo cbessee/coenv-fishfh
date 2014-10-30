@@ -35,7 +35,22 @@ jQuery(function ($) {
 			dots: true,
 			pauseOnDotsHover: true
 		});
+		
+		
+		var autoplay = $('.homepage-features').slickGetOption('autoplay');
+		
+		$('.playpause').click(function() {
+            if (autoplay==null || autoplay===false) {
+                $(this).html('<i class="fi-play"></i>');
+				$('.homepage-features').slickPlay();
+				autoplay = true;
+            } else {
+                $(this).html('<i class="fi-pause"></i>');
+				$('.homepage-features').slickPause();
+				autoplay = false;
+            }
+		});
+		
 	}
-
 
 });
