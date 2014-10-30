@@ -70,12 +70,12 @@ function coenv_base_post_types_init() {
       'edit_item' => __( 'Edit Blog Post'),
       'new_item' => __( 'New Blog Post'),
       ),
-    'hierarchical' => true,
+    //'hierarchical' => true,
     'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
     'public' => true,
     'has_archive' => false,
     'show_ui' => true,
-    'rewrite' => array('slug' => 'student_blog'),
+    //'rewrite' => array('slug' => 'student_blog'),
 	'menu_icon' => 'dashicons-exerpt-view',
     )
   );
