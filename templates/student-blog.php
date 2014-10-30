@@ -23,6 +23,7 @@ Template Name: Student Blog
 	<hr>
 	<?php
 $blog_cat = get_term_by( 'slug', (string) $_GET['blog-cat'], 'blog_category' );
+
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 $temp = $wp_query;
@@ -116,5 +117,3 @@ $wp_query = new WP_Query( $blog_args );
 <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
-
-
