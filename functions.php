@@ -143,11 +143,12 @@ function coenv_base_menu_exclude() {
 }
 
 define( 'FACULTY_PAGE_PARENT_ID', '31' );
+define( 'BLOG_PAGE_PARENT_ID', '2674' );
  
 add_action( 'wp_insert_post_data', 'coenv_base_fac_parent', '99', 2  ); 
  
 /**
- * saveStaffParent
+ * save faculty parent
  *
  * @author  Joe Sexton <joe@webtipblog.com>
  * @param   array $data
@@ -169,6 +170,31 @@ function coenv_base_fac_parent( $data, $postarr ) {
  
     return $data;
 }
+
+/**
+ * save blog parent
+ *
+ * @author  Joe Sexton <joe@webtipblog.com>
+ * @param   array $data
+ * @param   array $postarr
+ * @return  array
+ */
+function coenv_base_blog_parent( $data, $postarr ) {
+    global $post;
+ 
+ 
+    // verify if this is an auto save routine.
+    // If it is our form has not been submitted, so we dont want to do anything
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+        return $data;
+ 
+    if ( $post->post_type == "student_blog" ){
+        $data['post_parent'] = BLOG_PAGE_PARENT_ID;
+    }
+ 
+    return $data;
+}
+add_action( 'wp_insert_post_data', 'coenv_base_blog_parent', '2674', 2  ); 
 
 
 /* 
