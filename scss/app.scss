@@ -204,3 +204,23 @@ aside#sidebar {
 div.news {
 	margin-bottom: 4rem;
 }
+.panel {
+	float:left;
+	width: 100%;
+	p:first-child {
+		float:left;
+		width: 75%;
+	}
+	p:nth-child(2) {
+		float: right;
+		width: 25%;
+		text-align: right;
+	}
+	.button {
+	margin-bottom: 0;
+	padding: .5rem;
+	}
+
+
+
+}

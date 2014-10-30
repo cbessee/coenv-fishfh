@@ -50,7 +50,10 @@ $wp_query = new WP_Query( $blog_args );
 	<div class="news clearfix">
 
 		<?php if ($blog_cat): ?>
-		<div class="panel">Posts from category: <strong><?php echo $blog_cat->name; ?></strong></div>
+			<div class="panel">
+				<p>Posts from category: <strong><?php echo $blog_cat->name; ?></strong></p>
+				<p><a class="button" href="/students/student_blog/">Back to all posts</a></p>
+			</div>
 		<?php endif; ?>
 		<?php
 		# The Loop

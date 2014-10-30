@@ -56,7 +56,10 @@ $wp_query = new WP_Query( $teach_research_args );
 	<div class="faculty-list-teach clearfix">
 
 		<?php if ($fac_cat): ?>
-		<div class="panel">Faculty members working in <strong><?php echo $fac_cat->name; ?></strong></div>
+		<div class="panel">
+			<p>Faculty members working in <strong><?php echo $fac_cat->name; ?></strong></p>
+			<p><a class="button small" href="/faculty">Back to all faculty</a></p>
+		</div>
 		<?php endif; ?>
 		<?php
 		# The Loop

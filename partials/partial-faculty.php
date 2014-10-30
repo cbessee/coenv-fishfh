@@ -80,12 +80,14 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 		</div>
 		<header class="article__header">
         <div class="article__meta">
-   		<?php if ( is_single() ) : ?>
-			<div class="share" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-			data-article-permalink="<?php echo the_permalink(); ?>"><a class="button" href="#">Share</a>
+   		<?php//if ( is_single() ) : ?>
+   		<!--
+			<div class="share" data-article-id="<?php //the_ID(); ?>" data-article-title="<?php //echo get_the_title(); ?>"
+			data-article-shortlink="<?php //echo wp_get_shortlink(); ?>"
+			data-article-permalink="<?php //echo the_permalink(); ?>"><a class="button" href="#">Share</a>
             </div>
-        <?php endif ?>
+        -->
+        <?php//endif ?>
         </div>
         <div class="faculty-title">
 			<h1 class="article__title">
