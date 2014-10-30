@@ -275,14 +275,19 @@ var b={start_page_x:a.touches[0].pageX,start_page_y:a.touches[0].pageY,start_tim
 		
 		
 		var autoplay = $('.homepage-features').slickGetOption('autoplay');
+		if (autoplay==null || autoplay===false) {
+                $('.playpause').html('<i class="fi-play"></i>');
+            } else {
+                $('.playpause').html('<i class="fi-pause"></i>');
+			}
 		
 		$('.playpause').click(function() {
             if (autoplay==null || autoplay===false) {
-                $(this).html('<i class="fi-play"></i>');
+                $(this).html('<i class="fi-pause"></i>');
 				$('.homepage-features').slickPlay();
 				autoplay = true;
             } else {
-                $(this).html('<i class="fi-pause"></i>');
+                $(this).html('<i class="fi-play"></i>');
 				$('.homepage-features').slickPause();
 				autoplay = false;
             }
