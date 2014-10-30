@@ -14,23 +14,39 @@ Template Name: Student Blog
 	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
 	<?php //endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
+		<h1 class="article__title">Student Blog</h1>
 	<?php do_action('foundationPress_before_content'); ?>
 	<?php do_action('foundationPress_post_before_entry_content'); ?>
 	</ul>
 	<div class="news clearfix">
-		<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
+		<!--
+		<div class="share right" data-article-id="<?php //the_ID(); ?>" data-article-title="<?php //echo get_the_title(); ?>"
+			data-article-shortlink="<?php //echo wp_get_shortlink(); ?>"
+			data-article-permalink="<?php //echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
 		</div>
+	-->
 		<?php
 		$rows = get_field('blog_link');
 		echo '<div class="blog-list-item">';
-		echo '<div class="post-info">';
-		echo get_the_date('M j, Y');
-		echo ' | ';
-		echo get_the_term_list( $post->ID, 'blog_category', '', ', ', '' );
-		echo '</div>';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
+		
+
+
+
+
+
+
+		echo '<div class="blog-meta">';
+		echo '<p>';
+		echo get_the_date('M j, Y');
+		echo ' / ';
+		echo get_the_term_list( $post->ID, 'blog_category', '', ', ', '' );
+		echo '</p>';
+		echo '</div>';
+
+
+
+
 		echo '<div class="post">';
 		# The Loop
 		while ( have_posts() ) : the_post();
@@ -47,21 +63,11 @@ Template Name: Student Blog
 			}
 		}
 		echo '</div>';
-		echo '<div class="blog-tags"><p>';
-		echo 'Tagged: ';
-		echo get_the_term_list( $post->ID, 'blog_post_tag', '', ', ', '' );
-		echo '<p></div>';
 		echo '</div>';
 		echo '</div>';
 
 		wp_reset_postdata();?>
 	</div>
-	<?php if ( function_exists('FoundationPress_pagination') ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
-		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'FoundationPress' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
-		</nav>
-	<?php } ?>
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 	<div id="after-content" class="after-content widget-area" role="complementary">
 		<?php dynamic_sidebar( 'after-content' ); ?>

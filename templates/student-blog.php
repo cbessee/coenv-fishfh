@@ -19,7 +19,7 @@ Template Name: Student Blog
 	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
 	<?php endif; ?>
-	<h1 class="article__title"><?php the_title() . $_GET['blog-cat']; ?></h1>
+	<h1 class="article__title"><?php the_title(); ?></h1>
 	<hr>
 	<?php
 $blog_cat = get_term_by( 'slug', (string) $_GET['blog-cat'], 'blog_category' );
@@ -58,7 +58,9 @@ $wp_query = new WP_Query( $blog_args );
 		$wp_query->the_post();
 		$rows = get_field('blog_link');
 		$terms = wp_get_post_terms( get_the_ID(), 'blog_category');
-		echo '<div class="blog-list-item">';
+		
+		
+		echo '<div class="blog-list-item right">';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
 		echo '<div class="blog-meta">';
 		echo '<p>' . get_the_date('M j, Y') .' / ';
@@ -72,6 +74,9 @@ $wp_query = new WP_Query( $blog_args );
 		
 		echo '</div>';
 		echo '<div class="post">';
+		echo '<a class="left" style="margin-right: 2rem;" href="' . get_the_permalink() . '">';
+		the_post_thumbnail( 'med_sq' );
+		echo '</a>';
 		echo the_excerpt();
 		echo '<a class="button" href="' . get_the_permalink() . '">Read more</a>';
 		'</div>';
