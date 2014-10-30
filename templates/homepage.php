@@ -101,6 +101,21 @@ Template Name: Homepage
 			<?php dynamic_sidebar( 'home-columns' ); ?>
 		</div><!-- #after-content -->
 	<?php endif; ?>
+		
+			<!-- news content blocks-->
+		<hr />
+		<div class="large-8 columns">
+			<a href="story.html"><img src="http://placehold.it/750x200&amp;text=[img]">
+			<p class="category"><small>CATEGORY | DATE<a class=" button right show-for-medium-up">Read more »</a></small></p>
+			<h4>Spotlight Title</h4></a>
+			<p>Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis.</p></div>
+			<div class="large-4 columns">
+			<p>CATEGORY | DATE<br><a href="story.html">Call for abstracts is open - Fifth Annual PNW Climate Science Conference</a></p>
+			<p>CATEGORY | DATE<br><a href="story.html">CIG co-authors paper on choosing and using climate change scenarios</a></p>
+			<p>CATEGORY | DATE<br><a href="story.html">Watch the KOMO news report: Rising sea levels, storms could devastate Washington towns </a></p>
+			<p>CATEGORY | DATE<br><a href="story.html">CIG "State of Knowledge" report summarizes climate change impacts on Washington and the PNW</a></p>
+			<p class="right"><a class="button" href="/news-and-events">More</a></p>
+		</div>
 
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 		<div id="after-content" class="after-content widget-area" role="complementary">
