@@ -416,7 +416,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 }
 
 /*
- * Faculty research areas
+ * Blog categories
  */
 
 class coenv_base_blog_cats extends WP_Widget {
@@ -524,35 +524,123 @@ class coenv_base_blog_cats extends WP_Widget {
           return $instance;
      }
 
-} // class coenv_base_fac_cats
+} 
 
-// register coenv_base_fac_cats widget
+
 function register_coenv_base_blog_cats() {
     register_widget( 'coenv_base_blog_cats' );
 }
 add_action( 'widgets_init', 'register_coenv_base_blog_cats' );
 
+/*
+ * Placeholder for date-based archive for custom post types
+ */
+
+class coenv_base_index_dates extends WP_Widget {
+
+     /**
+      * Register widget with WordPress.
+      */
+     function __construct() {
+          parent::__construct(
+               'coenv_base_index_dates', // Base ID
+               __('Filter by date (COENV)', 'text_domain'), // Name
+               array( 'description' => __( 'Allows filtering of indexes (faculty, news, blog post, etc.) by date', 'text_domain' ), ) // Args
+          );
+     }
+     
+
+     /**
+      * Front-end display of widget.
+      *
+      * @see WP_Widget::widget()
+      *
+      * @param array $args     Widget arguments.
+      * @param array $instance Saved values from database.
+      */
+     public function widget( $args, $instance ) {
+     
+          echo $args['before_widget'];
+          
+          if ( ! empty( $instance['title'] ) ) {
+               echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+          }
+          if ( ! empty( $instance['textarea'] ) ) {
+               echo $args['before_text'] . apply_filters( 'widget_text', $instance['textarea'] ). $args['after_text'];
+          }
+
+          echo '<ul>';
+          echo '<li><a href="#">November 2014</a></li>';
+          echo '<li><a href="#">October 2014</a></li>';
+          echo '<li><a href="#">September 2014</a></li>';
+          echo '<li><a href="#">August 2014</a></li>';
+          echo '<li><a href="#">July 2014</a></li>';
+          echo '<li><a href="#">June 2014</a></li>';
+          echo '<li><a href="#">May 2014</a></li>';
+          echo '</ul>';
+
+          echo $args['after_widget'];
+     }
+
+     /**
+      * Back-end widget form.
+      *
+      * @see WP_Widget::form()
+      *
+      * @param array $instance Previously saved values from database.
+      */
+     public function form( $instance ) {
+      //var_dump($instance);
+
+          if ( isset( $instance[ 'title' ] ) ) {
+               $title = $instance[ 'title' ];
+          }
+          else {
+               $title = __( 'Categories', 'text_domain' );
+          }
+          if ( isset( $instance[ 'textarea' ] ) ) {
+               $textarea = $instance[ 'textarea' ];
+          }
+          else {
+               $textarea = __( '', 'text_domain' );
+          }
+          
+          ?>
+          <p>
+          <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+          <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+          </p>
+          <p>
+          <label for="<?php echo $this->get_field_id( 'textarea' ); ?>"><?php _e( 'Description:' ); ?></label> 
+          <textarea class="widefat" id="<?php echo $this->get_field_id( 'textarea' ); ?>" name="<?php echo $this->get_field_name( 'textarea' ); ?>" type="text"><?php echo $textarea; ?></textarea>
+          </p>
+         
+          <?php 
+     }
+
+     /**
+      * Sanitize widget form values as they are saved.
+      *
+      * @see WP_Widget::update()
+      *
+      * @param array $new_instance Values just sent to be saved.
+      * @param array $old_instance Previously saved values from database.
+      *
+      * @return array Updated safe values to be saved.
+      */
+     public function update( $new_instance, $old_instance ) {
+          $instance = array();
+          $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+          $instance['textarea'] = ( ! empty( $new_instance['textarea'] ) ) ? strip_tags( $new_instance['textarea'] ) : '';
 
 
+          return $instance;
+     }
+
+} 
 
 
-
-
-
-$args = array(
-  'type'                     => 'post',
-  'child_of'                 => 0,
-  'parent'                   => '',
-  'orderby'                  => 'name',
-  'order'                    => 'ASC',
-  'hide_empty'               => 1,
-  'hierarchical'             => 1,
-  'exclude'                  => '',
-  'include'                  => '',
-  'number'                   => '',
-  'taxonomy'                 => 'category',
-  'pad_counts'               => false 
-
-); 
-
-
+function register_coenv_base_index_dates() {
+    register_widget( 'coenv_base_index_dates' );
+}
+add_action( 'widgets_init', 'register_coenv_base_index_dates' );
