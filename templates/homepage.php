@@ -43,24 +43,17 @@ Template Name: Homepage
 				$feature_caption = $feature_caption->post_excerpt;
 			}
 			$rows = get_field('feature_add_links');
-			?>
 				
-<div class="feature">
-	<div class="feature-image" style="background-image:url(<?php echo $feature_image[0] ?>);">
-	</div>
-
-	<div class="feature-info-container">
-		<p class="feature-image-caption right"><?php echo $feature_caption ?></p>
-		<div class="feature-info" style="background-color: <?php echo $feature_color ?>">
-
-			<div class="feature-content">
-				
-				<h2><?php echo get_the_title(); ?> </h2>
-				
-				<p><?php echo $feature_excerpt ?> </p>
-				
-				<?php
-					if($rows)
+echo '<div class="feature">';
+	echo '<div class="feature-image" style="background-image:url(' . $feature_image[0] . ')">';
+echo '</div>';
+	echo '<div class="feature-info-container">';
+		echo '<p class="feature-image-caption right">' . $feature_caption . '</p>';
+		echo '<div class="feature-info" style="background-color:' . $feature_color . '">';
+			echo '<div class="feature-content">';
+				echo '<h2>' . get_the_title() . '</h2>';
+				echo '<p>' . $feature_excerpt . '</p>';
+				if($rows)
 					{
 						foreach($rows as $row) {
 							if($row['feature_link_type'] == 'internal') {
@@ -76,55 +69,89 @@ Template Name: Homepage
 							} 
 						}
 					}
-				?>
 
-			</div><!-- .feature-content -->
+			echo '</div><!-- .feature-content -->';
 
-		</div><!-- .feature-info -->
+		echo '</div><!-- .feature-info -->';
 
-	</div><!-- .feature-info-container -->
+	echo '</div><!-- .feature-info-container -->';
 
-</div><!-- .feature -->
-<?php
-			endwhile;
-			wp_reset_postdata(); ?>
-			</div>
+echo '</div><!-- .feature -->';
+endwhile;
+wp_reset_postdata();
+echo '</div>';
 		
-	<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
-		<div id="home-content" class="home-content widget-area" role="complementary">
-			<?php dynamic_sidebar( 'home-content' ); ?>
-		</div><!-- #home-content -->
-	<?php endif; ?>
+	if ( is_active_sidebar( 'home-content' ) ) {
+		echo '<div id="home-content" class="home-content widget-area" role="complementary">';
+			dynamic_sidebar( 'home-content' );
+		echo '</div><!-- #home-content -->';
+	}
 		
-	<?php if ( is_active_sidebar( 'home-columns' ) ) : ?>
-		<hr /><div id="home-columns" class="home-columns widget-area" role="complementary">
-			<?php dynamic_sidebar( 'home-columns' ); ?>
-		</div><!-- #after-content -->
-	<?php endif; ?>
+	if ( is_active_sidebar( 'home-columns' ) ) {
+		echo '<div id="home-columns" class="home-columns widget-area" role="complementary">';
+			dynamic_sidebar( 'home-columns' );
+		echo '</div><!-- #home-columns -->';
+	}
 		
-			<!-- news content blocks-->
-		<hr />
-		<div class="large-8 columns">
-			<a href="story.html"><img src="http://placehold.it/750x200&amp;text=[img]">
-			<p class="category"><small>CATEGORY | DATE<a class=" button right show-for-medium-up">Read more »</a></small></p>
-			<h4>Spotlight Title</h4></a>
-			<p>Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis.</p></div>
-			<div class="large-4 columns">
-			<p>CATEGORY | DATE<br><a href="story.html">Call for abstracts is open - Fifth Annual PNW Climate Science Conference</a></p>
-			<p>CATEGORY | DATE<br><a href="story.html">CIG co-authors paper on choosing and using climate change scenarios</a></p>
-			<p>CATEGORY | DATE<br><a href="story.html">Watch the KOMO news report: Rising sea levels, storms could devastate Washington towns </a></p>
-			<p>CATEGORY | DATE<br><a href="story.html">CIG "State of Knowledge" report summarizes climate change impacts on Washington and the PNW</a></p>
-			<p class="right"><a class="button" href="/news-and-events">More</a></p>
-		</div>
+$home_args = array(
+	'post_type'	=> 'post',
+	'post_status' => 'publish',
+	'posts_per_page' => 4,
+);
+$wp_query = new WP_Query( $home_args );
+?>
+	<?php if ($wp_query->have_posts()): ?>
+	<div class="news-section clearfix">
+		<?php
+		# The Loop
+		while ( $wp_query->have_posts() ) :
+		$wp_query->the_post();
+		if ( $wp_query->current_post == 0 ) {
+		echo '<div class="large-8 columns">';
+			if ( has_post_thumbnail()) {
+				echo '<div class="featured-thumbnail">';
+				echo '<a href="' . get_the_permalink() . '" class="img">';
+				the_post_thumbnail( 'large' );
+				echo '</a></div>';
+			}
+		echo '<a class="button right show-for-medium-up" href="' . get_the_permalink() . '">More</a>';
+		echo '<a href="' . get_the_permalink() . '"><h4>' . get_the_title() . '</h4></a>';
+		echo '<div class="post-meta">';
+			echo '<time class="article__time" datetime="' . get_the_date('Y-m-d h:i:s') . '">' . get_the_date('M j, Y') . '</time>';
+			$categories = get_the_category_list(', ');
+				if ( $categories ) {
+					echo ' / ' . $categories;
+				}
+		echo '</div>';
+		echo '<p>' . get_the_excerpt() . '</p>';
+		}
 
-	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
-		<div id="after-content" class="after-content widget-area" role="complementary">
-			<?php dynamic_sidebar( 'after-content' ); ?>
-		</div><!-- #after-content -->
-	<?php endif; ?>
-	<a href="#" class="back-to-top">Back to Top</a>
+		else {
+			
+		echo '<div class="large-4 columns">';
+		echo '<a class="button right show-for-medium-up" href="' . get_the_permalink() . '">More</a>';
+		echo '<div class="post-meta">';
+			echo '<time class="article__time" datetime="' . get_the_date('Y-m-d h:i:s') . '">' . get_the_date('M j, Y') . '</time>';
+			$categories = get_the_category_list(', ');
+				if ( $categories ) {
+					echo ' | ' . $categories;
+				}
+		echo '</div>';
+		echo '<a href="' . get_the_permalink() . '"><h4>' . get_the_title() . '</h4></a>';
+		}
+	echo '</div>';
+	endwhile;
+	?>
+<?php endif; ?>
+<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 	<?php do_action('foundationPress_after_content'); ?>
-
-	</div>
+	<ul class="widget-area after-content">
+	<?php dynamic_sidebar("after-content"); ?>
+	</ul>
+<?php endif; ?>
+<a href="#" class="back-to-top">Back to Top</a>
+<?php do_action('foundationPress_after_content'); ?>
+</div>
+<?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
 </div>
 <?php get_footer(); ?>
