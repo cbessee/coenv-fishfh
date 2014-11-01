@@ -227,3 +227,9 @@ function coenv_base_blog_terms($id) {
 		echo '</ul>';
 	}
 }
+add_filter('shortcode_atts_gallery','overwrite_gallery_atts_wpse_95965',10,3);
+function overwrite_gallery_atts_wpse_95965($out, $pairs, $atts){
+    // force the link='file' gallery shortcode attribute:
+    $out['link']='file'; 
+    return $out;
+}
