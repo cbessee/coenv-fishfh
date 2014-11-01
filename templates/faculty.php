@@ -13,6 +13,7 @@ Template Name: Faculty Index
 	<?php //if (!is_front_page() && function_exists('bcn_display')): ?>
 	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
 	<?php //endif; ?>
+
 	<div class="small-12 medium-8 columns" role="main">
 	<?php if ( is_active_sidebar( 'before-content' ) ) : ?>
 	<?php do_action('foundationPress_before_content'); ?>
@@ -20,6 +21,10 @@ Template Name: Faculty Index
 	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
 	<?php endif; ?>
+			<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
+        </div>
 	<?php
 $fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

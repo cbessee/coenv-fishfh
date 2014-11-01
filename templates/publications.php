@@ -19,6 +19,10 @@ Template Name: Publications Page
 	<?php dynamic_sidebar("before-content"); ?>
 	</ul>
 	<?php endif; ?>
+		<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
+        </div>
 	<h1 class="article__title"><?php the_title() . $_GET['blog-cat']; ?></h1>
 	<hr>
 	<?php

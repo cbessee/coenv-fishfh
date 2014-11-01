@@ -1,6 +1,7 @@
 <?php  
+
 /**
- * Faculty content
+ * Faculty fields
  */
 $faculty_fields = get_fields();
 $faculty_email_address = str_replace('u.washington.edu','uw.edu',$faculty_fields["email_address"]);
@@ -14,9 +15,27 @@ $faculty_name = $faculty_fname . ' ' . $faculty_lname;
 $faculty_cv = $faculty_fields["curriculum_vitae"];
 $faculty_pubs = $faculty_fields["selected_publications"];
 $faculty_img = get_the_post_thumbnail($page->ID, 'med');
-
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
+	<header class="article__header">
+		<div class="article__meta">
+   		<?php if ( is_single() ) : ?>
+			<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
+            </div>
+        <?php endif ?>
+        </div>
+		<div class="faculty-title">
+			<h1 class="article__title">
+			<?php if ( is_page() || is_single()) : ?>
+				<?php the_title() ?>
+			<?php else : ?>
+				<a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a>
+			<?php endif ?>
+			</h1>	
+		</div>
+	</header>
 	<section class="article__content">
 		<div class="faculty-info right">
 			<?php echo $faculty_img; ?>
@@ -46,21 +65,22 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 				echo '</ul>';
 				echo '</li>';
 			}
-			if( have_rows('locations') ) {
-				echo '<li class="locations">';
-				echo '<ul>';
-				while ( have_rows('locations') ) : the_row();
-					echo '<li class="location"><a href="http://washington.edu/maps/?';
-					the_sub_field('building');
-					echo  '" target="_blank">';
-					the_sub_field('building');
-					echo '</a> ';
-					the_sub_field('room_number');
-					echo '</li>';
-				endwhile;
-				echo '</ul>';
-				echo '</li>';
-			}
+			if( have_rows('locations') ) { ?>
+				<li class="locations">
+					<ul>
+					<?php while ( have_rows('locations') ) : the_row();
+						echo '<li class="location"><a href="http://washington.edu/maps/?';
+						the_sub_field('building');
+						echo  '" target="_blank">';
+						the_sub_field('building');
+						echo ' ';
+						the_sub_field('room_number');
+						echo '</a>';
+						echo '</li>';
+					endwhile; ?>
+					</ul>
+				</li>
+			<?php }
 			if ($faculty_twitter_url) {
 				echo '<li class="faculty-twitter"><a href="' . $faculty_twitter_url . '">Twitter</a></li>';
 			}
@@ -72,35 +92,9 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 			}
 			if ($faculty_website_url) { ?>
 				<li class="faculty-website"><a class="button" href="#" target="_blank">Visit <?php echo coenv_base_apostophe_fname($faculty_fname); ?> website</a></li>
-			<?php
-			}
-			echo '</ul>';
-			?>
-				
+			<?php } ?>
+			</ul>		
 		</div>
-		<header class="article__header">
-        <div class="article__meta">
-   		<?php//if ( is_single() ) : ?>
-   		<!--
-			<div class="share" data-article-id="<?php //the_ID(); ?>" data-article-title="<?php //echo get_the_title(); ?>"
-			data-article-shortlink="<?php //echo wp_get_shortlink(); ?>"
-			data-article-permalink="<?php //echo the_permalink(); ?>"><a class="button" href="#">Share</a>
-            </div>
-        -->
-        <?php//endif ?>
-        </div>
-        <div class="faculty-title">
-			<h1 class="article__title">
-			<?php if ( is_page() || is_single()) : ?>
-				<?php the_title() ?>
-			<?php else : ?>
-				<a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a>
-			<?php endif ?>
-			</h1>
-			
-		</div>
-
-	</header>
 		<div class="article__categories">
 			<h2>Research areas</h2>
 			<?php coenv_base_fac_terms($post->ID); ?>
@@ -114,6 +108,7 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 		<?php endif; ?>
 	</section>
     <?php
+    /* Still needed? */
     remove_filter( 'the_title', 'wptexturize' );
     remove_filter( 'the_excerpt', 'wptexturize' );
 	?>

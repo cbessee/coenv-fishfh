@@ -1,13 +1,13 @@
 .share {
 	display: none;
-	/*@include rem('margin-right', .5);*/
+	@include rem('margin-right', .5);
 	
 	a {
 		@include font-size(11);
 		text-decoration: none;
 		text-transform: uppercase;
 		color: $text-lt;
-		/*float: right;*/
+		float: right;
 		letter-spacing: .1em;
 		font-weight: 600;
 		@include rem('margin-top', 0.1);
@@ -16,7 +16,7 @@
 	// only show if js is enabled
 	&.active {
 		display: block;
-		/*text-align: right;*/
+		text-align: right;
 	}
 
 	i {
@@ -29,7 +29,7 @@
 .share-modal {
 	position: absolute;
 	z-index: -99999;
-	left: 0px;
+	right: 0px;
 	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
 	-webkit-transform-origin: 50% 0;
@@ -81,10 +81,10 @@
 			height: 0;
 			position: absolute;
 			left:120px;
-			left: .75rem;
+			right: 0;
 			border-left: 20px solid transparent;
 			border-right: 20px solid transparent;
-			border-top: 20px solid #6cdfea;
+			border-top: 20px solid #e34429;
 			margin: 35px auto;
         }
 	}

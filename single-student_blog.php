@@ -14,11 +14,17 @@ Template Name: Student Blog
 	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
 	<?php //endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
+			<div class="news clearfix">
+				<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
+        </div>
 		<h1 class="article__title">Student Blog</h1>
+		<hr />
 	<?php do_action('foundationPress_before_content'); ?>
 	<?php do_action('foundationPress_post_before_entry_content'); ?>
 	</ul>
-	<div class="news clearfix">
+
 		<!--
 		<div class="share right" data-article-id="<?php //the_ID(); ?>" data-article-title="<?php //echo get_the_title(); ?>"
 			data-article-shortlink="<?php //echo wp_get_shortlink(); ?>"
@@ -79,7 +85,7 @@ Template Name: Student Blog
 
 
 
-		the_post_thumbnail( 'large' );
+		the_post_thumbnail( 'medium' );
 		echo '</a>';
 }
 		echo '</div>';
