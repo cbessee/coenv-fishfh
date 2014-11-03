@@ -75,9 +75,11 @@ $wp_query = new WP_Query( $blog_args );
 			
 			echo '</div>';
 			echo '<div class="post">';
+			if (has_post_thumbnail()):
 			echo '<a class="left" style="margin-right: 2rem;" href="' . get_the_permalink() . '">';
-			the_post_thumbnail( 'med_sq' );
+			the_post_thumbnail( 'medium' );
 			echo '</a>';
+			endif;
 			echo the_excerpt();
 			echo '<a class="button" href="' . get_the_permalink() . '">Read more</a>';
 			'</div>';
