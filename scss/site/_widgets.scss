@@ -14,36 +14,33 @@
 
 // Homepage Widgets
 
-.home-content {
-	.widget_links {
-		float: right;
-		width: auto;
+
+.widget_coenv_base_index_dates ul {
+	margin-left: 1rem;
+}
+
+.widget_links {
+	float: right;
+}
+
+.list-news-small {
+	list-style: none;
+}
+
+.widget_content {
+	ul {
+		list-style: none;	
 	}
 }
 
-.home-columns {
-	.widget_links {
-		float: right;
-		width: auto;
+.home-news-section {
+	.featured-thumbnail {
+		max-height: rem-calc(350);
+		margin-bottom: rem-calc(10);
+		overflow: hidden;
 	}
-	.widget_rss {
-		margin-right: rem-calc(5);
-	}
-	
-	#custom_post_widget-11 {
-		margin-left: rem-calc(5);
-	}
-	h4 a {
-		color: black;
-	}
-	ul {
-		list-style: none;
+	:not(:last-child) .small-news {
+			margin-bottom: rem-calc(30);	
 	}
 	
-	img {
-		display: none;
-	}
-}
-.widget_coenv_base_index_dates ul {
-	margin-left: 1rem;
 }

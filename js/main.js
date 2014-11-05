@@ -30,7 +30,7 @@ jQuery(function ($) {
 
 		// slick slider
 		$('.homepage-features').slick({
-			autoplay: false,	
+			autoplay: true,	
 			autoplaySpeed: 3000,
 			dots: true,
 			pauseOnDotsHover: true

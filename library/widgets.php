@@ -333,17 +333,13 @@ class CoEnv_Widget_Events extends WP_Widget {
 
 		?>
 			<?php echo $before_widget ?>
-			
-				<?php echo $before_title ?>
 
 					<span><a href="<?php echo $events_url; ?>"><?php echo $title ?></a></span>
 
 					<?php if ( $events_url != '' ) : ?>
                                    
-						<a href="<?php echo $events_url; ?>" class="button right" title="View All Events">More &raquo;</a>
+						<a href="<?php echo $events_url; ?>" class="button right" title="View All Events">More</a>
 					<?php endif ?>
-
-				<?php echo $after_title ?>
 
 			<ul class="event-list">
 
@@ -354,7 +350,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 
 						<li>
 							<a href="<?php echo $event['url'] ?>">
-							<p class="date"><i class="foundicon-calendar"></i> <?php echo $event['date'] ?></p>
+							<p class="date"><i class="fi-calendar"></i> <?php echo $event['date'] ?></p>
 							<p class="title"><?php echo $event['title'] ?></p>
 							</a>
 						</li>
