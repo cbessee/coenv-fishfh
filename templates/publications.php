@@ -38,6 +38,25 @@ $wp_query = new WP_Query();
 $wp_query->query;
 
 /**
+* Publications filters
+*/
+
+$author_args = array(
+	'orderby'            => 'ID', 
+	'order'              => 'ASC',
+	'hide_empty'         => 1, 
+	'child_of'           => 0,
+	'echo'               => 1,
+	'name'               => 'author-cat',
+	'id'                 => 'author',
+	'class'              => 'author-cat-postform',
+	'taxonomy'           => 'author',
+	'hide_if_empty'      => false,
+);
+
+wp_dropdown_categories( $args );
+
+/**
 * Publications loop
 */
 $year = get_term_by('id', $post_ID, 'year');
