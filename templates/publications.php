@@ -40,21 +40,71 @@ $wp_query->query;
 /**
 * Publications filters
 */
+echo '<div class="row">';
 
-$author_args = array(
-	'orderby'            => 'ID', 
-	'order'              => 'ASC',
-	'hide_empty'         => 1, 
-	'child_of'           => 0,
-	'echo'               => 1,
-	'name'               => 'author-cat',
-	'id'                 => 'author',
-	'class'              => 'author-cat-postform',
-	'taxonomy'           => 'author',
-	'hide_if_empty'      => false,
-);
+$auth_cats_args  = array(
+  'orderby' => 'name',
+  'order' => 'ASC',
+  'taxonomy' => 'author'
+  );
+$auth_cats = get_categories($auth_cats_args);
 
-wp_dropdown_categories( $args );
+if ($auth_cats) {
+    echo '<div class="medium-6 columns select-author">';
+     echo '<select class="auth-cats">';
+     if ($auth_cat):
+          echo '<option class="level-0" value="">All Research Areas</option>';
+     endif;
+     foreach($auth_cats as $auth_cat) { 
+          echo '<option value="/research/publications/?auth-cat=' . $auth_cat->slug . '">' . $auth_cat->name . '</option>';
+     }
+     echo '</select>';
+    echo '</div>';
+}
+
+$year_cats_args  = array(
+  'orderby' => 'name',
+  'order' => 'ASC',
+  'taxonomy' => 'year'
+  );
+$year_cats = get_categories($year_cats_args);
+
+if ($year_cats) {
+    echo '<div class="medium-6 columns select-year">';
+     echo '<select class="year-cats">';
+     if ($year_cat):
+          echo '<option class="level-0" value="">All Years</option>';
+     endif;
+     foreach($year_cats as $year_cat) { 
+          echo '<option value="/research/publications/?year-cat=' . $year_cat->slug . '">' . $year_cat->name . '</option>';
+     }
+     echo '</select>';
+    echo '</div>';
+}
+
+
+$theme_cats_args  = array(
+  'orderby' => 'name',
+  'order' => 'ASC',
+  'taxonomy' => 'publication_theme'
+  );
+$theme_cats = get_categories($theme_cats_args);
+
+if ($theme_cats) {
+    echo '<div class="medium-6 columns select-theme">';
+     echo '<select class="theme-cats">';
+     if ($theme_cat):
+          echo '<option class="level-0" value="">All Research Themes</option>';
+     endif;
+     foreach($theme_cats as $theme_cat) { 
+          echo '<option value="/research/publications/?theme-cat=' . $theme_cat->slug . '">' . $theme_cat->name . '</option>';
+     }
+     echo '</select>';
+    echo '</div>';
+}
+
+
+echo '</div>';
 
 /**
 * Publications loop
