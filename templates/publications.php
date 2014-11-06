@@ -29,6 +29,19 @@ Template Name: Publications Page
 $auth_cat = get_term_by( 'slug', (string) $_GET['pub-slug'], 'author' );
 $year_cat = get_term_by( 'slug', (string) $_GET['pub-slug'], 'year' );
 $theme_cat = get_term_by( 'slug', (string) $_GET['pub-slug'], 'publication_theme' );
+?>
+        
+<?php if ($auth_cat): ?>
+		<div class="panel">Publications written by <strong><?php echo $auth_cat->name; ?></strong></div>
+<?php endif; ?>
+<?php if ($year_cat): ?>
+		<div class="panel">Publications from <strong><?php echo $year_cat->name; ?></strong></div>
+<?php endif; ?>
+<?php if ($theme_cat): ?>
+		<div class="panel">Publications about <strong><?php echo $theme_cat->name; ?></strong></div>
+<?php endif; ?>
+
+        <?php
 
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
@@ -97,7 +110,7 @@ if ($theme_cats) {
           echo '<option class="level-0" value="">All Research Themes</option>';
      endif;
      foreach($theme_cats as $theme_cat) { 
-          echo '<option value="/research/publications/?theme-cat=' . $theme_cat->slug . '">' . $theme_cat->name . '</option>';
+          echo '<option value="/research/publications/?theme-cat=' . $theme_cat->slug . '">' . $auth_cat->name . '</option>';
      }
      echo '</select>';
     echo '</div>';
@@ -135,16 +148,7 @@ $wp_query = new WP_Query( $publication_args );
 ?>
 	<?php if ($wp_query->have_posts()): ?>
 	<div class="publication clearfix">
-
-		<?php if ($auth_cat): ?>
-		<div class="panel">Publications written by <strong><?php echo $auth_cat->name; ?></strong></div>
-		<?php endif; ?>
-		<?php if ($year_cat): ?>
-		<div class="panel">Publications from <strong><?php echo $year_cat->name; ?></strong></div>
-		<?php endif; ?>
-		<?php if ($theme_cat): ?>
-		<div class="panel">Publications about <strong><?php echo $theme_cat->name; ?></strong></div>
-		<?php endif; ?>
+        
 		<?php
 		# The Loop
 		while ( $wp_query->have_posts() ) :
