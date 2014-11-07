@@ -332,14 +332,23 @@ class CoEnv_Widget_Events extends WP_Widget {
 		$events = array_slice( $events, 0, $posts_per_page );
 
 		?>
-			<?php echo $before_widget ?>
-
-					<span><a href="<?php echo $events_url; ?>"><?php echo $title ?></a></span>
-
-					<?php if ( $events_url != '' ) : ?>
+			<?php echo $before_widget; ?>
+            <?php if ( $events_url != '' ) : ?>
                                    
 						<a href="<?php echo $events_url; ?>" class="button right" title="View All Events">More</a>
-					<?php endif ?>
+            <?php endif ?>
+        
+        
+            <?php if (!is_front_page()) {
+                    echo $before_title;
+                }
+        ?>
+					<h4><span><a href="<?php echo $events_url; ?>"><?php echo $title ?></a></span></h4>
+            <?php
+                if (!is_front_page()) {
+                    echo $after_title;
+                }
+        ?>
 
 			<ul class="event-list">
 
@@ -640,3 +649,78 @@ function register_coenv_base_index_dates() {
     register_widget( 'coenv_base_index_dates' );
 }
 add_action( 'widgets_init', 'register_coenv_base_index_dates' );
+
+/**
+ * Social Links Widget
+ */
+
+class CoEnv_Widget_Social extends WP_Widget {
+ 
+  function __construct() {
+		$args = array(
+			'classname' => 'widget-social',
+			'description' => __( 'Display social media links from the General Settings', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'social_links', // base ID
+			'Social Media Links', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance ) {
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Get Connected', 'coenv' );
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance ) {
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+ 
+		echo $before_widget;
+		
+        if (!is_front_page()) {
+        echo $before_title . '<span>' . $title . '</span>' . $after_title;
+        }
+        ?>
+        
+		<ul>
+				<?php if (get_option('facebook')) { ?><li><a href="<?php echo get_option('facebook'); ?>" title="Become a fan of <?php bloginfo('name'); ?> on Facebook" target="_blank" rel="nofollow"><i class="fi-social-facebook"> </i> Facebook</a></li><?php } ?>
+				<?php if (get_option('twitter')) { ?><li><a href="<?php echo get_option('twitter'); ?>" title="Follow <?php bloginfo('name'); ?> on Twitter" target="_blank" rel="nofollow"><i class="fi-social-twitter"> </i> Twitter</a></li><?php } ?>
+				<?php if (get_option('youtube')) { ?><li><a href="<?php echo get_option('youtube'); ?>" title="<?php bloginfo('name'); ?> YouTube Channel" target="_blank" rel="nofollow"><i class="fi-social-youtube"> </i> YouTube</a></li><?php } ?>
+                <?php if (get_option('linkedin')) { ?><li><a href="<?php echo get_option('linkedin'); ?>" title="<?php bloginfo('name'); ?> LinkedIn Group" target="_blank" rel="nofollow"><i class="fi-social-linkedin"> </i> LinkedIn</a></li><?php } ?>
+                <?php if (get_option('blog')) { ?><li><a href="<?php echo get_option('blog'); ?>" title="<?php bloginfo('name'); ?>'s Blog" target="_blank" rel="nofollow"><i class="fi-results"> </i> Blog</a></li><?php } ?>
+                <?php if (get_option('email_newsletter')) { ?><li><a href="<?php echo get_option('email_newsletter'); ?>" title="Subscribe to the <?php bloginfo('name'); ?>'s Email Newsletter" target="_blank" rel="nofollow"><i class="fi-at-sign"> </i> Newsletter</a></li><?php } ?>
+				<li><a href="<?php echo (get_option('feeds')) ? get_option('feeds') : get_bloginfo('url').'/feeds'; ?>" title="<?php bloginfo('name'); ?> RSS Feeds"><i class="fi-rss"> </i> Feeds</a></li>
+				<?php if (get_option('uw_social')) { ?><li><a href="<?php echo get_option('uw_social'); ?>" title="<?php bloginfo('name'); ?> on UW Social" target="_blank" rel="nofollow"><i class="icon-icon-uw"> </i> UW Social</a></li><?php } ?>
+			</ul>
+ 
+		<?php
+		echo $after_widget;
+	}
+}
+
+function register_coenv_widget_social() {
+    register_widget( 'CoEnv_Widget_Social' );
+}
+
+add_action( 'widgets_init', 'register_coenv_widget_social' );

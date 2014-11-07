@@ -12,6 +12,14 @@
 	}
 }
 
+// Social Widget
+
+.widget-social {
+    ul {
+        list-style: none;	
+    }
+}
+
 // Homepage Widgets
 
 .home {
@@ -32,6 +40,8 @@
             list-style: none;	
         }
     }
+    
+    
 
     .home-news-section {
         .featured-thumbnail {

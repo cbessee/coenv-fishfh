@@ -46,16 +46,28 @@ function coenv_admin_settings() {
 	register_setting( 'general', 'meta_description' );
 
 	add_option( 'facebook' );
-	add_settings_field( 'facebook', 'Facebook', 'coenv_setting_facebook', 'general' );
+	add_settings_field( 'facebook', 'Get Connected: Facebook', 'coenv_setting_facebook', 'general' );
 	register_setting( 'general', 'facebook' );
 
 	add_option( 'twitter' );
-	add_settings_field( 'twitter', 'Twitter', 'coenv_setting_twitter', 'general' );
+	add_settings_field( 'twitter', 'Get Connected: Twitter', 'coenv_setting_twitter', 'general' );
 	register_setting( 'general', 'twitter' );
 
 	add_option( 'youtube' );
-	add_settings_field( 'youtube', 'YouTube', 'coenv_setting_youtube', 'general' );
+	add_settings_field( 'youtube', 'Get Connected: YouTube', 'coenv_setting_youtube', 'general' );
 	register_setting( 'general', 'youtube' );
+
+	add_option( 'linkedin' );
+	add_settings_field( 'linkedin', 'Get Connected: LinkedIn', 'coenv_setting_linkedin', 'general' );
+	register_setting( 'general', 'linkedin' );
+
+	add_option( 'blog' );
+	add_settings_field( 'blog', 'Get Connected: Blog', 'coenv_setting_blog', 'general' );
+	register_setting( 'general', 'blog' );
+
+	add_option( 'email_newsletter' );
+	add_settings_field( 'email_newsletter', 'Get Connected: Email Newsletter', 'coenv_setting_email_newsletter', 'general' );
+	register_setting( 'general', 'email_newsletter' );
 }
 
 /**
@@ -182,6 +194,42 @@ function coenv_setting_youtube() {
 	?>	
 		<input name="youtube" type="text" id="youtube" value="<?php echo $value; ?>" class="regular-text">
 		<p class="description">Full URL to your YouTube Channel.</p>
+	<?php
+}
+
+/**
+ * LinkedIn setting
+ */
+function coenv_setting_linkedin() {
+	$value = get_option('linkedin');
+
+	?>	
+		<input name="linkedin" type="text" id="linkedin" value="<?php echo $value; ?>" class="regular-text">
+		<p class="description">Full URL to your LinkedIn Group.</p>
+	<?php
+}
+
+/**
+ * Blog setting
+ */
+function coenv_setting_blog() {
+	$value = get_option('blog');
+
+	?>	
+		<input name="blog" type="text" id="blog" value="<?php echo $value; ?>" class="regular-text">
+		<p class="description">Full URL to your blog.</p>
+	<?php
+}
+
+/**
+ * Email Newsletter setting
+ */
+function coenv_setting_email_newsletter() {
+	$value = get_option('email_newsletter');
+
+	?>	
+		<input name="email_newsletter" type="text" id="email_newsletter" value="<?php echo $value; ?>" class="regular-text">
+		<p class="description">Full URL to your email newsletter signup page.</p>
 	<?php
 }
 

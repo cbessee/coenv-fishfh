@@ -128,7 +128,7 @@ $wp_query = new WP_Query( $home_args );
 <div class="large-4 columns events">
 	<a class="button right" href="/alumni-and-community">More</a>
 	<h4>Get Connected</h4>
-	<?php the_widget('custom_post_widget', 'custom_post_id=2754'); ?>
+	<?php the_widget('CoEnv_Widget_Social'); ?>
 </div>
 				
 <?php
