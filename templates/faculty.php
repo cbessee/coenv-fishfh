@@ -15,6 +15,7 @@ Template Name: Faculty Index
 	<?php //endif; ?>
 
 	<div class="small-12 medium-8 columns" role="main">
+        <div class="entry-content">
 	<?php if ( is_active_sidebar( 'before-content' ) ) : ?>
 	<?php do_action('foundationPress_before_content'); ?>
 	<ul class="widget-area before-content">
@@ -102,7 +103,7 @@ $wp_query = new WP_Query( $teach_research_args );
 
 	</div>
 	<?php endif; ?>
-
+        </div>
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 	<?php do_action('foundationPress_after_content'); ?>
 	<ul class="widget-area after-content">

@@ -155,7 +155,8 @@ var i=function(){var a=function(){r=b,s=!1,c===!0&&(o=p.create_timer(),o.start()
 
 		// append modal
 		$('.post-' + this.articleID).prepend( this.$modal );
-
+        $('.entry-content').prepend( this.$modal );
+        
 		// show modal
 		this.$modal.addClass('active');
 
@@ -264,37 +265,37 @@ var i=function(){var a=function(){r=b,s=!1,c===!0&&(o=p.create_timer(),o.start()
   			var $this = $(this);
   			$this.attr('data-lightbox-gallery', $this.closest('div').attr('id'));
 		});
+        
+        if ( $('body').hasClass('home') ) {
 
-		// slick slider
-		$('.homepage-features').slick({
-			autoplay: true,	
-			autoplaySpeed: 3000,
-			dots: true,
-			pauseOnDotsHover: true
-		});
-		
-		
-		var autoplay = $('.homepage-features').slickGetOption('autoplay');
-		if (autoplay==null || autoplay===false) {
-                $('.playpause').html('<i class="fi-play"></i>');
-            } else {
-                $('.playpause').html('<i class="fi-pause"></i>');
-			}
-		
-		$('.playpause').click(function() {
+            // slick slider
+            $('.homepage-features').slick({
+                autoplay: true,	
+                autoplaySpeed: 3000,
+                dots: true,
+                pauseOnDotsHover: true
+            });
+
+            var autoplay = $('.homepage-features').slickGetOption('autoplay');
             if (autoplay==null || autoplay===false) {
-                $(this).html('<i class="fi-pause"></i>');
-				$('.homepage-features').slickPlay();
-				autoplay = true;
-            } else {
-                $(this).html('<i class="fi-play"></i>');
-				$('.homepage-features').slickPause();
-				autoplay = false;
-            }
-		});
-		
-	}
+                    $('.playpause').html('<i class="fi-play"></i>');
+                } else {
+                    $('.playpause').html('<i class="fi-pause"></i>');
+                }
 
+            $('.playpause').click(function() {
+                if (autoplay==null || autoplay===false) {
+                    $(this).html('<i class="fi-pause"></i>');
+                    $('.homepage-features').slickPlay();
+                    autoplay = true;
+                } else {
+                    $(this).html('<i class="fi-play"></i>');
+                    $('.homepage-features').slickPause();
+                    autoplay = false;
+                }
+            });
+        }
+    }
 });;jQuery(function ($) {
 	'use strict';
 	$( ".single-faculty li.page-item-35" ).removeClass( "active" );
