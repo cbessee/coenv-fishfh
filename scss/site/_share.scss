@@ -104,4 +104,10 @@
 			margin-left: rem-calc(-10);
 		}
 
-} // .sharing
+    } // .share-modal
+
+.entry-content {
+    .share-modal {
+        right: rem-calc(15);
+    }
+}
