@@ -699,7 +699,7 @@ class CoEnv_Widget_Social extends WP_Widget {
 		echo $before_widget;
 		
         if (!is_front_page()) {
-        echo $before_title . '<span>' . $title . '</span>' . $after_title;
+            echo $before_title . '<span>' . $title . '</span>' . $after_title;
         }
         ?>
         
