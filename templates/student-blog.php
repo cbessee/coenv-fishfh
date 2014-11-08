@@ -54,6 +54,14 @@ $wp_query = new WP_Query( $blog_args );
 			</div>
 			<?php endif; ?>
 			<?php
+			coenv_base_cat_filter('blog_category',$_SERVER['REQUEST_URI']);
+
+
+
+
+
+
+
 			# The Loop
 			while ( $wp_query->have_posts() ) :
 			$wp_query->the_post();

@@ -233,3 +233,53 @@ function overwrite_gallery_atts_wpse_95965($out, $pairs, $atts){
     $out['link']='file'; 
     return $out;
 }
+
+function foo_register_alt_version_features($features) {
+    $features['feature_name'] = array(
+        '_foo_meta_key1',
+        '_foo_meta_key2'
+    );
+    return $features;
+}
+
+add_filter('bu_alt_versions_feature_support', 'foo_register_alt_version_features');
+
+/* 
+ * Category filters for WPQuery templates.
+ */
+
+function coenv_base_cat_filter($tax,$page_path) {
+	
+
+	$page_path = htmlspecialchars($page_path);
+	$tax_obj = get_taxonomy('author');
+	$tax_str = $tax_obj->labels->name;
+	 echo '<div class="row">';
+
+	  $cats_args  = array(
+	    'orderby' => 'name',
+	     'order' => 'ASC',
+	    'taxonomy' => $tax
+	    );
+	  $cats = get_categories($cats_args);
+
+	  if ($cats) {
+	      echo '<div class="medium-6 columns select-blog-cats">';
+	       echo '<select class="blog-cats">';
+	       echo '<option class="level-0" value="' . $page_path . '">All ' . $tax_string . '</option>';
+	       foreach($cats as $cat) { 
+	            echo '<option value="' . $page_path . '?cat=' . $cat->slug . '">' . $cat->name . '</option>';
+	       }
+	       echo '</select>';
+	      echo '</div>';
+	  }
+
+	 echo '</div>';
+}
+
+
+
+
+
+
+

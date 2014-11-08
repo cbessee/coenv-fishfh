@@ -53,27 +53,7 @@ $wp_query->query;
 /**
 * Publications filters
 */
-echo '<div class="row">';
-
-$auth_cats_args  = array(
-  'orderby' => 'name',
-  'order' => 'ASC',
-  'taxonomy' => 'author'
-  );
-$auth_cats = get_categories($auth_cats_args);
-
-if ($auth_cats) {
-    echo '<div class="medium-6 columns select-author">';
-     echo '<select class="auth-cats">';
-     if ($auth_cat):
-          echo '<option class="level-0" value="">All Research Areas</option>';
-     endif;
-     foreach($auth_cats as $auth_cat) { 
-          echo '<option value="/research/publications/?auth-cat=' . $auth_cat->slug . '">' . $auth_cat->name . '</option>';
-     }
-     echo '</select>';
-    echo '</div>';
-}
+coenv_base_cat_filter('author',$_SERVER['REQUEST_URI']);
 
 $year_cats_args  = array(
   'orderby' => 'name',
