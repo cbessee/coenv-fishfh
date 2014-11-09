@@ -53,8 +53,9 @@ $wp_query->query;
 /**
 * Publications filters
 */
+echo '<div class="row">';
 coenv_base_cat_filter('author',$_SERVER['REQUEST_URI']);
-
+coenv_base_cat_filter('publication_theme',$_SERVER['REQUEST_URI']);
 $year_cats_args  = array(
   'orderby' => 'name',
   'order' => 'ASC',
@@ -63,7 +64,7 @@ $year_cats_args  = array(
 $year_cats = get_categories($year_cats_args);
 
 if ($year_cats) {
-    echo '<div class="medium-6 columns select-year">';
+    echo '<div class="medium-4 columns select-year">';
      echo '<select class="year-cats">';
      if ($year_cat):
           echo '<option class="level-0" value="">All Years</option>';
@@ -74,28 +75,6 @@ if ($year_cats) {
      echo '</select>';
     echo '</div>';
 }
-
-
-$theme_cats_args  = array(
-  'orderby' => 'name',
-  'order' => 'ASC',
-  'taxonomy' => 'publication_theme'
-  );
-$theme_cats = get_categories($theme_cats_args);
-
-if ($theme_cats) {
-    echo '<div class="medium-6 columns select-theme">';
-     echo '<select class="theme-cats">';
-     if ($theme_cat):
-          echo '<option class="level-0" value="">All Research Themes</option>';
-     endif;
-     foreach($theme_cats as $theme_cat) { 
-          echo '<option value="/research/publications/?theme-cat=' . $theme_cat->slug . '">' . $auth_cat->name . '</option>';
-     }
-     echo '</select>';
-    echo '</div>';
-}
-
 
 echo '</div>';
 
