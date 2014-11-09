@@ -54,8 +54,12 @@ $wp_query->query;
 * Publications filters
 */
 echo '<div class="row">';
+echo '<div class="medium-4 columns select-cats">';
 coenv_base_cat_filter('author',$_SERVER['REQUEST_URI']);
+echo '</div>';
+echo '<div class="medium-4 columns select-cats">';
 coenv_base_cat_filter('publication_theme',$_SERVER['REQUEST_URI']);
+echo '</div>';
 $year_cats_args  = array(
   'orderby' => 'name',
   'order' => 'ASC',

@@ -260,14 +260,13 @@ $cats_args  = array(
 $cats = get_categories($cats_args);
 
 if ($cats) {
-	echo '<div class="medium-4 columns select-cats">';
+	
 	echo '<select class="cats">';
 	echo '<option class="level-0" value="' . $page_path . '">All ' . $tax_str . '</option>';
-foreach($cats as $cat) { 
-	echo '<option value="' . $page_path . '?cat=' . $cat->slug . '">' . $cat->name . '</option>';
-}
+	foreach($cats as $cat) { 
+		echo '<option value="' . $page_path . '?cat=' . $cat->slug . '">' . $cat->name . '</option>';
+	}
 	echo '</select>';
-	echo '</div>';
-}
+	}
 
-}
+	}
