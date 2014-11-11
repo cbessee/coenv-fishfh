@@ -2,115 +2,93 @@
 /*
 Template Name: Publications Page
 */
+
+/*
+ * Query variables
+ */
+$keys = array_keys($_GET);
+$cat_raw = $keys[0];
+$auth_cat_raw = htmlentities( urlencode($_GET['author']) );
+$theme_cat_raw = htmlentities( urlencode($_GET['publication_theme']) );
+$auth_cat = get_term_by( 'slug', (string) $auth_cat_raw, 'author' );
+$theme_cat = get_term_by( 'slug', (string) $theme_cat_raw, 'publication_theme' );
+
+/*
+ * wp_query variables
+ */
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$temp = $wp_query;
+$wp_query = null;
+$wp_query = new WP_Query();
+$wp_query->query;
 ?>
 
 <?php get_header(); ?>
-<?php $pub_slug->slug; ?>
 <div class="row">
 	<?php coenv_base_section_title($post->ID); ?>
 	<?php //if (!is_front_page() && function_exists('bcn_display')): ?>
 	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
 	<?php //endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
-	<div class="entry-content">
-<?php if ( is_active_sidebar( 'before-content' ) ) : ?>
-	<?php do_action('foundationPress_before_content'); ?>
-	<ul class="widget-area before-content">
-	<?php dynamic_sidebar("before-content"); ?>
-	</ul>
-	<?php endif; ?>
-		<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
-        </div>
-	<h1 class="article__title"><?php the_title() . $_GET['blog-cat']; ?></h1>
-	<hr>
-	<?php
-$auth_cat = get_term_by( 'slug', (string) $_GET['pub-slug'], 'author' );
-$year_cat = get_term_by( 'slug', (string) $_GET['pub-slug'], 'year' );
-$theme_cat = get_term_by( 'slug', (string) $_GET['pub-slug'], 'publication_theme' );
-?>
-        
-<?php if ($auth_cat): ?>
-		<div class="panel">Publications written by <strong><?php echo $auth_cat->name; ?></strong></div>
-<?php endif; ?>
-<?php if ($year_cat): ?>
-		<div class="panel">Publications from <strong><?php echo $year_cat->name; ?></strong></div>
-<?php endif; ?>
-<?php if ($theme_cat): ?>
-		<div class="panel">Publications about <strong><?php echo $theme_cat->name; ?></strong></div>
-<?php endif; ?>
+		<div class="entry-content">
+		<?php //if ( is_active_sidebar( 'before-content' ) ) : ?>
+		<?php //do_action('foundationPress_before_content'); ?>
+		<!--<ul class="widget-area before-content">
+		<?php // dynamic_sidebar("before-content"); ?>
+		</ul>-->
+		<?php //endif; ?>
+		<h1 class="article__title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+		<div class="row filters">
+			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="author">
+				<?php coenv_base_cat_filter('author', $auth_cat_raw); ?>
+			</div>
+			<div class="large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="publication_theme">
+				<?php coenv_base_cat_filter('publication_theme', $theme_cat_raw); ?>
+			</div>
+		</div>
+		<hr>
+		<?php if ($auth_cat): ?>
+		<div class="panel">
+			<div class="left">Publications written by <strong><?php echo $auth_cat->name; ?></strong></div>
+			<div class="right"><a href="">all publications &raquo;</a></div>
+		</div>
+		<?php endif; ?>
+		<?php if ($theme_cat): ?>
+		<div class="panel">
+			<div class="left">Publications about <strong><?php echo $theme_cat->name; ?></strong></div>
+			<div class="right"><a href="">all publications &raquo;</a></div>
+		</div>
+		<?php endif; ?>
+		<?php
+		/**
+		* Publications loop
+		*/
+		$year = get_term_by('id', $post_ID, 'year');
 
-        <?php
+		function alter_pub_order($order,$qry) {
+		  remove_filter('posts_orderby','alter_order',1,2);
+		  $order = explode(',',$order);
+		  $order = implode( ' DESC,',$order);
+		  return $order;
+		}
+		add_filter('posts_orderby','alter_pub_order',1,2);
 
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-$temp = $wp_query;
-$wp_query = null;
-$wp_query = new WP_Query();
-$wp_query->query;
-
-/**
-* Publications filters
-*/
-echo '<div class="row">';
-echo '<div class="medium-4 columns select-cats">';
-coenv_base_cat_filter('author',$_SERVER['REQUEST_URI']);
-echo '</div>';
-echo '<div class="medium-4 columns select-cats">';
-coenv_base_cat_filter('publication_theme',$_SERVER['REQUEST_URI']);
-echo '</div>';
-$year_cats_args  = array(
-  'orderby' => 'name',
-  'order' => 'ASC',
-  'taxonomy' => 'year'
-  );
-$year_cats = get_categories($year_cats_args);
-
-if ($year_cats) {
-    echo '<div class="medium-4 columns select-year">';
-     echo '<select class="year-cats">';
-     if ($year_cat):
-          echo '<option class="level-0" value="">All Years</option>';
-     endif;
-     foreach($year_cats as $year_cat) { 
-          echo '<option value="/research/publications/?year-cat=' . $year_cat->slug . '">' . $year_cat->name . '</option>';
-     }
-     echo '</select>';
-    echo '</div>';
-}
-
-echo '</div>';
-
-/**
-* Publications loop
-*/
-$year = get_term_by('id', $post_ID, 'year');
-
-function alter_pub_order($order,$qry) {
-  remove_filter('posts_orderby','alter_order',1,2);
-  $order = explode(',',$order);
-  $order = implode( ' DESC,',$order);
-  return $order;
-}
-add_filter('posts_orderby','alter_pub_order',1,2);
-
-$publication_args = array(
-	'post_type'	=> 'publications',
-	'post_status' => 'publish',
-	'posts_per_page' => 20,
-	# 'taxonomy' => 'research_areas',
-	'term' => $pub_slug->slug,
-	'meta_key' => $year,
-	'orderby' => 'meta_value_number',
-	'order' => 'ASC',
-	'paged' => $paged
-);
-$wp_query = new WP_Query( $publication_args );
-
-?>
-	<?php if ($wp_query->have_posts()): ?>
-	<div class="publication clearfix">
+		$publication_args = array(
+			'post_type'	=> 'publications',
+			'post_status' => 'publish',
+			'posts_per_page' => 20,
+			'taxonomy' => $cat_raw,
+			'term' => $_GET[$cat_raw],
+			'orderby' => 'date',
+			'order' => 'ASC',
+			'paged' => $paged
+		);
+		$wp_query = new WP_Query( $publication_args );
+		$myvalue = get_query_var('auth1');
+		echo $myvalue . $_GET['auth1']; 
+		?>
+		<?php if ($wp_query->have_posts()): ?>
+		<div class="publication clearfix">
         
 		<?php
 		# The Loop
@@ -120,6 +98,12 @@ $wp_query = new WP_Query( $publication_args );
 		$publication_citation = get_field('publication_citation');
 		$rows = get_field('publication_link');
 		echo '<div class="publication-list-item">';
+		?>
+		<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
+        </div>
+        <?php
 		echo '<div class="blog-meta"><h5>';
 		echo get_the_term_list( $post->ID, 'publication_theme', '', ', ', '' );
 		echo '</h5></div>';
@@ -129,7 +113,7 @@ $wp_query = new WP_Query( $publication_args );
 		if($rows) {
 			foreach($rows as $row) {
 				if($row['publication_link_type'] == 'upload') {
-					echo '<a class="button" href="' . $row['publication_upload_file'] . '" target="_blank">Download PDF</a>';
+					echo '<a class="button" href="' . $row['publication_upload_file'] . '" target="_blank">Download</a>';
 				} elseif ($row['publication_link_type'] == 'link') {
 					echo '<a class="button" href="' . $row['publication_link_url'] . '" target="_blank">' . $row['publication_link_text'] . '</a>';
 				} 
@@ -142,7 +126,6 @@ $wp_query = new WP_Query( $publication_args );
 		?>
 	</div>
 	<div class="pager">
-	<?php /* Display navigation to next/previous pages when applicable */ ?>
 	<?php if ( function_exists('FoundationPress_pagination') ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
 			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'FoundationPress' ) ); ?></div>
@@ -151,8 +134,7 @@ $wp_query = new WP_Query( $publication_args );
 	<?php } ?>
 </div>
   </div>
-	<?php endif; ?>
-		
+	<?php endif; ?>		
 <?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 	<?php do_action('foundationPress_after_content'); ?>
 	<ul class="widget-area after-content">
@@ -162,8 +144,7 @@ $wp_query = new WP_Query( $publication_args );
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
 	</div>
-	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
-	    	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
+<?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
 <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

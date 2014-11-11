@@ -247,8 +247,8 @@ add_filter('bu_alt_versions_feature_support', 'foo_register_alt_version_features
 /* 
  * Category filters for WPQuery templates (blog, publications, faculty, etc.)
  */
-function coenv_base_cat_filter($tax,$page_path) {
-$page_path = htmlspecialchars($page_path);
+function coenv_base_cat_filter($tax,$tax_value) {
+
 $tax_obj = get_taxonomy($tax);
 $tax_str = $tax_obj->labels->name;
 
@@ -258,15 +258,14 @@ $cats_args  = array(
 	'taxonomy' => $tax
 );
 $cats = get_categories($cats_args);
-
 if ($cats) {
-	
-	echo '<select class="cats">';
-	echo '<option class="level-0" value="' . $page_path . '">All ' . $tax_str . '</option>';
-	foreach($cats as $cat) { 
-		echo '<option value="' . $page_path . '?cat=' . $cat->slug . '">' . $cat->name . '</option>';
-	}
+	echo '<select name="select-category" id="select-category">';
+	echo '<option class="level-0" value="">All ' . $tax_str . '</option>';
+foreach($cats as $cat) { 
+	$selected = $cat->slug == $tax_value ? ' selected="selected"' : '';
+	echo '<option value="' . $cat->slug . '"' . $selected . '>' . $cat->name . '</option>';
+}
 	echo '</select>';
-	}
+}
 
-	}
+}
