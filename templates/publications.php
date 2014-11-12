@@ -8,10 +8,13 @@ Template Name: Publications Page
  */
 $keys = array_keys($_GET);
 $cat_raw = $keys[0];
+$cat = htmlentities( urlencode($_GET[$cat_raw]) );
 $auth_cat_raw = htmlentities( urlencode($_GET['author']) );
 $theme_cat_raw = htmlentities( urlencode($_GET['publication_theme']) );
+$year_cat_raw = htmlentities( urlencode($_GET['publication_year']) );
 $auth_cat = get_term_by( 'slug', (string) $auth_cat_raw, 'author' );
 $theme_cat = get_term_by( 'slug', (string) $theme_cat_raw, 'publication_theme' );
+$year_cat = get_term_by( 'slug', (string) $year_cat_raw, 'publication_year' );
 
 /*
  * wp_query variables
@@ -39,24 +42,39 @@ $wp_query->query;
 		<?php //endif; ?>
 		<h1 class="article__title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 		<div class="row filters">
-			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="author">
+			<div class=" large-4 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="author">
 				<?php coenv_base_cat_filter('author', $auth_cat_raw); ?>
 			</div>
-			<div class="large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="publication_theme">
+			<div class="large-4 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="publication_theme">
 				<?php coenv_base_cat_filter('publication_theme', $theme_cat_raw); ?>
+			</div>
+			<div class="large-4 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="publication_year">
+				<?php coenv_base_cat_filter('publication_year', $year_cat_raw); ?>
 			</div>
 		</div>
 		<hr>
 		<?php if ($auth_cat): ?>
 		<div class="panel">
 			<div class="left">Publications written by <strong><?php echo $auth_cat->name; ?></strong></div>
-			<div class="right"><a href="">all publications &raquo;</a></div>
+			<div class="right"><a href="/research/publications/">all publications &raquo;</a></div>
 		</div>
 		<?php endif; ?>
 		<?php if ($theme_cat): ?>
 		<div class="panel">
 			<div class="left">Publications about <strong><?php echo $theme_cat->name; ?></strong></div>
-			<div class="right"><a href="">all publications &raquo;</a></div>
+			<div class="right"><a href="/research/publications/">all publications &raquo;</a></div>
+		</div>
+		<?php endif; ?>
+		<?php if ($year_cat): ?>
+		<div class="panel">
+			<div class="left">
+				<?php if($cat == 'in-press') { ?>
+				Publications that are 
+				<?php } else { ?>
+				Publications published in 
+				<?php } ?>
+				<strong><?php echo strtolower($year_cat->name); ?></strong></div>
+			<div class="right"><a href="/research/publications/">all publications &raquo;</a></div>
 		</div>
 		<?php endif; ?>
 		<?php
@@ -78,7 +96,7 @@ $wp_query->query;
 			'post_status' => 'publish',
 			'posts_per_page' => 20,
 			'taxonomy' => $cat_raw,
-			'term' => $_GET[$cat_raw],
+			'term' => $cat,
 			'orderby' => 'date',
 			'order' => 'ASC',
 			'paged' => $paged
@@ -89,7 +107,6 @@ $wp_query->query;
 		?>
 		<?php if ($wp_query->have_posts()): ?>
 		<div class="publication clearfix">
-        
 		<?php
 		# The Loop
 		while ( $wp_query->have_posts() ) :
@@ -132,10 +149,12 @@ $wp_query->query;
 			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
 		</nav>
 	<?php } ?>
-</div>
-  </div>
-	<?php endif; ?>		
-<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+	</div>
+  	<?php else: ?>
+  	<p>We're sorry. Your crtieria did not match any publications. <a href="/research/publications">Return to all publications &raquo;</a></p>
+	<?php endif; ?>
+	  </div>		
+	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 	<?php do_action('foundationPress_after_content'); ?>
 	<ul class="widget-area after-content">
 	<?php dynamic_sidebar("after-content"); ?>
