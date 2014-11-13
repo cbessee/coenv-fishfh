@@ -81,7 +81,7 @@ $wp_query->query;
 		/**
 		* Publications loop
 		*/
-		$year = get_term_by('id', $post_ID, 'year');
+		//$year = get_term_by('id', $post_ID, 'year');
 
 		function alter_pub_order($order,$qry) {
 		  remove_filter('posts_orderby','alter_order',1,2);
@@ -114,8 +114,8 @@ $wp_query->query;
 		$publication_link = get_the_permalink();
 		$publication_citation = get_field('publication_citation');
 		$rows = get_field('publication_link');
-		echo '<div class="publication-list-item">';
 		?>
+		<div class="publication-list-item">
 		<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
 		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
 		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>

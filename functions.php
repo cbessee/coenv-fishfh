@@ -269,3 +269,41 @@ foreach($cats as $cat) {
 }
 
 }
+
+add_filter( 'getarchives_where', 'getarchives_where_filter', 10, 2 );
+add_filter( 'generate_rewrite_rules', 'generate_events_rewrite_rules' );
+
+function getarchives_where_filter( $where, $args ) {
+
+    if ( isset($args['post_type']) ) {      
+        $where = "WHERE post_type = '$args[post_type]' AND post_status = 'publish'";
+    }
+
+    return $where;
+}
+
+function generate_events_rewrite_rules( $wp_rewrite ) {
+
+    $event_rules = array(
+        'events/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$' => 'index.php?post_type=events&year=$matches[1]&monthnum=$matches[2]&day=$matches[3]',
+        'students/student_blog/([0-9]{4})/([0-9]{1,2})/?$' => 'index.php?pagename=student_blog&year=$matches[1]&monthnum=$matches[2]',
+        'events/([0-9]{4})/?$' => 'index.php?post_type=events&year=$matches[1]' 
+    );
+
+    $wp_rewrite->rules = $event_rules + $wp_rewrite->rules;
+}
+
+function get_archives_events_link( $link ) {
+
+$mylink = str_replace( get_site_url(), '', $link );
+$mylink = str_replace('blog','',$mylink);
+$mylink = str_replace('//','?year=',$mylink);
+$mylink = preg_replace('/[0-9]/','',$my_link);
+
+return $mylink;
+
+};
+
+
+
+
