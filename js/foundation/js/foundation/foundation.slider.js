@@ -4,17 +4,15 @@
   Foundation.libs.slider = {
     name : 'slider',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings: {
       start: 0,
       end: 100,
       step: 1,
-      precision: null,
       initial: null,
       display_selector: '',
       vertical: false,
-      trigger_input_change: false,
       on_change: function(){}
     },
 
@@ -99,7 +97,7 @@
 
         pct = settings.vertical ? 1-pct : pct;
 
-        var norm = self.normalized_value(pct, settings.start, settings.end, settings.step, settings.precision);
+        var norm = self.normalized_value(pct, settings.start, settings.end, settings.step);
 
         self.set_ui($handle, norm);
       });
@@ -111,9 +109,7 @@
           bar_l = $.data($handle[0], 'bar_l'),
           norm_pct = this.normalized_percentage(value, settings.start, settings.end),
           handle_offset = norm_pct*(bar_l-handle_l)-1,
-          progress_bar_length = norm_pct*100,
-          $handle_parent = $handle.parent(),
-          $hidden_inputs = $handle.parent().children('input[type=hidden]');
+          progress_bar_length = norm_pct*100;
 
       if (Foundation.rtl && !settings.vertical) {
         handle_offset = -handle_offset;
@@ -128,17 +124,14 @@
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
 
-      $handle_parent.attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
+      $handle.parent().attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
 
-      $hidden_inputs.val(value);
-      if (settings.trigger_input_change) {
-          $hidden_inputs.trigger('change');
-      }
+      $handle.parent().children('input[type=hidden]').val(value);
 
       if (!$handle[0].hasAttribute('aria-valuemin')) {
         $handle.attr({
           'aria-valuemin': settings.start,
-          'aria-valuemax': settings.end
+          'aria-valuemax': settings.end,
         });
       }
       $handle.attr('aria-valuenow', value);
@@ -159,13 +152,13 @@
       return Math.min(1, (val - start)/(end - start));
     },
 
-    normalized_value : function(val, start, end, step, precision) {
+    normalized_value : function(val, start, end, step) {
       var range = end - start,
           point = val*range,
           mod = (point-(point%step)) / step,
           rem = point % step,
           round = ( rem >= step*0.5 ? step : 0);
-      return ((mod*step + round) + start).toFixed(precision);
+      return (mod*step + round) + start;
     },
 
     set_translate : function(ele, offset, vertical) {
@@ -190,16 +183,8 @@
       return Math.min(Math.max(val, min), max);
     },
 
-
-
     initialize_settings : function(handle) {
-      var settings = $.extend({}, this.settings, this.data_options($(handle).parent())),
-          decimal_places_match_result;
-
-      if (settings.precision === null) {
-        decimal_places_match_result = ('' + settings.step).match(/\.([\d]*)/);
-        settings.precision = decimal_places_match_result && decimal_places_match_result[1] ? decimal_places_match_result[1].length : 0;
-      }
+      var settings = $.extend({}, this.settings, this.data_options($(handle).parent()));
 
       if (settings.vertical) {
         $.data(handle, 'bar_o', $(handle).parent().offset().top);
@@ -219,7 +204,7 @@
 
     set_initial_position : function($ele) {
       var settings = $.data($ele.children('.range-slider-handle')[0], 'settings'),
-          initial = ((typeof settings.initial == 'number' && !isNaN(settings.initial)) ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step+settings.start),
+          initial = (!!settings.initial ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step+settings.start),
           $handle = $ele.children('.range-slider-handle');
       this.set_ui($handle, initial);
     },
