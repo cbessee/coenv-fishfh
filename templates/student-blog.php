@@ -30,10 +30,10 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		<h1 class="article__title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 		<div class="row filters">
 			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-				<?php coenv_base_cat_filter('blog_category', $coenv_cat_term_1); ?>
+				<?php coenv_base_cat_filter('blog_category', $coenv_cat_term_1); // Category filter ?>
 			</div>
 			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-				<?php coenv_base_date_filter('student_blog',$coenv_month,$coenv_year); ?>
+				<?php coenv_base_date_filter('student_blog',$coenv_month,$coenv_year); // Date filter ?>
 		 	</div>
 		</div>
 		<hr>
@@ -68,12 +68,13 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		<?php if ($wp_query->have_posts()): ?>
 
 
-		<?php if ($coenv_cat_1): ?>
+		<?php if ($coenv_cat_1): // Category filter ?>
 		<div class="panel">
 			<div class="left"><?php echo $wp_query->found_posts; ?> posts in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
 			<div class="right"><a href="/research/publications/">all posts &raquo;</a></div>
 		</div>
-		<?php elseif($coenv_year && $coenv_month): ?>
+		<?php endif; ?>
+		<?php if($coenv_year && $coenv_month): // Date filter ?>
 		<div class="panel">
 			<div class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></div>
 			<div class="right"><a href="/research/publications/">all posts &raquo;</a></div>
