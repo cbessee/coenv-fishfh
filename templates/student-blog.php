@@ -6,103 +6,86 @@ Template Name: Blog
 /*
  * Query variables
  */
-$keys = array_keys($_GET);
-$cat_raw = $keys[0];
-$cat = htmlentities( urlencode($_GET[$cat_raw]) );
-$blog_cat_raw = htmlentities( urlencode($_GET['blog_category']) );
-$blog_cat = get_term_by( 'slug', (string) $blog_cat_raw, 'blog_category' );
 
-/*
- * wp_query variables
- */
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$test = get_query_var('blog_date');
-$temp = $wp_query;
-$wp_query = null;
-$wp_query = new WP_Query();
-$wp_query->query;
+// Dates
+$coenv_year = urlencode(htmlentities($_GET['coenv-year']));
+$coenv_month = urlencode(htmlentities($_GET['coenv-month']));
+$coenv_date = date('F Y',mktime(0,0,0,(int)$coenv_month,0,(int)$coenv_year));
+
+//Categories
+$coenv_cat_1 = urlencode(htmlentities($_GET['tax']));
+$coenv_cat_term_1 = urlencode(htmlentities($_GET['term']));
+$coenv_cat_term_1_arr = get_term_by('slug',$coenv_cat_term_1,$coenv_cat_1);
+$coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 ?>
 
 <?php get_header(); ?>
 <div class="row">
-
 	<?php coenv_base_section_title($post->ID); ?>
 	<?php //if (!is_front_page() && function_exists('bcn_display')): ?>
 	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
-	<?php 
-
-
-	global $post;
-$pagename = $post->post_name;
-echo 'page name: ' . $pagename;
-
-
-
-
-
-	//endif; ?>
+	<?php //endif; ?>
 	<div class="small-12 medium-8 columns" role="main">
 		<div class="entry-content">
-		<?php //if ( is_active_sidebar( 'before-content' ) ) : ?>
-		<?php //do_action('foundationPress_before_content'); ?>
-		<!--<ul class="widget-area before-content">
-		<?php // dynamic_sidebar("before-content"); ?>
-		</ul>-->
-		<?php //endif; ?>
 		<h1 class="article__title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 		<div class="row filters">
 			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-				<?php coenv_base_cat_filter('blog_category', $blog_cat_raw); ?>
+				<?php coenv_base_cat_filter('blog_category', $coenv_cat_term_1); ?>
 			</div>
-
 			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-			<!--<select class="select-date">-->
-			<?php
-			add_filter( 'get_archives_link', 'get_archives_events_link', 10, 2 );
-
-			//wp_get_archives( array( 'post_type' => 'student_blog' ) );            
-			//wp_get_archives( array( 'post_type' => 'student_blog', 'type' => 'yearly' ) );
-			wp_get_archives( array( 'post_type' => 'student_blog', 'type' => 'monthly' ) );
-			//wp_get_archives( array( 'post_type' => 'student_blog', 'type' => 'daily' ) );
-
-			remove_filter( 'get_archives_link', 'get_archives_events_link', 10, 2 );
-			?>
-		<!--</select>-->
-						</div>
-
-
-
-
-
-
-
+				<?php coenv_base_date_filter('student_blog',$coenv_month,$coenv_year); ?>
+		 	</div>
 		</div>
 		<hr>
-		<?php if ($blog_cat): ?>
-		<div class="panel">
-			<div class="left">Posts about <strong><?php echo $blog_cat->name; ?></strong></div>
-			<div class="right"><a href="/research/publications/">all posts &raquo;</a></div>
-		</div>
-		<?php endif; ?>
 		<?php
 		/**
 		  * Blog loop
 		  */
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		$blog_args = array(
 			'post_type'	=> 'student_blog',
 			'post_status' => 'publish',
 			'posts_per_page' => 20,
-			'taxonomy' => $cat_raw,
-			'term' => $cat,
 			'orderby' => 'date',
 			'order' => 'DESC',
 			'paged' => $paged
 		);
-		$wp_query = new WP_Query( $blog_args );
+		if($coenv_cat_1 && $coenv_cat_term_1) {
+			$blog_args['taxonomy'] = $coenv_cat_1;
+			$blog_args['term'] = $coenv_cat_term_1;
+		}
 
+		if ($coenv_year) {
+			$blog_args['year'] = $coenv_year;
+
+		} 
+		if($coenv_month) {
+			$blog_args['monthnum'] = $coenv_month;
+
+		}
+		$wp_query = new WP_Query( $blog_args );
 		?>
 		<?php if ($wp_query->have_posts()): ?>
-		<?php echo '!!!!!!!!' . $wp_query->query_vars['my_date']; ?>
+
+
+		<?php if ($coenv_cat_1): ?>
+		<div class="panel">
+			<div class="left"><?php echo $wp_query->found_posts; ?> posts in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
+			<div class="right"><a href="/research/publications/">all posts &raquo;</a></div>
+		</div>
+		<?php elseif($coenv_year && $coenv_month): ?>
+		<div class="panel">
+			<div class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></div>
+			<div class="right"><a href="/research/publications/">all posts &raquo;</a></div>
+		</div>
+		<?php endif; ?>
+
+
+
+
+
+
+
 		<div class="blog clearfix">
 		<?php
 		# The Loop
@@ -150,15 +133,14 @@ echo 'page name: ' . $pagename;
 		} ?>
 		</div>
 		</div>
-
 	</div>
 	<?php endwhile; ?>
 	</div>
 	<div class="pager">
 	<?php if ( function_exists('FoundationPress_pagination') ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'FoundationPress' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
+			<div class="post-previous"><?php //next_posts_link( __( '&larr; Older posts', 'FoundationPress' ) ); ?></div>
+			<div class="post-next"><?php //previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
 		</nav>
 	<?php } ?>
 	</div>
