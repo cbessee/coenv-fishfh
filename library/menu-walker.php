@@ -60,7 +60,7 @@ class top_bar_mobile_walker extends Walker_Page {
     //Start the menu rendering by indenting
     function start_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat( "\t", $depth);
-        $output .= $indent . '<div class="children">';
+        $output .= $indent . '<div class="children-' . $depth . '">';
     }
     
     static $count = 0;
@@ -71,13 +71,13 @@ class top_bar_mobile_walker extends Walker_Page {
         $title = get_the_title($item->ID);
         $link = get_the_permalink($item->ID);
         if ( $depth === 0 ) {
-            $output .= '<ul class="off-canvas-list"><dl class="accordion" data-accordion><dd class="accordion-navigation"><a class="right expander-link" href="#accordion-' . $id . '">+</a><a class="primary-link" href=' . $link . '>' . $title . ' depth-' . $depth . ' count-' . self::$count . '</a><div class="content" id=accordion-' . $id . '>';
+            $output .= '<ul class="off-canvas-list"><a class="primary-link columns small-9" href=' . $link . '><div class="accordion">' . $title . '</div></a><div class="accordion" data-accordion><div class="accordion-navigation"><a class="right columns small-3 expander-link" href="#accordion-' . $id . '"><i class="fi-plus"></i></a><div class="content" id=accordion-' . $id . '>';
         }
         if ( $depth == 1 ) {
-            $output .= '<li id=' . $id . ' depth-' . $depth . ' count-' . self::$count . '"' . $value . '><a href=' . $link . '>' . $title . '</a></li>';
+            $output .= '<li id=' . $id . '><a href=' . $link . '>' . $title . '</a></li>';
           }
         if ( $depth == 2 ) {
-            $output .= '<li id=' . $id . ' depth-' . $depth . ' count-' . self::$count . '"' . $value . '><a href=' . $link . '>' . $title . '</a></li>';
+            $output .= '<li id=' . $id . '><a href=' . $link . '>' . $title . '</a></li>';
           } 
         self::$count++;  // increase counter
     }
@@ -85,7 +85,7 @@ class top_bar_mobile_walker extends Walker_Page {
     function end_el( &$output, $object, $depth = 0, $args = array(), $id = 0 ) {
         $output .= '';
         if ( $depth === 0 ) {
-            $output .= '</dd></dl></ul>';
+            $output .= '</div></div></ul>';
         }
     }
     
