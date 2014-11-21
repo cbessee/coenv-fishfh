@@ -13,22 +13,22 @@ class top_bar_walker extends Walker_Nav_Menu {
         parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
     }
     
-    function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
         $item_html = '';
         parent::start_el( $item_html, $object, $depth, $args ); 
         
         $output .= ( $depth == 0 ) ? '<li class="divider"></li>' : '';
         
-        $classes = empty( $object->classes ) ? array() : (array) $object->classes;  
+        $classes = empty( $object->classes ) ? array() : (array) $item->classes;  
         
         if( in_array('label', $classes) ) {
             $output .= '<li class="divider"></li>';
             $item_html = preg_replace( '/<a[^>]*>(.*)<\/a>/iU', '<label>$1</label>', $item_html );
         }
         
-    if ( in_array('divider', $classes) ) {
-        $item_html = preg_replace( '/<a[^>]*>( .* )<\/a>/iU', '', $item_html );
-    }
+        if ( in_array('divider', $classes) ) {
+            $item_html = preg_replace( '/<a[^>]*>( .* )<\/a>/iU', '', $item_html );
+        }
         
         $output .= $item_html;
     }
@@ -51,6 +51,49 @@ class top_bar_new_walker extends Walker_Page {
     
 }
 
+
+/**
+ * Customize the output of mobile menus for Foundation top bar
+ */
+
+class top_bar_mobile_walker extends Walker_Page {
+    //Start the menu rendering by indenting
+    function start_lvl( &$output, $depth = 0, $args = array() ) {
+        $indent = str_repeat( "\t", $depth);
+        $output .= $indent . '<div class="children">';
+    }
+    
+    static $count = 0;
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        if ($depth === 0) self::$count = 0;
+        //Get id
+        $id = $item->ID;
+        $title = get_the_title($item->ID);
+        $link = get_the_permalink($item->ID);
+        if ( $depth === 0 ) {
+            $output .= '<ul class="off-canvas-list"><dl class="accordion" data-accordion><dd class="accordion-navigation"><a class="right expander-link" href="#accordion-' . $id . '">+</a><a class="primary-link" href=' . $link . '>' . $title . ' depth-' . $depth . ' count-' . self::$count . '</a><div class="content" id=accordion-' . $id . '>';
+        }
+        if ( $depth == 1 ) {
+            $output .= '<li id=' . $id . ' depth-' . $depth . ' count-' . self::$count . '"' . $value . '><a href=' . $link . '>' . $title . '</a></li>';
+          }
+        if ( $depth == 2 ) {
+            $output .= '<li id=' . $id . ' depth-' . $depth . ' count-' . self::$count . '"' . $value . '><a href=' . $link . '>' . $title . '</a></li>';
+          } 
+        self::$count++;  // increase counter
+    }
+    
+    function end_el( &$output, $object, $depth = 0, $args = array(), $id = 0 ) {
+        $output .= '';
+        if ( $depth === 0 ) {
+            $output .= '</dd></dl></ul>';
+        }
+    }
+    
+    function end_lvl( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        $output .= '</div>';
+    }
+}
+
 /**
  * Add classes for Foundation menu
  * Filter is called in header.php
@@ -64,4 +107,5 @@ function add_parent_class( $css_class, $page, $depth, $args ) {
     }
     return $css_class;
 }
+
 ?>
