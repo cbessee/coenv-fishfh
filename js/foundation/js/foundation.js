@@ -278,7 +278,7 @@
   window.Foundation = {
     name : 'Foundation',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     media_queries : {
       small : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
@@ -630,11 +630,10 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       live_validate : true,
-      validate_on_blur: true,
       focus_on_invalid : true,
       error_labels: true, // labels with a for="inputId" will recieve an `error` class
       error_class: 'error',
@@ -706,12 +705,10 @@
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            if (settings.validate_on_blur === true) {
-              self.validate([this], e);
-            }
+            self.validate([this], e);
           })
           .on('keydown.fndtn.abide', function (e) {
-            if (settings.live_validate === true && e.which != 9) {
+            if (settings.live_validate === true) {
               clearTimeout(self.timer);
               self.timer = setTimeout(function () {
                 self.validate([this], e);
@@ -736,14 +733,14 @@
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
           if (this.settings.focus_on_invalid) els[i].focus();
-          form.trigger('invalid').trigger('invalid.fndtn.abide');
+          form.trigger('invalid');
           this.S(els[i]).closest('form').attr(this.invalid_attr, '');
           return false;
         }
       }
 
       if (submit_event || is_ajax) {
-        form.trigger('valid').trigger('valid.fndtn.abide');
+        form.trigger('valid');
       }
 
       form.removeAttr(this.invalid_attr);
@@ -948,7 +945,7 @@
   Foundation.libs.accordion = {
     name : 'accordion',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       content_class: 'content',
@@ -967,23 +964,23 @@
       var S = this.S;
       S(this.scope)
       .off('.fndtn.accordion')
-      .on('click.fndtn.accordion', '[' + this.attr_name() + '] > .accordion-navigation > a', function (e) {
+      .on('click.fndtn.accordion', '[' + this.attr_name() + '] > dd > a', function (e) {
         var accordion = S(this).closest('[' + self.attr_name() + ']'),
             groupSelector = self.attr_name() + '=' + accordion.attr(self.attr_name()),
-            settings = accordion.data(self.attr_name(true) + '-init') || self.settings,
+            settings = accordion.data(self.attr_name(true) + '-init'),
             target = S('#' + this.href.split('#')[1]),
-            aunts = $('> .accordion-navigation', accordion),
-            siblings = aunts.children('.content'),
+            aunts = $('> dd', accordion),
+            siblings = aunts.children('.'+settings.content_class),
             active_content = siblings.filter('.' + settings.active_class);
         e.preventDefault();
 
         if (accordion.attr(self.attr_name())) {
-          siblings = siblings.add('[' + groupSelector + '] .accordion-navigation > .content');
-          aunts = aunts.add('[' + groupSelector + '] .accordion-navigation');
+          siblings = siblings.add('[' + groupSelector + '] dd > .'+settings.content_class);
+          aunts = aunts.add('[' + groupSelector + '] dd');
         }
 
         if (settings.toggleable && target.is(active_content)) {
-          target.parent('.accordion-navigation').toggleClass(settings.active_class, false);
+          target.parent('dd').toggleClass(settings.active_class, false);
           target.toggleClass(settings.active_class, false);
           settings.callback(target);
           target.triggerHandler('toggled', [accordion]);
@@ -1015,7 +1012,7 @@
   Foundation.libs.alert = {
     name : 'alert',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       callback: function (){}
@@ -1035,7 +1032,7 @@
 
         e.preventDefault();
         if (Modernizr.csstransitions) {
-          alertBox.addClass('alert-close');
+          alertBox.addClass("alert-close");
           alertBox.on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
             S(this).trigger('close').trigger('close.fndtn.alert').remove();
             settings.callback();
@@ -1059,7 +1056,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '5.4.7',
+    version: '5.4.6',
 
     settings : {
       templates : {
@@ -1618,7 +1615,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       active_class: 'open',
@@ -1646,9 +1643,6 @@
           var settings = S(this).data(self.attr_name(true) + '-init') || self.settings;
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
-            if (S(this).parent('[data-reveal-id]')) {
-              e.stopPropagation();
-            }
             self.toggle($(this));
           }
         })
@@ -1669,7 +1663,7 @@
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
 
-          if(S(e.currentTarget).data(self.data_attr()) && settings.is_hover) {
+          if(S(e.target).data(self.data_attr()) && settings.is_hover) {
             self.closeall.call(self);
           }
 
@@ -1736,12 +1730,11 @@
           self.S(this).trigger('closed').trigger('closed.fndtn.dropdown', [dropdown]);
         }
       });
-      dropdown.removeClass("f-open-" + this.attr_name(true));
     },
 
     closeall: function() {
       var self = this;
-      $.each(self.S(".f-open-" + this.attr_name(true)), function() {
+      $.each(self.S('[' + this.attr_name() + '-content]'), function() {
         self.close.call(self, self.S(this));
       });
     },
@@ -1755,7 +1748,6 @@
         dropdown.attr('aria-hidden', 'false');
         target.attr('aria-expanded', 'true');
         dropdown.focus();
-        dropdown.addClass("f-open-" + this.attr_name(true));
     },
 
     data_attr: function () {
@@ -1839,44 +1831,6 @@
 
         p.top -= o.top;
         p.left -= o.left;
-        
-        //set some flags on the p object to pass along
-		p.missRight = false;
-		p.missTop = false;
-		p.missLeft = false;
-		p.leftRightFlag = false;
-		
-		//lets see if the panel will be off the screen
-		//get the actual width of the page and store it
-		var actualBodyWidth;
-		if (document.getElementsByClassName("row")[0]) {
-			actualBodyWidth = document.getElementsByClassName("row")[0].clientWidth;
-		} else {
-			actualBodyWidth = window.outerWidth;
-		}
-		var actualMarginWidth = (window.outerWidth - actualBodyWidth) / 2;
-		var actualBoundary = actualBodyWidth;
-		
-		if (!this.hasClass("mega")) {
-			//miss top
-			if (t.offset().top <= this.outerHeight()) {
-				p.missTop = true;
-				actualBoundary = window.outerWidth - actualMarginWidth;
-				p.leftRightFlag = true;
-			}
-			
-			//miss right
-			if (t.offset().left + this.outerWidth() > t.offset().left + actualMarginWidth && t.offset().left - actualMarginWidth > this.outerWidth()) {
-					p.missRight = true;
-					p.missLeft = false;
-			}
-			
-			//miss left
-			if (t.offset().left - this.outerWidth() <= 0) {
-					p.missLeft = true;
-					p.missRight = false;
-			}
-		}
 
         return p;
       },
@@ -1885,15 +1839,6 @@
             p = self.dirs._base.call(this, t);
 
         this.addClass('drop-top');
-        
-        if (p.missTop == true) {
-			p.top = p.top + t.outerHeight() + this.outerHeight();
-			this.removeClass('drop-top');
-		}
-		
-		if (p.missRight == true) {
-			p.left = p.left - this.outerWidth() + t.outerWidth();
-		}
 
         if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this,t,s,p);
@@ -1910,10 +1855,6 @@
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t);
 
-		if (p.missRight == true) {
-			p.left = p.left - this.outerWidth() + t.outerWidth();
-		}
-
         if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this,t,s,p);
         }
@@ -1928,12 +1869,6 @@
         var p = Foundation.libs.dropdown.dirs._base.call(this, t);
 
         this.addClass('drop-left');
-        
-        if (p.missLeft == true) {
-			p.left =  p.left + this.outerWidth();
-			p.top = p.top + t.outerHeight();
-			this.removeClass('drop-left');
-		}
 
         return {left: p.left - this.outerWidth(), top: p.top};
       },
@@ -1941,19 +1876,6 @@
         var p = Foundation.libs.dropdown.dirs._base.call(this, t);
 
         this.addClass('drop-right');
-        
-        if (p.missRight == true) {
-			p.left = p.left - this.outerWidth();
-			p.top = p.top + t.outerHeight();
-			this.removeClass('drop-right');
-		} else {
-			p.triggeredRight = true;
-		}
-		
-		var self = Foundation.libs.dropdown;
-		if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
-		  self.adjust_pip(this,t,s,p);
-		}
 
         return {left: p.left + t.outerWidth(), top: p.top};
       }
@@ -1973,27 +1895,10 @@
 
       this.rule_idx = sheet.cssRules.length;
 
-      //default
-	  var sel_before = '.f-dropdown.open:before',
-	  	  sel_after  = '.f-dropdown.open:after',
-	 	  css_before = 'left: ' + pip_offset_base + 'px;',
-	  	  css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
-	  	  
-	  if (position.missRight == true) {
-		  pip_offset_base = dropdown.outerWidth() - 23;
-		  sel_before = '.f-dropdown.open:before',
-	  	  sel_after  = '.f-dropdown.open:after',
-	 	  css_before = 'left: ' + pip_offset_base + 'px;',
-	  	  css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
-	  }
-	  
-	  //just a case where right is fired, but its not missing right
-	  if (position.triggeredRight == true) {
-		  sel_before = '.f-dropdown.open:before',
-	  	  sel_after  = '.f-dropdown.open:after',
-	 	  css_before = 'left:-12px;',
-	  	  css_after  = 'left:-14px;';
-	  }
+      var sel_before = '.f-dropdown.open:before',
+          sel_after  = '.f-dropdown.open:after',
+          css_before = 'left: ' + pip_offset_base + 'px;',
+          css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
 
       if (sheet.insertRule) {
         sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
@@ -2008,7 +1913,7 @@
     clear_idx : function () {
       var sheet = Foundation.stylesheet;
 
-      if (typeof this.rule_idx !== 'undefined') {
+      if (this.rule_idx) {
         sheet.deleteRule(this.rule_idx);
         sheet.deleteRule(this.rule_idx);
         delete this.rule_idx;
@@ -2037,7 +1942,7 @@
   Foundation.libs.equalizer = {
     name : 'equalizer',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       use_tallest: true,
@@ -2112,7 +2017,7 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     cache : {},
 
@@ -2459,7 +2364,7 @@
   Foundation.libs.joyride = {
     name : 'joyride',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     defaults : {
       expose                   : false,     // turn on or off the expose feature
@@ -3375,15 +3280,14 @@
   Foundation.libs['magellan-expedition'] = {
     name : 'magellan-expedition',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       active_class: 'active',
       threshold: 0, // pixels from the top of the expedition for it to become fixes
       destination_threshold: 20, // pixels from the top of destination for it to be considered active
       throttle_delay: 30, // calculation throttling to increase framerate
-      fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
-      offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
+      fixed_top: 0 // top distance in pixels assigend to the fixed element on scroll
     },
 
     init : function (scope, method, options) {
@@ -3416,9 +3320,7 @@
 
           // Account for expedition height if fixed position
           var scroll_top = target.offset().top - settings.destination_threshold + 1;
-          if (settings.offset_by_height) {
-            scroll_top = scroll_top - expedition.outerHeight();
-          }
+          scroll_top = scroll_top - expedition.outerHeight();
 
           $('html, body').stop().animate({
             'scrollTop': scroll_top
@@ -3526,11 +3428,7 @@
         var name = $(this).data(self.data_attr('magellan-arrival')),
             dest = $('[' + self.add_namespace('data-magellan-destination') + '=' + name + ']');
         if (dest.length > 0) {
-          var top_offset = dest.offset().top - settings.destination_threshold;
-          if (settings.offset_by_height) {
-            top_offset = top_offset - expedition.outerHeight();
-          }
-          top_offset = Math.floor(top_offset);
+          var top_offset = Math.floor(dest.offset().top - settings.destination_threshold - expedition.outerHeight());
           return {
             destination : dest,
             arrival : $(this),
@@ -3572,7 +3470,7 @@
   Foundation.libs.offcanvas = {
     name : 'offcanvas',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       open_method: 'move',
@@ -4123,7 +4021,7 @@
   Foundation.libs.orbit = {
     name: 'orbit',
 
-    version: '5.4.7',
+    version: '5.4.6',
 
     settings: {
       animation: 'slide',
@@ -4198,7 +4096,7 @@
   Foundation.libs.reveal = {
     name : 'reveal',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     locked : false,
 
@@ -4387,8 +4285,7 @@
           $.extend(ajax_settings, {
             success: function (data, textStatus, jqXHR) {
               if ( $.isFunction(old_success) ) {
-                var result = old_success(data, textStatus, jqXHR);
-                if (typeof result == 'string') data = result;
+                old_success(data, textStatus, jqXHR);
               }
 
               modal.html(data);
@@ -4644,17 +4541,15 @@
   Foundation.libs.slider = {
     name : 'slider',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings: {
       start: 0,
       end: 100,
       step: 1,
-      precision: null,
       initial: null,
       display_selector: '',
       vertical: false,
-      trigger_input_change: false,
       on_change: function(){}
     },
 
@@ -4739,7 +4634,7 @@
 
         pct = settings.vertical ? 1-pct : pct;
 
-        var norm = self.normalized_value(pct, settings.start, settings.end, settings.step, settings.precision);
+        var norm = self.normalized_value(pct, settings.start, settings.end, settings.step);
 
         self.set_ui($handle, norm);
       });
@@ -4751,9 +4646,7 @@
           bar_l = $.data($handle[0], 'bar_l'),
           norm_pct = this.normalized_percentage(value, settings.start, settings.end),
           handle_offset = norm_pct*(bar_l-handle_l)-1,
-          progress_bar_length = norm_pct*100,
-          $handle_parent = $handle.parent(),
-          $hidden_inputs = $handle.parent().children('input[type=hidden]');
+          progress_bar_length = norm_pct*100;
 
       if (Foundation.rtl && !settings.vertical) {
         handle_offset = -handle_offset;
@@ -4768,17 +4661,14 @@
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
 
-      $handle_parent.attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
+      $handle.parent().attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
 
-      $hidden_inputs.val(value);
-      if (settings.trigger_input_change) {
-          $hidden_inputs.trigger('change');
-      }
+      $handle.parent().children('input[type=hidden]').val(value);
 
       if (!$handle[0].hasAttribute('aria-valuemin')) {
         $handle.attr({
           'aria-valuemin': settings.start,
-          'aria-valuemax': settings.end
+          'aria-valuemax': settings.end,
         });
       }
       $handle.attr('aria-valuenow', value);
@@ -4799,13 +4689,13 @@
       return Math.min(1, (val - start)/(end - start));
     },
 
-    normalized_value : function(val, start, end, step, precision) {
+    normalized_value : function(val, start, end, step) {
       var range = end - start,
           point = val*range,
           mod = (point-(point%step)) / step,
           rem = point % step,
           round = ( rem >= step*0.5 ? step : 0);
-      return ((mod*step + round) + start).toFixed(precision);
+      return (mod*step + round) + start;
     },
 
     set_translate : function(ele, offset, vertical) {
@@ -4830,16 +4720,8 @@
       return Math.min(Math.max(val, min), max);
     },
 
-
-
     initialize_settings : function(handle) {
-      var settings = $.extend({}, this.settings, this.data_options($(handle).parent())),
-          decimal_places_match_result;
-
-      if (settings.precision === null) {
-        decimal_places_match_result = ('' + settings.step).match(/\.([\d]*)/);
-        settings.precision = decimal_places_match_result && decimal_places_match_result[1] ? decimal_places_match_result[1].length : 0;
-      }
+      var settings = $.extend({}, this.settings, this.data_options($(handle).parent()));
 
       if (settings.vertical) {
         $.data(handle, 'bar_o', $(handle).parent().offset().top);
@@ -4859,7 +4741,7 @@
 
     set_initial_position : function($ele) {
       var settings = $.data($ele.children('.range-slider-handle')[0], 'settings'),
-          initial = ((typeof settings.initial == 'number' && !isNaN(settings.initial)) ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step+settings.start),
+          initial = (!!settings.initial ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step+settings.start),
           $handle = $ele.children('.range-slider-handle');
       this.set_ui($handle, initial);
     },
@@ -4899,7 +4781,7 @@
   Foundation.libs.tab = {
     name : 'tab',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       active_class: 'active',
@@ -4977,7 +4859,7 @@
             // Check whether the location hash references a tab content div or
             // another element on the page (inside or outside the tab content div)
             var hash_element = S(hash);
-            if (hash_element.hasClass('content') && hash_element.parent().hasClass('tabs-content')) {
+            if (hash_element.hasClass('content') && hash_element.parent().hasClass('tab-content')) {
               // Tab content div
               self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=' + hash + ']').parent());
             } else {
@@ -5008,7 +4890,7 @@
           siblings = tab.siblings(),
           settings = tabs.data(this.attr_name(true) + '-init'),
           interpret_keyup_action = function(e) {
-            // Light modification of Heydon Pickering's Practical ARIA Examples: http://heydonworks.com/practical_aria_examples/js/a11y.js
+            // Light modification of Heydon Pickering's Practical ARIA Examples: http://heydonworks.com/practical_aria_examples/js/a11y.js 
 
             // define current, previous and next (possible) tabs
 
@@ -5117,7 +4999,7 @@
   Foundation.libs.tooltip = {
     name : 'tooltip',
 
-    version : '5.4.7',
+    version : '5.4.6',
 
     settings : {
       additional_inheritable_classes : [],
@@ -5418,7 +5300,7 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version: '5.4.7',
+    version: '5.4.6',
 
     settings : {
       index : 0,
