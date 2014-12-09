@@ -40,12 +40,11 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		  * Blog loop
 		  */
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-		$query_args = array(
+        $query_args = array(
 			'post_type'	=> 'post',
 			'post_status' => 'publish',
-			'posts_per_page' => 20,
-			'orderby' => 'date',
-			'order' => 'DESC',
+			'posts_per_page' => 10,
+            'ignore_sticky_posts' => 1,
 			'paged' => $paged
 		);
 		// Category filter
