@@ -271,7 +271,3 @@ function coenv_base_date_filter($post_type,$coenv_month,$coenv_year) {
 	wp_reset_postdata();
 	wp_reset_query();
 }
-/*
- * Use site stylesheet for WYSIWYG
- */
-add_editor_style( 'css/app.css' );
