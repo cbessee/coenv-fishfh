@@ -49,10 +49,10 @@ echo '<div class="feature">';
 echo '</div>';
 	echo '<div class="feature-info-container">';
 		echo '<p class="feature-image-caption right">' . $feature_caption . '</p>';
-		echo '<div class="feature-info" style="background-color:' . $feature_color . '">';
-			echo '<div class="feature-content">';
+		echo '<div class="feature-info" style="background-color: rgb(51, 51, 51);">';
+			echo '<div class="feature-content" style="text-align: center;">';
 				echo '<h2>' . get_the_title() . '</h2>';
-				echo '<p>' . $feature_excerpt . '</p>';
+				echo '<h2>' . $feature_excerpt . '</h2>';
 				if($rows)
 					{
 						foreach($rows as $row) {
@@ -80,30 +80,30 @@ echo '</div><!-- .feature -->';
 endwhile;
 wp_reset_postdata();
 echo '</div>';
+?>
 
-# News with featured news
 
+<?php 
+# Widget area for content blocks
+if ( is_active_sidebar( 'home-columns' ) ) : 
+?>
+
+<?php dynamic_sidebar( 'home-columns' ); ?>
+
+
+<?php endif; ?>
+
+
+
+
+<?php
 # News with featured news
 		
-$sticky = get_option( 'sticky_posts' );
-$sticky_count = count($sticky);
-$posts_on_home = 3; //set posts_per_page here
-
-if( $sticky ) {
-    $home_args = array(
-        'post_type' => 'post',
-        'posts_per_page' => $posts_on_home - $sticky_count,
-        'post_status' => 'publish',
-    );
-}
-else {
-    $home_args = array(
-        'post_type' => 'post',
-        'posts_per_page' => $posts_on_home,
-        'post_status' => 'publish',
-    );
-}
-
+$home_args = array(
+	'post_type'	=> 'post',
+	'post_status' => 'publish',
+	'posts_per_page' => 3,
+);
 $wp_query = new WP_Query( $home_args );
 ?>
 	<?php if ($wp_query->have_posts()): ?>
