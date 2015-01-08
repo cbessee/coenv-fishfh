@@ -80,9 +80,17 @@ echo '</div><!-- .feature -->';
 endwhile;
 wp_reset_postdata();
 echo '</div>';
+?>
+<?php 
+# Widget area for content blocks
+if ( is_active_sidebar( 'home-columns' ) ) : 
+?>
 
-# News with featured news
+<?php dynamic_sidebar( 'home-columns' ); ?>
 
+
+<?php endif; ?>
+<?php
 # News with featured news
 		
 $sticky = get_option( 'sticky_posts' );
