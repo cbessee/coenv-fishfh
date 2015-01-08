@@ -33,7 +33,7 @@
 			<div class="medium-6 columns right">
 				<nav class="footer-nav">
 					<header class="site-footer__header">
-						<h2 id="logo"><a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment">UW College of the Environment</a></h2>
+						<h2 id="logo"><a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php bloginfo('template_directory'); ?>/assets/img/uw-footer.svg" width="350" ></a></h2>
 					</header>
 						<ul class="menu-footer-units">
 							<li><a target="_blank" href="http://fish.washington.edu/">Aquatic and Fishery Sciences</a></li>
@@ -56,24 +56,25 @@
         </div>
 			
         <div class="footer-footer">
-            <div class="row">
-                <div class="medium-12 columns">
-                    <div class="uw-footer">
-                        <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a> | 
-                            <?php if (is_user_logged_in()) { ?>
-                                <a href="<?php echo wp_logout_url( home_url() ); ?>" title="Logout">Log out</a>	
-                            <?php } else { ?>
-                                <a href="<?php echo wp_login_url(); ?>" title="Staff Login">Staff login</a>
-                            <?php } ?>
-                        </p>
-                        <ul id="menu-footer-links" class="menu-footer-links">
-                            <li><a target="_blank" href="http://www.washington.edu/admin/hr/jobs/">Jobs</a></li>
-                            <li><a target="_blank" href="http://myuw.washington.edu/">My UW</a></li>
-                            <li><a target="_blank" href="http://www.washington.edu/admin/rules/wac/rulesindex.html">Rules Docket</a></li>
-                            <li><a target="_blank" href="http://www.washington.edu/online/privacy/">Privacy</a></li>
-                            <li><a target="_blank" href="http://www.washington.edu/online/terms/">Terms</a></li>
-                        </ul>
-                    </div>
+            <div class="row uw-footer">
+                <div class="medium-6 columns">
+                    <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a> | 
+                        <?php if (is_user_logged_in()) { ?>
+                            <a href="<?php echo wp_logout_url( home_url() ); ?>" title="Logout">Log out</a>	
+                        <?php } else { ?>
+                            <a href="<?php echo wp_login_url(); ?>" title="Staff Login">Staff login</a>
+                        <?php } ?>
+                    </p>
+                </div>
+                <div class="medium-6 columns">
+                    <ul id="menu-footer-links" class="menu-footer-links">
+                        <li><a target="_blank" href="http://www.washington.edu/admin/hr/jobs/">Jobs</a></li>
+                        <li><a target="_blank" href="http://myuw.washington.edu/">My UW</a></li>
+                        <li><a target="_blank" href="http://www.washington.edu/admin/rules/wac/rulesindex.html">Rules Docket</a></li>
+                        <li><a target="_blank" href="http://www.washington.edu/online/privacy/">Privacy</a></li>
+                        <li><a target="_blank" href="http://www.washington.edu/online/terms/">Terms</a></li>
+                    </ul>
+                </div>
                 </div>
             </div>
         </div>
