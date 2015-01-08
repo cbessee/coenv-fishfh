@@ -31,7 +31,6 @@
 }
 
 .intro {
-    color: $accent-teal;
     font-size: rem-calc(24)!important;
     margin: rem-calc(20) 0;
     font-family: "Encode Sans Normal";
@@ -109,3 +108,18 @@ h4 {
 /*	Base font size
 		======================================================================== */
 $base-font-size: 16;
+
+/*	Old Fonts
+		======================================================================== */
+
+@mixin sans() {
+  font: {
+    family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+@mixin serif() {
+  font: {
+    family: Georgia, serif;
+  }
+}
