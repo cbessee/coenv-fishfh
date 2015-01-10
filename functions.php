@@ -161,6 +161,7 @@ if( $nav_query->have_posts() ):
 endif;
 
 return $nav_exclude;
+wp_reset_query();
 }
 
 
