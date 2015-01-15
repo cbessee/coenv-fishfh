@@ -90,6 +90,22 @@ if ( is_active_sidebar( 'home-columns' ) ) :
 
 
 <?php endif; ?>
+
+				
+<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
+<div class="large-12 columns programs">
+	<div class="widget-area home-content" role="complementary">
+		<?php dynamic_sidebar( 'home-content' ); ?>
+	</div><!-- .widget-area -->
+</div>
+<?php endif; ?>
+
+<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+	<?php do_action('foundationPress_after_content'); ?>
+	<ul class="widget-area after-content">
+	<?php dynamic_sidebar("after-content"); ?>
+	</ul>
+<?php endif; ?>
 <?php
 # News with featured news
 		
@@ -225,21 +241,6 @@ $wp_query = new WP_Query( $home_args );
 	echo '</div>';
 	endwhile;
 	?>
-<?php endif; ?>
-				
-<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
-<div class="large-12 columns programs">
-	<div class="widget-area home-content" role="complementary">
-		<?php dynamic_sidebar( 'home-content' ); ?>
-	</div><!-- .widget-area -->
-</div>
-<?php endif; ?>
-
-<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
-	<?php do_action('foundationPress_after_content'); ?>
-	<ul class="widget-area after-content">
-	<?php dynamic_sidebar("after-content"); ?>
-	</ul>
 <?php endif; ?>
 <a href="#" class="back-to-top">Back to Top</a>
 <?php do_action('foundationPress_after_content'); ?>
