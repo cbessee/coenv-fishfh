@@ -129,7 +129,7 @@
   </nav><!-- #top-nav -->
   
   <div class="row title-row">
-    <div>
+    <div class="columns large-12">
     <ul class="title-area hide-for-small">
       <li class="name">
         <h1>

@@ -47,8 +47,11 @@
 // desktop header
 
 .title-row {
-    border-bottom: #d7dee5 1px solid;
     background: $white;
+}
+
+.top-bar-container {
+    border-top: #d7dee5 1px solid;
 }
 
 .title-area {
@@ -85,7 +88,7 @@
             font-size: rem-calc(23)!important;
         }
         float: left;
-        margin: rem-calc(20) 0;
+        margin: rem-calc(18) 0;
         a {
             color: $text;
         }
@@ -106,7 +109,7 @@
 .units {
     float: right;
     list-style: none;
-    margin: rem-calc(30) rem-calc(18);
+    margin: rem-calc(30) 0 0 rem-calc(18);
     
     .slash {
         margin: 0 rem-calc(12);
