@@ -8,7 +8,24 @@
     margin: 0;
     list-style: none;
 }
-
+    #top-nav #menu-buttons li a {
+background: #b82828;
+color: #fff;
+}
+#top-nav #menu-buttons li.give a i {
+position: relative;
+top: .1em;
+margin-right: 2.8px;
+margin-right: .2rem;
+}
+#heart{
+    fill: #ffffff!important;
+    height: 10px;
+    width: 10px;
+    .path1 {
+        fill: #fff;
+    }
+}
 .tab-bar {
     margin-bottom: 0;
     text-align: center;
@@ -28,7 +45,10 @@
         }
     }
 }
-
+#heart {
+    width: 10px;
+    height: 10px;
+}
 .name {
     h1 {
         @include encode;
@@ -72,35 +92,18 @@
 	}
 }
 
-.section-title {
-	padding: 0 1rem;
-	margin: rem-calc(10) 0;
-	@include font-size(24);
-    h1 {
-        margin: 0;
-        line-height: 1.2;
-    }
-    
-    h2 {
-        margin: 0;
-        line-height: 1.2;
-    }
-}
-
 .top-bar-container {
     margin-bottom: 0!important;
+
+
 }
 
 //header strip
 
 .page-row {
     max-width: none;
-    background-size: cover;
-    background-position: 50%;
-    color: $white;
     
     a {
-        color: $white;
         
         i {
             font-size: rem-calc(30);
@@ -110,23 +113,12 @@
     }
     
     &.mini {
-        background-color: $accent;
+        //background-color: $accent;
         .teal-wedge {
-            background-image: url(../assets/img/purple-wedge.svg);
-            background-repeat: no-repeat;
-            background-position: rem-calc(-510);
-            background-size: cover;
-            min-height: rem-calc(130);
-            .section-title {
-                a {
-                    bottom: rem-calc(-110);
-                }
-            }
 
             .sharing {
                 margin-top: rem-calc(10);
                 @media #{$medium-up} {
-                    margin-top: rem-calc(65);
                 }
             }
         }
@@ -139,12 +131,26 @@
         background-size: cover;
         min-height: rem-calc(200);
     }
+    .section-row {
+        margin-top: 0;
+        margin-bottom: rem-calc(20);
+    }
     
     .section-title {
+        padding: 0;
+        margin: rem-calc(10) 0;
+        @include font-size(24);
+        h1 {
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            margin: 0;
+            line-height: 1.2;
+        }
             
         a {
-            position: absolute;
-            bottom: rem-calc(-180);
             font-size: rem-calc(28);
             margin-left: rem-calc(15);
             @include encode_cb;
@@ -171,11 +177,7 @@
     .sharing {
         text-transform: uppercase;
         @include encode_cb;
-        margin-right: rem-calc(20);
-        
-        @media #{$medium-up} {
-            margin-top: rem-calc(135);
-        }
+        margin: rem-calc(10) 0;
         
         .share-text {
             margin-right: rem-calc(5);
@@ -183,7 +185,7 @@
         
         a svg {
             width: rem-calc(30);
-            fill: $white;
+            fill: #000;
             margin-bottom: rem-calc(-9);
             &:hover {
                 fill: $accent;

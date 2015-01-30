@@ -44,6 +44,13 @@
     ?>
   </head>
   <body <?php body_class(); ?>>
+    <svg display="none" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <symbol id="icon-heart" width="5" height="5" viewBox="0 0 5 5">
+          <path class="path1" d="M755.188 64c-107.63 0-200.258 87.554-243.164 179-42.938-91.444-135.578-179-243.216-179-148.382 0-268.808 120.44-268.808 268.832 0 301.846 304.5 380.994 512.022 679.418 196.154-296.576 511.978-387.206 511.978-679.418 0-148.392-120.43-268.832-268.812-268.832z"></path>
+        </symbol>
+      </defs>
+    </svg>
   
   <div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
   <?php do_action('foundationPress_after_body'); ?>
@@ -56,11 +63,6 @@
   <nav class="tab-bar show-for-small-only">
     <section class="right-small">
       <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
-    </section>
-    <section class="middle tab-bar-section">
-      
-      <h1 class="title"><?php bloginfo( 'name' ); ?></h1>
-
     </section>
   </nav>
 
@@ -113,6 +115,7 @@
           'container' => false,
           'fallback_cb' => false
         )); ?>
+        <svg style="fill:black;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewbox="0 0 10 10"><path class="path1" d="M755.188 64c-107.63 0-200.258 87.554-243.164 179-42.938-91.444-135.578-179-243.216-179-148.382 0-268.808 120.44-268.808 268.832 0 301.846 304.5 380.994 512.022 679.418 196.154-296.576 511.978-387.206 511.978-679.418 0-148.392-120.43-268.832-268.812-268.832z"></path></svg>
 
       </div><!-- .top-menu -->
     </div><!-- .row -->
@@ -120,11 +123,12 @@
   
   <div class="row title-row">
     <div>
-    <ul class="title-area show-for-medium-up">
+    <ul class="title-area">
       <li class="name">
         <h1>
           <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
-            <svg version="1.1" id="logo">
+            <!--[if gte IE 9]><!-->
+            <svg id="logo" width="108" height="73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 108 73" enable-background="new 0 0 108 73" xml:space="preserve">
               <path d="M79.343,0.112c0,0.858,0,12.238,0,13.098c0.856,0,9.206,0,9.206,0L78.271,51.461
                 c0,0-12.577-50.636-12.756-51.349c-0.687,0-12.626,0-13.303,0c-0.188,0.696-13.796,51.352-13.796,51.352L28.95,13.21
                 c0,0,8.726,0,9.585,0c0-0.859,0-12.239,0-13.098c-0.919,0-37.532,0-38.451,0c0,0.858,0,12.238,0,13.098c0.851,0,8.52,0,8.52,0
@@ -132,7 +136,10 @@
                 c0.707,0,19.941,0,20.639,0C84.164,72.03,99.635,13.21,99.635,13.21s7.6,0,8.449,0c0-0.859,0-12.239,0-13.098
                 C107.176,0.112,80.251,0.112,79.343,0.112z"/>
             </svg>
-            <!--<img src="<?php //echo get_bloginfo('template_directory'); ?>/assets/img/W.png" id="logo">-->
+            <!--<![endif]-->
+            <!--[if lte IE 8]>
+            <img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/W.png" id="logo">
+            <!--<![endif]-->
             <span><?php bloginfo('name') ?></span> 
           </a>
           </h1>
@@ -178,14 +185,13 @@
         $banner_class .= ' template-print';
 ?>
     <?php if (($banner) && (!is_single())) {
-            echo '<div class="page-row"';
-            echo 'style="background-image: url(' . $banner['url'] . '); min-height: 200px;">';
-            echo '<div class="teal-wedge">';
+            echo '<div class="page-row">';
+            echo '<div>';
         }
      ?>
      <?php if ( (empty($banner)) || (is_single()) ) {
             echo '<div class="page-row mini">';
-            echo '<div class="teal-wedge">';
+            echo '<div>';
      }
      ?>
     <div class="section-row row">
@@ -208,5 +214,4 @@
     </div>
 </div>
 <?php endif; ?>
-  <?php do_action('foundationPress_after_header'); ?>
-  
+<?php do_action('foundationPress_after_header'); ?>

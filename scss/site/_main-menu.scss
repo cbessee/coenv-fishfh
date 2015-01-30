@@ -1,7 +1,7 @@
 .top-bar {
     background-color: $white;
     text-align: center;
-    border-bottom: $bg-light 1px solid;
+    border-bottom: #d7dee5 1px solid;
     min-height: rem-calc(60);
     padding-top: rem-calc(8);
     
@@ -94,14 +94,18 @@
                 @media #{$medium-only} {
                     padding-right: rem-calc(15)!important;
                 }
-                &:after {
-                    content: none;
+                .has-dropdown > a {
                 }
+                &:after {
+                        content: none;
+                    }
+
+
+
+                
             }
 
-            & > .has-dropdown > a {
-                padding-bottom: rem-calc(7);
-            }
+            
         }
     }
 }

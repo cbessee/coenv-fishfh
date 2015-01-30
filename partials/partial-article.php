@@ -7,10 +7,6 @@
 
 	<header class="article__header">
         <div class="article__meta">
-			<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
-            </div>
             <?php if ( !is_page() ) : ?>
 			<div class="post-info">
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
@@ -23,13 +19,13 @@
  			<?php endif ?> 
         </div>
 		<?php endif ?>
-		<?php //if ( coenv_base_post_parent(get_the_id())): ?>
+		<?php if ( coenv_base_post_parent(get_the_id())): ?>
 		<?php if ( is_page() || is_single()) : ?>
 			<h1 class="article__title"><?php the_title() ?></h1>
 		<?php else : ?>
 			<h1 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h1>
 		<?php endif ?>
-		<?php //endif ?>
+		<?php endif ?>
 
 	</header>
 
