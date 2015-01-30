@@ -223,26 +223,6 @@ function coenv_base_section_title($id) {
     elseif (!is_front_page()):
         $section_title = '<div class="columns large-8 section-title"><h2><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h2></div>';
     endif;
-    
-    if ( is_singular( 'faculty' )) { //change faculty pages' section titles
-        unset ($section_title);
-        $section_title = '<div class="columns large-8 section-title"><h2><a href="faculty-and-research/faculty"><span>&larr; View All</span>Faculty</a></h2></div>';
-    }
-    
-    if ( is_page_template('templates/faculty.php')) { //change faculty index' section titles
-        unset ($section_title);
-        $section_title = '<div class="columns large-8 section-title"><h1><a href="faculty-and-research/faculty">Faculty</a></h1></div>';
-    }
-    
-    if ( is_singular( 'post' )) { //change news pages' section titles
-        unset ($section_title);
-        $section_title = '<div class="columns large-8 section-title"><h2><a href="about/news"><span>&larr; View All</span>News</a></h2></div>';
-    }
-    
-    if ( is_page_template('templates/news.php')) { //change news index' section titles
-        unset ($section_title);
-        $section_title = '<div class="columns large-8 section-title"><h1><a href="about/news">News</a></h1></div>';
-    }
         
         echo $section_title;
     }

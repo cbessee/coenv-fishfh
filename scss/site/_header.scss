@@ -121,17 +121,18 @@
 }
 
 .section-title {
-	padding: 0 1rem;
-	margin: 0;
-	@include font-size(24);
+    padding: 0 1rem;
+    margin: 0;     
+    a {
+        font-size: rem-calc(28);
+        @include encode_cb;
 
-	h1 {
-		@include rem('line-height', 3); // 48
-		@include font-size(32);
-		margin: 0;
-		padding: 0;
-	}
-}
+        @media #{$medium-up} {
+            font-size: rem-calc(36);
+            max-width: 28%;
+        }
+    }
+    }
 .title-area {
 	list-style: none;
 	margin-left: 0;
