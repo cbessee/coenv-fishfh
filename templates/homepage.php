@@ -247,4 +247,5 @@ $wp_query = new WP_Query( $home_args );
 </div>
 <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
 </div>
+</div>
 <?php get_footer(); ?>
