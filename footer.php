@@ -3,7 +3,10 @@
 		<?php do_action('foundationPress_before_footer'); ?>
 		<div class="footer-row">
         <div class="row">
-			<div class="medium-6 columns">				
+			<div class="medium-6 columns">
+                <div class="smea-logo left">
+                    <?php get_template_part('assets/img/icons/inline', 'smea-logo.svg'); ?>
+                </div>
 				<header class="site-footer__header">
 					<h2><?php bloginfo('name') ?></h2>
 				</header>
@@ -20,7 +23,7 @@
 							<i class="fi-social-facebook"></i>
 						</a><?php } ?>
 					<?php if (get_option('twitter')) { ?>
-						<a class="twitter button" href="<?php echo get_option('twitter'); ?>" data-site-twitter="<?php echo get_option('twitter'); ?>" title="Join us on Twitter">
+						<a class="twitter button" href="<?php echo 'http://twitter.com/' . get_option('twitter'); ?>" data-site-twitter="<?php echo get_option('twitter'); ?>" title="Join us on Twitter">
 								<i class="fi-social-twitter"></i>
 						</a><?php } ?>
 					<?php if (get_option('youtube')) { ?>
