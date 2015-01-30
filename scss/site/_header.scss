@@ -1,4 +1,5 @@
 // mobile header
+
 .tab-bar {
     margin-bottom: 0;
     text-align: center;
@@ -46,7 +47,6 @@
 // desktop header
 
 .title-row {
-    max-width: none;
     border-bottom: #d7dee5 1px solid;
     background: $white;
 }
@@ -55,24 +55,7 @@
     margin: 0;
     list-style: none;
 }
-    #top-nav #menu-buttons li a {
-background: #b82828;
-color: #fff;
-}
-#top-nav #menu-buttons li.give a i {
-position: relative;
-top: .1em;
-margin-right: 2.8px;
-margin-right: .2rem;
-}
-#heart{
-    fill: #ffffff!important;
-    height: 10px;
-    width: 10px;
-    .path1 {
-        fill: #fff;
-    }
-}
+
 .tab-bar {
     margin-bottom: 0;
     text-align: center;
@@ -92,10 +75,7 @@ margin-right: .2rem;
         }
     }
 }
-#heart {
-    width: 10px;
-    height: 10px;
-}
+
 .name {
     h1 {
         @include encode;
@@ -112,10 +92,14 @@ margin-right: .2rem;
     }
     #logo {
         fill: $accent;
-        width: rem-calc(108px);
-        height: rem-calc(73px);
+        width: rem-calc(108);
+        height: rem-calc(73);
         margin-right: rem-calc(10);
         vertical-align: middle;
+        
+        span {
+            @extend .visuallyhidden;
+        }
     }
 }
 
@@ -133,11 +117,6 @@ margin-right: .2rem;
     }
 }
 
-#logo {
-	span {
-		@extend .visuallyhidden;
-	}
-}
 .section-title {
 	padding: 0 1rem;
 	margin: 0;

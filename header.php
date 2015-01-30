@@ -64,6 +64,11 @@
                 C107.176,0.112,80.251,0.112,79.343,0.112z"></path>
 </svg></a>
     </section>
+    <section class="middle tab-bar-section">
+        <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
+            <h1 class="title"><?php bloginfo( 'name' ); ?></h1>
+        </a>
+    </section>
     <section class="right-small">
       <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
     </section>
@@ -125,7 +130,7 @@
   
   <div class="row title-row">
     <div>
-    <ul class="title-area">
+    <ul class="title-area hide-for-small">
       <li class="name">
         <h1>
           <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
@@ -197,20 +202,6 @@
      ?>
     <div class="section-row row">
         <?php echo coenv_base_section_title($post->ID); ?>
-        <?php 
-        $title = rawurlencode(get_the_title());
-        $shortlink = rawurlencode(wp_get_shortlink());
-        $site_name = rawurlencode(get_bloginfo('name'));
-        $twitter = get_option('twitter');
-        ?>
-        <div class="sharing right"><span class="share-text">Share</span> 
-            <a href=<?php echo 'http://twitter.com/home?status=' . $title . '%20' . $shortlink . '%20from%20' . $twitter . ' target="_blank">' ?>
-            <?php get_template_part('assets/img/icons/inline', 'twitter-circle.svg'); ?></a>
-            <a href=<?php echo 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' . $shortlink . '&p[images][0]=&p[title]=' . $title . '%20from%20' . $site_name .'" target="_blank">'; ?>
-            <?php get_template_part('assets/img/icons/inline', 'facebook-circle.svg'); ?></a>
-            <a href=<?php echo 'mailto:?subject=' . $title . '&body=Check%20out%20this%20article%20from%20the%20' . $site_name .':%20' . $shortlink . '>'; ?>
-            <?php get_template_part('assets/img/icons/inline', 'email-circle.svg'); ?></a>
-        </div>
     </div>
     </div>
 </div>
