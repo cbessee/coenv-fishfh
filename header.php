@@ -53,7 +53,7 @@
     </section>
     <section class="middle tab-bar-section">
       
-      <h1 class="title"><?php bloginfo( 'name' ); ?></h1>
+        <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>"><h1 class="title"><?php bloginfo( 'name' ); ?></h1></a>
 
     </section>
   </nav>

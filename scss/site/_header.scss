@@ -24,6 +24,22 @@
 }
 .breadcrumbs>* {
 	line-height: rem-calc(16);
+}
 
-
+// mobile header
+.tab-bar {
+    background: $white;
+    border-bottom: 1px solid $border;
+    
+    h1 {
+        color: $text!important;
+    }
+    
+    .right-small {
+        border-left: none;
+    }
+    
+    .menu-icon span::after {
+        box-shadow: 0 0px 0 1px #000,0 7px 0 1px #000,0 14px 0 1px #000;
+    }
 }
