@@ -70,7 +70,7 @@ class top_bar_mobile_walker extends Walker_Page {
         $title = get_the_title($item->ID);
         $link = get_the_permalink($item->ID);
         if ( $depth === 0 ) {
-            $output .= '<ul class="off-canvas-list item-' . $id . '"><a class="primary-link columns small-9" href=' . $link . '><span class="accordion">' . $title . '</span></a><span class="accordion" data-accordion><span class="accordion-navigation"><a class="right columns small-3 expander-link" href="#accordion-' . $id . '"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+            $output .= '<ul class="off-canvas-list item-' . $id . '"><a class="primary-link columns small-9" href=' . $link . '><div class="accordion">' . $title . '</div></a><div class="accordion" data-accordion><div class="accordion-navigation"><a class="right columns small-3 expander-link" href="#accordion-' . $id . '"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 <polygon id="arrow-25-icon" points="142.332,104.886 197.48,50 402.5,256 197.48,462 142.332,407.113 292.727,256 "/>
 </svg>
 </svg></a><div class="content" id=accordion-' . $id . '>';
@@ -87,12 +87,12 @@ class top_bar_mobile_walker extends Walker_Page {
     function end_el( &$output, $object, $depth = 0, $args = array(), $id = 0 ) {
         $output .= '';
         if ( $depth === 0 ) {
-            $output .= '</span></span></ul>';
+            $output .= '</div></div></ul>';
         }
     }
     
     function end_lvl( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-        $output .= '</span>';
+        $output .= '</div>';
     }
 }
 
