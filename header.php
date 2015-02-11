@@ -77,16 +77,19 @@
   <aside class="right-off-canvas-menu">
     <nav class="mobile-menu">
             <?php
+            echo '<ul class="off-canvas-list"><li>';
+            get_search_form();
+            echo '</li></ul>';
             
             add_filter( 'page_css_class', 'add_parent_class', 10, 4 );
-            //$exclude = implode(',',coenv_base_menu_exclude());
+            $exclude = implode(',',coenv_base_menu_exclude());
             wp_list_pages( array(
                 'depth' => 0,
                 'walker' => new top_bar_mobile_walker(),
                 'title_li' => false,
                 'sort_column' => 'menu_order, post_title',
                 'post_type'    => 'page',
-               // 'exclude' => '$exclude',
+                'exclude' => '$exclude',
             ) );
             remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
             ?>
@@ -203,7 +206,7 @@
     <div class="section-row row">
         <?php echo coenv_base_section_title($post->ID); ?>
     </div>
-    </div>
+
 </div>
 <?php endif; ?>
 <?php do_action('foundationPress_after_header'); ?>
