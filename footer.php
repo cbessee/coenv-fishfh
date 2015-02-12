@@ -34,9 +34,9 @@
         </div>
         <div class="medium-6 columns right">
             <nav class="footer-nav">
-                <header class="site-footer__header">
+                <div class="site-footer__header">
                     <h2 id="logo"><a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php bloginfo('template_directory'); ?>/assets/img/uw-footer.svg" width="350" ></a></h2>
-                </header>
+                </div>
                     <ul class="menu-footer-units">
                         <li><a target="_blank" href="http://fish.washington.edu/">Aquatic and Fishery Sciences</a></li>
                         <li><a target="_blank" href="http://www.atmos.washington.edu/">Atmospheric Sciences</a></li>
