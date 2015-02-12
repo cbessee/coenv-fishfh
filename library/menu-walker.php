@@ -71,7 +71,7 @@ class top_bar_mobile_walker extends Walker_Page {
         $link = get_the_permalink($item->ID);
         if ( $depth === 0 ) {
             $output .= '
-            <ul class="off-canvas-list item-' . $id . '">
+            <li><ul class="off-canvas-list item-' . $id . '">
                 <a class="primary-link columns small-9" href=' . $link . '>
                     <div class="parent">' . $title . '</div>
                 </a>
@@ -96,7 +96,7 @@ class top_bar_mobile_walker extends Walker_Page {
     function end_el( &$output, $object, $depth = 0, $args = array(), $id = 0 ) {
         $output .= '';
         if ( $depth === 0 ) {
-            $output .= '</div></ul>';
+            $output .= '</div><li></ul>';
         }
     }
     
