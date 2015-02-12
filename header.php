@@ -154,9 +154,9 @@
           </a>
           </h1>
             <div class="units show-for-large-up">
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/slash.png" class="slash left">
-                <a href="http://coenv.uw.edu" name="UW College of the Environment"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/College-of-the-Environment.png" class="right"></a><br />
-                <a href="http://uw.edu" name="University of Washington"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/UW-Tagline.png" class="right uw-name"></a>
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/slash.png" class="slash left" alt="slash">
+                <a href="http://coenv.uw.edu" title="UW College of the Environment"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/College-of-the-Environment.png" class="right" alt="UW College of the Environment"></a><br />
+                <a href="http://uw.edu" title="University of Washington"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/UW-Tagline.png" class="right uw-name" alt="University of Washington"></a>
           </div> 
         </li>          
       </ul>
@@ -187,7 +187,7 @@
         </div>
 
 <?php if (!is_front_page()) : ?>
-<section class="container" role="document">
+<div class="container" role="document">
 <?php 
         $banner = coenv_banner();
         $banner_class = $banner ? 'has-banner' : '';
