@@ -96,7 +96,7 @@ class top_bar_mobile_walker extends Walker_Page {
     function end_el( &$output, $object, $depth = 0, $args = array(), $id = 0 ) {
         $output .= '';
         if ( $depth === 0 ) {
-            $output .= '</div></div></ul>';
+            $output .= '</div></div></div></ul>';
         }
     }
     
