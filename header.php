@@ -165,7 +165,7 @@
   
         <div class="top-bar-container show-for-medium-up">
             <nav class="top-bar" data-topbar="">
-                <section class="top-bar-section">
+                <div class="top-bar-section">
                     <ul id="menu-main-menu" class="top-bar-menu">
                     <?php
                       $exclude = implode(',',coenv_base_menu_exclude());
@@ -182,7 +182,7 @@
                       wp_reset_query();
                       ?>
                     </ul>
-                </section>
+                </div>
             </nav>
         </div>
 
