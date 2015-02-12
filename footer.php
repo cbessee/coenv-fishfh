@@ -77,10 +77,8 @@
                     <li><a target="_blank" href="http://www.washington.edu/online/terms/">Terms</a></li>
                 </ul>
             </div>
-            </div>
         </div>
     </div>
-</div>
 
 <?php dynamic_sidebar("footer-widgets"); ?>
 <?php do_action('foundationPress_after_footer'); ?>
