@@ -18,10 +18,11 @@ Template Name: Homepage
 			'post_type'	=> 'features',
 			'post_status' => 'publish',
 			'posts_per_page' => 4,
+			'orderby' => 'menu_order',
 			);
 		$feature_query = new WP_Query( $feature_args ); ?>
 		<?php //if ($feature_query->have_posts()) { ?>
-		<div class="playpause right"></div>
+		<div class="playpause"></div>
 			<div class="homepage-features">
 			<?php
 			# The Loop
@@ -46,13 +47,13 @@ Template Name: Homepage
 			
 echo '<div class="feature">';
 	echo '<div class="feature-image" style="background-image:url(' . $feature_image[0] . ')">';
-echo '</div>';
-	echo '<div class="feature-info-container">';
+
+		echo '<div class="feature-info-container">';
 		echo '<p class="feature-image-caption right">' . $feature_caption . '</p>';
 		echo '<div class="feature-info" style="background-color:' . $feature_color . '">';
 			echo '<div class="feature-content">';
 				echo '<h2>' . get_the_title() . '</h2>';
-				echo '<p>' . $feature_excerpt . '</p>';
+				echo '<p class="feature-excerpt">' . $feature_excerpt . '</p>';
 				if($rows)
 					{
 						foreach($rows as $row) {
@@ -75,6 +76,8 @@ echo '</div>';
 		echo '</div><!-- .feature-info -->';
 
 	echo '</div><!-- .feature-info-container -->';
+	echo '</div>';
+
 
 echo '</div><!-- .feature -->';
 endwhile;
