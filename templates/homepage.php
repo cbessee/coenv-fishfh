@@ -18,10 +18,11 @@ Template Name: Homepage
 			'post_type'	=> 'features',
 			'post_status' => 'publish',
 			'posts_per_page' => 4,
+			'orderby' => 'menu_order',
 			);
 		$feature_query = new WP_Query( $feature_args ); ?>
 		<?php //if ($feature_query->have_posts()) { ?>
-		<div class="playpause right"></div>
+		<div class="playpause"></div>
 			<div class="homepage-features">
 			<?php
 			# The Loop
@@ -46,13 +47,13 @@ Template Name: Homepage
 			
 echo '<div class="feature">';
 	echo '<div class="feature-image" style="background-image:url(' . $feature_image[0] . ')">';
-echo '</div>';
-	echo '<div class="feature-info-container">';
+
+		echo '<div class="feature-info-container">';
 		echo '<p class="feature-image-caption right">' . $feature_caption . '</p>';
 		echo '<div class="feature-info" style="background-color:' . $feature_color . '">';
 			echo '<div class="feature-content">';
 				echo '<h2>' . get_the_title() . '</h2>';
-				echo '<p>' . $feature_excerpt . '</p>';
+				echo '<p class="feature-excerpt">' . $feature_excerpt . '</p>';
 				if($rows)
 					{
 						foreach($rows as $row) {
@@ -75,6 +76,8 @@ echo '</div>';
 		echo '</div><!-- .feature-info -->';
 
 	echo '</div><!-- .feature-info-container -->';
+	echo '</div>';
+
 
 echo '</div><!-- .feature -->';
 endwhile;
@@ -166,7 +169,7 @@ $wp_query = new WP_Query( $home_args );
 					
 					foreach ($terms as &$term) {
 						if ($term->slug != 'uncategorized') {
-							$terms_arr[] = '<a href="/news-and-events/?tax=category&term=' . $term->slug . '">' . $term->name . '</a>';
+							$terms_arr[] = '<a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a>';
 						}
 					}
 					$terms_str = ' / ' . implode(', ', $terms_arr);
@@ -192,7 +195,7 @@ $wp_query = new WP_Query( $home_args );
 					
 					foreach ($terms as &$term) {
 						if ($term->slug != 'uncategorized') {
-							$terms_arr[] = '<a href="/news-and-events/?tax=category&term=' . $term->slug . '">' . $term->name . '</a>';
+							$terms_arr[] = '<a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a>';
 						}
 					}
 					$terms_str = ' / ' . implode(', ', $terms_arr);
@@ -223,7 +226,7 @@ $wp_query = new WP_Query( $home_args );
 			
 			foreach ($more_terms as &$term) {
 				if ($term->slug != 'uncategorized') {
-					$more_terms_arr[] = '<a href="/news-and-events/?tax=category&term=' . $term->slug . '">' . $term->name . '</a>';
+					$more_terms_arr[] = '<a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a>';
 				}
 			}
 			$more_terms_str = ' / ' . implode(', ', $more_terms_arr);
@@ -246,5 +249,6 @@ $wp_query = new WP_Query( $home_args );
 <?php do_action('foundationPress_after_content'); ?>
 </div>
 <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
+</div>
 </div>
 <?php get_footer(); ?>

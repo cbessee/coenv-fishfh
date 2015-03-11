@@ -36,6 +36,12 @@
 
   
     <?php wp_head(); ?>
+      
+    <?php 
+        $banner = coenv_banner();
+        $banner_class = $banner ? 'has-banner' : '';
+        $banner_class .= ' template-print';
+    ?>
   </head>
   <body <?php body_class(); ?>>
   
@@ -48,29 +54,42 @@
   <?php do_action('foundationPress_layout_start'); ?>
   
   <nav class="tab-bar show-for-small-only">
-    <section class="right-small">
+    <div class="left-small mobile-logo">
+        <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>"><svg id="mobile-logo" width="108" height="73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 108 73" enable-background="new 0 0 108 73" xml:space="preserve">
+              <path d="M79.343,0.112c0,0.858,0,12.238,0,13.098c0.856,0,9.206,0,9.206,0L78.271,51.461
+                c0,0-12.577-50.636-12.756-51.349c-0.687,0-12.626,0-13.303,0c-0.188,0.696-13.796,51.352-13.796,51.352L28.95,13.21
+                c0,0,8.726,0,9.585,0c0-0.859,0-12.239,0-13.098c-0.919,0-37.532,0-38.451,0c0,0.858,0,12.238,0,13.098c0.851,0,8.52,0,8.52,0
+                s14.703,58.809,14.88,59.522c0.708,0,19.942,0,20.639,0c0.183-0.697,9.852-37.454,9.852-37.454s9.188,36.747,9.364,37.454
+                c0.707,0,19.941,0,20.639,0C84.164,72.03,99.635,13.21,99.635,13.21s7.6,0,8.449,0c0-0.859,0-12.239,0-13.098
+                C107.176,0.112,80.251,0.112,79.343,0.112z"></path>
+</svg></a>
+    </div>
+    <div class="middle tab-bar-section">
+        <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
+            <h1 class="title"><?php bloginfo( 'name' ); ?></h1>
+        </a>
+    </div>
+    <div class="right-small">
       <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
-    </section>
-    <section class="middle tab-bar-section">
-      
-      <h1 class="title"><?php bloginfo( 'name' ); ?></h1>
-
-    </section>
+    </div>
   </nav>
 
   <aside class="right-off-canvas-menu">
     <nav class="mobile-menu">
             <?php
+            echo '<ul class="off-canvas-list"><li>';
+            get_search_form();
+            echo '</li></ul>';
             
             add_filter( 'page_css_class', 'add_parent_class', 10, 4 );
-            //$exclude = implode(',',coenv_base_menu_exclude());
+            $exclude = implode(',',coenv_base_menu_exclude());
             wp_list_pages( array(
                 'depth' => 0,
                 'walker' => new top_bar_mobile_walker(),
                 'title_li' => false,
                 'sort_column' => 'menu_order, post_title',
                 'post_type'    => 'page',
-               // 'exclude' => '$exclude',
+                'exclude' => '$exclude',
             ) );
             remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
             ?>
@@ -112,31 +131,42 @@
     </div><!-- .row -->
   </nav><!-- #top-nav -->
   
-  <div class="row">
-    <div class="large-12 columns">
-    <ul class="title-area">
+  <div class="row title-row">
+    <div class="columns large-12">
+    <ul class="title-area hide-for-small">
       <li class="name">
         <h1>
           <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
+            <!--[if gte IE 9 | !IE]><!-->
+                <svg id="desktop-logo" width="108" height="73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 108 73" enable-background="new 0 0 108 73" xml:space="preserve">
+                  <path d="M79.343,0.112c0,0.858,0,12.238,0,13.098c0.856,0,9.206,0,9.206,0L78.271,51.461
+                    c0,0-12.577-50.636-12.756-51.349c-0.687,0-12.626,0-13.303,0c-0.188,0.696-13.796,51.352-13.796,51.352L28.95,13.21
+                    c0,0,8.726,0,9.585,0c0-0.859,0-12.239,0-13.098c-0.919,0-37.532,0-38.451,0c0,0.858,0,12.238,0,13.098c0.851,0,8.52,0,8.52,0
+                    s14.703,58.809,14.88,59.522c0.708,0,19.942,0,20.639,0c0.183-0.697,9.852-37.454,9.852-37.454s9.188,36.747,9.364,37.454
+                    c0.707,0,19.941,0,20.639,0C84.164,72.03,99.635,13.21,99.635,13.21s7.6,0,8.449,0c0-0.859,0-12.239,0-13.098
+                    C107.176,0.112,80.251,0.112,79.343,0.112z"/>
+                </svg>
+            <!-- <![endif]-->
+            <!--[if lte IE 8]>
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/W.png" id="desktop-logo">
+            <![endif]-->
             <span><?php bloginfo('name') ?></span> 
           </a>
           </h1>
-            <ul class="units">
-              <?php
-              if (get_option('unit_name_0')) : echo '<li><a href="' . get_option('unit_url_0') . '">' . get_option('unit_name_0') . '</a></li>'; endif;
-              if (get_option('unit_name_1')) : echo '<li>/<a href="' . get_option('unit_url_1') . '">' . get_option('unit_name_1') . '</a></li>'; endif;
-              if (get_option('unit_name_2')) : echo '<li>/<a href="' . get_option('unit_url_2') . '">' . get_option('unit_name_2') . '</a></li>'; endif;
-              ?>
-          </ul>
+            <div class="units show-for-large-up">
+                <img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/slash.png" class="slash left" alt="slash">
+                <a href="http://coenv.uw.edu" title="UW College of the Environment"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/College-of-the-Environment.png" class="right" alt="UW College of the Environment"></a><br />
+                <a href="http://uw.edu" title="University of Washington"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/UW-Tagline.png" class="right uw-name" alt="University of Washington"></a>
+          </div> 
         </li>          
       </ul>
     </div>
   </div>
   
-        <div class="top-bar-container contain-to-grid show-for-medium-up">
+        <div class="top-bar-container show-for-medium-up">
             <nav class="top-bar" data-topbar="">
-                <section class="top-bar-section">
-                    <ul id="menu-main-menu" class="top-bar-menu left">
+                <div class="top-bar-section">
+                    <ul id="menu-main-menu" class="top-bar-menu">
                     <?php
                       $exclude = implode(',',coenv_base_menu_exclude());
                       add_filter( 'page_css_class', 'add_parent_class', 10, 4 );
@@ -152,12 +182,31 @@
                       wp_reset_query();
                       ?>
                     </ul>
-                </section>
+                </div>
             </nav>
         </div>
 
+<?php if (!is_front_page()) : ?>
+<div class="container" role="document">
+<?php 
+        $banner = coenv_banner();
+        $banner_class = $banner ? 'has-banner' : '';
+        $banner_class .= ' template-print';
+?>
+    <?php if (($banner) && (!is_single())) {
+            echo '<div class="page-row">';
+            echo '<div>';
+        }
+     ?>
+     <?php if ( (empty($banner)) || (is_single()) ) {
+            echo '<div class="page-row mini">';
+            echo '<div>';
+     }
+     ?>
+    <div class="section-row row">
+        <?php echo coenv_base_section_title($post->ID); ?>
+    </div>
 
-
-<section class="container" role="document">
-  <?php do_action('foundationPress_after_header'); ?>
-  
+</div>
+<?php endif; ?>
+<?php do_action('foundationPress_after_header'); ?>
