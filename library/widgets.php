@@ -79,9 +79,9 @@ function coenv_base_sidebar_widgets() {
   ));
   register_sidebar(array(
       'id' => 'home-columns',
-      'name' => __('Home / After Main Content 3-Columns', 'foundationpress'),
+      'name' => __('Home / After Main Content 2-Columns', 'foundationpress'),
       'description' => __('Drag widgets to this container', 'foundationpress'),
-      'before_widget' => $before_widget_three_columns,
+      'before_widget' => $before_widget_two_columns,
       'after_widget' => $after_widget,
       'before_title' => $before_title,
       'after_title' => $after_title     
