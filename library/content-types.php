@@ -43,30 +43,10 @@ function coenv_base_post_types_init() {
   'menu_icon' => 'dashicons-slides',
     )
   );
-  register_post_type( 'publications',
-    array(
-      'labels' => array(    
-      'name' => __( 'Publications' ),
-      'singular_name' => __( 'Publication' ),
-      'add_new_item' => __( 'Add Publication'),
-      'edit_item' => __( 'Edit Publication'),
-      'new_item' => __( 'New Publication'),
-      ),
-    'hierarchical' => true,
-    // drew - i think we need this for each tax connected to a content type
-    'taxonomies' => array('author','publication_theme'),
-    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
-    'public' => true,
-    'has_archive' => false,
-    'show_ui' => true,
-    'rewrite' => array('slug' => 'publications'),
-  'menu_icon' => 'dashicons-book',
-    )
-  );
   register_post_type( 'student_blog',
     array(
       'labels' => array(    
-      'name' => __( 'Blog' ),
+      'name' => __( 'Blog Posts' ),
       'singular_name' => __( 'Blog Post' ),
       'add_new_item' => __( 'Add Blog Post'),
       'edit_item' => __( 'Edit Blog Post'),
@@ -81,22 +61,22 @@ function coenv_base_post_types_init() {
   'menu_icon' => 'dashicons-exerpt-view',
     )
   );
-  register_post_type( 'datasets',
+  register_post_type( 'intranet page',
     array(
       'labels' => array(    
-      'name' => __( 'Datasets' ),
-      'singular_name' => __( 'Dataset' ),
-      'add_new_item' => __( 'Add Dataset'),
-      'edit_item' => __( 'Edit Dataset'),
-      'new_item' => __( 'New Dataset'),
+      'name' => __( 'Intranet Pages' ),
+      'singular_name' => __( 'Intranet Page' ),
+      'add_new_item' => __( 'Add Intranet Page'),
+      'edit_item' => __( 'Edit Intranet Page'),
+      'new_item' => __( 'New Intranet Page'),
       ),
-    //'hierarchical' => true,
+    'hierarchical' => true,
     'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
     'public' => true,
     'has_archive' => false,
     'show_ui' => true,
-    //'rewrite' => array('slug' => 'student_blog'),
-  'menu_icon' => 'dashicons-exerpt-view',
+    'rewrite' => array('slug' => 'intranet'),
+    'menu_icon' => 'dashicons-slides',
     )
   );
 }
@@ -108,15 +88,14 @@ add_action('init', 'hide_editor', 100);
  * Hide body on content types that don't need one
  */
 function hide_editor() {
-  remove_post_type_support( 'content_block', 'editor' );
-  remove_post_type_support( 'datasets', 'editor' );
+  remove_post_type_support( 'content_block', 'editor' );;
 
 } 
 
-define( 'FACULTY_PAGE_PARENT_ID', '31' );
-define( 'BLOG_PAGE_PARENT_ID', '2674' );
-define( 'DATASET_PAGE_PARENT_ID', '104' );
-define( 'NEWS_PARENT_ID', '142' );
+define( 'FACULTY_PAGE_PARENT_ID', '3698' );
+define( 'BLOG_PAGE_PARENT_ID', '162' );
+define( 'NEWS_PARENT_ID', '118' );
+define( 'INTRANET_PARENT_ID', '118' );
  
  
 /**
@@ -161,25 +140,6 @@ function coenv_base_blog_parent( $data, $postarr ) {
 }
 add_action( 'wp_insert_post_data', 'coenv_base_blog_parent', BLOG_PAGE_PARENT_ID, 2  ); 
 
-/**
- * save dataset parent
- */
-function coenv_base_dataset_parent( $data, $postarr ) {
-    global $post;
- 
- 
-    // verify if this is an auto save routine.
-    // If it is our form has not been submitted, so we dont want to do anything
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-        return $data;
- 
-    if ( $post->post_type == "datasets" ){
-        $data['post_parent'] = DATASET_PAGE_PARENT_ID;
-    }
- 
-    return $data;
-}
-add_action( 'wp_insert_post_data', 'coenv_base_dataset_parent', '104', 2  );
 
 function coenv_base_news_parent( $data, $postarr ) {
     global $post;
@@ -197,6 +157,24 @@ function coenv_base_news_parent( $data, $postarr ) {
     return $data;
 }
 add_action( 'wp_insert_post_data', 'coenv_base_news_parent', '142', 2  );
+
+function coenv_base_intranet_parent( $data, $postarr ) {
+    global $post;
+ 
+ 
+    // verify if this is an auto save routine.
+    // If it is our form has not been submitted, so we dont want to do anything
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+        return $data;
+ 
+    if ( $post->post_type == "post" ){
+        $data['post_parent'] = INTRANET_PARENT_ID;
+    }
+ 
+    return $data;
+}
+add_action( 'wp_insert_post_data', 'coenv_base_intranet_parent', '142', 2  );
+
 
 /*
  * Teasers for custom fields
