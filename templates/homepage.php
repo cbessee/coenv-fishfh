@@ -140,7 +140,7 @@ $wp_query = new WP_Query( $home_args );
 		<div class="row">
 			<div class="large-8 columns">
 				<div class="row">
-			<h2 class="columns large-9 left" style="margin-top: 0; padding-top: 0;">News</h2>
+			<h2 class="columns large-9 left" style="margin-top: 0; padding-top: 0; text-align: center; ">News</h2>
 			
 		</div>
 		<?php
@@ -177,8 +177,8 @@ $wp_query = new WP_Query( $home_args );
 					// Build news divs
 					if ( $wp_query->current_post == 0 ) {
 			            if ( has_post_thumbnail()) {
-			                echo '<div class="featured-news" style="width: 50%; float: left;">';
-								echo '<div class="featured-thumbnail">';
+			                echo '<div class="featured-news" style="width: 50%; float: left; padding-right: 30px;">';
+								echo '<div class="featured-thumbnail" >';
 									echo '<a href="' . $post_link_url . '" class="img"' . $post_link_target . '>' . the_post_thumbnail( 'large' ) . '</a>';
 								echo '</div>';
 								echo '<div class="post-meta">';
@@ -186,7 +186,7 @@ $wp_query = new WP_Query( $home_args );
 									echo $terms_str;
 				            	echo '</div>';
 			                	echo '<a href="' . $post_link_url . '"' . $post_link_target . '><h4>' . get_the_title() . '</h4></a>';
-				            	echo '<p>' . the_advanced_excerpt('length=60&finish=sentence') . '</p>';
+				            	echo '<p>' . the_advanced_excerpt('length=30&finish=sentence') . '</p>';
 				            	echo $post_link;
 				            echo '</div>';
 						} else {
@@ -205,6 +205,7 @@ $wp_query = new WP_Query( $home_args );
 								echo $terms_str;
 							echo '</div>';
 							echo '<a href="' . $post_link_url . '"><h4>' . get_the_title() . '</h4></a>';
+							echo '<p>' . the_advanced_excerpt('length=30&finish=sentence') . '</p>';
 			       		echo '</div>';
 					}
 				
