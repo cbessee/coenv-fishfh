@@ -23,9 +23,6 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 				<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
 				<?php coenv_base_cat_filter('research_areas', $coenv_cat_term_1); // Category filter ?>
 				</div>
-				<div class="share columns large-6" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a></div>
 	</div>
 
 <?php
@@ -71,7 +68,7 @@ $wp_query = new WP_Query( $query_args );
 <?php if ($coenv_cat_1): // Category filter ?>
 		<div class="panel">
 			<div class="left"><?php echo $wp_query->found_posts; ?> faculty working in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
-			<div class="right"><a href="/research/publications/">all posts &raquo;</a></div>
+			<div class="right"><a href="/_faculty-research/">all posts &raquo;</a></div>
 		</div>
 	<?php endif; ?>
 		<?php
