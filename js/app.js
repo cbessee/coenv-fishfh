@@ -269,7 +269,7 @@ e.data("index",e.data("index")+1),g.addClass("moved"),c.rtl?(f.css({right:-(100*
 
             // slick slider
             $('.homepage-features').slick({
-                autoplay: true,
+                autoplay: false,
                 autoplaySpeed: 3000,
                 dots: true,
                 pauseOnDotsHover: true
