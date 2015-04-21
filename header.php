@@ -39,9 +39,9 @@
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-16x16.png">
     <link rel="manifest" href="<?php echo get_template_directory_uri() ?>/assets/img/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#4b2e84">
     <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/assets/img/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#4b2e84">
       
     <!--<script type="text/javascript" src="//use.typekit.net/dyq8fxo.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
