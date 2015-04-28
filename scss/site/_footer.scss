@@ -219,6 +219,10 @@
                     width: 200px;
                 }
             }
+            
+            .copyright, .menu-footer-links {
+                text-align: center;
+            }
 
             .copyright {
                 font-size: rem-calc(10);
@@ -226,6 +230,7 @@
                 @media #{$medium-up} {
                     float: left;
                     display: inline-block;
+                    text-align: left;
                 }
 
             } // .copyright
@@ -261,6 +266,7 @@
 
                 a {
                     text-decoration: none;
+                    padding: 0 rem-calc(6);
                 }
 
             } // .menu-footer-links
