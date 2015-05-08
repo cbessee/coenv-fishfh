@@ -60,7 +60,10 @@
 	input[type="text"] {
 		@include font-size(12);
 		background: #666;
-				color: #fff;
+        color: #fff;
+            @include placeholder {
+                color: #eee;
+            }
 	} // input[type="text"]
 
 	button[type="submit"] {
