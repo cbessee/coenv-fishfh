@@ -74,6 +74,51 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 					endwhile; ?>
 					</ul>
 				</li>
+
+				<?php 
+
+				// check for rows (parent repeater)
+				if( have_rows('online_services') ): ?>
+					<li class="online-services">
+					<?php 
+
+					// loop through rows (parent repeater)
+					while( have_rows('online_services') ): the_row(); ?>
+
+							// check for rows (sub repeater)
+							if( have_rows('items') ): ?>
+								<ul>
+								<?php 
+
+								// loop through rows (sub repeater)
+								while( have_rows('online_service_select') ): the_row();
+
+									// display each item as a list - with a class of completed ( if completed )
+									if ( get_sub_field('online_service_url') ) {
+									?>
+									<li><a href="<?php the_sub_field('online_service_url'); ?>" target="_blank"><?php the_sub_field( 'online_service_name' ); ?></a></li>
+									<?php } ?>
+								<?php endwhile; ?>
+								</ul>
+							<?php endif; //if( get_sub_field('items') ): ?>
+						</div>	
+
+					<?php endwhile; // while( has_sub_field('to-do_lists') ): ?>
+					</li>
+				<?php endif; // if( get_field('to-do_lists') ): ?>
+
+			<?php endwhile; // end of the loop. ?>
+
+
+
+
+
+
+
+
+
+
+
 			<?php }
 			if ($faculty_twitter_url) {
 				echo '<li class="faculty-twitter"><a href="' . $faculty_twitter_url . '">Twitter</a></li>';
