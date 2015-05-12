@@ -68,7 +68,7 @@ $wp_query = new WP_Query( $query_args );
 <?php if ($coenv_cat_1): // Category filter ?>
 		<div class="panel">
 			<div class="left"><?php echo $wp_query->found_posts; ?> faculty working in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
-			<div class="right"><a href="/_faculty-research/">all posts &raquo;</a></div>
+			<div class="right"><a href="/faculty-research/">all posts &raquo;</a></div>
 		</div>
 	<?php endif; ?>
 		<?php
