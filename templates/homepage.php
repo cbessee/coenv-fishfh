@@ -111,7 +111,7 @@ if ( is_active_sidebar( 'home-columns' ) ) :
 <?php endif; ?>
 <?php
 # News with featured news
-		
+
 $sticky = get_option( 'sticky_posts' );
 $sticky_count = count($sticky);
 $posts_on_home = 3; //set posts_per_page here
@@ -126,7 +126,7 @@ if( $sticky ) {
 else {
     $home_args = array(
         'post_type' => 'post',
-        'posts_per_page' => $posts_on_home,
+        'posts_per_page' => $posts_on_home - $sticky_count,
         'post_status' => 'publish',
     );
 }
