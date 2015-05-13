@@ -34,8 +34,10 @@ jQuery(function ($) {
             $('.homepage-features').slick({
                 autoplay: false,
                 autoplaySpeed: 3000,
-                dots: true,
-                pauseOnDotsHover: true
+                dots: false,
+                draggable: false,
+                pauseOnDotsHover: true,
+                arrows: false
             });
             
             var numItems = $('.feature').length;

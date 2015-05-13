@@ -23,7 +23,12 @@ Template Name: Homepage
 		$feature_query = new WP_Query( $feature_args ); ?>
 		<?php //if ($feature_query->have_posts()) { ?>
 		<div class="playpause"></div>
+
+
 			<div class="homepage-features">
+
+
+
 			<?php
 			# The Loop
 			while ( $feature_query->have_posts() ) :
@@ -44,48 +49,55 @@ Template Name: Homepage
 				$feature_caption = $feature_caption->post_excerpt;
 			}
 			$rows = get_field('feature_add_links');
+			?>
 			
-echo '<div class="feature">';
-	echo '<div class="feature-image" style="background-image:url(' . $feature_image[0] . ')">';
+	<div class="feature">
 
-		echo '<div class="feature-info-container">';
-		echo '<p class="feature-image-caption right">' . $feature_caption . '</p>';
-		echo '<div class="feature-info" style="background-color:' . $feature_color . '">';
-			echo '<div class="feature-content">';
-				echo '<h2>' . get_the_title() . '</h2>';
-				echo '<p class="feature-excerpt">' . $feature_excerpt . '</p>';
-				if($rows)
-					{
-						foreach($rows as $row) {
-							if($row['feature_link_type'] == 'internal') {
-								$link_title =  $row['feature_link_to_a_page_on_this_site'][0]['feature_link_title_internal'];
-								$link_url = get_permalink($row['feature_link_to_a_page_on_this_site'][0]['feature_select_page'][0]);
-								$link_target = 'self';
-								echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
-							} elseif ($row['feature_link_type'] == 'external') {
-								$link_title = $row['feature_link_to_an_external_site'][0]['feature_link_title'];
-								$link_url = $row['feature_link_to_an_external_site'][0]['feature_link_url'];
-								$link_target ='blank';
-								echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
-							} 
+		<div class="feature-image" style="background-image:url('<?php echo $feature_image[0]; ?>')">
+
+			<div class="feature-info-container">
+				<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
+				<div class="feature-info" style="background-color:<?php $feature_color; ?>">
+					<div class="feature-content">
+						<h2><?php echo get_the_title(); ?></h2>
+						<p class="feature-excerpt"><?php echo $feature_excerpt; ?></p>
+						<?php 
+
+						if($rows) {
+							foreach($rows as $row) {
+								if($row['feature_link_type'] == 'internal') {
+									$link_title =  $row['feature_link_to_a_page_on_this_site'][0]['feature_link_title_internal'];
+									$link_url = get_permalink($row['feature_link_to_a_page_on_this_site'][0]['feature_select_page'][0]);
+									$link_target = 'self';
+									echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
+								} elseif ($row['feature_link_type'] == 'external') {
+									$link_title = $row['feature_link_to_an_external_site'][0]['feature_link_title'];
+									$link_url = $row['feature_link_to_an_external_site'][0]['feature_link_url'];
+									$link_target ='blank';
+									echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
+								} 
+							}
 						}
-					}
 
-			echo '</div><!-- .feature-content -->';
+						?>
+						
+					</div><!-- .feature-content -->
+					<div class="feature-controls">
+						<a class="slick-p button" href="#">Previous</a>
+						<a class="slick-n button" href="#">Next</a>
+					</div>
+				</div><!-- .feature-info -->
+			</div><!-- .feature-info-container -->
+	</div>
+</div><!-- .feature -->
+<?php 
 
-		echo '</div><!-- .feature-info -->';
-
-	echo '</div><!-- .feature-info-container -->';
-	echo '</div>';
-
-
-echo '</div><!-- .feature -->';
 endwhile;
 wp_reset_postdata();
-echo '</div>';
+
 ?>
 
-
+</div>
 				
 <?php if ( is_active_sidebar( 'home-content' ) ) : ?>
 <div class="large-12 columns programs">
