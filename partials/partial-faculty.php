@@ -76,38 +76,29 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 				</li>
 
 				<?php 
-
+			}
 				// check for rows (parent repeater)
-				if( have_rows('online_services') ): ?>
-					<li class="online-services">
-					<?php 
+				if( have_rows('online_services') ) { ?>
+					<?php while( have_rows('online_services') ): the_row(); ?>
 
-					// loop through rows (parent repeater)
-					while( have_rows('online_services') ): the_row(); ?>
+					<?php  while( have_rows('online_service_select') ): the_row(); ?>
+					<?php
+						$field = get_sub_field_object('online_service_name');
+						//var_dump($field);
+						$value = get_sub_field('online_service_name');
+						$service_label = $field['choices'][ $value ];
+					?>
 
-							// check for rows (sub repeater)
-							if( have_rows('items') ): ?>
-								<ul>
-								<?php 
+					<?php if ( get_sub_field('online_service_url') ) { ?>
+						<li><a href="<?php the_sub_field('online_service_url'); ?>" target="_blank"><?php echo $service_label; ?></a></li>
+					<?php } ?>
 
-								// loop through rows (sub repeater)
-								while( have_rows('online_service_select') ): the_row();
+					<?php endwhile; ?>
 
-									// display each item as a list - with a class of completed ( if completed )
-									if ( get_sub_field('online_service_url') ) {
-									?>
-									<li><a href="<?php the_sub_field('online_service_url'); ?>" target="_blank"><?php the_sub_field( 'online_service_name' ); ?></a></li>
-									<?php } ?>
-								<?php endwhile; ?>
-								</ul>
-							<?php endif; //if( get_sub_field('items') ): ?>
-						</div>	
+					<?php endwhile; ?>
 
-					<?php endwhile; // while( has_sub_field('to-do_lists') ): ?>
-					</li>
-				<?php endif; // if( get_field('to-do_lists') ): ?>
-
-			<?php endwhile; // end of the loop. ?>
+					<?php } ?>
+				
 
 
 
@@ -119,7 +110,7 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 
 
 
-			<?php }
+			<?php 
 			if ($faculty_twitter_url) {
 				echo '<li class="faculty-twitter"><a href="' . $faculty_twitter_url . '">Twitter</a></li>';
 			}
