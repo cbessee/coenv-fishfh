@@ -269,12 +269,16 @@ e.data("index",e.data("index")+1),g.addClass("moved"),c.rtl?(f.css({right:-(100*
 
             // slick slider
             $('.homepage-features').slick({
-                autoplay: false,
+            	                autoplay: false,
                 autoplaySpeed: 3000,
-                dots: false,
+                dots: true,
                 draggable: false,
                 pauseOnDotsHover: true,
-                arrows: false
+                arrows: false,
+				  infinite: true,
+                  speed: 500,
+                  fade: true,
+                  cssEase: 'linear'
             });
             
             var numItems = $('.feature').length;

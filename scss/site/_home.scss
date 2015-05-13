@@ -61,9 +61,10 @@
     height: 200px;
     overflow: hidden;
 }
-
 .feature {
     color: $white;
+    display: relative !important;
+
     
     ul li {
         list-style-type: none;
@@ -71,11 +72,11 @@
     
     .feature-image {
         width: 100%;
-        padding-top: 40%;
-        max-height: rem-calc(350);
+        height: 563px;
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center;
+        background-position: top;
+        padding-top: 50px;
         position: relative;
     }
     
@@ -83,9 +84,7 @@
         
         .feature-info {
             
-            position: absolute;
-            left: 0;
-            top: 25%;
+            position: relative;
 
             @media #{$small-only} {
                 width: 50%;
@@ -102,6 +101,7 @@
         }
         .feature-content {
             background-color: $accent;
+            border: solid 13px #fff;
             display: inline-block;
             float: left;
             padding: rem-calc(16);
@@ -161,3 +161,22 @@ top: 0;
 left: 0;
     z-index: 500;
 }
+
+// Production styles
+
+
+.full-feature {
+    width: 100%;
+    background-color: purple;
+
+
+
+}
+
+
+
+
+
+
+
+

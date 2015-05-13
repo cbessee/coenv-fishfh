@@ -32,12 +32,12 @@ jQuery(function ($) {
 
             // slick slider
             $('.homepage-features').slick({
-                autoplay: false,
-                autoplaySpeed: 3000,
-                dots: false,
-                draggable: false,
-                pauseOnDotsHover: true,
-                arrows: false
+ 
+
+                  infinite: true,
+                  speed: 500,
+                  fade: true,
+                  cssEase: 'linear'
             });
             
             var numItems = $('.feature').length;

@@ -4,12 +4,11 @@ Template Name: Homepage
 */
 ?>
 <?php get_header(); ?>
-<div class="row">
-	<div class="small-12 large-12 columns" role="main">
-	
-	<?php do_action('foundationPress_before_content'); ?>
-	<?php dynamic_sidebar("before-content"); ?>
-		<?php
+<div class="full-feature">
+
+
+
+<?php
 
 		/**
 		 * Loop for homepage features.
@@ -57,7 +56,7 @@ Template Name: Homepage
 
 			<div class="feature-info-container">
 				<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
-				<div class="feature-info" style="background-color:<?php $feature_color; ?>">
+				<div class="feature-info row" style="background-color:<?php $feature_color; ?>">
 					<div class="feature-content">
 						<h2><?php echo get_the_title(); ?></h2>
 						<p class="feature-excerpt"><?php echo $feature_excerpt; ?></p>
@@ -96,9 +95,52 @@ endwhile;
 wp_reset_postdata();
 
 ?>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
-				
+<div class="row">				
 <?php if ( is_active_sidebar( 'home-content' ) ) : ?>
 <div class="large-12 columns programs">
 	<div class="widget-area home-content" role="complementary">
