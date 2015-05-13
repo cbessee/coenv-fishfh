@@ -87,7 +87,12 @@ Template Name: Homepage
 					</div>
 				</div><!-- .feature-info -->
 			</div><!-- .feature-info-container -->
+			<div style="position: absolute; bottom: 0; text-align: center; width: 100%;">
+				<ul class="my-slick-dots here" style="display: block;">
+				</ul>
+			</div>
 	</div>
+
 </div><!-- .feature -->
 <?php 
 
@@ -95,6 +100,7 @@ endwhile;
 wp_reset_postdata();
 
 ?>
+
 </div>
 
 

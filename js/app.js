@@ -349,6 +349,8 @@ jQuery(function ($) {
 	$( ".single-faculty li.page-item-35" ).removeClass( "active" );
 	$( ".single-faculty li.page-item-31" ).addClass( "active" );
 
+	$("ul.slick-dots").contents().appendTo('.my-slick-dots').end();
+
 	$(".feature-controls .slick-p").click(function(e) {
     	$(".homepage-features").slickPrev(); // Switched to '.slick-slider'
 	});

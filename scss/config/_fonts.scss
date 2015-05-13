@@ -1,31 +1,65 @@
-/*	Fonts
-		======================================================================== */
+/*  Fonts
+        ======================================================================== */
 
 @font-face {
-	font-family: encode-sans-normal;  
-	src: url("../assets/fonts/EncodeSansNormal-400-Regular.ttf") format('truetype');  
-	font-weight: normal;
+    font-family: encode-sans-normal;  
+    src: url("../assets/fonts/EncodeSansNormal-400-Regular.ttf") format('truetype');  
+    font-weight: normal;
     font-style: normal;  
 }
 
 @font-face {
-	font-family: encode-sans-condensed;  
-	src: url("../assets/fonts/EncodeSansCondensed-800-ExtraBold.ttf") format('truetype');  
-	font-weight: normal;
+    font-family: encode-sans-black;  
+    src: url("../assets/fonts/EncodeSansNormal-900-Black.ttf") format('truetype');  
+    font-weight: normal;
     font-style: normal;  
 }
 
 @font-face {
-	font-family: open-sans;  
-	src: url("../assets/fonts/OpenSans-Regular.ttf") format('truetype');  
-	font-weight: normal;
+    font-family: encode-sans-condensed;  
+    src: url("../assets/fonts/EncodeSansCondensed-800-ExtraBold.ttf") format('truetype');  
+    font-weight: normal;
     font-style: normal;  
 }
 
 @font-face {
-	font-family: uni-sans-light;  
-	src: url("../assets/fonts/Fontfabric - UniSansLight.otf") format('truetype');  
-	font-weight: normal;
+    font-family: encode-sans-normal-thin;  
+    src: url("../assets/fonts/EncodeSansNormal-100-Thin.ttf") format('truetype');  
+    font-weight: normal;
+    font-style: normal;  
+}
+
+
+
+
+
+
+
+@font-face {
+    font-family: open-sans;  
+    src: url("../assets/fonts/OpenSans-Regular.ttf") format('truetype');  
+    font-weight: normal;
+    font-style: normal;  
+}
+
+@font-face {
+    font-family: open-sans-bold;  
+    src: url("../assets/fonts/OpenSans-Bold.ttf") format('truetype');  
+    font-weight: normal;
+    font-style: normal;  
+}
+
+@font-face {
+    font-family: open-sans-light;  
+    src: url("../assets/fonts/OpenSans-Light.ttf") format('truetype');  
+    font-weight: normal;
+    font-style: normal;  
+}
+
+@font-face {
+    font-family: uni-sans-light;  
+    src: url("../assets/fonts/Fontfabric - UniSansLight.otf") format('truetype');  
+    font-weight: normal;
     font-style: normal;  
 }
 
@@ -35,10 +69,36 @@
     -webkit-font-smoothing: antialiased;
   }
 }
+@mixin o_sans_bold() {
+  font: {
+    family: "open-sans-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+@mixin o_sans_light() {
+  font: {
+    family: "open-sans-light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
 
 @mixin encode() {
   font: {
     family: "encode-sans-normal", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@mixin encode-thin() {
+  font: {
+    family: "encode-sans-normal-thin", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@mixin encode_black() {
+  font: {
+    family: "encode-sans-black", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
     -webkit-font-smoothing: antialiased;
   }
 }
@@ -133,12 +193,12 @@ h4 {
     }
 }
 
-/*	Base font size
-		======================================================================== */
+/*  Base font size
+        ======================================================================== */
 $base-font-size: 16;
 
-/*	Old Fonts
-		======================================================================== */
+/*  Old Fonts
+        ======================================================================== */
 
 @mixin sans() {
   font: {
