@@ -121,7 +121,7 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 				echo '<li class="cv"><a href="' . $faculty_cv . '">Curriculum Vitae (CV)</a></li>';
 			}
 			if ($faculty_website_url) { ?>
-				<li class="faculty-website"><a class="button" href="#" target="_blank">Visit <?php echo coenv_base_apostophe_fname($faculty_fname); ?> website</a></li>
+				<li class="faculty-website"><a class="button" href="<?php echo $faculty_website_url; ?>" target="_blank">Visit <?php echo coenv_base_apostophe_fname($faculty_fname); ?> website</a></li>
 			<?php } ?>
 			</ul>		
 		</div>
