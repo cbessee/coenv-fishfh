@@ -352,10 +352,12 @@ jQuery(function ($) {
 	$("ul.slick-dots").contents().appendTo('.my-slick-dots').end();
 
 	$(".feature-controls .slick-p").click(function(e) {
+		event.preventDefault();
     	$(".homepage-features").slickPrev(); // Switched to '.slick-slider'
 	});
 
 	$(".feature-controls .slick-n").click(function(e) {
+		event.preventDefault();
     	$(".homepage-features").slickNext(); // Switched to '.slick-slider'
 	});
 

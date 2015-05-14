@@ -82,8 +82,8 @@ Template Name: Homepage
 						
 					</div><!-- .feature-content -->
 					<div class="feature-controls">
-						<a class="slick-p button" href="#">Previous</a>
-						<a class="slick-n button" href="#">Next</a>
+						<a class="slick-p" href="#">Previous</a>
+						<a class="slick-n" href="#">Next</a>
 					</div>
 				</div><!-- .feature-info -->
 			</div><!-- .feature-info-container -->
