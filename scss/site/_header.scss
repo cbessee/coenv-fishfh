@@ -1,3 +1,4 @@
+
 // mobile header
 
 .tab-bar {
@@ -15,7 +16,6 @@
     h1 {
         color: $text!important;
         margin-top: rem-calc(15);
-        font-size: rem-calc(28)!important;
         text-align: left;
         @media #{$small-up} {
             font-size: rem-calc(12)!important;
@@ -46,8 +46,10 @@
 
 // desktop header
 
+
+
 .title-row {
-    background: $white;
+    background: $black;
 }
 
 .top-bar-container {
@@ -66,20 +68,16 @@
     h1 {
         @include encode;
         font-weight: 500!important;
-        font-size: rem-calc(18)!important;
-        @media #{$large-up} {
-            font-size: rem-calc(23)!important;
-        }
         float: left;
-        margin: rem-calc(18) 0;
+        margin: rem-calc(18) 0 -3px 0;
         a {
             color: $text;
         }
     }
     #desktop-logo {
-        fill: $accent;
-        width: rem-calc(108);
-        height: rem-calc(73);
+        fill: $white;
+        width: rem-calc(157);
+        height: rem-calc(110);
         margin-right: rem-calc(10);
         vertical-align: middle;
         
@@ -117,12 +115,98 @@
     }
     }
 .title-area {
-	list-style: none;
-	margin-left: 0;
+  list-style: none;
+  margin-left: 0;
 }
 .breadcrumbs {
-	@include rem('margin-bottom',2);
+  @include rem('margin-bottom',2);
 }
 .breadcrumbs>* {
-	line-height: rem-calc(16);
+  line-height: rem-calc(16);
 }
+
+
+
+// Production styles
+
+.full-header {
+    background: $black;
+    border-bottom: solid 7px #4b2e83;
+    height: 125px;
+    width: 100%;
+
+
+    h1 {
+
+        @include encode_black;
+        float: left;
+        letter-spacing: .15rem;
+        margin: rem-calc(18) 0 -3px 0;
+        text-transform: uppercase;
+
+        @media #{$medium-up} {
+            font-size: rem-calc(28);
+            
+        }
+        @media #{$small-only} {
+            font-size: rem-calc(16);
+        }
+        
+        a {
+            color: $white;
+        }
+    }
+    #desktop-logo {
+        fill: $white;
+        width: rem-calc(157);
+        height: rem-calc(110);
+        margin-right: rem-calc(29);
+        vertical-align: middle;
+        
+        span {
+            @extend .visuallyhidden;
+        }
+    }
+
+    .units {
+        text-align: left;
+        a {
+
+        img {
+
+            &.logotype-college {
+            height: 12px;
+            width: 205px;
+
+            }
+            &.logotype-uw {
+                 height: 13px;
+                width: 189px;
+
+
+            }
+
+
+
+        }
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+

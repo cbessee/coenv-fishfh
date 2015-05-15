@@ -142,12 +142,10 @@
       </div><!-- .top-menu -->
     </div><!-- .row -->
   </nav><!-- #top-nav -->
-  
-  <div class="row title-row">
-    <div class="columns large-12">
-    <ul class="title-area hide-for-small">
-      <li class="name">
-        <h1>
+  <div class="full-header">
+    <div class="row title-row">
+      <div class="columns large-12">
+        <h1 class="left">
           <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
             <!--[if gte IE 9 | !IE]><!-->
                 <svg id="desktop-logo" width="108" height="73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 108 73" enable-background="new 0 0 108 73" xml:space="preserve">
@@ -165,13 +163,13 @@
             <span><?php bloginfo('name') ?></span> 
           </a>
           </h1>
-            <div class="units show-for-large-up">
-                <img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/slash.png" class="slash left" alt="slash">
-                <a href="http://coenv.uw.edu" title="UW College of the Environment"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/College-of-the-Environment.png" class="right" alt="UW College of the Environment"></a><br />
-                <a href="http://uw.edu" title="University of Washington"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/UW-Tagline.png" class="right uw-name" alt="University of Washington"></a>
+          <!--
+          <div class="units show-for-large-up right">
+                <a class="logotype-college" href="http://coenv.uw.edu" title="UW College of the Environment"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/logotype-college.png" class="right" alt="UW College of the Environment"></a><br />
+                <a class="logotype-uw" href="http://uw.edu" title="University of Washington"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/logotype-uw.png" class="right uw-name" alt="University of Washington"></a>
           </div> 
-        </li>          
-      </ul>
+        -->
+      </div>
     </div>
   </div>
   
