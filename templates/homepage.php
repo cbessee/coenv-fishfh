@@ -4,103 +4,108 @@ Template Name: Homepage
 */
 ?>
 <?php get_header(); ?>
-<div class="full-feature">
-
-
-
 <?php
 
-		/**
-		 * Loop for homepage features.
-		 */
-		$feature_args = array(
-			'post_type'	=> 'features',
-			'post_status' => 'publish',
-			'posts_per_page' => 4,
-			'orderby' => 'menu_order',
-			);
-		$feature_query = new WP_Query( $feature_args ); ?>
-		<?php //if ($feature_query->have_posts()) { ?>
-		<div class="playpause"></div>
-
-
-			<div class="homepage-features">
-
-
-
-			<?php
-			# The Loop
-			while ( $feature_query->have_posts() ) :
-				$feature_query->the_post();
-			if (get_field('feature_add_links')) {
-				$feature_link_type = get_field('feature_link_type');
-				$feature_link_type_internal = get_field('feature_link_page');
-			}
-			if (get_field('feature_color')) {
-				$feature_color = get_field('feature_color');
-			}
-			if (get_field('feature_excerpt')) {
-				$feature_excerpt = get_field('feature_excerpt');
-			}
-			if (get_the_post_thumbnail()) {
-				$feature_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail-size', true);
-				$feature_caption = get_post(get_post_thumbnail_id());
-				$feature_caption = $feature_caption->post_excerpt;
-			}
-			$rows = get_field('feature_add_links');
-			?>
-			
-	<div class="feature">
-
-		<div class="feature-image" style="background-image:url('<?php echo $feature_image[0]; ?>')">
-
-			<div class="feature-info-container">
-				<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
-				<div class="feature-info row" style="background-color:<?php $feature_color; ?>">
-					<div class="feature-content">
-						<h2><?php echo get_the_title(); ?></h2>
-						<p class="feature-excerpt"><?php echo $feature_excerpt; ?></p>
-						<?php 
-
-						if($rows) {
-							foreach($rows as $row) {
-								if($row['feature_link_type'] == 'internal') {
-									$link_title =  $row['feature_link_to_a_page_on_this_site'][0]['feature_link_title_internal'];
-									$link_url = get_permalink($row['feature_link_to_a_page_on_this_site'][0]['feature_select_page'][0]);
-									$link_target = 'self';
-									echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
-								} elseif ($row['feature_link_type'] == 'external') {
-									$link_title = $row['feature_link_to_an_external_site'][0]['feature_link_title'];
-									$link_url = $row['feature_link_to_an_external_site'][0]['feature_link_url'];
-									$link_target ='blank';
-									echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
-								} 
-							}
-						}
-
-						?>
-						
-					</div><!-- .feature-content -->
-					<div class="feature-controls">
-						<a class="slick-p" href="#">Previous</a>
-						<a class="slick-n" href="#">Next</a>
-					</div>
-				</div><!-- .feature-info -->
-			</div><!-- .feature-info-container -->
-			<div style="position: absolute; bottom: 0; text-align: center; width: 100%;">
-				<ul class="my-slick-dots here" style="display: block;">
-				</ul>
-			</div>
-	</div>
-
-</div><!-- .feature -->
-<?php 
-
-endwhile;
-wp_reset_postdata();
+/**
+* Loop for homepage features.
+*/
+$feature_args = array(
+'post_type'	=> 'features',
+'post_status' => 'publish',
+'posts_per_page' => 4,
+'orderby' => 'menu_order',
+);
+$feature_query = new WP_Query( $feature_args ); 
 
 ?>
+<div class="full-feature">
 
+	<div class="playpause"></div>
+	<div class="homepage-features">
+
+	<?php
+	# The Loop
+	while ( $feature_query->have_posts() ) :
+		$feature_query->the_post();
+	if (get_field('feature_add_links')) {
+		$feature_link_type = get_field('feature_link_type');
+		$feature_link_type_internal = get_field('feature_link_page');
+	}
+	if (get_field('feature_color')) {
+		$feature_color = get_field('feature_color');
+	}
+	if (get_field('feature_excerpt')) {
+		$feature_excerpt = get_field('feature_excerpt');
+	}
+	if (get_the_post_thumbnail()) {
+		$feature_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail-size', true);
+		$feature_caption = get_post(get_post_thumbnail_id());
+		$feature_caption = $feature_caption->post_excerpt;
+	}
+	$rows = get_field('feature_add_links');
+	?>
+			
+		<div class="feature">
+			<div class="feature-image" style="background-image:url('<?php echo $feature_image[0]; ?>')">
+				<div class="feature-info-container">
+					<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
+					<div class="feature-info row" style="background-color:<?php $feature_color; ?>">
+						<div class="feature-content">
+							<h2><?php echo get_the_title(); ?></h2>
+							<p class="feature-excerpt"><?php echo $feature_excerpt; ?></p>
+							<?php 
+
+							if($rows) {
+								foreach($rows as $row) {
+									if($row['feature_link_type'] == 'internal') {
+										$link_title =  $row['feature_link_to_a_page_on_this_site'][0]['feature_link_title_internal'];
+										$link_url = get_permalink($row['feature_link_to_a_page_on_this_site'][0]['feature_select_page'][0]);
+										$link_target = 'self';
+										echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
+									} elseif ($row['feature_link_type'] == 'external') {
+										$link_title = $row['feature_link_to_an_external_site'][0]['feature_link_title'];
+										$link_url = $row['feature_link_to_an_external_site'][0]['feature_link_url'];
+										$link_target ='blank';
+										echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
+									} 
+								}
+							}
+
+							?>
+						</div><!-- .feature-content -->
+						<div class="feature-controls">
+							<a class="slick-p" href="#">Previous</a>
+							<a class="slick-n" href="#">Next</a>
+						</div>
+					</div><!-- .feature-info -->
+				</div><!-- .feature-info-container -->
+				<div style="position: absolute; bottom: 0; text-align: center; width: 100%;">
+					<ul class="my-slick-dots here" style="display: block;">
+					</ul>
+				</div>
+			</div><!-- .feature -->
+		</div>
+
+	<?php 
+	endwhile;
+	wp_reset_postdata();
+	?>
+
+	</div><!-- homepage-features -->
+</div> <!-- end .full-feature -->
+
+
+
+<div class="full-intro">
+	<div class="row">				
+		<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
+		<div class="large-12 columns programs">
+		<div class="widget-area home-content" role="complementary">
+			<?php dynamic_sidebar( 'home-content' ); ?>
+		</div><!-- .widget-area -->
+		</div>
+		<?php endif; ?>
+	</div>
 </div>
 
 
@@ -108,54 +113,7 @@ wp_reset_postdata();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-<div class="row">				
-<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
-<div class="large-12 columns programs">
-	<div class="widget-area home-content" role="complementary">
-		<?php dynamic_sidebar( 'home-content' ); ?>
-	</div><!-- .widget-area -->
-</div>
-<?php endif; ?>
 <?php 
-# Widget area for content blocks
 if ( is_active_sidebar( 'home-columns' ) ) : 
 ?>
 

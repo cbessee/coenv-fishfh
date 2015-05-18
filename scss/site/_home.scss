@@ -111,9 +111,10 @@
             .button {
               @include o_sans_bold;
               background-color: #82cfcc;
-              border: solid 2px #b2eeec;
+              border: solid 4px #b2eeec;
               border-radius: 0;
               font-size: 14px;
+              padding: rem-calc(7) rem-calc(10);
               text-transform: uppercase;
 
               &:first-child {
@@ -135,7 +136,7 @@
         
         
         .button {
-            margin: 0 rem-calc(5) 0 0;
+            margin: rem-calc(5);
         }
         
         .feature-image-caption {
@@ -186,7 +187,9 @@ left: 0;
       line-height: 1.4;
       text-transform: uppercase;
     }
-
+.slick-slider {
+  margin-bottom: 0;
+}
 .my-slick-dots {
 
   list-style: none;
@@ -219,9 +222,9 @@ left: 0;
       text-align: center;
       border-radius: 0;
       display: inline-block;
-      padding-top: 0;
-      padding-right: 5px;
-      padding-bottom: 0;
+        padding-top: 0;
+        padding-right: 5px;
+        padding-bottom: 0;
       padding-left: 5px;
       font-size: 1.14286rem;
       background-color: #5f3e8d;
@@ -279,6 +282,72 @@ left: 0;
   .slick-p {
     background-image: url('../assets/img/arrow-l.svg');
   }
+}
+
+.full-intro {
+    width: 100%;
+    background-color: #f2f2f2;
+    background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-home-intro.png');
+    border-top: solid 10px #f29068;
+    padding: 83px 0;
+
+
+
+    .widget-title {
+      float: left;
+      margin-right: 30px;
+      width: 20%;
+
+      h4 {
+        background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-orange.svg');
+        background-position: bottom left;
+        background-repeat: no-repeat;
+
+        font-size: rem-calc(50);
+        line-height: 1;
+        margin-top: 0;
+        padding-bottom: 42px;
+        padding-top: 0;
+      }
+      h4 a {
+      @include encode_black;
+        color: black;
+      }
+
+    }
+    .widget-content {
+    float: right;
+    width: 70%;
+    @include o_sans;
+
+    p {
+    font-size: rem-calc(18);
+    }
+      .intro {
+
+      @include o_sans_bold;
+      font-size: rem-calc(18);
+
+      }
+
+
+
+    }
+
+    .button {
+    @include o_sans_bold;
+              background-color: $orange;
+              border: solid 4px $orange-lt;
+              border-radius: 0;
+              font-size: 14px;
+              padding: rem-calc(7) rem-calc(10);
+              text-transform: uppercase;
+
+              &:first-child {
+                margin-right: 10px;
+              }
+    }
+
 }
 
 

@@ -54,34 +54,22 @@ if($rows) {
 /*
  * Print the widget
  */
-
-if ( $widget_img ) {
-    echo '<div class="solid-widget">';
-}
-
-echo $before_widget;
-
-if ( $show_featured_image ) {
-	echo '<div class="widget_img">';
-	echo '<a title="' . $first_link_title . '" href="' . $first_link_url . '" target="_' . $first_link_target . '">' . $widget_img . '</a>';
-	echo '</div>';
-	}
-echo '<div class="widget_content">';
-if ( $link_position[0] == 'title' ) {
-    echo $buttons;
-}
-if ( $show_custom_post_title ) {
-	echo $before_title;
-	echo '<a title="' . $first_link_title . '" href="' . $first_link_url . '" target="_' . $first_link_target . '">' . $widget_title . '</a>';
-	echo $after_title;
-}
-echo $widget_copy;
-echo '</div>';
-if ( $link_position == null ) {
-	echo $buttons;
-}
-echo $after_widget;
-
-if ( $widget_img ) {
-    echo '</div>';
-}
+?>
+    <div class="solid-widget">
+    <?php if ( $show_featured_image ) { ?>
+        <div class="widget_img">
+            <a title="<?php echo $first_link_title; ?>" href="<?php echo $first_link_url; ?>" target="_<?php echo $first_link_target; ?>"><?php echo $widget_img; ?></a>
+        </div>
+        <?php } ?>
+        <?php if ( $show_custom_post_title ) { ?>
+            <div class="widget-title">
+        	   <?php echo $before_title; ?>
+        	   <a title="<?php echo $first_link_title; ?>" href="<?php echo $first_link_url; ?>" target="_<?php echo $first_link_target; ?>"><?php echo $widget_title; ?></a>
+        	   <?php echo $after_title; ?>
+            </div>
+        <?php } ?>
+        <div class="widget-content">
+        <?php echo $widget_copy; ?>
+        <?php echo $buttons; ?>
+        </div>
+    </div>
