@@ -49,12 +49,21 @@
 
 
 .title-row {
-    background: $black;
-}
+height: 126px;
+    overflow: hidden;
 
+
+
+
+
+
+}
 .top-bar-container {
     border-top: #d7dee5 1px solid;
     margin-bottom: 0;
+
+
+
 }
 
 .title-area {
@@ -88,9 +97,9 @@
 }
 
 .units {
-    float: right;
     list-style: none;
-    margin: rem-calc(30) 0 0 rem-calc(18);
+    margin: rem-calc(51) 0 0 rem-calc(18);
+    padding-top: 4px;
     
     .slash {
         margin: 0 rem-calc(12);
@@ -109,7 +118,7 @@
         @include encode_cb;
 
         @media #{$medium-up} {
-            font-size: rem-calc(36);
+            font-size: rem-calc(32);
             max-width: 28%;
         }
     }
@@ -136,16 +145,22 @@
     width: 100%;
 
 
+   -moz-box-shadow: 1px 0 20px #000000;
+   -webkit-box-shadow: 1px 0 20px #000000;
+   box-shadow:         0 1px 20px #000000;
+
+
     h1 {
 
         @include encode_black;
         float: left;
         letter-spacing: .15rem;
         margin: rem-calc(18) 0 -3px 0;
+
         text-transform: uppercase;
 
         @media #{$medium-up} {
-            font-size: rem-calc(28);
+            font-size: rem-calc(27);
             
         }
         @media #{$small-only} {
@@ -169,6 +184,10 @@
     }
 
     .units {
+        background-image: url('/wp-content/themes/coenv-fish/assets/img/logotype-divider.png');
+        background-position: top left;
+        background-repeat: no-repeat;
+        padding-left: 29px;
         text-align: left;
         a {
 

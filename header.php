@@ -163,12 +163,10 @@
             <span><?php bloginfo('name') ?></span> 
           </a>
           </h1>
-          <!--
           <div class="units show-for-large-up right">
                 <a class="logotype-college" href="http://coenv.uw.edu" title="UW College of the Environment"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/logotype-college.png" class="right" alt="UW College of the Environment"></a><br />
                 <a class="logotype-uw" href="http://uw.edu" title="University of Washington"><img src="<?php echo get_bloginfo('template_directory'); ?>/assets/img/logotype-uw.png" class="right uw-name" alt="University of Washington"></a>
           </div> 
-        -->
       </div>
     </div>
   </div>
