@@ -41,6 +41,7 @@
     
 
     .home-news-section {
+      text-align: left;
         .featured-thumbnail {
             max-height: rem-calc(350);
             margin-bottom: rem-calc(10);
@@ -350,9 +351,255 @@ left: 0;
 
 }
 
+.full-student-faculty {
+
+  background-color: #000;
+  width: 100%;
+
+  h2 {
+  @include encode_black;
+  background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
+  background-postition: center bottom;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: rem-calc(24);
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+
+  }
+
+
+            .button {
+              @include o_sans_bold;
+              background-color: #ffffff;
+              border: solid 4px #cccccc;
+              border-radius: 0;
+              font-size: 14px;
+              padding: rem-calc(7) rem-calc(10);
+              text-transform: uppercase;
+
+              &:first-child {
+                margin-right: 10px;
+              }
+            }
 
 
 
+
+    .student-container {
+    background-color: #000;
+      background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-students-home.jpg');
+      background-position: center right;
+      background-repeat: no-repeat;
+      float: left;
+      height: 425px;
+      position: relative;
+      width: 50%;
+
+
+      &:after {
+      content: " ";
+      z-index: 10;
+      display: block;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+
+      }
+
+    div {
+    @include o_sans_bold;
+      border: solid 8px #fff;
+      color: #fff;
+      
+      float: right;
+      margin-right: 42px;
+      max-height: 340px;
+     padding: 30px 40px;
+      width: 600px;
+      z-index: 1000;
+      top: 50%;
+      text-align: center;
+      transform: translateY(-50%);
+    }
+    div p {
+      font-size: rem-calc(16);
+    }
+
+
+
+    }
+    .faculty-container {
+      background-color: #000;
+      background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-faculty-home.jpg');
+      background-position: center left;
+      background-repeat: no-repeat;
+      float: left;
+      height: 425px;
+      position: relative;
+      width: 50%;
+
+       &:after {
+      content: " ";
+      z-index: 10;
+      display: block;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+
+      }
+
+    div {
+    @include o_sans_bold;
+      border: solid 8px #fff;
+      color: #fff;
+      
+      float: left;
+      margin-left: 42px;
+      max-height: 340px;
+      padding: 30px 40px;
+      width: 600px;
+      z-index: 1000;
+      top: 50%;
+      text-align: center;
+      transform: translateY(-50%);
+    }
+    div p {
+      font-size: rem-calc(16);
+    }
+
+
+    }
+}
+
+
+.full-connect {
+  background-color: #464646;
+  border-top: solid 12px $orange;
+  padding: 50px 20px;
+  text-align: center;
+  width: 100%;
+
+  h2 {
+  @include encode_black;
+  background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
+  background-postition: center bottom;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: rem-calc(24);
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+
+  }
+.social-buttons {
+  margin-top: 60px;
+}
+ a.icon {
+  display: inline-block;
+  margin-left: 40px; 
+  text-indent: -10000px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:first-child {
+    margin-left: 0;
+  }
+  }
+
+
+
+a.facebook {
+background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-facebook.svg');
+background-postition: top left;
+background-repeat: no-repeat;
+
+height: 30px;
+width: 13px;
+
+
+
+
+
+}
+
+a.twitter {
+background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-twitter.svg');
+background-postition: top left;
+background-repeat: no-repeat;
+
+height: 24px;
+width: 30px;
+
+
+
+
+
+}
+
+a.email {
+background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-email.svg');
+background-postition: top left;
+background-repeat: no-repeat;
+
+height: 23px;
+width: 30px;
+
+
+
+
+
+}
+
+a.feed {
+background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-feed.svg');
+background-postition: top left;
+background-repeat: no-repeat;
+
+height: 30px;
+width: 30px;
+
+
+
+
+
+}
+
+
+
+
+}
+.full-news-events {
+  background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-home-intro.png');
+  border-bottom: solid 12px $teal;
+  border-top: solid 12px $teal;
+  padding-top: 30px;
+  text-align: center;
+  width: 100%;
+
+  h2 {
+    @include encode_black;
+    background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-teal.svg');
+    background-repeat: no-repeat;
+
+    font-size: rem-calc(50);
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+  .more-news {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  }
+}
 
 
 

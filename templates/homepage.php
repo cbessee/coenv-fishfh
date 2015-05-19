@@ -106,6 +106,53 @@ $feature_query = new WP_Query( $feature_args );
 		</div>
 		<?php endif; ?>
 	</div>
+</div> <!-- end full-intro -->
+
+
+<div class="full-student-faculty clearfix">
+
+	<div class="student-container">
+		<div style="position: relative;">
+
+			<h2 style="background-position: center bottom;">Prospective Students</h2>
+			<p>Looking for hands-on research and daily exposure to new ideas? SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. If you want to connect with some of the best minds and immerse yourself in cutting-edge research, ...</p>
+			<p><a class="button" href="/students">Learn more</a></p>
+
+		</div>
+
+	</div>
+
+
+	<div class="faculty-container">
+		<div style="position: relative;">
+
+		<h2 style="background-position: center bottom;">Meet Our Faculty</h2>
+		<p>Our faculty are committed leaders with a broad array of academic expertise to offer students a multidisciplinary education. With access to a network of local and international leaders they constantly contribute research to make advances in their field.</p>
+		<p><a class="button" href="/faculty-research">Learn more</a></p>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="full-connect">
+		<h2 style="background-position: bottom center;">Connect With Us</h2>
+		<div class="social-buttons">
+
+                <?php if (get_option('facebook')) { ?>
+                    <a class="facebook icon" href="<?php echo get_option('facebook'); ?>" title="Join us on Facebook">Join us on Facebook</a><?php } ?>
+
+                    <?php if (get_option('twitter')) { ?>
+                    <a class="twitter icon" href="<?php echo 'http://twitter.com/' . get_option('twitter'); ?>" data-site-twitter="<?php echo get_option('twitter'); ?>" title="Join us on Twitter">Join us on Twitter</a><?php } ?>
+                
+                <?php //if (get_option('youtube')) { ?>
+                    <a class="email icon" href="<?php //echo get_option('youtube'); ?>" title="Sign Up For Email Updates">Sign Up For Email Updates</a><?php //} ?>
+
+                     <?php //if (get_option('youtube')) { ?>
+                    <a class="feed icon" href="<?php //echo get_option('youtube'); ?>" title="Subscribe to our Feed">Subscribe to our Feed</a><?php //} ?>
+
+                </div>
 </div>
 
 
@@ -113,20 +160,7 @@ $feature_query = new WP_Query( $feature_args );
 
 
 
-<?php 
-if ( is_active_sidebar( 'home-columns' ) ) : 
-?>
 
-<?php dynamic_sidebar( 'home-columns' ); ?>
-
-
-<?php endif; ?>
-<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
-	<?php do_action('foundationPress_after_content'); ?>
-	<ul class="widget-area after-content">
-	<?php dynamic_sidebar("after-content"); ?>
-	</ul>
-<?php endif; ?>
 <?php
 # News with featured news
 
@@ -152,13 +186,18 @@ else {
 $wp_query = new WP_Query( $home_args );
 ?>
 	<?php if ($wp_query->have_posts()): ?>
-	<hr />
+	<div class="full-news-events">
+		<div class="row">
+			<div class="columns large-12">
+			<h2 style="background-position: bottom center;">Latest News</h2>
+			<a class="more-news" href="/news-events">More News</a>
+			</div>
+		</div>
 	<div class="home-news-section large-12 clearfix">
 		
 		<div class="row">
 			<div class="large-8 columns">
 				<div class="row">
-			<h2 class="columns large-9 left" style="margin-top: 0; padding-top: 0; text-align: center; ">News</h2>
 			
 		</div>
 		<?php
@@ -229,16 +268,17 @@ $wp_query = new WP_Query( $home_args );
 				
 ?>
 <?php endwhile;?>
-<a class="button columns large-3 right" href="/news-and-events">More News</a>
+
 </div>
 <div class="large-4 columns">
-	<h2>Events</h2>
-	<?php the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/coenveventscalendar.rss&posts_per_page=3'); ?>
+	<h3>Events</h3>
+	<?php the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/sea_fish.rss&posts_per_page=3'); ?>
 	<a class="button columns large-3 right" href="/news-events/events/">More Events</a>
 </div>
 
 </div>
 <?php endif; ?>
+</div>
 </div>
 <a href="#" class="back-to-top">Back to Top</a>
 <?php do_action('foundationPress_after_content'); ?>
