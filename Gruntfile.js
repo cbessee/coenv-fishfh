@@ -53,6 +53,7 @@ module.exports = function(grunt) {
 		      'js/share.js',
 		      'js/main.js',
           'js/wp-menufix.js',
+          'js/masonry-packaged.js'
         ],
 
         dest: 'js/app.js',

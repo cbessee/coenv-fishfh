@@ -96,7 +96,7 @@ $feature_query = new WP_Query( $feature_args );
 
 
 
-<div class="full-intro">
+<div class="full-intro clearfix">
 	<div class="row">				
 		<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
 		<div class="large-12 columns programs">
@@ -112,11 +112,13 @@ $feature_query = new WP_Query( $feature_args );
 <div class="full-student-faculty clearfix">
 
 	<div class="student-container">
-		<div style="position: relative;">
+		<div class="student-wrapper" style="position: relative;">
 
 			<h2 style="background-position: center bottom;">Prospective Students</h2>
-			<p>Looking for hands-on research and daily exposure to new ideas? SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. If you want to connect with some of the best minds and immerse yourself in cutting-edge research, ...</p>
-			<p><a class="button" href="/students">Learn more</a></p>
+				<div class="student-content">
+					<p>Looking for hands-on research and daily exposure to new ideas? SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. If you want to connect with some of the best minds and immerse yourself in cutting-edge research, ...</p>
+					<p><a class="button" href="/students">Learn more</a></p>
+				</div>
 
 		</div>
 
@@ -124,11 +126,13 @@ $feature_query = new WP_Query( $feature_args );
 
 
 	<div class="faculty-container">
-		<div style="position: relative;">
+		<div class="faculty-wrapper" style="position: relative;">
 
 		<h2 style="background-position: center bottom;">Meet Our Faculty</h2>
-		<p>Our faculty are committed leaders with a broad array of academic expertise to offer students a multidisciplinary education. With access to a network of local and international leaders they constantly contribute research to make advances in their field.</p>
-		<p><a class="button" href="/faculty-research">Learn more</a></p>
+			<div class="faculty-content">
+				<p>Our faculty are committed leaders with a broad array of academic expertise to offer students a multidisciplinary education. With access to a network of local and international leaders they constantly contribute research to make advances in their field.</p>
+				<p><a class="button" href="/faculty-research">Learn more</a></p>
+			</div>
 
 		</div>
 
@@ -166,7 +170,7 @@ $feature_query = new WP_Query( $feature_args );
 
 $sticky = get_option( 'sticky_posts' );
 $sticky_count = count($sticky);
-$posts_on_home = 3; //set posts_per_page here
+$posts_on_home = 4; //set posts_per_page here
 
 if( $sticky ) {
     $home_args = array(
@@ -196,10 +200,7 @@ $wp_query = new WP_Query( $home_args );
 	<div class="home-news-section large-12 clearfix">
 		
 		<div class="row">
-			<div class="large-8 columns">
-				<div class="row">
-			
-		</div>
+			<div class="medium-12 large-8 columns news-container">
 		<?php
 		# The Loop
 		while ( $wp_query->have_posts() ) :
@@ -208,7 +209,7 @@ $wp_query = new WP_Query( $home_args );
 					$wp_query->the_post();
 					if (get_field('story_link_url')) {
 						$post_link_url = get_field('story_link_url');
-						$post_link_target = ' target="_blank" ';
+						$post_link_target = 'target="_blank"';
 			            $post_link = '<p><a class="button" href="' . $post_link_url . '"' . $post_link_target . '>' . get_field('story_source_name') . '</a></p>';
 			        } else {
 			        	$post_link_url = get_the_permalink();
@@ -218,63 +219,47 @@ $wp_query = new WP_Query( $home_args );
 		    	    // Get categories
 		            $terms = wp_get_post_terms(get_the_id(), 'category');
 					if (!empty($terms)) {
-						$terms_arr = array();
-						
+
+						$terms_list = '';
 						foreach ($terms as &$term) {
 							if ($term->slug != 'uncategorized') {
-								$terms_arr[] = '<a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a>';
+								$terms_list .= '<li><a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
 							}
 						}
-						$terms_str = ' / ' . implode(', ', $terms_arr);
 
 					} else {
-						$terms_str = '';
+						$terms_list = '';
 					}
-
-					// Build news divs
-					if ( $wp_query->current_post == 0 ) {
-			            if ( has_post_thumbnail()) {
-			                echo '<div class="featured-news" style="width: 50%; float: left; padding-right: 30px;">';
-								echo '<div class="featured-thumbnail" >';
-									echo '<a href="' . $post_link_url . '" class="img"' . $post_link_target . '>' . the_post_thumbnail( 'large' ) . '</a>';
-								echo '</div>';
-								echo '<div class="post-meta">';
-			                		echo '<time class="article__time" datetime="' . get_the_date('Y-m-d h:i:s') . '">' . get_the_date('M j, Y') . '</time>';
-									echo $terms_str;
-				            	echo '</div>';
-			                	echo '<a href="' . $post_link_url . '"' . $post_link_target . '><h4>' . get_the_title() . '</h4></a>';
-				            	echo '<p>' . the_advanced_excerpt('length=30&finish=sentence') . '</p>';
-				            	echo $post_link;
-				            echo '</div>';
-						} else {
-			                echo '<div class="small-news" style="width: 50%; float: left;">';
-			                	echo '<div class="post-meta">';
-			                		echo '<time class="article__time" datetime="' . get_the_date('Y-m-d h:i:s') . '">' . get_the_date('M j, Y') . '</time>';
-			                	echo '</div>';
-			                	echo '<a href="' . $post_link_url . '"><h4>' . get_the_title() . '</h4></a>';
-			                echo '</div>';
-			            }
-					} else {
+					?>
+					<div class="small-news">
+			            <?php if ( has_post_thumbnail()) { ?>
+						<div class="featured-thumbnail" >
+							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'large' ); ?></a>
+						</div>
+						<?php } ?>
+						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
+				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
+				        <div class="post-meta left">
+			                <time class="article__time left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date('M j, Y'); ?></time>
+			               	<?php if (!empty($terms)) { ?> 
+							<ul class="terms right">
+								<?php echo $terms_list; ?>
+				            </ul>
+				            <?php } ?>
+				        </div>
+				    </div>
 						
-						echo '<div class="small-news" style="width: 50%; float: left;">';
-							echo '<div class="post-meta">';
-								echo '<time class="article__time" datetime="' . get_the_date('Y-m-d h:i:s') . '">' . get_the_date('M j, Y') . '</time>';
-								echo $terms_str;
-							echo '</div>';
-							echo '<a href="' . $post_link_url . '"><h4>' . get_the_title() . '</h4></a>';
-							echo '<p>' . the_advanced_excerpt('length=30&finish=sentence') . '</p>';
-			       		echo '</div>';
-					}
 				
-?>
 <?php endwhile;?>
 
 </div>
-<div class="large-4 columns">
-	<h3>Events</h3>
+<section class="large-4 columns events">
+	<header>
+		<h3><a href="/news-events/events/">Events</a></h3>
+	</header>
 	<?php the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/sea_fish.rss&posts_per_page=3'); ?>
 	<a class="button columns large-3 right" href="/news-events/events/">More Events</a>
-</div>
+</section>
 
 </div>
 <?php endif; ?>
