@@ -29,12 +29,6 @@
     font-style: normal;  
 }
 
-
-
-
-
-
-
 @font-face {
     font-family: open-sans;  
     src: url("../assets/fonts/OpenSans-Regular.ttf") format('truetype');  
@@ -125,22 +119,6 @@
     font-weight: 400;
     letter-spacing: .5px;
     -webkit-font-smoothing: antialiased;
-}
-
-blockquote {
-    margin: 0!important;
-    padding: rem-calc(20) rem-calc(80);
-    border-left: 0px!important;
-    border-top: 2px solid #f6f5f7;
-    border-bottom: 2px solid #f6f5f7;
-    
-    p {
-        margin: 0!important;
-        @include encode_cb;
-        text-transform: none;
-        color: #000000!important;
-        font-size: rem-calc(18);
-    }
 }
 
 h1 {

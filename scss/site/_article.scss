@@ -137,9 +137,21 @@
 	}
 
 	blockquote {
-		@include rem('margin', 1, 2);
+    margin: 2rem 0;
+    padding: rem-calc(20) rem-calc(80);
+    border-left: 0px!important;
+    border-top: 2px solid #f6f5f7;
+    border-bottom: 2px solid #f6f5f7;
+    
+    p {
+        margin: 0!important;
+        @include encode_cb;
+        text-transform: none;
+        color: #000000!important;
+        font-size: rem-calc(18);
+    }
+}
 
-	} // blockquote
 
 	// tables
 	table {
