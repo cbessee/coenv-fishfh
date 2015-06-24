@@ -114,9 +114,9 @@ $feature_query = new WP_Query( $feature_args );
 	<div class="student-container">
 		<div class="student-wrapper" style="position: relative;">
 
-			<h2 style="background-position: center bottom;">Prospective Students</h2>
+			<h2 style="background-position: center bottom;">Explore our Programs</h2>
 				<div class="student-content">
-					<p>Looking for hands-on research and daily exposure to new ideas? SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. If you want to connect with some of the best minds and immerse yourself in cutting-edge research, ...</p>
+					<p>SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. If you want to connect with some of the best minds and immerse yourself in cutting-edge research, then SAFS might be a fit for you.</p>
 					<p><a class="button" href="/students">Learn more</a></p>
 				</div>
 
