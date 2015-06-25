@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <div class="row">
+	<?php get_sidebar(); ?>
 	<?php //coenv_base_section_title($post->ID); ?>
 	<?php //if (!is_front_page() && function_exists('bcn_display')): ?>
 	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
@@ -29,8 +30,7 @@
 	<?php endif; ?>
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_before_content'); ?>
-
 	</div>
-	<?php get_sidebar(); ?>
+
 </div>
 <?php get_footer(); ?>
