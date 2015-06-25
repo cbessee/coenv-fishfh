@@ -15,6 +15,17 @@ $faculty_name = $faculty_fname . ' ' . $faculty_lname;
 $faculty_cv = $faculty_fields["curriculum_vitae"];
 $faculty_pubs = $faculty_fields["selected_publications"];
 $faculty_img = get_the_post_thumbnail($page->ID, 'med');
+
+
+
+
+
+
+
+
+
+
+
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 	<header class="article__header">
@@ -130,12 +141,16 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 			<?php coenv_base_fac_terms($post->ID); ?>
 		</div>
 		<?php the_content() ?>
-		<?php if ($faculty_pubs): ?>
+		<?php if( have_rows( 'selected_pubs' ) ) { ?>
 		<div class="faculty-pubs">
 			<h2>Selected publications</h3>
-			<?php echo $faculty_pubs; ?>
+			<ul>
+				<?php while ( have_rows( 'selected_pubs' ) ) : the_row();
+						echo "<li>" . get_sub_field( 'publication' ) . "</li>\r\n";
+					endwhile; ?>
+			</ul>
 		</div>
-		<?php endif; ?>
+		<?php } ?>
 	</section>
     <?php
     /* Still needed? */
