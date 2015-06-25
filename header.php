@@ -211,7 +211,7 @@
             echo '<div>';
      }
      ?>
-    <div class="section-row row">
+    <div class="section-row">
         <?php echo coenv_base_section_title($post->ID); ?>
     </div>
 

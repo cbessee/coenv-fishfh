@@ -212,20 +212,21 @@ height: 126px;
 
     }
 }
+}
+.section-row {
+    background-color: #999;
+    height: 100px;
+    margin-bottom: 60px;
+    postition: relative;
+    text-align: center;
+    width: 100%;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    h2 {
+        background-color: #fff;
+        border: solid 2px #ccc;
+        display: inline-block;
+margin-top: 62px;
+padding: 5px 20px;
+    }
 }
 
