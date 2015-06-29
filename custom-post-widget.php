@@ -19,8 +19,8 @@ $widget_img_attr = array(
 $widget_img = get_the_post_thumbnail( $content_post -> ID, 'sm-sq');
 $widget_copy = get_field('block_text', $content_post -> ID);
 $rows = get_field('add_links', $content_post -> ID);
-
-if($rows) {
+$buttons = "";
+if( !empty( $rows ) )  {
     $buttons = '<ul class="widget_links">';
     $first = true;
     foreach($rows as $row) {
@@ -28,7 +28,7 @@ if($rows) {
             $link_title =  $row['link_to_a_page_on_this_site'][0]['link_title_internal'];
             $link_url = get_permalink($row['link_to_a_page_on_this_site'][0]['select_page'][0]);
             $link_target = 'self';	
-            $buttons .= '<li><a class="button white" title="' . $link_title . '" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
+            $buttons .= '<li><a class="button" title="' . $link_title . '" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
             if ( $first ) {
                 $first_link_title = $link_title;
                 $first_link_url = $link_url;
@@ -39,7 +39,7 @@ if($rows) {
             $link_title = $row['link_to_an_external_site'][0]['link_title'];
             $link_url = $row['link_to_an_external_site'][0]['link_url'];
             $link_target ='blank';
-            $buttons .= '<li><a class="button white"  title="' . $link_title . '" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
+            $buttons .= '<li><a class="button"  title="' . $link_title . '" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a></li>';
             if ( $first ) {
                 $first_link_title = $link_title;
                 $first_link_url = $link_url;
@@ -56,7 +56,7 @@ if($rows) {
  */
 ?>
     <div class="solid-widget">
-    <?php if ( $show_featured_image ) { ?>
+    <?php if ( $show_featured_image && $widget_img ) { ?>
         <div class="widget_img">
             <a title="<?php echo $first_link_title; ?>" href="<?php echo $first_link_url; ?>" target="_<?php echo $first_link_target; ?>"><?php echo $widget_img; ?></a>
         </div>
@@ -69,7 +69,15 @@ if($rows) {
             </div>
         <?php } ?>
         <div class="widget-content">
-        <?php echo $widget_copy; ?>
-        <?php echo $buttons; ?>
+        <?php
+        if ( $widget_copy ) {
+            echo $widget_copy; 
+        }
+        ?>
+        <?php 
+        if ( $buttons ) {
+            echo $buttons;
+        }
+        ?>
         </div>
     </div>

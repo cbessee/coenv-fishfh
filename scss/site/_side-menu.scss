@@ -1,6 +1,6 @@
 // General sidebar
 aside#sidebar {
-	margin-top: rem-calc(57);
+	margin-top: rem-calc(25);
 	padding-right: 1rem !important;
 
 	.section-title {
@@ -22,35 +22,72 @@ aside#sidebar {
 
 	// Second-level navigation
 	.coenv_base_subnav ul {
-		border-top: 1px solid #dddddd;
+	@include o_sans_bold;
+		background-image: url('../assets/img/nav-border-top-green.png');
+		background-position: left bottom;
+		background-repeat: no-repeat;
+		border-left: 6px solid #82cfcc;
+		border-right: 6px solid #ebebeb;
 		margin: 0  1rem rem-calc(30) 0;
 		padding: 0;
 		line-height: 10px;
 		width: 100%;
 		li {
-			background-color: #f2f2f2;
-			border-bottom: 1px solid #ccc;
-			padding: 0;
+			@include o_sans_bold;
+			display: block;
+			background-image: url('../assets/img/nav-border-top-green.png');
+			background-repeat: no-repeat;
+			background-position: left top;
+			line-height: 1.2;
 			margin: 0;
+			padding: 0;
 			text-transform: uppercase;
 			font-size: 1rem;
+
+			&.active,
+			&:hover {
+
+				background-image: url('../assets/img/nav-border-black.png');
+
+			}
 			a {
+				@include o_sans_bold;
 				display: block;
-				line-height: 152%;
+				font-size: rem-calc(15);
+				padding: 16px 16px 10px 16px;
 				&:not(.button) {
 					color: #000;
 				}
-				&:hover {
-					color: $accent;
-				}
 			}
 			ul {
+				background-image: none;
+				background-position: left bottom;
+				background-repeat: no-repeat;
+
+				border-left: none;
+				border-right: none;
 				margin-bottom: 0;
+				margin-left: 0;
+				padding-bottom: 20px;
+				padding-left: 0;
 				li {
+					@include o_sans;
+					background-image: none !important;
 					border: 0;
+					padding: 0;
 
 					a {
-					padding-left: 2rem !important;
+					font-size: rem-calc(12);
+					padding: 6px 16px 6px 30px;
+					}
+					ul {
+						padding-bottom: 0;
+					}
+					li a {
+					@include o_sans;
+						font-size: rem-calc(12);
+						padding: 6px 16px 6px 50px;
+						text-transform: none;
 					}
 				}
 				&.side-nav {
@@ -62,6 +99,17 @@ aside#sidebar {
 	}
 	.widget {
 		margin-bottom: rem-calc(30);
+	}
+	.solid-widget {
+	border: solid 6px #f29068;
+	margin-bottom: 27px;
+	padding: 0;
+
+
+	
+
+
+
 	}
 
 

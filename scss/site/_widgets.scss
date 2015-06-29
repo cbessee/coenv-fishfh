@@ -22,11 +22,94 @@
 
 
 // Sidebar Widgets
+
+aside#sidebar .solid-widget {
+float: left;
+padding-bottom: 20px;
+
+	.widget_img {
+		border-bottom: solid 6px #f29068;
+	}
+		.widget-title {
+			margin-top: 20px;
+			padding: 0 20px;
+
+
+			h4 {
+
+		@include encode_black;
+		background-image: url('../assets/img/slash-orange.png');
+		background-position: left bottom;
+		background-repeat: no-repeat;
+		font-size: rem-calc(24);
+		line-height: 1.1;
+		padding-bottom: 20px;
+		text-transform: uppercase;
+
+		a {
+			color: #000;
+		}
+
+	}
+
+
+
+		}
+		.widget-content {
+		@include o_sans;
+
+			margin: 16px 20px;
+
+			p {
+				font-size: rem-calc(16);
+				line-height: 1.4;
+
+				a {
+					color: #96330c;
+					text-decoration: underline;
+				}
+			}
+			
+			a.button {
+				@include o_sans_bold;
+				background-color: #f29068;
+				border: solid 3px #f9b69b;
+				border-radius: 0;
+				color: #000;
+				font-size: rem-calc(12);
+				margin-bottom: 0;
+				text-transform: uppercase;
+			}
+		}
+		.widget_links {
+			float: left;
+			margin-bottom: 0;
+			margin-left: 0;
+			padding-left: 0;
+
+			li {
+				float: left;
+				list-style: none;
+				margin-right: .25rem;
+			}
+
+		}
+
+
+
+	}	
+
+
 aside#sidebar div.columns {
 
 	
 	// Content blocks
-	.widget_custom_post_widget {
+	.widget_custom_post_widget,
+	.solid-widget {
+		.widget-title {
+
+		margin: 0 20px;
+		}
 		.widget_content {
 			padding: 0 rem-calc(20) rem-calc(5) rem-calc(20);
 			h4 {
@@ -210,9 +293,6 @@ aside#sidebar {
 .fac-cats .button {
 
 width: 100%;
-
-
-
 
 }
 
