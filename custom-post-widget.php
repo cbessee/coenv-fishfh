@@ -20,7 +20,8 @@ $widget_img = get_the_post_thumbnail( $content_post -> ID, 'sm-sq');
 $widget_copy = get_field('block_text', $content_post -> ID);
 $rows = get_field('add_links', $content_post -> ID);
 
-if($rows) {
+$buttons = "";
+if( !empty( $rows ) )  {
     $buttons = '<ul class="widget_links">';
     $first = true;
     foreach($rows as $row) {
