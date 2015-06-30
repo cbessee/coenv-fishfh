@@ -80,20 +80,30 @@
 .article__content {
     @extend .clearfix;
 
+    p {
+    	font-size: rem-calc(17);
+    	line-height: 1.6;
+
+
+
+    }
+
     ul {
     display: block;
     margin-left: 20px;
     }
 
     li {
-    	line-height: 1.6;
-
-    	margin-bottom: rem-calc(5px);
+    	font-size: rem-calc(18);
+    	line-height: 1.4;
+    	margin-bottom: rem-calc(18);
     	list-style-position: inside;
+    	
 
     }
     h1,h2,h3,h4,h5,h6 {
     	@include encode_black;
+    	line-height: 1.4;
     	width: 100%;
     }
 
@@ -104,40 +114,34 @@
 
 		@media #{$medium-up} {
 			@include font-size(36);
-			@include line-height(48);
 		}
 
 	} // h1
 
 	h2 {
 		@include font-size(18);
-		@include line-height(24);
 		font-weight: 400;
 		margin-bottom: rem-calc(20);
 
 		@media #{$medium-up} {
-			@include font-size(24);
-			@include line-height(30);
+			@include font-size(28);
 		}
 
 	} // h2
 
 	h3 {
 		@include font-size(16);
-		@include line-height(24);
 		font-weight: 400;
 		margin-bottom: rem-calc(20);
 
 		@media #{$medium-up} {
-			@include font-size(18);
-			@include line-height(24);
+			@include font-size(22);
 		}
 
 	} // h3
 
 	h4 {
 		@include font-size(14);
-		@include line-height(24);
 	}
 
 	hr {
