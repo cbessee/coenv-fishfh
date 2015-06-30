@@ -18,11 +18,10 @@
 	.article__title {
 		margin-top: 0;
 		@include rem('padding-bottom', 1);
-		@include serif;
+		@include encode_black;
 		@include font-size(18);
 		@include line-height(30);
 		font-weight: 400;
-		border-bottom: 2px solid $border;
 
 		@media #{$medium-up} {
 			@include font-size(36);
@@ -64,6 +63,7 @@
 				margin: 0;
 				padding: 0;
 				list-style: none;
+
 			}
 
 			li {
@@ -80,14 +80,24 @@
 .article__content {
     @extend .clearfix;
 
+    ul {
+    display: block;
+    margin-left: 20px;
+    }
+
     li {
     	line-height: 1.6;
-    	margin-bottom: rem-calc(5px);
 
+    	margin-bottom: rem-calc(5px);
+    	list-style-position: inside;
+
+    }
+    h1,h2,h3,h4,h5,h6 {
+    	@include encode_black;
+    	width: 100%;
     }
 
 	h1 {
-		@include serif;
 		@include font-size(24);
 		@include line-height(30);
 		font-weight: 400;
@@ -100,10 +110,10 @@
 	} // h1
 
 	h2 {
-		@include serif;
 		@include font-size(18);
 		@include line-height(24);
 		font-weight: 400;
+		margin-bottom: rem-calc(20);
 
 		@media #{$medium-up} {
 			@include font-size(24);
@@ -113,10 +123,10 @@
 	} // h2
 
 	h3 {
-		@include serif;
 		@include font-size(16);
 		@include line-height(24);
 		font-weight: 400;
+		margin-bottom: rem-calc(20);
 
 		@media #{$medium-up} {
 			@include font-size(18);
@@ -237,6 +247,14 @@
 	}
 
 	// margins
+
+
+	.size-medium {
+	width: 300px;
+	}
+
+
+
 	img.alignleft,
 	.wp-caption.alignleft {
 		@include rem('margin', 0, 1, 1, 0);
@@ -251,7 +269,6 @@
 	.wp-caption {
 		margin: 0;
 		padding: 0;
-		//width: auto !important;
 		color: #fff;
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 		background-color: $bg-dk;
