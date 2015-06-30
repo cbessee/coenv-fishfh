@@ -79,6 +79,26 @@ function coenv_base_post_types_init() {
     'menu_icon' => 'dashicons-slides',
     )
   );
+
+   register_post_type( 'intranet_page',
+    array(
+      'labels' => array(    
+      'name' => __( 'Intranet Pages' ),
+      'singular_name' => __( 'Intranet Page' ),
+      'add_new_item' => __( 'Add Intranet Page'),
+      'edit_item' => __( 'Edit Intranet Page'),
+      'new_item' => __( 'New Intranet Page'),
+      ),
+    'hierarchical' => true,
+    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+    'public' => true,
+    'has_archive' => false,
+    'show_ui' => true,
+    'rewrite' => array('slug' => 'intranet'),
+    'menu_icon' => 'dashicons-slides',
+    )
+  );
+
 }
 
 add_action( 'init', 'coenv_base_post_types_init' );
@@ -95,7 +115,7 @@ function hide_editor() {
 define( 'FACULTY_PAGE_PARENT_ID', '3698' );
 define( 'BLOG_PAGE_PARENT_ID', '162' );
 define( 'NEWS_PARENT_ID', '118' );
-define( 'INTRANET_PARENT_ID', '118' );
+define( 'INTRANET_PARENT_ID', '7251' );
  
  
 /**
@@ -157,23 +177,6 @@ function coenv_base_news_parent( $data, $postarr ) {
     return $data;
 }
 add_action( 'wp_insert_post_data', 'coenv_base_news_parent', '142', 2  );
-
-function coenv_base_intranet_parent( $data, $postarr ) {
-    global $post;
- 
- 
-    // verify if this is an auto save routine.
-    // If it is our form has not been submitted, so we dont want to do anything
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-        return $data;
- 
-    if ( $post->post_type == "post" ){
-        $data['post_parent'] = INTRANET_PARENT_ID;
-    }
- 
-    return $data;
-}
-add_action( 'wp_insert_post_data', 'coenv_base_intranet_parent', '142', 2  );
 
 
 /*
