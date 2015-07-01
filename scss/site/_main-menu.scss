@@ -8,8 +8,14 @@
     .top-bar-section {
         display: inline-block;
         
-        #menu-main-menu { 
+        #menu-main-menu {
+
+
+            li {
+                margin-right: 15px;
+            }
             li a {
+
                 @media #{$large-up} {
                     font-size: rem-calc(16);
                 }
@@ -18,9 +24,10 @@
                 }
                 font-size: rem-calc(14);
                 color: $text;
-                @include encode_cb;
+                @include o_sans;
                 background-color: #ffffff;
                 text-align: left;
+                text-transform: uppercase;
 
                 &:hover, &:focus {
                     color: $accent;
@@ -57,16 +64,8 @@
             }
 
             & > .page_item_has_children {
-                &:before {
-                    display: block;
-                    position: absolute;
-                    top: 8px;
-                    left: 0;
-                    bottom: 8px;
-                    width: 1px;
-                    height: 30px;
-                    background: #d7dee5;
-                }
+                
+                
 
                 &:not(:first-child) {
                     &:before {
@@ -90,11 +89,18 @@
             }
     
             .has-dropdown > a {
-                padding-right: rem-calc(15)!important;
-                @media #{$medium-only} {
-                    padding-right: rem-calc(15)!important;
-                }
+
+
+
+
+
+                    background-image: url('../assets/img/nav-carrot.svg');
+                    background-repeat: no-repeat;
+                    background-position: center right;
+
+
                 .has-dropdown > a {
+                background-image: none;
                 }
                 &:after {
                     content: none;
@@ -103,3 +109,27 @@
         }
     }
 }
+
+
+
+.top-bar .top-bar-section #menu-main-menu ul .has-dropdown>a {
+
+background-image: none;
+
+}
+
+
+
+
+// Foundation overrides
+
+@media only screen and (min-width: 40.063em) {
+.top-bar-section .has-dropdown>a {
+
+padding-right: 20px !important;
+
+}
+}
+
+
+
