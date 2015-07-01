@@ -23,6 +23,7 @@ $feature_query = new WP_Query( $feature_args );
 	<div class="playpause"></div>
 	<div class="homepage-features">
 
+
 	<?php
 	# The Loop
 	while ( $feature_query->have_posts() ) :
@@ -46,12 +47,18 @@ $feature_query = new WP_Query( $feature_args );
 	?>
 			
 		<div class="feature">
+
 			<div class="feature-image" style="background-image:url('<?php echo $feature_image[0]; ?>')">
+				<div class="feature-controls hide-for-large-up">
+							<a class="slick-p" href="#">Previous</a>
+							<a class="slick-n" href="#">Next</a>
+						</div>
 				<div class="feature-info-container">
 					<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
 					<div class="feature-info row" style="background-color:<?php $feature_color; ?>">
 						<div class="feature-content">
 							<h2><?php echo get_the_title(); ?></h2>
+
 							<p class="feature-excerpt"><?php echo $feature_excerpt; ?></p>
 							<?php 
 
@@ -72,15 +79,16 @@ $feature_query = new WP_Query( $feature_args );
 							}
 
 							?>
+
 						</div><!-- .feature-content -->
-						<div class="feature-controls">
+						<div class="feature-controls show-for-large-up">
 							<a class="slick-p" href="#">Previous</a>
 							<a class="slick-n" href="#">Next</a>
 						</div>
 					</div><!-- .feature-info -->
 				</div><!-- .feature-info-container -->
 				<div style="position: absolute; bottom: 0; text-align: center; width: 100%;">
-					<ul class="my-slick-dots here" style="display: block;">
+					<ul class="my-slick-dots here show-for-large-up" style="display: block;">
 					</ul>
 				</div>
 			</div><!-- .feature -->

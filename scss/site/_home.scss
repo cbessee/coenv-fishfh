@@ -1,13 +1,12 @@
 // Homepage Widgets
 
 .home {
-
  a.button {
-            font-size: 1rem;
-        }
-    .widget_coenv_base_index_dates ul {
-        margin-left: 1rem;
-    }
+  font-size: 1rem;
+ }
+ .widget_coenv_base_index_dates ul {
+  margin-left: 1rem;
+  }
 
     ul.widget_links {
         list-style: none;
@@ -60,13 +59,13 @@
     height: 200px;
     overflow: hidden;
 }
+
 .feature {
     color: $white;
-    display: relative !important;
-
+    display: relative;
     
-    ul li {
-        list-style-type: none;
+    li {
+      list-style-type: none;
     }
     
     .feature-image {
@@ -80,16 +79,27 @@
     }
     
     .feature-info-container {
+    
+      position: absolute;
+      bottom: 0;
+
+      @media #{$large-up} {
+
+        position: relative;
+      bottom: auto;
+
+
+      }
         
         .feature-info {
             
             position: relative;
 
+
             @media #{$small-only} {
-                width: 50%;
 
                 h2 {
-                    font-size: rem-calc(14);
+                    font-size: rem-calc(22);
                 }
                 p.feature-excerpt {
                     font-size: rem-calc(12);
@@ -99,27 +109,54 @@
 
              }
         }
-        .feature-content {
-            background-color: rgba(0,0,0,0.77);
-            border: solid 13px #fff;
-            display: inline-block;
-            float: left;
-            padding: rem-calc(20);
-            width: 480px;
 
-            .button {
-              @include o_sans_bold;
-              background-color: #82cfcc;
-              border: solid 4px #b2eeec;
-              border-radius: 0;
+
+
+
+
+
+
+
+
+
+        .feature-content {
+          background-color: rgba(0,0,0,0.77);
+          display: inline-block;
+          float: left;
+          padding: rem-calc(20);
+
+          @media #{$large-up} {
+            border: solid 13px #fff;
+            width: 480px;
+          }
+
+          .button {
+            @include o_sans_bold;
+            background-color: #82cfcc;
+            border: solid 4px #b2eeec;
+            border-radius: 0;
+            font-size: rem-calc(11);
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            padding: rem-calc(7);
+
+            text-transform: uppercase;
+
+            &:first-child {
+              margin-right: 10px;
+            }
+
+            @media #{$large-up} {
               font-size: 14px;
               padding: rem-calc(7) rem-calc(10);
-              text-transform: uppercase;
-
-              &:first-child {
-                margin-right: 10px;
-              }
             }
+
+
+
+
+
+          }
         }
         
         
@@ -173,6 +210,20 @@ top: 0;
 left: 0;
     z-index: 500;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Production styles
 
@@ -252,35 +303,65 @@ left: 0;
 .feature-excerpt {
   @include o_sans_bold;
   font-size: rem-calc(18);
-  min-height: 180px;
+
+
+  @media #{$large-up} {
+    min-height: 180px;
+  }
 }
 
 }
 
 .feature-controls {
-  background-color: #fff;
-  display: inline-block;
-  float: left;
-  padding: 6px 0 0 2px;
-  width: 73px;
+
+
+
+
+
+
+  
+
+  @media #{$large-up} {
+    background-color: #fff;
+    display: inline-block;
+    padding: 6px 0 0 2px;
+    width: 73px;
+    float: left;
+  }
+
+
 
   .slick-p,
   .slick-n {
-  background-position: left center;
-  background-repeat: no-repeat;
-  display: inline-block;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 27px;
-  height: 67px !important;
+     background-position: left center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 
+    @media #{$large-up} {
+      width: 27px;
+      height: 67px !important;
+    }
   }
   .slick-n {
     background-image: url('/wp-content/themes/coenv-fish/assets/img/arrow-r.svg');
     background-position: 9px center;
-    border-left: 3px solid #ccc;
+    
     width: 40px;
+
+    @media #{$large-up} {
+
+      border-left: 3px solid #ccc;
+
+
+
+    }
+
+
+
+
   }
   .slick-p {
     background-image: url('../assets/img/arrow-l.svg');
