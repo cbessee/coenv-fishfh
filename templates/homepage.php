@@ -6,6 +6,49 @@ Template Name: Homepage
 <?php get_header(); ?>
 <?php
 
+
+
+/**
+ * Check for events
+ */
+
+
+	$events_xml = file_get_contents( 'http://www.trumba.com/calendars/sea_fish.rss' );
+	$xml = new SimpleXmlElement($events_xml);
+    $events = array();
+
+    foreach ($xml->channel->item as $item) {     
+      $events[] = array(
+        'title' => $item->title,
+        'date'  => $item->category,
+        'url' => $item->link
+      );
+    }
+
+    if ( !empty( $events ) ) {
+    	$news_columns = '8';
+    	$news_count = 4;
+    } else {
+    	$news_columns = '12';
+    	$news_count = 6;
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
 * Loop for homepage features.
 */
@@ -178,7 +221,7 @@ $feature_query = new WP_Query( $feature_args );
 
 $sticky = get_option( 'sticky_posts' );
 $sticky_count = count($sticky);
-$posts_on_home = 4; //set posts_per_page here
+$posts_on_home = $news_count; //set posts_per_page here
 
 if( $sticky ) {
     $home_args = array(
@@ -208,7 +251,7 @@ $wp_query = new WP_Query( $home_args );
 	<div class="home-news-section large-12 clearfix">
 		
 		<div class="row">
-			<div class="medium-12 large-8 columns news-container">
+			<div class="medium-12 large-<?php echo $news_columns; ?> columns news-container">
 		<?php
 		# The Loop
 		while ( $wp_query->have_posts() ) :
@@ -239,7 +282,7 @@ $wp_query = new WP_Query( $home_args );
 						$terms_list = '';
 					}
 					?>
-					<div class="small-news">
+					<div class="small-news dontsplit">
 			            <?php if ( has_post_thumbnail()) { ?>
 						<div class="featured-thumbnail" >
 							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'large' ); ?></a>
@@ -247,7 +290,7 @@ $wp_query = new WP_Query( $home_args );
 						<?php } ?>
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
-				        <div class="post-meta left">
+				        <div class="post-meta">
 			                <time class="article__time left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date('M j, Y'); ?></time>
 			               	<?php if (!empty($terms)) { ?> 
 							<ul class="terms right">
@@ -261,13 +304,22 @@ $wp_query = new WP_Query( $home_args );
 <?php endwhile;?>
 
 </div>
+
+<?php if ( !empty( $events ) ) { ?>
 <section class="large-4 columns events">
 	<header>
 		<h3><a href="/news-events/events/">Events</a></h3>
 	</header>
-	<?php the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/sea_fish.rss&posts_per_page=3'); ?>
+
+
+
+
+
+
+	<?php //the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/sea_fish.rss&posts_per_page=3'); ?>
 	<a class="button columns large-3 right" href="/news-events/events/">More Events</a>
 </section>
+<?php } ?>
 
 </div>
 <?php endif; ?>

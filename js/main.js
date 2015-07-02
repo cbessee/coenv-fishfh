@@ -157,7 +157,6 @@ var msnry = new Masonry( container, {
   // options
   itemSelector: '.small-news',
   columnWidth: 360,
-  
   gutterWidth: 10
 });
 
