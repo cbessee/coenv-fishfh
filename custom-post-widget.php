@@ -55,6 +55,7 @@ if( !empty( $rows ) )  {
  * Print the widget
  */
 ?>
+
     <div class="solid-widget">
     <?php if ( $show_featured_image && $widget_img ) { ?>
         <div class="widget_img">
