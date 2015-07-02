@@ -102,7 +102,15 @@ function coenv_base_post_types_init() {
 }
 
 add_action( 'init', 'coenv_base_post_types_init' );
-add_action('init', 'hide_editor', 100);
+
+/*
+ * Add author option to existing post types
+ */
+
+function coenv_author_support() {
+  add_post_type_support( 'faculty', 'author' );
+}
+add_action('init', 'coenv_author_support');
 
 /*
  * Hide body on content types that don't need one
@@ -111,6 +119,8 @@ function hide_editor() {
   remove_post_type_support( 'content_block', 'editor' );;
 
 } 
+
+add_action('init', 'hide_editor', 100);
 
 define( 'FACULTY_PAGE_PARENT_ID', '3698' );
 define( 'BLOG_PAGE_PARENT_ID', '162' );
