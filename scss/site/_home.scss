@@ -116,7 +116,7 @@
               @include o_sans_bold;
               font-size: rem-calc(16);
               margin-bottom: 30px;
-              margin-top: 10px;
+              margin-top: 30px;
             }
 
     
@@ -130,12 +130,11 @@
 
 
 
-
         .feature-content {
           background-color: rgba(0,0,0,0.77);
           display: inline-block;
           float: left;
-          padding: rem-calc(20);
+          padding: rem-calc(20) rem-calc(20) rem-calc(26) rem-calc(20);
 
           @media #{$large-up} {
             border: solid 13px #fff;
@@ -151,6 +150,7 @@
             margin-top: 0;
             margin-bottom: 0;
             margin-left: 0;
+            margin-right: 12px;
             padding: rem-calc(4);
 
             text-transform: uppercase;
