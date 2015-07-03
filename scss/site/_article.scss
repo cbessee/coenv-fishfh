@@ -352,3 +352,12 @@ body.page div[role="main"] .share {
 	margin-bottom: 1rem;
 	width: 100%;
 }
+
+.page-template-section-page .full-intro {
+	border-top: 0;
+	padding: 48px 0;
+
+	p {
+		font-size: rem-calc(26);
+	}
+}
