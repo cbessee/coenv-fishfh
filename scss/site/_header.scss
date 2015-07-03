@@ -213,19 +213,38 @@ height: 126px;
     }
 }
 }
+.page-row {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 375px;
+    position: relative;
+}
 .section-row {
-    background-color: #999;
-    height: 100px;
-    postition: relative;
+postition: relative !important;
+    
     text-align: center;
     width: 100%;
-
+    .section-title {
+        postition: relative !important;
+    }
     h2 {
+
+    a {
+        @include encode_black;
+        color: #000;
+        font-size: 50px;
+        text-transform: uppercase;
+    }
         background-color: #fff;
         border: solid 2px #ccc;
         display: inline-block;
-margin-top: 62px;
-padding: 5px 20px;
+        
+        margin-top: 62px;
+        padding: 5px 20px;
+        position: relative;
+        bottom: 0;
     }
 }
-
+.page-template-default .page-row {
+    height: 200px;
+}
