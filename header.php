@@ -202,8 +202,8 @@
         $banner_class .= ' template-print';
 ?>
     <?php if (($banner) && (!is_single())) {
-            echo '<div class="page-row">';
-            echo '<div>';
+            echo '<div class="page-row" ';
+            echo 'style="background-image: url(' . $banner['url'] . ');">';
         }
      ?>
      <?php if ( (empty($banner)) || (is_single()) ) {
