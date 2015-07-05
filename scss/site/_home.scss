@@ -40,11 +40,10 @@
     
 
     .home-news-section {
+      padding-bottom: 60px;
       text-align: left;
         .featured-thumbnail {
              border-bottom: 5px solid #ebebeb;
-            max-height: rem-calc(350);;
-            overflow: hidden;
         }
         
 
@@ -56,8 +55,7 @@
     }
 }
 .home-news-section .featured-thumbnail {
-    height: 200px;
-    overflow: hidden;
+
 }
 
 .feature {
@@ -380,11 +378,11 @@ left: 0;
     background-color: #f2f2f2;
     background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-home-intro.png');
     border-top: solid 10px #f29068;
-    padding: 43px 0;
+    padding: 46px 10px;
 
     @media #{$large-up} {
 
-      padding: 83px 10px;
+      
 
 
     }
@@ -694,6 +692,10 @@ left: 0;
   width: 100%;
 
   h2 {
+     @include encode_black;
+     color: #fff;
+    font-size: rem-calc(26);
+    text-transform: uppercase;
 
 
   }
@@ -728,6 +730,33 @@ width: 13px;
 
 }
 
+a.tumblr {
+background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-tumblr.svg');
+background-postition: top left !important;
+background-repeat: no-repeat;
+
+height: 30px;
+width: 30px;
+
+
+
+
+
+}
+
+a.rss {
+background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-rss.svg');
+background-postition: top left;
+background-repeat: no-repeat;
+height: 30px;
+width: 30px;
+
+
+
+
+
+}
+
 a.twitter {
 background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-twitter.svg');
 background-postition: top left;
@@ -742,13 +771,14 @@ width: 30px;
 
 }
 
-a.email {
+a.email-updates {
 background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-email.svg');
 background-postition: top left;
 background-repeat: no-repeat;
 
 height: 23px;
 width: 30px;
+top: 70%;
 
 
 
