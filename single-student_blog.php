@@ -5,43 +5,16 @@ Template Name: Student Blog
 ?>
 
 <?php get_header(); ?>
-<?php $blog_slug->slug; ?>
 <div class="row">
-	<div class="columns large-12 section-title">
-		<h1><a href="/students">Students</a></h1>
-	</div>
-	<?php //if (!is_front_page() && function_exists('bcn_display')): ?>
-	<!--<div class="breadcrumbs"><?php //bcn_display(); ?></div>-->
-	<?php //endif; ?>
-	<div class="small-12 medium-8 columns" role="main">
-			<div class="news clearfix">
-				<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
+	<div class="small-12 medium-8 columns right" role="main">
+		<div class="news clearfix">
+			<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php echo wp_get_shortlink(); ?>" data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
         </div>
 		<h1 class="article__title">Student Blog</h1>
-		<hr />
-	<?php do_action('foundationPress_before_content'); ?>
-	<?php do_action('foundationPress_post_before_entry_content'); ?>
-	</ul>
-
-		<!--
-		<div class="share right" data-article-id="<?php //the_ID(); ?>" data-article-title="<?php //echo get_the_title(); ?>"
-			data-article-shortlink="<?php //echo wp_get_shortlink(); ?>"
-			data-article-permalink="<?php //echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
-		</div>
-	-->
 		<?php
 		$rows = get_field('blog_link');
 		echo '<div class="blog-list-item">';
 		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
-		
-
-
-
-
-
-
 		echo '<div class="blog-meta">';
 		echo '<p>';
 		echo get_the_date('M j, Y');
@@ -49,10 +22,6 @@ Template Name: Student Blog
 		echo get_the_term_list( $post->ID, 'blog_category', '', ', ', '' );
 		echo '</p>';
 		echo '</div>';
-
-
-
-
 		echo '<div class="post">';
 		# The Loop
 		while ( have_posts() ) : the_post();
@@ -80,11 +49,6 @@ Template Name: Student Blog
 
 			$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
 		echo '<a href="' . $large_image_url[0] . '" title="' . $alt_text . '">';
-
-
-
-
-
 		the_post_thumbnail( 'medium' );
 		echo '</a>';
 }

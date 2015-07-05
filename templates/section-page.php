@@ -1,13 +1,29 @@
+<?php
+/*
+Template Name: Section Page
+*/
+?>
 <?php get_header(); ?>
+<?php if( !empty( get_field( 'intro_text') ) ) { ?>
+<div class="full-intro">
+	<div class="row">
+		<?php the_field( 'intro_text' ); ?>
+	</div>
+</div>
+<?php } ?>
 <div class="row">
+
 	<div class="small-12 medium-9 columns right" role="main">
+	
 	<?php do_action('foundationPress_before_content'); ?>
 	<?php dynamic_sidebar("before-content"); ?>
 	<?php while (have_posts()) : the_post(); ?>
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>" class="template-page">
 			<?php do_action('foundationPress_page_before_entry_content'); ?>
 			<div class="entry-content">
-				<?php get_template_part( 'partials/partial', 'article' ) ?>
+
+						<?php get_template_part( 'partials/partial', 'article' ) ?>
+
 			</div>
 			<footer>
 				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'FoundationPress'), 'after' => '</p></nav>' )); ?>
@@ -23,6 +39,6 @@
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_before_content'); ?>
 	</div>
-	<?php get_sidebar(); ?>
+		<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

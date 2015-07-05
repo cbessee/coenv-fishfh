@@ -12,8 +12,7 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 get_header();
 ?>
 <div class="row">
-	<?php get_sidebar(); ?>
-	<div class="small-12 medium-9 columns" role="main">
+	<div class="small-12 medium-9 columns right" role="main">
         <div class="entry-content">
 			<?php while (have_posts()) : the_post(); ?>
 			<article <?php post_class() ?> id="post-<?php the_ID(); ?>" class="template-page">
@@ -118,6 +117,6 @@ get_header();
 	<?php do_action( 'foundationPress_after_content' ); ?>
 	</div>
 	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
-
+	    	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
