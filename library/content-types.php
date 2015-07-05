@@ -61,25 +61,6 @@ function coenv_base_post_types_init() {
   'menu_icon' => 'dashicons-exerpt-view',
     )
   );
-  register_post_type( 'intranet page',
-    array(
-      'labels' => array(    
-      'name' => __( 'Intranet Pages' ),
-      'singular_name' => __( 'Intranet Page' ),
-      'add_new_item' => __( 'Add Intranet Page'),
-      'edit_item' => __( 'Edit Intranet Page'),
-      'new_item' => __( 'New Intranet Page'),
-      ),
-    'hierarchical' => true,
-    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
-    'public' => true,
-    'has_archive' => false,
-    'show_ui' => true,
-    'rewrite' => array('slug' => 'intranet'),
-    'menu_icon' => 'dashicons-slides',
-    )
-  );
-
    register_post_type( 'intranet_page',
     array(
       'labels' => array(    
@@ -94,7 +75,7 @@ function coenv_base_post_types_init() {
     'public' => true,
     'has_archive' => false,
     'show_ui' => true,
-    'rewrite' => array('slug' => 'intranet'),
+    'rewrite' => false,
     'menu_icon' => 'dashicons-slides',
     )
   );
