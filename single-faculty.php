@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="row">
-	<div class="small-12 medium-8 columns right" role="main">
+	<div class="small-12 medium-9 columns right" role="main">
 	<?php do_action('foundationPress_before_content'); ?>
 		<div class="entry-content">
 			<?php if ( have_posts() ) : ?>

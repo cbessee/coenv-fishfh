@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="row">
 	<div class="columns large-12 section-title"><h1><a href="/resources/data/cig-datasets/">CIG Datasets</a></h1></div>
-	<div class="small-12 medium-8 columns right" role="main">
+	<div class="small-12 medium-9 columns right" role="main">
 	<?php do_action('foundationPress_before_content'); ?>
 		<div class="entry-content">
 			<?php if ( have_posts() ) : ?>
