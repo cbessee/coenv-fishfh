@@ -191,24 +191,32 @@ $feature_query = new WP_Query( $feature_args );
 
 </div>
 
-<div class="full-connect">
-		<h2 style="background-position: bottom center;">Connect With Us</h2>
-		<div class="social-buttons">
 
-                <?php if (get_option('facebook')) { ?>
-                    <a class="facebook icon" href="<?php echo get_option('facebook'); ?>" title="Join us on Facebook">Join us on Facebook</a><?php } ?>
+					<?php if( get_field('social_media', 'option') ) { ?>
 
-                    <?php if (get_option('twitter')) { ?>
-                    <a class="twitter icon" href="<?php echo 'http://twitter.com/' . get_option('twitter'); ?>" data-site-twitter="<?php echo get_option('twitter'); ?>" title="Join us on Twitter">Join us on Twitter</a><?php } ?>
-                
-                <?php //if (get_option('youtube')) { ?>
-                    <a class="email icon" href="<?php //echo get_option('youtube'); ?>" title="Sign Up For Email Updates">Sign Up For Email Updates</a><?php //} ?>
+					<div class="full-connect">
+						<h2 style="background-position: bottom center;">Connect With Us</h2>
+						<div class="social-buttons">
+						<?php while( has_sub_field('social_media', 'option') ) { ?>
+							<a class="<?php the_sub_field('service_name'); ?> icon" href="<?php the_sub_field('url'); ?>" title="<?php the_sub_field('service_name'); ?>">
+								<i class="fi-social-<?php the_sub_field('service_name'); ?>"></i>
+							</a>
+						<?php } ?>
+						</div>
+					</div>
 
-                     <?php //if (get_option('youtube')) { ?>
-                    <a class="feed icon" href="<?php //echo get_option('youtube'); ?>" title="Subscribe to our Feed">Subscribe to our Feed</a><?php //} ?>
+					<?php } ?>
 
-                </div>
-</div>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -222,6 +230,23 @@ $feature_query = new WP_Query( $feature_args );
 $sticky = get_option( 'sticky_posts' );
 $sticky_count = count($sticky);
 $posts_on_home = $news_count; //set posts_per_page here
+$posted = array();
+
+ $home_col_1_args = array(
+        'post_type' => 'post',
+        'post__not_in' => $sticky,
+        'posts_per_page' => 2,
+        'post_status' => 'publish',
+    );
+
+ $home_col_2_args = array(
+        'post_type' => 'post',
+        'post__in' => $sticky,
+        'posts_per_page' => 1,
+        'post_status' => 'publish',
+    );
+
+
 
 if( $sticky ) {
     $home_args = array(
@@ -238,7 +263,7 @@ else {
     );
 }
 
-$wp_query = new WP_Query( $home_args );
+
 ?>
 	<?php if ($wp_query->have_posts()): ?>
 	<div class="full-news-events">
@@ -248,13 +273,167 @@ $wp_query = new WP_Query( $home_args );
 			<a class="more-news" href="/news-events">More News</a>
 			</div>
 		</div>
-	<div class="home-news-section large-12 clearfix">
+		<div class="home-news-section large-12 clearfix">
+			<div class="row">
+				<div class="columns large-4">
+
+				<?php
+				$wp_query = new WP_Query( $home_col_1_args );
+				# The Loop
+				while ( $wp_query->have_posts() ) :
 		
-		<div class="row">
-			<div class="medium-12 large-<?php echo $news_columns; ?> columns news-container">
-		<?php
-		# The Loop
-		while ( $wp_query->have_posts() ) :
+					// Get field vars
+					$wp_query->the_post();
+					$posted[] = get_the_id();
+					if (get_field('story_link_url')) {
+						$post_link_url = get_field('story_link_url');
+						$post_link_target = 'target="_blank"';
+			            $post_link = '<p><a class="button" href="' . $post_link_url . '"' . $post_link_target . '>' . get_field('story_source_name') . '</a></p>';
+			        } else {
+			        	$post_link_url = get_the_permalink();
+			            $post_link = '<a class="button left" href="' . $post_link_url . '">Read more</a>';
+			        }
+
+		    	    // Get categories
+		            $terms = wp_get_post_terms(get_the_id(), 'category');
+					if (!empty($terms)) {
+
+						$terms_list = '';
+						foreach ($terms as &$term) {
+							if ($term->slug != 'uncategorized') {
+								$terms_list .= '<li><a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
+							}
+						}
+
+					} else {
+						$terms_list = '';
+					}
+					?>
+					<div class="small-news dontsplit">
+						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
+				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
+				        <div class="post-meta">
+			                <time class="article__time left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date('M j, Y'); ?></time>
+			               	<?php if (!empty($terms)) { ?> 
+							<ul class="terms right">
+								<?php echo $terms_list; ?>
+				            </ul>
+				            <?php } ?>
+				        </div>
+				    </div>
+						
+				
+			<?php endwhile;?>
+			<?php wp_reset_postdata(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+				<div class="columns large-4">
+
+
+
+				<?php
+				$wp_query = new WP_Query( $home_col_2_args );
+				# The Loop
+				while ( $wp_query->have_posts() ) :
+		
+					// Get field vars
+					$wp_query->the_post();
+					$posted[] = get_the_id();
+					if (get_field('story_link_url')) {
+						$post_link_url = get_field('story_link_url');
+						$post_link_target = 'target="_blank"';
+			            $post_link = '<p><a class="button" href="' . $post_link_url . '"' . $post_link_target . '>' . get_field('story_source_name') . '</a></p>';
+			        } else {
+			        	$post_link_url = get_the_permalink();
+			            $post_link = '<a class="button left" href="' . $post_link_url . '">Read more</a>';
+			        }
+
+		    	    // Get categories
+		            $terms = wp_get_post_terms(get_the_id(), 'category');
+					if (!empty($terms)) {
+
+						$terms_list = '';
+						foreach ($terms as &$term) {
+							if ($term->slug != 'uncategorized') {
+								$terms_list .= '<li><a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
+							}
+						}
+
+					} else {
+						$terms_list = '';
+					}
+					?>
+					<div class="small-news dontsplit">
+						<?php if ( has_post_thumbnail()) { ?>
+						<div class="featured-thumbnail" >
+							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'large' ); ?></a>
+						</div>
+						<?php } ?>
+						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
+				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
+				        <div class="post-meta">
+			                <time class="article__time left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date('M j, Y'); ?></time>
+			               	<?php if (!empty($terms)) { ?> 
+							<ul class="terms right">
+								<?php echo $terms_list; ?>
+				            </ul>
+				            <?php } ?>
+				        </div>
+				    </div>
+						
+				
+			<?php endwhile;?>
+			<?php wp_reset_postdata(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+				<div class="columns large-4">
+
+
+
+				<?php
+				$posted_exclude = implode(',',$posted);
+				$home_col_3_args = array(
+					'offset' => 1,
+        			'post_type' => 'post',
+        			'post__not_in' => $posted,//$posted,
+        			'posts_per_page' => 2,
+        			'post_status' => 'publish',
+    			);
+				$wp_query = new WP_Query( $home_col_3_args );
+				# The Loop
+				while ( $wp_query->have_posts() ) :
 		
 					// Get field vars
 					$wp_query->the_post();
@@ -283,11 +462,6 @@ $wp_query = new WP_Query( $home_args );
 					}
 					?>
 					<div class="small-news dontsplit">
-			            <?php if ( has_post_thumbnail()) { ?>
-						<div class="featured-thumbnail" >
-							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'large' ); ?></a>
-						</div>
-						<?php } ?>
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
 				        <div class="post-meta">
@@ -301,12 +475,22 @@ $wp_query = new WP_Query( $home_args );
 				    </div>
 						
 				
-<?php endwhile;?>
+			<?php endwhile;?>
 
-</div>
+
+
+
+
+
+
+
+
+<?php wp_reset_postdata(); ?>
+
+
 
 <?php if ( !empty( $events ) ) { ?>
-<section class="large-4 columns events">
+<section class="events">
 	<header>
 		<h3><a href="/news-events/events/">Events</a></h3>
 	</header>
@@ -323,6 +507,30 @@ $wp_query = new WP_Query( $home_args );
 
 </div>
 <?php endif; ?>
+
+
+
+
+
+
+
+
+				</div>
+
+
+
+
+
+
+			</div>
+		</div>
+
+
+
+
+
+
+
 </div>
 </div>
 <a href="#" class="back-to-top">Back to Top</a>
