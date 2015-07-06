@@ -217,10 +217,16 @@ height: 126px;
 .page-id-3698 .section-row h2 {
     width: 550px;
 }
-.page-template-default .section-row,
-.page-template-faculty .section-row,
-.page-template-news .section-row {
-    height: 100px;
+.page-template-default,
+.page-template-faculty,
+.page-template-news,
+.single-faculty,
+.single-post,
+.single-student_blog {
+
+    .section-row {
+        height: 100px;
+    }
 }
 
 .section-row {
