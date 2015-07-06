@@ -168,6 +168,22 @@ function coenv_get_ancestor($attr = 'ID') {
     }
 }
 
+
+// Add specific CSS class by filter
+add_filter( 'body_class', 'coenv_body_class' );
+function coenv_body_class( $classes ) {
+    // add 'class-name' to the $classes array
+    $classes[] = coenv_get_ancestor();
+    // return the $classes array
+    return $classes;
+}
+
+
+
+
+
+
+
 /**
  * Page banners
  *
@@ -213,10 +229,8 @@ function coenv_base_section_title($id) {
     //print_r($coenv_post);
     $coenv_post_section = get_post(array_pop(get_post_ancestors($id)));
 
-    if (coenv_base_post_parent($id)):
-        $section_title = '<div class="section-title"><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></div>';
-    elseif (!is_front_page()):
-        $section_title = '<div class="section-title"><h2><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h2></div>';
+    if (!is_front_page()):
+        $section_title = '<h2 class="section-title"><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h2>';
     endif;
         
         echo $section_title;

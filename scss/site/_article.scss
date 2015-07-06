@@ -344,6 +344,7 @@
 
 } // .article__footer
 div[role="main"] {
+
 	padding-left: rem-calc(40);
 	margin-top: 2rem;
 }
@@ -355,9 +356,14 @@ body.page div[role="main"] .share {
 
 .page-template-section-page .full-intro {
 	border-top: 0;
+	font-size: 25px;
 	padding: 48px 0;
-
-	p {
-		font-size: rem-calc(26);
-	}
+	text-align: center;
 }
+.page-content {
+	margin-top: 30px;
+}
+
+
+
+
