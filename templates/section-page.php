@@ -11,7 +11,7 @@ Template Name: Section Page
 	</div>
 </div>
 <?php } ?>
-<div class="row">
+<div class="row page-content">
 
 	<div class="small-12 medium-9 columns right" role="main">
 	
