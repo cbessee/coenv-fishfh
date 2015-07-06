@@ -230,7 +230,7 @@ function coenv_base_section_title($id) {
     $coenv_post_section = get_post(array_pop(get_post_ancestors($id)));
 
     if (!is_front_page()):
-        $section_title = '<h2 class="section-title"><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h2>';
+        $section_title = '<h2><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h2>';
     endif;
         
         echo $section_title;
