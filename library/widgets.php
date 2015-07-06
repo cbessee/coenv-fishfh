@@ -140,10 +140,10 @@ class coenv_base_fac_cats extends WP_Widget {
                     if ($cats) {
                          echo '<ul class="fac-cats">';
                          if ($fac_cat):
-                              echo '<li><a href="/faculty-research/faculty/">All Research Areas</a></li>';
+                              echo '<li><a href="/faculty-research/">All Research Areas</a></li>';
                          endif;
                          foreach($cats as $cat) { 
-                              echo '<li><a href="/faculty-research/faculty/?tax=research_areas&term=' . $cat->slug . '">' . $cat->name . '</a></li>';
+                              echo '<li><a href="/faculty-research/?tax=research_areas&term=' . $cat->slug . '">' . $cat->name . '</a></li>';
                          }
                          echo '</ul>';
                     }
