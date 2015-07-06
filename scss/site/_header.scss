@@ -110,19 +110,7 @@ height: 126px;
     }
 }
 
-.section-title {
-    padding: 0 1rem;
-    margin: 0;     
-    a {
-        font-size: rem-calc(28);
-        @include encode_cb;
 
-        @media #{$medium-up} {
-            font-size: rem-calc(32);
-            max-width: 28%;
-        }
-    }
-    }
 .title-area {
   list-style: none;
   margin-left: 0;
@@ -229,7 +217,11 @@ height: 126px;
 .page-id-3698 .section-row h2 {
     width: 550px;
 }
-
+.page-template-default .section-row,
+.page-template-faculty .section-row,
+.page-template-news .section-row {
+    height: 100px;
+}
 
 .section-row {
     background-position: center top;
