@@ -10,8 +10,16 @@ $coenv_cat_term_1_arr = get_term_by( 'slug',$coenv_cat_term_1,$coenv_cat_1 );
 $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 
 get_header();
+
+if( !empty( get_field( 'intro_text') ) ) {
 ?>
-<div class="row">
+<div class="full-intro">
+	<div class="row">
+		<?php the_field( 'intro_text' ); ?>
+	</div>
+</div>
+<?php } ?>
+<div class="row page-content">
 	<div class="small-12 medium-9 columns right" role="main">
         <div class="entry-content">
 			<?php while (have_posts()) : the_post(); ?>

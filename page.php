@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div class="row">
+<div class="row page-content">
 	<div class="small-12 medium-9 columns right" role="main">
 	<?php do_action('foundationPress_before_content'); ?>
 	<?php dynamic_sidebar("before-content"); ?>

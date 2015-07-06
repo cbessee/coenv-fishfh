@@ -49,11 +49,7 @@
   
     <?php wp_head(); ?>
       
-    <?php 
-        $banner = coenv_banner();
-        $banner_class = $banner ? 'has-banner' : '';
-        $banner_class .= ' template-print';
-    ?>
+    
   </head>
   <body <?php body_class(); ?>>
   
@@ -195,23 +191,22 @@
         </div>
 
 <?php if (!is_front_page()) : ?>
-<div class="container" role="document">
+<div class="container">
 <?php 
         $banner = coenv_banner();
         $banner_class = $banner ? 'has-banner' : '';
         $banner_class .= ' template-print';
 ?>
     <?php if (($banner) && (!is_single())) {
-            echo '<div class="page-row" ';
-            echo 'style="background-image: url(' . $banner['url'] . ');">';
+            $banner_style = 'style="background-image: url(' . $banner['url'] . ')"';
         }
      ?>
-     <?php if ( (empty($banner)) || (is_single()) ) {
-            echo '<div class="page-row mini">';
-            echo '<div>';
-     }
-     ?>
-    <div class="section-row">
+     <?php 
+        $banner = coenv_banner();
+        $banner_class = $banner ? 'has-banner' : '';
+        $banner_class .= ' template-print';
+    ?>
+    <div class="section-row" <?php echo $banner_style; ?>>
         <?php echo coenv_base_section_title($post->ID); ?>
     </div>
 

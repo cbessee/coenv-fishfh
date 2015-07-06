@@ -22,6 +22,13 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 ?>
 
 <?php get_header(); ?>
+<?php if( !empty( get_field( 'intro_text') ) ) { ?>
+<div class="full-intro">
+	<div class="row">
+		<?php the_field( 'intro_text' ); ?>
+	</div>
+</div>
+<?php } ?>
 <div class="row">
 
 	<div class="small-12 medium-9 columns right" role="main">
