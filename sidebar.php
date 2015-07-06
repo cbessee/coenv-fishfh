@@ -14,11 +14,11 @@
 <?php
 if (!is_front_page()) {
 	echo '<div class="coenv_base_subnav">';
-	if ($GLOBALS['post']->post_parent) {
+	//if ($GLOBALS['post']->post_parent) {
 	echo '<div class="section-title">';
 	echo coenv_base_section_title($GLOBALS['post']->ID);
 	echo '</div>';
-	}
+	//}
 	echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
 	echo '</div>';
 	
