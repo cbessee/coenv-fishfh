@@ -82,11 +82,17 @@ article.type-faculty {
 	margin-bottom: rem-calc(18px);
 	margin-right: rem-calc(18px);
 	width: rem-calc(120px);
-	min-height: 12rem;
+	min-height: 180px;
 	h3 {
 		font-size: 1rem;
 		line-height: 1.25rem;
 		margin-top: .5rem;
+		text-align: center;
+
+		a {
+			color: #000;
+
+		}
 	}
 
 }
