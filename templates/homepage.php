@@ -143,6 +143,7 @@ $feature_query = new WP_Query( $feature_args );
 	?>
 
 	</div><!-- homepage-features -->
+<div id="feature-mask"></div>
 </div> <!-- end .full-feature -->
 
 
