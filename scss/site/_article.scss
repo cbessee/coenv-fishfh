@@ -153,15 +153,15 @@
 	}
 
 	blockquote {
+	@include o_sans_bold;
+	background-image: url("/wp-content/themes/coenv-fish/assets/img/bg-home-intro.png");
     margin: 2rem 0;
-    padding: rem-calc(20) rem-calc(80);
-    border-left: 0px!important;
-    border-top: 2px solid #f6f5f7;
-    border-bottom: 2px solid #f6f5f7;
+    padding: rem-calc(20) rem-calc(40);
+    border: solid 6px #ccc;
     
     p {
         margin: 0!important;
-        @include encode_cb;
+        
         text-transform: none;
         color: #000000!important;
         font-size: rem-calc(18);
@@ -366,6 +366,23 @@ body.page div[role="main"] .share {
 	margin-top: 30px;
 }
 
+.gallery {
+	background-image: url("../assets/img/nav-border-top-green-long.png");
+	background-repeat: no-repeat;
+	bakground-position: left top;
+	padding-top: 30px;
 
+
+	.gallery-item {
+	width: 221px !important;
+	margin-top: 0 !important;
+	}
+
+	img {
+		border-color: #ccc;
+		border-width: 6px !important;
+	}
+	
+}
 
 
