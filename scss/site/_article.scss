@@ -84,6 +84,11 @@
 .article__content {
     @extend .clearfix;
 
+    a {
+    	color: #5c5c5c;
+    	text-decoration: underline;
+    }
+
     p {
     	font-size: rem-calc(17);
     	line-height: 1.6;

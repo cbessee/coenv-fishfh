@@ -232,7 +232,7 @@ height: 126px;
     position: relative;
     height: 375px;
     width: 100%;
-    h2 {
+    h1 {
         margin-bottom: -34px;
         position: absolute;
         bottom: 0;
@@ -244,12 +244,13 @@ height: 126px;
         right: 0;
         width: 40%;
         text-align: center;
-
-    a {
         @include encode_black;
         color: #000;
         font-size: 40px;
         text-transform: uppercase;
+
+    a {
+        color: #000;
     }
         background-color: #fff;
         border: solid 2px #ccc;
