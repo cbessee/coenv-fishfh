@@ -25,16 +25,10 @@ Template Name: Homepage
       );
     }
 
-    if ( !empty( $events ) ) {
-    	$news_columns = '8';
-    	$news_count = 4;
-    } else {
-    	$news_columns = '12';
-    	$news_count = 6;
-    }
+    $events_count = count($events);
 
     
-
+    echo $events_count;
 
 
 
@@ -143,6 +137,7 @@ $feature_query = new WP_Query( $feature_args );
 	?>
 
 	</div><!-- homepage-features -->
+<div id="feature-mask"></div>
 </div> <!-- end .full-feature -->
 
 
@@ -167,7 +162,7 @@ $feature_query = new WP_Query( $feature_args );
 
 			<h2 style="background-position: center bottom;">Explore our Programs</h2>
 				<div class="student-content">
-					<p>SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. If you want to connect with some of the best minds and immerse yourself in cutting-edge research, then SAFS might be a fit for you.</p>
+					<p>SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. Join us to connect with some of the best minds and immerse yourself in cutting-edge scientific research.</p>
 					<p><a class="button" href="/students">Learn more</a></p>
 				</div>
 
@@ -181,7 +176,7 @@ $feature_query = new WP_Query( $feature_args );
 
 		<h2 style="background-position: center bottom;">Meet Our Faculty</h2>
 			<div class="faculty-content">
-				<p>Our faculty are committed leaders with a broad array of academic expertise to offer students a multidisciplinary education. With access to a network of local and international leaders they constantly contribute research to make advances in their field.</p>
+				<p>Our faculty are committed leaders with broad academic expertise and interests. With access to a network of local, national and international leaders, we contribute influential research on topics ranging from organisms, populations, ecosystems, to human users of aquatic ecosystems.</p>
 				<p><a class="button" href="/faculty-research">Learn more</a></p>
 			</div>
 
@@ -423,12 +418,13 @@ else {
 
 
 				<?php
+				if ($events_count < 4) {
 				$posted_exclude = implode(',',$posted);
 				$home_col_3_args = array(
 					'offset' => 1,
         			'post_type' => 'post',
         			'post__not_in' => $posted,//$posted,
-        			'posts_per_page' => 2,
+        			'posts_per_page' => 1,
         			'post_status' => 'publish',
     			);
 				$wp_query = new WP_Query( $home_col_3_args );
@@ -461,6 +457,21 @@ else {
 						$terms_list = '';
 					}
 					?>
+					<?php if ( !empty( $events ) ) { ?>
+<section class="events">
+	<header>
+		<h3><a href="/news-events/events/">Events</a></h3>
+	</header>
+
+
+
+
+
+
+	<?php the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/sea_fish.rss&posts_per_page=4'); ?>
+	<a class="button columns large-3 right" href="/news-events/events/">More Events</a>
+</section>
+<?php } ?>
 					<div class="small-news dontsplit">
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
@@ -485,25 +496,12 @@ else {
 
 
 
+
 <?php wp_reset_postdata(); ?>
 
-
-
-<?php if ( !empty( $events ) ) { ?>
-<section class="events">
-	<header>
-		<h3><a href="/news-events/events/">Events</a></h3>
-	</header>
-
-
-
-
-
-
-	<?php //the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/sea_fish.rss&posts_per_page=3'); ?>
-	<a class="button columns large-3 right" href="/news-events/events/">More Events</a>
-</section>
 <?php } ?>
+
+
 
 </div>
 <?php endif; ?>
