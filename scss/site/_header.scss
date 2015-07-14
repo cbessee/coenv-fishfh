@@ -59,8 +59,9 @@ height: 126px;
 
 }
 .top-bar-container {
-    border-top: #d7dee5 1px solid;
     margin-bottom: 0;
+    -moz-box-shadow:     1px 4px 9px -6px #000;
+    -webkit-box-shadow:  1px 4px 9px -6px #000;
 
 
 
@@ -81,17 +82,6 @@ height: 126px;
         margin: rem-calc(18) 0 -3px 0;
         a {
             color: $text;
-        }
-    }
-    #desktop-logo {
-        fill: $white;
-        width: rem-calc(157);
-        height: rem-calc(110);
-        margin-right: rem-calc(10);
-        vertical-align: middle;
-        
-        span {
-            @extend .visuallyhidden;
         }
     }
 }
@@ -133,9 +123,6 @@ height: 126px;
     width: 100%;
 
 
-   -moz-box-shadow: 1px 0 20px #000000;
-   -webkit-box-shadow: 1px 0 20px #000000;
-   box-shadow:         0 1px 20px #000000;
 
 
     h1 {
@@ -224,9 +211,6 @@ height: 126px;
 .single-post,
 .single-student_blog {
 
-    .section-row {
-        height: 100px;
-    }
      .full-intro {
     border-top: 0;
     font-size: 25px;
@@ -244,6 +228,7 @@ height: 126px;
 
 .section-row {
     background-position: center top;
+    background-size: cover;
     position: relative;
     height: 375px;
     width: 100%;

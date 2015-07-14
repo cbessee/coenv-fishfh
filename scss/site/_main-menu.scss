@@ -2,8 +2,18 @@
     background-color: $white;
     text-align: center;
     border-bottom: #d7dee5 1px solid;
+    line-height: 0;
     min-height: rem-calc(60);
     padding-top: rem-calc(8);
+
+    -moz-box-shadow:    inset 1px 4px 9px -6px;
+    -webkit-box-shadow: inset 1px 4px 9px -6px;
+    box-shadow:         inset 1px 4px 9px -6px;
+
+    * {
+        display: block;
+    }
+
     
     .top-bar-section {
         display: inline-block;

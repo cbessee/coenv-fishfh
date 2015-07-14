@@ -1,0 +1,18 @@
+ul.blog-terms {
+	float: left;
+}
+.blog-meta {
+	display: block;
+	p {
+		float: left;
+	}
+
+}
+.blog-list-item  {
+	display: block;
+	float: left;
+
+	.post {
+		float: left;
+	}
+}

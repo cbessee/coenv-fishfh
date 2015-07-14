@@ -1,4 +1,8 @@
 
+
+
+
+
 /*	Module: article
 		
 		======================================================================== */
@@ -385,4 +389,10 @@ body.page div[role="main"] .share {
 	
 }
 
+.page-template-default {
+	div[role="main"],
+	#sidebar {
+		margin-top: 40px;
 
+	}
+}

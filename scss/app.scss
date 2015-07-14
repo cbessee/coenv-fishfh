@@ -43,26 +43,16 @@
 // Sort into separate .scss files
 
 
-body.page-template-templatesfaculty-php .pager {
-	width: 100%;
-	float: left;
-}
-
-/* 
- * mobile menu
- */
-  .left-off-canvas-menu #menu-main-menu {
-  	padding: 1.5rem;
-  }
- .left-off-canvas-menu #menu-main-menu li a {
-	color: #fff;
-}
 
 
+
+
+/* Okay to delete? 
 
 .title-area h1 {
 	margin-bottom: 0;
 }
+
 ul.units {
 	font-size: 1.50rem;
 	padding-left: 0;
@@ -77,35 +67,10 @@ ul.units {
 
 	}
 }
+*/
 
-ul.blog-terms {
-	float: left;
-}
-.blog-meta {
-	display: block;
-	p {
-		float: left;
-	}
 
-}
-.blog-list-item  {
-	display: block;
-	float: left;
 
-	.post {
-		float: left;
-	}
-}
-.panel {
-	border: 0;
-	padding: .5rem 1rem;
-}
-#sidebar article.widget ul {
-	margin-top: rem-calc(15);
-}
-#sidebar article.widget_coenv_base_subnav.widget ul {
-	margin-top: 0;
-}
 div.news {
 	margin-bottom: 4rem;
 }
@@ -126,9 +91,7 @@ div.news {
 	padding: .5rem;
 	}
 }
-p span.intro {
-	font-size: 1.4rem;
-}
+
 // Move to plugin?
 html .mceContentBody {
 	padding: 2rem !important;
