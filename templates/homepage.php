@@ -27,8 +27,6 @@ Template Name: Homepage
 
     $events_count = count($events);
 
-    
-    echo $events_count;
 
 
 
