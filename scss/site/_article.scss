@@ -372,7 +372,13 @@ body.page div[role="main"] .share {
 
 }
 .page-content {
+	margin-top: 60px;
+}
+.page-template-section-page .page-content {
 	margin-top: 30px;
+}
+div[role="main"] {
+	margin-top: 20px;
 }
 
 .gallery {
@@ -392,14 +398,6 @@ body.page div[role="main"] .share {
 		border-width: 6px !important;
 	}
 	
-}
-
-.page-template-default {
-	div[role="main"],
-	#sidebar {
-		margin-top: 40px;
-
-	}
 }
 div[role="main"] {
 	width: 72% !important;

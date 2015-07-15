@@ -207,6 +207,7 @@
         $banner_class .= ' template-print';
     ?>
     <div class="section-row" <?php echo $banner_style; ?>>
+      <div class="container-section-title">
         <?php 
         $coenv_post = get_post($id);
         $coenv_post_section = get_post(array_pop(get_post_ancestors($id)));
@@ -216,14 +217,8 @@
           $section_title = '<h1>' . $coenv_post->post_title . '</h1>';
         }
         echo $section_title;
-
-
-
-
-
-
-
         ?>
+      </div>
     </div>
 
 </div>

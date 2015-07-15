@@ -195,15 +195,6 @@ height: 126px;
     position: relative;
 }
 
-.page-id-9 .section-row h2 {
-    width: 200px;
-}
-.page-id-163 .section-row h2 {
-    width: 300px;
-}
-.page-id-3698 .section-row h2 {
-    width: 550px;
-}
 .page-template-default,
 .page-template-faculty,
 .page-template-news,
@@ -222,7 +213,7 @@ height: 126px;
 .page-template-section-page .full-intro {
        border-top: 0;
     font-size: 25px;
-    padding: 48px 0;
+    padding: 53px 0 35px 0;
     text-align: center; 
 }
 
@@ -232,18 +223,28 @@ height: 126px;
     position: relative;
     height: 375px;
     width: 100%;
-    h1 {
+
+    .container-section-title {
+
         margin-bottom: -34px;
         position: absolute;
         bottom: 0;
-        left: auto;
-        right: auto;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-        width: 40%;
+
+
+        display: inline-block;
         text-align: center;
+        width: 100%;
+
+     h1 {
+        background-color: #fff;
+        border: solid 2px #ccc;
+        display: inline-block;
+        padding: 5px 20px;
+        margin: 0 auto;
+        
+
+
+        
         @include encode_black;
         color: #000;
         font-size: 40px;
@@ -252,12 +253,12 @@ height: 126px;
     a {
         color: #000;
     }
-        background-color: #fff;
-        border: solid 2px #ccc;
-        display: inline-block;
         
-        padding: 5px 20px;
     }
+
+    }
+
+   
 }
 .page-template-default .page-row {
     height: 200px;
