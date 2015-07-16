@@ -205,11 +205,18 @@ height: 126px;
      .full-intro {
     border-top: 0;
     font-size: 25px;
-    padding: 48px 0;
+    padding: 48px 0 30px 0;
     text-align: center;
 }
 
 }
+
+.page-template-faculty .article {
+margin-bottom: 0;
+}
+
+
+
 .page-template-section-page .full-intro {
        border-top: 0;
     font-size: 25px;
@@ -235,7 +242,7 @@ height: 126px;
         text-align: center;
         width: 100%;
 
-     h1 {
+     h1,h2 {
         background-color: #fff;
         border: solid 2px #ccc;
         display: inline-block;

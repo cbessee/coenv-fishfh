@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+
 <div class="row">
 	<div class="small-12 medium-9 columns right" role="main">
 	<?php do_action('foundationPress_before_content'); ?>

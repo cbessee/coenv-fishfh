@@ -20,7 +20,7 @@ function coenv_base_post_types_init() {
     'public' => true,
     'has_archive' => false,
     'show_ui' => true,
-    //'rewrite' => array('slug' => 'faculty'),
+    'rewrite' => array('slug' => 'faculty-research/faculty'),
     'menu_icon' => 'dashicons-id',
     )
 
@@ -115,8 +115,7 @@ define( 'INTRANET_PARENT_ID', '7251' );
  * @author  Joe Sexton <joe@webtipblog.com>
  */
 function coenv_base_fac_parent( $data, $postarr ) {
-    global $post;
- 
+    global $post; 
  
     // verify if this is an auto save routine.
     // If it is our form has not been submitted, so we dont want to do anything
@@ -186,10 +185,6 @@ function coenv_base_custom_field_excerpt($field_name) {
   }
   return apply_filters('the_excerpt', $text);
 }
-
-
-
-
 
 
 

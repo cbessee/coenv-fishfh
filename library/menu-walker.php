@@ -45,6 +45,16 @@ class top_bar_walker extends Walker_Nav_Menu {
 
 class top_bar_new_walker extends Walker_Page {
 
+        function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
+        $element->has_children = !empty( $children_elements[$element->ID] );
+        $element->classes[] = ( $element->current || $element->current_item_ancestor ) ? 'active' : '';
+        $element->classes[] = ( $element->has_children && $max_depth !== 1 ) ? 'has-dropdown' : '';
+        
+        parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+    }
+
+    
+
     function start_lvl( &$output, $depth = 0, $args = array() ) {
         $output .= "\n<ul class=\"sub-menu dropdown\">\n";
     }

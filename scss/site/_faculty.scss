@@ -78,16 +78,23 @@ article.type-faculty {
 
 } // end article.type-faculty
 
+.faculty-list-teach {
+
+}
+
 .faculty-list-teach h2:first-child {
 	margin-top: 0;
 }
 
 .faculty-list-teach .faculty-list-item {
 	float: left;
-	margin-bottom: rem-calc(18px);
+	margin-bottom: rem-calc(16px);
 	margin-right: rem-calc(18px);
-	width: rem-calc(120px);
-	min-height: 180px;
+	width: rem-calc(143px);
+	min-height: 195px;
+	img {
+		border: solid 6px #ebebeb;
+	}
 	h3 {
 		font-size: 1rem;
 		line-height: 1.25rem;
@@ -155,12 +162,20 @@ ul.fac-cats,
 ul.fac-terms {
 
 	padding: 0;
+
 	margin-left:0;
 
 	li {
-		display: inline;
-		margin: 0 .5rem .5rem 0;
-		padding: 0;
+		background-image: url('/wp-content/themes/coenv-fish/assets/img/filter-selecter.svg');
+		background-position: .5rem center;
+		background-repeat: no-repeat;
+		background-size: 25px 25px;
+		margin: 0 .5rem 0 0;
+		padding: .5rem 0 .5rem 3rem;
+
+		&:hover {
+			background-color: #ebebeb;
+		}
 
 	}
 }

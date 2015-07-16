@@ -59,6 +59,7 @@ require_once('library/publications.php');
 
 add_image_size( 'med_sq', '240', '240', true );
 add_image_size( 'sm_sq', '120', '120', true );
+add_image_size( 'faculty_sm', '120', '120', true );
 
 
 /**

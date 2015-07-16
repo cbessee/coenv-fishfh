@@ -201,9 +201,9 @@ function coenv_banner() {
         $page_id = $ancestor_id;
     }
 
-    if ( $page_id == false ) {
-        return false;
-    }
+   // if ( $page_id == false ) {
+    //    return false;
+   // }
 
     $thumb_id = get_post_thumbnail_id( $page_id );
     $image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );

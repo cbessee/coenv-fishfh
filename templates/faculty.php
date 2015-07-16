@@ -70,6 +70,7 @@ if( !empty( get_field( 'intro_text') ) ) {
 	$wp_query = new WP_Query( $query_args );
 
 	?>
+
 	<?php if ($wp_query->have_posts()): ?>
 	<div class="faculty-list-teach clearfix">
 

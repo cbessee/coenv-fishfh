@@ -75,8 +75,33 @@ div.news {
 	margin-bottom: 4rem;
 }
 .panel {
+	background-color: #f6f6f6;
+	background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-home-intro.png');
+	border: solid 7px #ebebeb;
 	float:left;
+	font-size: 16px;
+	@include o_sans;
+	text-transform: uppercase;
 	width: 100%;
+
+	strong {
+		@include o_sans_bold;
+	}
+	.right a {
+		background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-close.svg');
+		display: inline-block;
+		height: 20px;
+		line-height: 16px;
+		width: 20px;
+		text-indent: -9999px;
+
+		&:hover {
+			background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-close-on.svg');
+
+		}
+		}
+
+
 	p:first-child {
 		float:left;
 		width: 75%;
@@ -85,6 +110,13 @@ div.news {
 		float: right;
 		width: 25%;
 		text-align: right;
+
+
+
+
+
+
+
 	}
 	.button {
 	margin-bottom: 0;
