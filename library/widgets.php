@@ -470,7 +470,7 @@ class coenv_base_blog_cats extends WP_Widget {
                     if ($cats) {
                          echo '<ul class="blog-cats inline-list">';
                          foreach($cats as $cat) { 
-                              echo '<li><a class="button" href="/students/student-blog/?blog-cat=' . $cat->slug . '">' . $cat->name . '</a></li>';
+                              echo '<li><a href="/students/student-blog/?blog-cat=' . $cat->slug . '">' . $cat->name . '</a></li>';
                          }
                          echo '</ul>';
                     }
