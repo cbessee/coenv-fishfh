@@ -89,8 +89,8 @@
     	text-decoration: underline;
     }
 
-    p,li {
-    	font-size: rem-calc(17);
+    p,li,ul li p {
+    	font-size: 1.2em;
     	line-height: 1.6;
 
 
@@ -102,13 +102,7 @@
     margin-left: 20px;
     }
 
-    li {
-    	font-size: rem-calc(18);
-    	line-height: 1.4;
-    	margin-bottom: rem-calc(6);
-    	
-
-    }
+  
     h1,h2 {
     	@include encode_black;
     	line-height: 1.4;
@@ -168,14 +162,13 @@
     padding: rem-calc(20) rem-calc(40);
     border: solid 6px #ccc;
     
-    p {
-        margin: 0!important;
-        
-        text-transform: none;
-        color: #000000!important;
-        font-size: rem-calc(18);
-    }
-}
+	    p {
+	        margin: 0!important;
+	        text-transform: none;
+	        color: #000000!important;
+	        font-size: rem-calc(18);
+	    }
+	}
 
 
 	// tables

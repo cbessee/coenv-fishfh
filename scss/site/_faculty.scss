@@ -68,8 +68,13 @@ article.type-faculty {
 		
 		li {
 			float: left;
+			font-size: 1.2em;
 			line-height: 1.6;
     		margin-bottom: rem-calc(10px);
+		}
+
+		li p {
+			font-size: 16px !important;
 		}
 
 	} // end .faculty-pubs ul
@@ -430,4 +435,13 @@ li {
 
 
 
+}
+
+
+.faculty-pubs ul li p {
+	font-size: 18px !important;
+	margin-bottom: 0;
+}
+.single-faculty .section-row {
+	height: 170px;
 }
