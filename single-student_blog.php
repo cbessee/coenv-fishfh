@@ -66,6 +66,27 @@ Template Name: Student Blog
 	<?php do_action('foundationPress_after_content'); ?>
 
 	</div>
-<?php get_sidebar(); ?>
+	<aside id="sidebar" class="small-12 medium-3 columns left">
+	<?php
+	if (!is_front_page()) {
+		echo '<div class="coenv_base_subnav">';
+		//if ($GLOBALS['post']->post_parent) {
+		echo '<div class="section-title">';
+		echo coenv_base_section_title($GLOBALS['post']->ID);
+		echo '</div>';
+		//}
+		echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
+		echo '</div>';
+		
+	}
+	?>
+	<?php dynamic_sidebar('sidebar-widgets'); ?>
+	<?php
+	$ancestor_id = coenv_base_get_ancestor('ID');
+	if (!function_exists('dynamic_sidebar') || !dynamic_sidebar( $ancestor_id )):
+		dynamic_sidebar( $ancestor_id );
+	endif;
+	?>
+	</aside>
 </div>
 <?php get_footer(); ?>
