@@ -1,0 +1,30 @@
+.page-template-news .article__content {
+
+	h2 {
+		font-size: 30px;
+	}
+	h2 a {
+		color: #000;
+		text-decoration: none;
+	}
+	.news-meta {
+
+	}
+	.news-meta p {
+		@include encode;
+		font-size: 14px;
+		margin-bottom: 0;
+		text-transform: uppercase;
+
+		a {
+			color: #5c5c5c;
+    	text-decoration: underline;
+		}
+
+
+
+	}
+}
+.blog-list-item {
+	margin-bottom: 40px;
+}

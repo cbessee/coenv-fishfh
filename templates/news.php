@@ -29,11 +29,10 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 	</div>
 </div>
 <?php } ?>
-<div class="row">
+<div class="row page-content">
 
 	<div class="small-12 medium-9 columns right" role="main">
-		<div class="entry-content">
-		<h1 class="article__title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+		<div class="article__content">
 		<div class="row filters">
 			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
 				<?php coenv_base_cat_filter('category', $coenv_cat_term_1); // Category filter ?>
@@ -122,24 +121,25 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
         ?>
         </p>
 		</div>
-
+		<!--
         <div class="blog-meta clearfix sharer small-6 columns right">
-        <?php $title = rawurlencode(get_the_title());
-        $shortlink = rawurlencode(wp_get_shortlink());
-        $site_name = rawurlencode(get_bloginfo('name'));
-        $twitter = get_option('twitter');
+        <?php //$title = rawurlencode(get_the_title());
+        //$shortlink = rawurlencode(wp_get_shortlink());
+        //$site_name = rawurlencode(get_bloginfo('name'));
+        //$twitter = get_option('twitter');
         ?>
-        <a href=<?php echo 'http://twitter.com/home?status=' . $title . '%20' . $shortlink . '%20from%20' . $twitter . ' target="_blank">' ?>
-        <?php get_template_part('assets/img/icons/inline', 'twitter-circle.svg'); ?></a>
-        <a href=<?php echo 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' . $shortlink . '&p[images][0]=&p[title]=' . $title . '%20from%20' . $site_name .'" target="_blank">'; ?>
-        <?php get_template_part('assets/img/icons/inline', 'facebook-circle.svg'); ?></a>
-        <a href=<?php echo 'mailto:?subject=' . $title . '&body=Check%20out%20this%20article%20from%20the%20' . $site_name .':%20' . $shortlink . '>'; ?>
-        <?php get_template_part('assets/img/icons/inline', 'email-circle.svg'); ?></a>
+        <a href=<?php//echo 'http://twitter.com/home?status=' . $title . '%20' . $shortlink . '%20from%20' . $twitter . ' target="_blank">' ?>
+        <?php //get_template_part('assets/img/icons/inline', 'twitter-circle.svg'); ?></a>
+        <a href=<?php //echo 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' . $shortlink . '&p[images][0]=&p[title]=' . $title . '%20from%20' . $site_name .'" target="_blank">'; ?>
+        <?php //get_template_part('assets/img/icons/inline', 'facebook-circle.svg'); ?></a>
+        <a href=<?php //echo 'mailto:?subject=' . $title . '&body=Check%20out%20this%20article%20from%20the%20' . $site_name .':%20' . $shortlink . '>'; ?>
+        <?php //get_template_part('assets/img/icons/inline', 'email-circle.svg'); ?></a>
 		</div>
+	-->
 		</div>
             
         <?php
-		echo '<h3><a href="' . $post_link_url . '"' . $post_link_target . '>' . get_the_title() . '</a></h3>';
+		echo '<h2><a href="' . $post_link_url . '"' . $post_link_target . '>' . get_the_title() . '</a></h2>';
 
 		echo '<div class="post">';
 		/*if (has_post_thumbnail()):
@@ -148,7 +148,7 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		echo '</a>';
 		endif;*/
 		echo the_excerpt();
-		echo $post_link;
+		//echo $post_link;
 		'</div>';
 		echo '<div class="blog-links right">';
 		if($rows) {

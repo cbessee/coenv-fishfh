@@ -235,3 +235,22 @@ function coenv_base_section_title($id) {
         
         echo $section_title;
     }
+
+
+
+
+
+/* 
+ * Return news taxonomy terms from research areas.
+ */
+function coenv_base_terms($id, $tax) {
+    $fac_terms = wp_get_post_terms( $id, $tax );
+    if ($fac_terms) {
+        echo '<ul class="fac-cats inline-list">';
+        foreach ($fac_terms as $term) {
+
+            echo '<li><a href="/faculty-research/?tax=research_areas&term=' . $term->slug . '">' . $term->name . '</a></li>';
+        }
+        echo '</ul>';
+    }
+}
