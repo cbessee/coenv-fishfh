@@ -138,7 +138,7 @@ class coenv_base_fac_cats extends WP_Widget {
                       );
                     $cats = get_categories($cats_args);
                     if ($cats) {
-                         echo '<ul class="fac-cats">';
+                         echo '<ul class="cats">';
                          if ($fac_cat):
                               echo '<li><a href="/faculty-research/">All Research Areas</a></li>';
                          endif;
@@ -212,6 +212,141 @@ function register_coenv_base_fac_cats() {
     register_widget( 'coenv_base_fac_cats' );
 }
 add_action( 'widgets_init', 'register_coenv_base_fac_cats' );
+
+
+
+
+
+
+
+/*
+ * Faculty research areas
+ */
+
+class coenv_base_cats extends WP_Widget {
+
+     /**
+      * Register widget with WordPress.
+      */
+     function __construct() {
+          parent::__construct(
+               'coenv_base_cats', // Base ID
+               __('News category filter (COENV)', 'text_domain'), // Name
+               array( 'description' => __( 'Allows filtering of news based on categories', 'text_domain' ), ) // Args
+          );
+     }
+     
+
+     /**
+      * Front-end display of widget.
+      *
+      * @see WP_Widget::widget()
+      *
+      * @param array $args     Widget arguments.
+      * @param array $instance Saved values from database.
+      */
+     public function widget( $args, $instance ) {
+          $fac_cat = get_term_by( 'slug', (string) $_GET['fac-cat'], 'research_areas' );
+          $fac_cat = $fac_cat->slug;
+     
+          echo $args['before_widget'];
+          echo '<span class="filter-cap">Filter:</span>';
+          if ( ! empty( $instance['title'] ) ) {
+               echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+          }
+          if ( ! empty( $instance['textarea'] ) ) {
+               echo $args['before_text'] . apply_filters( 'widget_text', $instance['textarea'] ). $args['after_text'];
+          }
+                    $cats_args  = array(
+                      'orderby' => 'name',
+                      'order' => 'ASC',
+                      'taxonomy' => 'category'
+                      );
+                    $cats = get_categories($cats_args);
+                    if ($cats) {
+                         echo '<ul class="news-cats">';
+                         if ($fac_cat):
+                              echo '<li><a href="/faculty-research/">All Research Areas</a></li>';
+                         endif;
+                         foreach($cats as $cat) { 
+                              echo '<li><a href="/faculty-research/?tax=research_areas&term=' . $cat->slug . '">' . $cat->name . '</a></li>';
+                         }
+                         echo '</ul>';
+                    }
+          echo $args['after_widget'];
+     }
+
+     /**
+      * Back-end widget form.
+      *
+      * @see WP_Widget::form()
+      *
+      * @param array $instance Previously saved values from database.
+      */
+     public function form( $instance ) {
+      //var_dump($instance);
+
+          if ( isset( $instance[ 'title' ] ) ) {
+               $title = $instance[ 'title' ];
+          }
+          else {
+               $title = __( 'Sort news by category', 'text_domain' );
+          }
+          if ( isset( $instance[ 'textarea' ] ) ) {
+               $textarea = $instance[ 'textarea' ];
+          }
+          else {
+               $textarea = __( '', 'text_domain' );
+          }
+          
+          ?>
+          <p>
+          <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+          <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+          </p>
+          <p>
+          <label for="<?php echo $this->get_field_id( 'textarea' ); ?>"><?php _e( 'Description:' ); ?></label> 
+          <textarea class="widefat" id="<?php echo $this->get_field_id( 'textarea' ); ?>" name="<?php echo $this->get_field_name( 'textarea' ); ?>" type="text"><?php echo $textarea; ?></textarea>
+          </p>
+         
+          <?php 
+     }
+
+     /**
+      * Sanitize widget form values as they are saved.
+      *
+      * @see WP_Widget::update()
+      *
+      * @param array $new_instance Values just sent to be saved.
+      * @param array $old_instance Previously saved values from database.
+      *
+      * @return array Updated safe values to be saved.
+      */
+     public function update( $new_instance, $old_instance ) {
+          $instance = array();
+          $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+          $instance['textarea'] = ( ! empty( $new_instance['textarea'] ) ) ? strip_tags( $new_instance['textarea'] ) : '';
+
+
+          return $instance;
+     }
+
+} // class coenv_base_fac_cats
+
+// register coenv_base_cats widget
+function register_coenv_base_cats() {
+    register_widget( 'coenv_base_cats' );
+}
+add_action( 'widgets_init', 'register_coenv_base_cats' );
+
+
+
+
+
+
+
+
+
 
 /*
  * Sub-navigation

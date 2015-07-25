@@ -28,3 +28,6 @@
 .blog-list-item {
 	margin-bottom: 40px;
 }
+.blog div[role="main"].columns {
+	padding-left: rem-calc(40);
+}

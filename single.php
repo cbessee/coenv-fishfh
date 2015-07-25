@@ -1,15 +1,19 @@
 <?php get_header(); ?>
-<div class="row">
-	<h1>News and Events</h1>
+<div class="row page-content">
 	<div class="small-12 medium-9 columns right" role="main">
-	
-	<?php do_action('foundationPress_before_content'); ?>
-			<?php do_action('foundationPress_post_before_entry_content'); ?>
-			<div class="entry-content">
+		<div class="article__header news__header">
+			<h1 class="article__title"><?php the_title(); ?></h1>
+		</div>
+		<div class="entry-content">
+
+			
+
+
+
 			<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>
-
+					
 						<?php get_template_part( 'partials/partial', 'article' ) ?>
 
 					<?php endwhile ?>

@@ -197,13 +197,18 @@ function coenv_banner() {
 
     $ancestor_id = coenv_get_ancestor('ID');
     
+    if ( is_singular( 'post' )) { //change news pages' section titles
+        unset ($ancestor_id);
+        $ancestor_id = 118;
+    }
+    
     if ( has_post_thumbnail( $ancestor_id ) ) {
         $page_id = $ancestor_id;
     }
 
-   // if ( $page_id == false ) {
-    //    return false;
-   // }
+    if ( $page_id == false ) {
+        return false;
+    }
 
     $thumb_id = get_post_thumbnail_id( $page_id );
     $image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
@@ -243,8 +248,8 @@ function coenv_base_section_title($id) {
 /* 
  * Return news taxonomy terms from research areas.
  */
-function coenv_base_terms($id, $tax) {
-    $fac_terms = wp_get_post_terms( $id, $tax );
+function coenv_base_terms($id) {
+    $fac_terms = wp_get_post_terms( $id, 'category' );
     if ($fac_terms) {
         echo '<ul class="fac-cats inline-list">';
         foreach ($fac_terms as $term) {

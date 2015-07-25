@@ -133,6 +133,26 @@ add_action( 'wp_insert_post_data', 'coenv_base_fac_parent', FACULTY_PAGE_PARENT_
 /**
  * save blog parent
  */
+function coenv_base_news_parent( $data, $postarr ) {
+    global $post;
+ 
+ 
+    // verify if this is an auto save routine.
+    // If it is our form has not been submitted, so we dont want to do anything
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+        return $data;
+ 
+    if ( $post->post_type == "post" ){
+        $data['post_parent'] = NEWS_PARENT_ID;
+    }
+ 
+    return $data;
+}
+add_action( 'wp_insert_post_data', 'coenv_base_news_parent', NEWS_PARENT_ID, 2  ); 
+
+/**
+ * save blog parent
+ */
 function coenv_base_blog_parent( $data, $postarr ) {
     global $post;
  
@@ -151,22 +171,7 @@ function coenv_base_blog_parent( $data, $postarr ) {
 add_action( 'wp_insert_post_data', 'coenv_base_blog_parent', BLOG_PAGE_PARENT_ID, 2  ); 
 
 
-function coenv_base_news_parent( $data, $postarr ) {
-    global $post;
- 
- 
-    // verify if this is an auto save routine.
-    // If it is our form has not been submitted, so we dont want to do anything
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-        return $data;
- 
-    if ( $post->post_type == "post" ){
-        $data['post_parent'] = NEWS_PARENT_ID;
-    }
- 
-    return $data;
-}
-add_action( 'wp_insert_post_data', 'coenv_base_news_parent', '142', 2  );
+
 
 
 /*

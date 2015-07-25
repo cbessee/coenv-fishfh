@@ -33,15 +33,6 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 
 	<div class="small-12 medium-9 columns right" role="main">
 		<div class="article__content">
-		<div class="row filters">
-			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-				<?php coenv_base_cat_filter('category', $coenv_cat_term_1); // Category filter ?>
-			</div>
-			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-				<?php coenv_base_date_filter('post',$coenv_month,$coenv_year); // Date filter ?>
-		 	</div>
-		</div>
-		<hr>
 		<?php
 		/**
 		  * Blog loop
@@ -191,16 +182,18 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';
-		//if ($GLOBALS['post']->post_parent) {
 		echo '<div class="section-title">';
 		echo coenv_base_section_title($GLOBALS['post']->ID);
 		echo '</div>';
-		//}
 		echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
 		echo '</div>';
 		
 	}
 	?>
+	<?php the_widget('coenv_base_cats', 'title=News Category'); ?>
+	<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
+				<?php coenv_base_date_filter('post',$coenv_month,$coenv_year); // Date filter ?>
+		 	</div>
 	<?php dynamic_sidebar('sidebar-widgets'); ?>
 	<?php
 	$ancestor_id = coenv_base_get_ancestor('ID');

@@ -201,8 +201,10 @@
 ?>
     <?php if (($banner) && (!is_single())) {
             $banner_style = 'style="background-image: url(' . $banner['url'] . ')"';
-        } elseif ($coenv_post->post_type == 'faculty') {
+        } elseif ($coenv_post->post_type == 'faculty' || $coenv_post->post_type == 'post') {
             $banner_style = 'style="background-image: url(' . $banner['url'] . ')"';
+        } elseif ($coenv_post->post_type == 'post') {
+            $banner_style = 'style="background-image: url(\'../uploads/sites/4/2014/08/SAFS_News.jpg\')"';
         }
      ?>
     <div class="section-row" <?php echo $banner_style; ?>>
@@ -214,6 +216,8 @@
           $section_title = '<h1><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h1>';
         } elseif ($coenv_post->post_type == 'faculty') {
           $section_title = '<h2><a href="/faculty-research">Faculty &amp; Research</a></h2>';
+        } elseif ($coenv_post->post_type == 'post') {
+          $section_title = '<h2><a href="/news-events">News &amp; Events</a></h2>';
         } else {
           $section_title = '<h1>' . $coenv_post->post_title . '</h1>';
         }
