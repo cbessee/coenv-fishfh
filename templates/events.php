@@ -2,7 +2,11 @@
 /*
 Template Name: Events Index
 */
-
+if($_SERVER['HTTPS']) {
+	$coenv_protocol = 'http';
+} else {
+	$coenv_protocol = 'https'
+}
 get_header(); 
 ?>
 <div class="row page-content">
@@ -11,9 +15,8 @@ get_header();
 	<?php dynamic_sidebar("before-content"); ?>
 	<?php while (have_posts()) : the_post(); ?>
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>" class="template-page">
-			<?php do_action('foundationPress_page_before_entry_content'); ?>
 			<div class="entry-content">
-				<div role="region" aria-labelledby="calendar_display_view_selector"><script type="text/javascript" src="http://www.trumba.com/scripts/spuds.js"></script>
+				<div role="region" aria-labelledby="calendar_display_view_selector"><script type="text/javascript" src="<?php echo $coenv_protocol; ?>://www.trumba.com/scripts/spuds.js"></script>
 				<script type="text/javascript">// <![CDATA[
 				$Trumba.addSpud({
 				webName: "sea_fish",
