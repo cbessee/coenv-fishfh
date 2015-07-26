@@ -258,6 +258,7 @@ class coenv_base_cats extends WP_Widget {
                echo $args['before_text'] . apply_filters( 'widget_text', $instance['textarea'] ). $args['after_text'];
           }
                     $cats_args  = array(
+                      'exclude' => '1,922',
                       'orderby' => 'name',
                       'order' => 'ASC',
                       'taxonomy' => 'category'
@@ -266,10 +267,10 @@ class coenv_base_cats extends WP_Widget {
                     if ($cats) {
                          echo '<ul class="news-cats">';
                          if ($fac_cat):
-                              echo '<li><a href="/faculty-research/">All Research Areas</a></li>';
+                              echo '<li><a href="/news-events/">All Research Areas</a></li>';
                          endif;
                          foreach($cats as $cat) { 
-                              echo '<li><a href="/faculty-research/?tax=research_areas&term=' . $cat->slug . '">' . $cat->name . '</a></li>';
+                              echo '<li><a href="/news-events/?tax=category&term=' . $cat->slug . '">' . $cat->name . '</a></li>';
                          }
                          echo '</ul>';
                     }
