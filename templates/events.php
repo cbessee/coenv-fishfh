@@ -5,7 +5,7 @@ Template Name: Events Index
 if($_SERVER['HTTPS']) {
 	$coenv_protocol = 'http';
 } else {
-	$coenv_protocol = 'https'
+	$coenv_protocol = 'https';
 }
 get_header(); 
 ?>
