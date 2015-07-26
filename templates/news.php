@@ -190,10 +190,9 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		
 	}
 	?>
-	<?php the_widget('coenv_base_cats', 'title=News Category'); ?>
-	<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-				<?php coenv_base_date_filter('post',$coenv_month,$coenv_year); // Date filter ?>
-		 	</div>
+	<?php the_widget('coenv_base_cats', 'title=Category'); ?>
+	<?php the_widget('coenv_base_date', 'title=Date'); ?>
+
 	<?php dynamic_sidebar('sidebar-widgets'); ?>
 	<?php
 	$ancestor_id = coenv_base_get_ancestor('ID');
