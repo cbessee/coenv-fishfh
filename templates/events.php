@@ -3,7 +3,7 @@
 Template Name: Events Index
 */
 
-php get_header(); 
+get_header(); 
 ?>
 <div class="row page-content">
 	<div class="small-12 medium-9 columns right" role="main">
