@@ -75,7 +75,7 @@ function coenv_base_post_types_init() {
     'public' => true,
     'has_archive' => false,
     'show_ui' => true,
-    'rewrite' => false,
+    'rewrite' => array('slug' => 'intranet'),
     'menu_icon' => 'dashicons-slides',
     )
   );
