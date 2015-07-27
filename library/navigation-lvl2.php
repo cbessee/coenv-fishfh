@@ -64,6 +64,7 @@ function coenv_base_intranet_submenu_get_children($post, $current_page) {
     $menu = '';
     // Get all immediate children of this page
     $args = array(
+        'depth' => 4,
         'sort_order' => 'ASC',
         'sort_column' => 'menu_order',
         'hierarchical' => 1,
@@ -86,7 +87,7 @@ function coenv_base_intranet_submenu_get_children($post, $current_page) {
             }
             // If the page has children and is the viewed page or one of its ancestors, get its children
             if (get_children($child->ID) && (in_array($child->ID, get_post_ancestors($current_page)) || ($child->ID == $current_page->ID))) {
-                $menu .= coenv_base_hierarchical_submenu_get_children($child, $current_page);
+                $menu .= coenv_base_intranet_submenu_get_children($child, $current_page);
             }
             $menu .= "</li>\n";
         }
