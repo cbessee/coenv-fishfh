@@ -16,7 +16,7 @@
     h1 {
         @include encode_black;
         color: $black;
-        font-size: rem-calc(16);
+        font-size: rem-calc(15);
         line-height: rem-calc(17);
         letter-spacing: .05em;
         padding-left: 30px;
