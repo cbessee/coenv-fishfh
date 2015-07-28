@@ -28,6 +28,8 @@
         text-align: center;
         text-transform: uppercase;
 
+
+
         a {
             color: $black;
         }
@@ -97,6 +99,12 @@ height: 126px;
         font-weight: 500!important;
         float: left;
         margin: rem-calc(18) 0 -3px 0;
+
+
+
+
+
+
         a {
             color: $text;
         }
@@ -151,9 +159,13 @@ height: 126px;
 
         text-transform: uppercase;
 
-        @media #{$medium-up} {
+        @media #{$large-up} {
             font-size: rem-calc(27);
             
+        }
+        @media #{$medium-only} {
+                font-size: rem-calc(20);
+        
         }
         @media #{$small-only} {
             font-size: rem-calc(16);

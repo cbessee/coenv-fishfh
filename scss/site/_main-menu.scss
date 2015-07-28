@@ -1,5 +1,6 @@
 .top-bar {
     background-color: $white;
+    height:auto !important;
     text-align: center;
     border-bottom: #d7dee5 1px solid;
     line-height: 0;
@@ -98,20 +99,18 @@
                 
             }
     
-            .has-dropdown > a {
-
-
-
-
-
+            .has-dropdown a {
                     background-image: url('../assets/img/nav-carrot.svg');
                     background-repeat: no-repeat;
                     background-position: center right;
 
-
-                .has-dropdown > a {
-                background-image: none;
+                                    @media #{$medium-only} {
+                    background-image: none!important;
+                    padding: 0 5px !important;
                 }
+
+
+                
                 &:after {
                     content: none;
                 }
@@ -131,15 +130,7 @@ background-image: none;
 
 
 
-// Foundation overrides
 
-@media only screen and (min-width: 40.063em) {
-.top-bar-section .has-dropdown>a {
-
-padding-right: 20px !important;
-
-}
-}
 
 
 

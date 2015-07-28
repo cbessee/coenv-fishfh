@@ -74,8 +74,18 @@
         background-position: top;
         padding-top: 50px;
         position: relative;
+
+
+        @media #{$small-only} {
+         height: 350px;
+
+          padding-top: 0;
+        }
+
+       
+
     }
-    
+
     .feature-info-container {
     
       position: absolute;
@@ -83,7 +93,7 @@
 
       @media #{$medium-up} {
 
-        position: relative;
+      position: relative;
       bottom: auto;
 
 
@@ -97,18 +107,24 @@
 
               @include encode_black;
               background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
-              background-postition: bottom center !important;
+              background-position: bottom left;
               background-repeat: no-repeat;
-              color: #fff;
+              color: $white;
               font-size: rem-calc(27);
               line-height: 1.2;
-              margin-bottom: 10px;
+              margin-bottom: 0 0 10px 0;
               padding-bottom: 20px;
               text-transform: uppercase;
-              text-align: center;
+
+
+
+              
 
               @media #{$small-only} {
-              font-size: rem-calc(22);
+              background-position: bottom center;
+              margin-bottom: 0;
+              font-size: rem-calc(18);
+              text-align: center;
               //width: 100%;
               }
             }
@@ -118,6 +134,14 @@
               font-size: rem-calc(16);
               margin-bottom: 30px;
               margin-top: 30px;
+
+
+              @media #{$small-only} {
+                margin-bottom: 20px;
+                margin-top: 10px;  
+                text-align: center;
+              }
+
             }
 
     
@@ -141,6 +165,10 @@
             border: solid 13px #fff;
             width: 480px;
           }
+          @media #{$small-only} {
+            text-align: center;
+            padding: rem-calc(10) rem-calc(10) rem-calc(26) rem-calc(10);
+              }
 
           .button {
             @include o_sans_bold;
@@ -173,15 +201,7 @@
         }
         
         
-        h2 {
-            background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white.svg');
-            background-position: bottom left;
-            background-repeat: no-repeat;
-            color: $white;
-            font-size: rem-calc(32);
-            margin: 0 0 24px 0;
-            padding-bottom: 27px;
-        }
+        
         
         
         .button {

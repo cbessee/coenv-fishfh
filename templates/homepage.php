@@ -55,7 +55,7 @@ $feature_query = new WP_Query( $feature_args );
 ?>
 <div class="full-feature">
 
-	<div class="playpause"></div>
+	<!--<div class="playpause"></div>-->
 	<div class="homepage-features">
 
 
@@ -63,6 +63,7 @@ $feature_query = new WP_Query( $feature_args );
 	# The Loop
 	while ( $feature_query->have_posts() ) :
 		$feature_query->the_post();
+
 	if (get_field('feature_add_links')) {
 		$feature_link_type = get_field('feature_link_type');
 		$feature_link_type_internal = get_field('feature_link_page');
@@ -83,12 +84,16 @@ $feature_query = new WP_Query( $feature_args );
 			
 		<div class="feature">
 
-			<div class="feature-image" style="background-image:url('<?php echo $feature_image[0]; ?>')">
-				<div class="feature-controls hide-for-medium-up">
+
+
+			<div class="feature-controls hide-for-medium-up">
 							<a class="slick-p" href="#">Previous</a>
 							<a class="slick-n" href="#">Next</a>
 						</div>
+			<div class="feature-image" id="pid-<?php echo $feature_query->post->ID; ?>" data-interchange="[<?php echo $feature_image[0]; ?>, (medium)]">
+			
 				<div class="feature-info-container">
+						<img class="show-for-small-only mobile-hero" src="<?php echo $feature_image[0]; ?>" />
 					<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
 					<div class="feature-info row" style="background-color:<?php $feature_color; ?>">
 						<div class="feature-content">
