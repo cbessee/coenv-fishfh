@@ -142,22 +142,3 @@ $.fn.blogHeader = function () {
 
 
 };
-
-
-
-
-
-
-
-
-
-
-var container = document.querySelector('.news-container');
-var msnry = new Masonry( container, {
-  // options
-  itemSelector: '.small-news',
-  columnWidth: 360,
-  gutterWidth: 10
-});
-
-//hey you!

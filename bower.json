@@ -12,6 +12,5 @@
     "modernizr": "latest",
     "jquery.cookie": "latest",
     "jquery-placeholder": "latest",
-    "masonry": "~3.3.0"
   }
 }
