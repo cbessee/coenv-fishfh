@@ -61,7 +61,7 @@
   
   <?php do_action('foundationPress_layout_start'); ?>
   
-  <nav class="tab-bar hide-for-large-up">
+  <nav class="tab-bar hide-for-medium-up">
     <div class="left-small mobile-logo-container">
         <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>"><svg id="mobile-logo" width="73" height="49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 73 49" xml:space="preserve">
               <path id="XMLID_14_" class="st0" d="M53.5,0c0,0.6,0,8.3,0,8.8c0.6,0,6.2,0,6.2,0l-6.9,25.8c0,0-8.5-34.2-8.6-34.6c-0.5,0-8.5,0-9,0
@@ -102,7 +102,7 @@
     <?php foundationPress_mobile_off_canvas(); ?>
   </aside>
 
-  <nav id="top-nav" class="show-for-large-up">
+  <nav id="top-nav" class="show-for-medium-up">
     <div class="row">
       <div class="top-menu normal-top-menu">
         <?php wp_nav_menu(array(
@@ -135,7 +135,7 @@
       </div><!-- .top-menu -->
     </div><!-- .row -->
   </nav><!-- #top-nav -->
-  <div class="full-header show-for-large-up">
+  <div class="full-header show-for-medium-up">
     <div class="row title-row">
       <div class="columns large-12">
         <h1 class="left">
@@ -164,7 +164,7 @@
     </div>
   </div>
   
-        <div class="top-bar-container show-for-large-up">
+        <div class="top-bar-container show-for-medium-up">
             <nav class="top-bar" data-topbar="">
                 <div class="top-bar-section">
                     <ul id="menu-main-menu" class="top-bar-menu">

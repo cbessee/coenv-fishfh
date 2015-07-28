@@ -81,7 +81,7 @@
       position: absolute;
       bottom: 0;
 
-      @media #{$large-up} {
+      @media #{$medium-up} {
 
         position: relative;
       bottom: auto;
@@ -97,7 +97,7 @@
 
               @include encode_black;
               background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
-              background-postition: center bottom;
+              background-postition: bottom center !important;
               background-repeat: no-repeat;
               color: #fff;
               font-size: rem-calc(27);
@@ -105,8 +105,11 @@
               margin-bottom: 10px;
               padding-bottom: 20px;
               text-transform: uppercase;
+              text-align: center;
 
               @media #{$small-only} {
+              font-size: rem-calc(22);
+              //width: 100%;
               }
             }
 
@@ -134,7 +137,7 @@
           float: left;
           padding: rem-calc(20) rem-calc(20) rem-calc(26) rem-calc(20);
 
-          @media #{$large-up} {
+          @media #{$medium-up} {
             border: solid 13px #fff;
             width: 480px;
           }
@@ -157,7 +160,7 @@
               margin-right: 10px;
             }
 
-            @media #{$large-up} {
+            @media #{$medium-up} {
               font-size: 12px;
               padding: rem-calc(6) rem-calc(8);
             }
@@ -327,7 +330,7 @@ left: 0;
 
   
 
-  @media #{$large-up} {
+  @media #{$medium-up} {
     background-color: #fff;
     border-top: solid 6px #fff;
     display: inline-block;
@@ -347,7 +350,7 @@ left: 0;
     white-space: nowrap;
     overflow: hidden;
 
-    @media #{$large-up} {
+    @media #{$medium-up} {
       width: 27px;
       height: 67px !important;
     }
@@ -358,7 +361,7 @@ left: 0;
     
     width: 40px;
 
-    @media #{$large-up} {
+    @media #{$medium-up} {
 
       border-left: 3px solid #ccc;
 
@@ -392,7 +395,7 @@ left: 0;
       width: 100%;
       
 
-      @media #{$large-up} {
+      @media #{$medium-up} {
         float: left;
         width: 20%;
 
@@ -424,7 +427,7 @@ left: 0;
     @include o_sans;
     width: 100%;
 
-    @media #{$large-up} {
+    @media #{$medium-up} {
 
       float: right;
     width: 70%;
