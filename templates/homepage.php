@@ -1,106 +1,82 @@
 <?php
 /*
-Template Name: Homepage
-*/
-?>
-<?php get_header(); ?>
-<?php
-
-
-
-/**
- * Check for events
+ * Template Name: Homepage
  */
 
+get_header();
 
-	$events_xml = file_get_contents( 'http://www.trumba.com/calendars/sea_fish.rss' );
-	$xml = new SimpleXmlElement($events_xml);
-    $events = array();
+// Check for events
 
-    foreach ($xml->channel->item as $item) {     
-      $events[] = array(
-        'title' => $item->title,
-        'date'  => $item->category,
-        'url' => $item->link
-      );
-    }
+$events_xml = file_get_contents( 'http://www.trumba.com/calendars/sea_fish.rss' );
+$xml = new SimpleXmlElement($events_xml);
+$events = array();
 
-    $events_count = count($events);
+foreach ($xml->channel->item as $item) {     
+	$events[] = array(
+		'title' => $item->title,
+		'date'  => $item->category,
+		'url' => $item->link
+	);
+}
+$events_count = count($events);
 
+// Query for homepage features.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
-* Loop for homepage features.
-*/
 $feature_args = array(
-'post_type'	=> 'features',
-'post_status' => 'publish',
-'posts_per_page' => 4,
-'orderby' => 'menu_order',
+	'post_type'	=> 'features',
+	'post_status' => 'publish',
+	'posts_per_page' => 4,
+	'orderby' => 'menu_order',
 );
 $feature_query = new WP_Query( $feature_args ); 
-
 ?>
 <div class="full-feature">
-
 	<!--<div class="playpause"></div>-->
 	<div class="homepage-features">
 
-
 	<?php
-	# The Loop
+	
+	// Homepage feature loop
+
 	while ( $feature_query->have_posts() ) :
 		$feature_query->the_post();
 
-	if (get_field('feature_add_links')) {
-		$feature_link_type = get_field('feature_link_type');
-		$feature_link_type_internal = get_field('feature_link_page');
-	}
-	if (get_field('feature_color')) {
-		$feature_color = get_field('feature_color');
-	}
-	if (get_field('feature_excerpt')) {
-		$feature_excerpt = get_field('feature_excerpt');
-	}
-	if (get_the_post_thumbnail()) {
-		$feature_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail-size', true);
-		$feature_caption = get_post(get_post_thumbnail_id());
-		$feature_caption = $feature_caption->post_excerpt;
-	}
-	$rows = get_field('feature_add_links');
-	?>
+		if (get_field( 'feature_add_links' )) {
+			$feature_link_type = get_field( 'feature_link_type' );
+			$feature_link_type_internal = get_field( 'feature_link_page' );
+		}
+		if ( get_field( 'feature_color' ) ) {
+			$feature_color = get_field( 'feature_color' );
+		}
+		if (get_field( 'feature_excerpt' ) ) {
+			$feature_excerpt = get_field( 'feature_excerpt' );
+		}
+		if ( get_the_post_thumbnail() ) {
+			$feature_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail-size', true );
+			$feature_caption = get_post( get_post_thumbnail_id() );
+			$feature_caption = $feature_caption->post_excerpt;
+		}
+		
+		$rows = get_field('feature_add_links');
+		?>
 			
 		<div class="feature">
-
-
-
 			<!--<div class="feature-controls hide-for-medium-up">
-							<a class="slick-p" href="#">Previous</a>
-							<a class="slick-n" href="#">Next</a>
-						</div>-->
+				<a class="slick-p" href="#">Previous</a>
+				<a class="slick-n" href="#">Next</a>
+			</div>-->
 			<div class="feature-image" id="pid-<?php echo $feature_query->post->ID; ?>" data-interchange="[<?php echo $feature_image[0]; ?>, (medium)]">
-			
 				<div class="feature-info-container">
-						<img class="show-for-small-only mobile-hero" src="<?php echo $feature_image[0]; ?>" />
+					<img class="show-for-small-only mobile-hero" src="<?php echo $feature_image[0]; ?>" />
 					<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
 					<div class="feature-info row" style="background-color:<?php $feature_color; ?>">
 						<div class="feature-content">
 							<h2><?php echo get_the_title(); ?></h2>
-
 							<p class="feature-excerpt"><?php echo $feature_excerpt; ?></p>
-							<?php 
+							
+							<?php
+
+							// Feature links
 
 							if($rows) {
 								foreach($rows as $row) {
@@ -117,7 +93,6 @@ $feature_query = new WP_Query( $feature_args );
 									} 
 								}
 							}
-
 							?>
 
 						</div><!-- .feature-content -->
@@ -128,8 +103,7 @@ $feature_query = new WP_Query( $feature_args );
 					</div><!-- .feature-info -->
 				</div><!-- .feature-info-container -->
 				<div style="position: absolute; bottom: 0; text-align: center; width: 100%;">
-					<ul class="my-slick-dots here show-for-medium-up" style="display: block;">
-					</ul>
+					<ul class="my-slick-dots here show-for-medium-up" style="display: block;"></ul>
 				</div>
 			</div><!-- .feature -->
 		</div>
@@ -140,11 +114,8 @@ $feature_query = new WP_Query( $feature_args );
 	?>
 
 	</div><!-- homepage-features -->
-<div id="feature-mask"></div>
+	<div id="feature-mask"></div>
 </div> <!-- end .full-feature -->
-
-
-
 <div class="full-intro clearfix">
 	<div class="row">				
 		<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
@@ -156,128 +127,83 @@ $feature_query = new WP_Query( $feature_args );
 		<?php endif; ?>
 	</div>
 </div> <!-- end full-intro -->
-
-
 <div class="full-student-faculty clearfix">
 
 	<div class="student-container">
 		<div class="student-wrapper" style="position: relative;">
-
 			<h2>Explore our Programs</h2>
-				<div class="student-content hover-start">
-					<p>SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. Join us to connect with some of the best minds and immerse yourself in cutting-edge scientific research.</p>
-					<p><a class="button" href="/students">Learn more</a></p>
-				</div>
-
+			<div class="student-content hover-start">
+				<p>SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. Join us to connect with some of the best minds and immerse yourself in cutting-edge scientific research.</p>
+				<p><a class="button" href="/students">Learn more</a></p>
+			</div>
 		</div>
-
 	</div>
 
-
-	<div class="faculty-container">
+	<div class="faculty-container clearfix">
 		<div class="faculty-wrapper" style="position: relative;">
-
-		<h2 style="background-position: center bottom;">Meet Our Faculty</h2>
+			<h2 style="background-position: center bottom;">Meet Our Faculty</h2>
 			<div class="faculty-content">
 				<p>Our faculty are committed leaders with broad academic expertise and interests. With access to a network of local, national and international leaders, we contribute influential research on topics ranging from organisms, populations, ecosystems, to human users of aquatic ecosystems.</p>
 				<p><a class="button" href="/faculty-research">Learn more</a></p>
 			</div>
-
 		</div>
-
 	</div>
 
 </div>
 
+<?php if( get_field('social_media', 'option') ) { ?>
 
-					<?php if( get_field('social_media', 'option') ) { ?>
+<div class="full-connect">
+	<h2 style="background-position: bottom center;">Connect With Us</h2>
+	<div class="social-buttons">
+	<?php while( has_sub_field('social_media', 'option') ) { ?>
+		<a class="<?php the_sub_field('service_name'); ?> icon" href="<?php the_sub_field('url'); ?>" title="<?php the_sub_field('service_name'); ?>">
+			<i class="fi-social-<?php the_sub_field('service_name'); ?>"></i>
+		</a>
+	<?php } ?>
+	</div>
+</div>
 
-					<div class="full-connect">
-						<h2 style="background-position: bottom center;">Connect With Us</h2>
-						<div class="social-buttons">
-						<?php while( has_sub_field('social_media', 'option') ) { ?>
-							<a class="<?php the_sub_field('service_name'); ?> icon" href="<?php the_sub_field('url'); ?>" title="<?php the_sub_field('service_name'); ?>">
-								<i class="fi-social-<?php the_sub_field('service_name'); ?>"></i>
-							</a>
-						<?php } ?>
-						</div>
-					</div>
+<?php 
+} 
 
-					<?php } ?>
+// News queries, 3 in total, not ideal. col_3 is below.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
-# News with featured news
-
-$sticky = get_option( 'sticky_posts' );
-$sticky_count = count($sticky);
-$posts_on_home = $news_count; //set posts_per_page here
 $posted = array();
 
- $home_col_1_args = array(
-        'post_type' => 'post',
-        'category__not_in' => '922',
-        'posts_per_page' => 2,
-        'post_status' => 'publish',
-    );
+$home_col_1_args = array(
+	'post_type' => 'post',
+	'category__not_in' => '922',
+	'posts_per_page' => 2,
+	'post_status' => 'publish',
+);
 
- $home_col_2_args = array(
-        'post_type' => 'post',
-        'category__in' => '922',
-        'posts_per_page' => 1,
-        'post_status' => 'publish',
-    );
-
-
-
-if( $sticky ) {
-    $home_args = array(
-        'post_type' => 'post',
-        'posts_per_page' => $posts_on_home - $sticky_count,
-        'post_status' => 'publish',
-    );
-}
-else {
-    $home_args = array(
-        'post_type' => 'post',
-        'posts_per_page' => $posts_on_home - $sticky_count,
-        'post_status' => 'publish',
-    );
-}
-
+$home_col_2_args = array(
+	'post_type' => 'post',
+	'category__in' => '922',
+	'posts_per_page' => 1,
+	'post_status' => 'publish',
+);
 
 ?>
-	<?php if ($wp_query->have_posts()): ?>
-	<div class="full-news-events">
-		<div class="row">
-			<div class="columns large-12">
+<?php if ($wp_query->have_posts()): ?>
+<div class="full-news-events">
+	<div class="row">
+		<div class="columns large-12">
 			<h2 style="background-position: bottom center;">Latest News</h2>
 			<a class="more-news show-for-large-up" href="/news-events">More News</a>
-			</div>
+		</div>
 		</div>
 		<div class="home-news-section large-12 clearfix">
 			<div class="row">
 				<div class="columns small-12 medium-4">
 
 				<?php
+
+				// Here comes the first query
+
 				$wp_query = new WP_Query( $home_col_1_args );
-				# The Loop
+
 				while ( $wp_query->have_posts() ) :
 		
 					// Get field vars
@@ -422,14 +348,15 @@ else {
 
 				<?php
 				if ($events_count < 4) {
-				$posted_exclude = implode(',',$posted);
-				$home_col_3_args = array(
-					'offset' => 1,
-        			'post_type' => 'post',
-        			'post__not_in' => $posted,//$posted,
-        			'posts_per_page' => 1,
-        			'post_status' => 'publish',
-    			);
+	$posted_exclude = implode(',',$posted);
+	$home_col_3_args = array(
+		'offset' => 1,
+		'post_type' => 'post',
+		'post__not_in' => $posted,//$posted,
+		'posts_per_page' => 1,
+		'post_status' => 'publish',
+	);
+
 				$wp_query = new WP_Query( $home_col_3_args );
 				# The Loop
 				while ( $wp_query->have_posts() ) :
