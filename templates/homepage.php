@@ -232,14 +232,14 @@ $posted = array();
 
  $home_col_1_args = array(
         'post_type' => 'post',
-        'post__not_in' => $sticky,
+        'category__not_in' => '922',
         'posts_per_page' => 2,
         'post_status' => 'publish',
     );
 
  $home_col_2_args = array(
         'post_type' => 'post',
-        'post__in' => $sticky,
+        'category__in' => '922',
         'posts_per_page' => 1,
         'post_status' => 'publish',
     );
