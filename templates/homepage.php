@@ -86,10 +86,10 @@ $feature_query = new WP_Query( $feature_args );
 
 
 
-			<div class="feature-controls hide-for-medium-up">
+			<!--<div class="feature-controls hide-for-medium-up">
 							<a class="slick-p" href="#">Previous</a>
 							<a class="slick-n" href="#">Next</a>
-						</div>
+						</div>-->
 			<div class="feature-image" id="pid-<?php echo $feature_query->post->ID; ?>" data-interchange="[<?php echo $feature_image[0]; ?>, (medium)]">
 			
 				<div class="feature-info-container">
@@ -163,8 +163,8 @@ $feature_query = new WP_Query( $feature_args );
 	<div class="student-container">
 		<div class="student-wrapper" style="position: relative;">
 
-			<h2 style="background-position: center bottom;">Explore our Programs</h2>
-				<div class="student-content">
+			<h2>Explore our Programs</h2>
+				<div class="student-content hover-start">
 					<p>SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. Join us to connect with some of the best minds and immerse yourself in cutting-edge scientific research.</p>
 					<p><a class="button" href="/students">Learn more</a></p>
 				</div>
@@ -268,12 +268,12 @@ else {
 		<div class="row">
 			<div class="columns large-12">
 			<h2 style="background-position: bottom center;">Latest News</h2>
-			<a class="more-news" href="/news-events">More News</a>
+			<a class="more-news show-for-large-up" href="/news-events">More News</a>
 			</div>
 		</div>
 		<div class="home-news-section large-12 clearfix">
 			<div class="row">
-				<div class="columns large-4">
+				<div class="columns small-12 medium-4">
 
 				<?php
 				$wp_query = new WP_Query( $home_col_1_args );
@@ -339,7 +339,7 @@ else {
 
 
 				</div>
-				<div class="columns large-4">
+				<div class="columns small-12 medium-4">
 
 
 
@@ -416,7 +416,7 @@ else {
 
 
 				</div>
-				<div class="columns large-4">
+				<div class="columns small-12 medium-4">
 
 
 

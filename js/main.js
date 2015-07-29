@@ -107,6 +107,8 @@ jQuery(function ($) {
 
 
 
+
+
     
 
 });
@@ -128,17 +130,29 @@ $.fn.blogHeader = function () {
         var url = $(this).val();
         window.location.href = url;
     } );
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
+
+
+
+jQuery(function ($) {
+    $(".full-student-faculty .student-container").hover(
+        function () {
+            $(".student-content").addClass("hover-show");
+        },
+        function () {
+            $(".student-content").removeClass("hover-show");
+    });
+
+    $(".full-student-faculty .faculty-container").hover(
+        function () {
+            $(".faculty-content").addClass("hover-show");
+        },
+        function () {
+            $(".faculty-content").removeClass("hover-show");
+    });
+
+
+
+
+
+});
