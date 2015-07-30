@@ -22,18 +22,10 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 ?>
 
 <?php get_header(); ?>
-<?php if( !empty( get_field( 'intro_text') ) ) { ?>
-<div class="full-intro">
-	<div class="row">
-		<?php the_field( 'intro_text' ); ?>
-	</div>
-</div>
-<?php } ?>
-<div class="row">
+<div class="row page-content">
 
 	<div class="small-12 medium-9 columns right" role="main">
-		<div class="entry-content">
-		<h1 class="article__title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+		<div class="article-content">
 		<div class="row filters">
 			<div class=" large-6 columns" data-url="<?php echo $url_current; ?>" data-cat="blog_category">
 				<?php coenv_base_cat_filter('blog_category', $coenv_cat_term_1); // Category filter ?>
@@ -42,7 +34,7 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 				<?php coenv_base_date_filter('student_blog',$coenv_month,$coenv_year); // Date filter ?>
 		 	</div>
 		</div>
-		<hr>
+		<hr />
 		<?php
 		/**
 		  * Blog loop
@@ -96,31 +88,49 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		$terms = wp_get_post_terms( get_the_ID(), 'blog_category');
 		?>
 		<div class="blog-list-item post-<?php the_ID() ?>">
-		<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-		data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-		data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
-        </div>
+		<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
+            </div>
         <?php
-		echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
+		echo '<h2><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
+
+
+
+
+
 		echo '<div class="blog-meta">';
-		echo '<p>' . get_the_date('M j, Y') .' / ';
+		echo '<p>' . get_the_date('M j, Y');
 		$termlist = '';
-		foreach ($terms as $term) {
-		 $termlist .= '<a href="' . $url_current . '?tax=' . $term->taxonomy . '&term=' . $term->slug . '">' . $term->name . '</a>, ';
+		foreach ( $terms as $term ) {
+			if ( $term->name != 'Uncategorized' ) {
+		 		$termlist .= '<a href="' . $url_current . '?tax=' . $term->taxonomy . '&term=' . $term->slug . '">' . $term->name . '</a>, ';
+		 	}
 		}
 		$termlist = rtrim($termlist,', ');
-		echo $termlist;
+		if ( !empty ($termlist) ) {
+		echo ' / ' . $termlist;
+		}
 		 echo '</p>';
 		
 		echo '</div>';
+
+
+
+
+
+
+
+
 		echo '<div class="post">';
 		if (has_post_thumbnail()):
 		echo '<a class="left" style="margin-right: 2rem;" href="' . get_the_permalink() . '">';
 		the_post_thumbnail( 'medium' );
 		echo '</a>';
 		endif;
-		echo the_excerpt();
-		echo '<a class="button" href="' . get_the_permalink() . '">Read more</a>';
+		//strip_tags(the_advanced_excerpt('length=30&finish=sentence'),'');
+		echo the_content();
+		//echo '<a class="button" href="' . get_the_permalink() . '">Read more</a>';
 		'</div>';
 		echo '<div class="blog-links right">';
 		if($rows) {

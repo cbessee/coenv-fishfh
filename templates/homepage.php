@@ -237,12 +237,12 @@ if ($wp_query->have_posts()):
 
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
 
-				        <div class="post-meta">
-			                <time class="article__time left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date('M j, Y'); ?></time>
+				        <div class="post-meta row">
+			                <time class="article__time columns left small-6" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date('M j, Y'); ?></time>
 			               	
 			               	<?php if (!empty($terms)) { ?> 
 
-							<ul class="terms right">
+							<ul class="terms columns right small-6">
 
 								<?php echo $terms_list; ?>
 

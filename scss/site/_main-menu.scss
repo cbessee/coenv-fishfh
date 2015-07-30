@@ -20,6 +20,9 @@
         display: inline-block;
         
         #menu-main-menu {
+            .has-dropdown ul li a {
+                background-image: none;
+            }
 
 
             li {
@@ -100,20 +103,18 @@
             }
     
             .has-dropdown a {
-                    background-image: url('../assets/img/nav-carrot.svg');
-                    background-repeat: no-repeat;
-                    background-position: center right;
+                background-image: url('../assets/img/nav-carrot.svg');
+                background-repeat: no-repeat;
+                background-position: center right;
 
-                                    @media #{$medium-only} {
+                @media #{$medium-only} {
                     background-image: none!important;
                     padding: 0 5px !important;
                 }
 
 
                 
-                &:after {
-                    content: none;
-                }
+               
             }
         }
     }

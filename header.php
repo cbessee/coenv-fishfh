@@ -209,10 +209,12 @@
         <?php 
         
         
-        if (!is_front_page() && ($coenv_post_section->ID == $coenv_post->ID)) {
+        if (!is_front_page() && !is_single() && ($coenv_post_section->ID == $coenv_post->ID)) {
           $section_title = '<h1><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h1>';
         } elseif ($coenv_post->post_type == 'faculty') {
           $section_title = '<h2><a href="/faculty-research">Faculty &amp; Research</a></h2>';
+        } elseif ($coenv_post->post_type == 'student_blog') {
+          $section_title = '<h2><a href="/news-events/student-services-blog/">Student Services Blog</a></h2>';
         } elseif ($coenv_post->post_type == 'post') {
           $section_title = '<h2><a href="/news-events">News &amp; Events</a></h2>';
         } else {

@@ -7,6 +7,14 @@
 		
 		======================================================================== */
 
+.article h1,h2,h3,h4,h5,h6 {
+  	line-height: 1;
+  	}
+
+
+
+
+
 .article {
 	position: relative;
 	margin-bottom: rem-calc(36);
@@ -103,10 +111,10 @@
     margin-left: 20px;
     }
 
-  
+
     h1,h2 {
     	@include encode_black;
-    	line-height: 1.4;
+    	line-height: 1.2;
     	width: 100%;
     }
     h3,h4,h5,h6 {

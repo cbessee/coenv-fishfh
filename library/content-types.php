@@ -57,7 +57,7 @@ function coenv_base_post_types_init() {
     'public' => true,
     'has_archive' => false,
     'show_ui' => true,
-    //'rewrite' => array('slug' => 'student_blog'),
+    //'rewrite' => array('slug' => '/news-events/student-services-blog/'),
   'menu_icon' => 'dashicons-exerpt-view',
     )
   );

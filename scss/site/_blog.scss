@@ -3,16 +3,52 @@ ul.blog-terms {
 }
 .blog-meta {
 	display: block;
-	p {
-		float: left;
-	}
 
 }
 .blog-list-item  {
 	display: block;
 	float: left;
 
+
+
+
+	.share {
+		float: right;
+		width: 10%;
+	}
+
 	.post {
 		float: left;
 	}
 }
+.blog h2 a {
+	    	line-height: rem-calc(20)!important;
+}
+.blog h2 {
+	width: 90%;
+}
+.blog h2 a {
+	
+		@include encode_black;
+		color: #000;
+
+    	
+    	@include font-size(18);
+		font-weight: 400;
+		margin-bottom: rem-calc(20);
+
+		@media #{$medium-up} {
+			@include font-size(30);
+		}
+
+
+}
+
+body.page div[role="main"] .share {
+	float: right;
+	width: 25%;
+}
+
+
+
+
