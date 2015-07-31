@@ -24,7 +24,7 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 <?php get_header(); ?>
 <div class="row page-content">
 
-	<div class="small-12 medium-9 columns right" role="main">
+	<div class="columns" role="main">
 		<div class="article-content">
 		<div class="row filters">
 			<div class=" large-6 columns" data-url="<?php echo $url_current; ?>" data-cat="blog_category">
@@ -34,7 +34,6 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 				<?php coenv_base_date_filter('student_blog',$coenv_month,$coenv_year); // Date filter ?>
 		 	</div>
 		</div>
-		<hr />
 		<?php
 		/**
 		  * Blog loop
@@ -43,7 +42,8 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		$query_args = array(
 			'post_type'	=> 'student_blog',
 			'post_status' => 'publish',
-			'posts_per_page' => 20,
+			//'posts_per_page' => 20,
+			'posts_per_page' => 10,
 			'orderby' => 'date',
 			'order' => 'DESC',
 			'paged' => $paged
@@ -169,7 +169,7 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 	<?php do_action('foundationPress_after_content'); ?>
 	</div>
 <?php wp_reset_postdata(); wp_reset_query(); ?>
-	<aside id="sidebar" class="small-12 medium-3 columns left">
+	<aside id="sidebar" class="columns">
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';

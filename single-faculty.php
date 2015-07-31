@@ -19,7 +19,7 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 ?>
 
 <div class="row page-content">
-	<div class="small-12 medium-9 columns right" role="main">
+	<div class="columns" role="main">
 		<div class="article__header faculty__header">
 			<h1 class="article__title"><?php the_title(); ?></h1>
 			<?php if( have_rows('job_titles') ) { ?>
@@ -64,7 +64,7 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 </article>	
 <?php do_action('foundationPress_after_content'); ?>
 </div>
-<aside id="sidebar" class="small-12 medium-3 columns left">
+<aside id="sidebar" class="columns">
 	<div class="faculty-info right">
 	<?php echo $faculty_img; ?>
 	<ul class="faculty_contact_fields">

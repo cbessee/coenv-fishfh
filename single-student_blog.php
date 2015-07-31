@@ -6,7 +6,7 @@ Template Name: Student Blog
 
 <?php get_header(); ?>
 <div class="row page-content">
-	<div class="small-12 medium-9 columns right" role="main">
+	<div class="columns" role="main">
 		<div class="news clearfix">
 			<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php echo wp_get_shortlink(); ?>" data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
         </div>
@@ -65,7 +65,7 @@ Template Name: Student Blog
 	<?php do_action('foundationPress_after_content'); ?>
 
 	</div>
-	<aside id="sidebar" class="small-12 medium-3 columns left">
+	<aside id="sidebar" class="columns">
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';

@@ -20,7 +20,7 @@ if( !empty( get_field( 'intro_text') ) ) {
 </div>
 <?php } ?>
 <div class="row page-content">
-	<div class="small-12 medium-9 columns right" role="main">
+	<div class="columns" role="main">
         <div class="entry-content">
 			<?php while (have_posts()) : the_post(); ?>
 			<article <?php post_class() ?> id="post-<?php the_ID(); ?>" class="template-page">
@@ -126,7 +126,7 @@ if( !empty( get_field( 'intro_text') ) ) {
 	<?php do_action( 'foundationPress_after_content' ); ?>
 	</div>
 	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
-	<aside id="sidebar" class="small-12 medium-3 columns left">
+	<aside id="sidebar" class="columns">
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';

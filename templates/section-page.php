@@ -13,7 +13,7 @@ Template Name: Section Page
 <?php } ?>
 <div class="row page-content">
 
-	<div class="small-12 medium-9 columns right" role="main">
+	<div class="columns" role="main">
 	
 	<?php do_action('foundationPress_before_content'); ?>
 	<?php dynamic_sidebar("before-content"); ?>
@@ -39,7 +39,7 @@ Template Name: Section Page
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_before_content'); ?>
 	</div>
-	<aside id="sidebar" class="small-12 medium-3 columns left">
+	<aside id="sidebar" class="columns">
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';

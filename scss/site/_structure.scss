@@ -47,9 +47,25 @@ figcaption {
 .back-to-top:hover {    
     background-color: rgba(135, 135, 135, 0.50);
 }
+div[role="main"] {
+    @extend .right;
+    @extend .small-12;
+    @media #{$small-up} { 
+        width: 100% !important;
+    }
+    @media #{$large-up} { 
+        width: 72% !important;
+    }
 
-
-
-
-
+}
+#sidebar {
+    @extend .left;
+    @media #{$small-up} { 
+        width: 100% !important;
+    }
+    @media #{$large-up} { 
+        width: 28% !important;
+    }
+    
+}
 

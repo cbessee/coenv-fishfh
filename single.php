@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="row page-content">
-	<div class="small-12 medium-9 columns right" role="main">
+	<div class="columns" role="main">
 		<div class="article__header news__header">
 			<h1 class="article__title"><?php the_title(); ?></h1>
 		</div>
@@ -37,7 +37,7 @@
 	<?php do_action('foundationPress_after_content'); ?>
 
 	</div>
-	<aside id="sidebar" class="small-12 medium-3 columns left">
+	<aside id="sidebar" class="columns">
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';

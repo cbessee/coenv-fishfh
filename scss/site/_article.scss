@@ -10,7 +10,13 @@
 .article h1,h2,h3,h4,h5,h6 {
   	line-height: 1;
   	}
-
+.blog {
+	margin-top: 40px;
+	p,li,ul li p {
+    	font-size: 1.2em;
+    	line-height: 1.6;
+    }
+}
 
 
 
@@ -101,9 +107,6 @@
     p,li,ul li p {
     	font-size: 1.2em;
     	line-height: 1.6;
-
-
-
     }
 
     ul {
@@ -401,9 +404,4 @@ div[role="main"] {
 	}
 	
 }
-div[role="main"] {
-	width: 72% !important;
-}
-#sidebar {
-	width: 28% !important;
-}
+
