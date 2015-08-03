@@ -129,22 +129,22 @@ $feature_query = new WP_Query( $feature_args );
 		<?php endif; ?>
 	</div>
 </div> <!-- end full-intro -->
-<div class="full-student-faculty clearfix">
+<div class="full-student-faculty row">
 
-	<div class="student-container">
-		<div class="student-wrapper" style="position: relative;">
+	<div class="student-container text-center columns small-12 medium-12 large-6">
+		<div class="fac-stud-wrapper" style="position: relative;">
 			<h2>Explore our Programs</h2>
-			<div class="student-content hover-start">
+			<div class="fac-stud-content hover-start">
 				<p>SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. Join us to connect with some of the best minds and immerse yourself in cutting-edge scientific research.</p>
 				<p><a class="button" href="/students">Learn more</a></p>
 			</div>
 		</div>
 	</div>
 
-	<div class="faculty-container clearfix">
-		<div class="faculty-wrapper" style="position: relative;">
-			<h2 style="background-position: center bottom;">Meet Our Faculty</h2>
-			<div class="faculty-content">
+	<div class="faculty-container text-center columns small-12 medium-12 large-6">
+		<div class="fac-stud-wrapper" style="position: relative;">
+			<h2>Meet Our Faculty</h2>
+			<div class="fac-stud-content">
 				<p>Our faculty are committed leaders with broad academic expertise and interests. With access to a network of local, national and international leaders, we contribute influential research on topics ranging from organisms, populations, ecosystems, to human users of aquatic ecosystems.</p>
 				<p><a class="button" href="/faculty-research">Learn more</a></p>
 			</div>
