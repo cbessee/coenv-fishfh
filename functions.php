@@ -230,15 +230,11 @@ $cats_args  = array(
 );
 $cats = get_categories($cats_args);
 	if ($cats) {
-		echo '<select name="select-category" class="select-category">';
-		echo '<option class="level-0" value="' . strtok($_SERVER['REQUEST_URI'],'?') . '">Chooose a category</option>';
+		echo '<ul class="select-category small-block-grid-3">';
 		foreach($cats as $cat) { 
-			$selected = $cat->slug == $tax_value ? ' selected="selected"' : '';
-			echo $cat->slug;
-			echo $tax_value;
-			echo '<option value="?tax=' . $tax . '&term=' . $cat->slug . '"' . $selected . '>' . $cat->name . '</option>';
+			echo '<li><a href="?tax=' . $tax . '&term=' . $cat->slug . '">' . $cat->name . '</a></li>';
 		}
-		echo '</select>';
+		echo '</ul>';
 	}
 }
 

@@ -26,14 +26,32 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 
 	<div class="columns" role="main">
 		<div class="article-content">
+			<!--
 		<div class="row filters">
-			<div class=" large-6 columns" data-url="<?php echo $url_current; ?>" data-cat="blog_category">
-				<?php coenv_base_cat_filter('blog_category', $coenv_cat_term_1); // Category filter ?>
-			</div>
-			<div class=" large-6 columns" data-url="<?php echo $url_current; ?>" data-cat="blog_category">
-				<?php coenv_base_date_filter('student_blog',$coenv_month,$coenv_year); // Date filter ?>
+			
+			<div class=" large-6 columns" data-url="<?php //echo $url_current; ?>" data-cat="blog_category">
+				<?php //coenv_base_date_filter('student_blog',$coenv_month,$coenv_year); // Date filter ?>
 		 	</div>
 		</div>
+	-->
+	<dl class="sub-nav">
+  <dt>Filter:</dt>
+  <dd class="active"><a href="#">All</a></dd>
+  <dd><a href="" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">Category</a></dd>
+  <dd><a href="" data-dropdown="drop2" aria-controls="drop2" aria-expanded="false">Date</a></dd>
+  </dl>
+<div id="drop1" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
+  <div class="" data-url="<?php echo $url_current; ?>" data-cat="blog_category">
+				<?php coenv_base_cat_filter('blog_category', $coenv_cat_term_1); // Category filter ?>
+			</div>
+</div>
+
+
+
+
+
+
+
 		<?php
 		/**
 		  * Blog loop
