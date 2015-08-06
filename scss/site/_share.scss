@@ -3,14 +3,12 @@
 	@include rem('margin-right', .5);
 	
 	a {
-		@include font-size(13);
 		text-decoration: none;
 		text-transform: uppercase;
 		color: $text-lt;
 		float: right;
 		letter-spacing: .1em;
 		font-weight: 600;
-		@include rem('margin-top', 0.1);
 	}
 
 	// only show if js is enabled

@@ -5,10 +5,6 @@ Template Name: News
 
 $url_current = $url = preg_replace('/\?.*/', '', $_SERVER['REQUEST_URI']);
 
-/*
- * Query variables
- */
-
 // Dates
 $coenv_year = urlencode(htmlentities($_GET['coenv-year']));
 $coenv_month = urlencode(htmlentities($_GET['coenv-month']));
@@ -19,20 +15,22 @@ $coenv_cat_1 = urlencode(htmlentities($_GET['tax']));
 $coenv_cat_term_1 = urlencode(htmlentities($_GET['term']));
 $coenv_cat_term_1_arr = get_term_by('slug',$coenv_cat_term_1,$coenv_cat_1);
 $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
+
 ?>
-
 <?php get_header(); ?>
-<?php if( !empty( get_field( 'intro_text') ) ) { ?>
-<div class="full-intro">
-	<div class="row">
-		<?php the_field( 'intro_text' ); ?>
-	</div>
-</div>
-<?php } ?>
 <div class="row page-content">
-
 	<div class="columns" role="main">
 		<div class="article__content">
+				<div class="row filters">
+				<h2 class="large-12 columns left">Filter Results</h2>
+				
+				<div class="large-6 columns left" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="category">
+					<?php coenv_base_cat_filter('category', $coenv_cat_term_1); // Category filter ?>
+				</div>
+				<div class="large-6 columns right" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="category">
+					<?php coenv_base_date_filter('post',$coenv_month,$coenv_year); // Date filter ?>
+			 	</div>
+		</div>
 		<?php
 		/**
 		  * Blog loop
@@ -42,14 +40,13 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 			'post_type'	=> 'post',
 			'post_status' => 'publish',
 			'posts_per_page' => 10,
-            'ignore_sticky_posts' => 1,
 			'paged' => $paged
 		);
 		// Category filter
-		if($coenv_cat_1 && $coenv_cat_term_1) :
+		if($coenv_cat_1 && $coenv_cat_term_1) {
 			$query_args['taxonomy'] = $coenv_cat_1;
 			$query_args['term'] = $coenv_cat_term_1;
-		endif;
+		};
 
 		// Date filters
 		if ($coenv_year) {
@@ -59,29 +56,33 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 			$query_args['monthnum'] = $coenv_month;
 		}
 		$wp_query = new WP_Query( $query_args );
-		?>
-		<?php if ($wp_query->have_posts()): 
-		?>
-		<?php if ($coenv_cat_1): // Category filter ?>
-		<div class="panel">
-			<div class="left"><?php echo $wp_query->found_posts; ?> posts in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
-			<div class="right"><a href="<?php echo $url_current; ?>">all posts &raquo;</a></div>
-		</div>
-		<?php endif; ?>
-		<?php if($coenv_year && $coenv_month): // Date filter ?>
-		<div class="panel">
-			<div class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></div>
-			<div class="right"><a href="<?php echo $url_current; ?>">all posts &raquo;</a></div>
-		</div>
-		<?php endif; ?>
+		
+		if ($wp_query->have_posts()) { 
+		
+			if ($coenv_cat_1) {
+			?>
+			<div class="panel">
+				<div class="left"><?php echo $wp_query->found_posts; ?> posts in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
+				<div class="right"><a href="<?php echo $url_current; ?>">all posts &raquo;</a></div>
+			</div>
+			<?php 
+			} 
+			if($coenv_year && $coenv_month) { ?>
+			<div class="panel">
+				<div class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></div>
+				<div class="right"><a href="<?php echo $url_current; ?>">all posts &raquo;</a></div>
+			</div>
+			<?php } ?>
 
 		<div class="blog clearfix">
 		<?php
 		# The Loop
-		while ( $wp_query->have_posts() ) :
+		while ( $wp_query->have_posts() ) {
 		$wp_query->the_post();
 		$rows = get_field('blog_link');
 		$terms = wp_get_post_terms( get_the_ID(), 'category');
+		$terms = wp_list_filter($terms, array('slug'=>'featured'),'NOT');
+		$terms = wp_list_filter($terms, array('slug'=>'uncategorized'),'NOT');
 		if (get_field('story_link_url')) {
 			$post_link_url = get_field('story_link_url');
 			$post_link_target = ' target="_blank" ';
@@ -91,70 +92,36 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
             $post_link = '<a class="button left" href="' . $post_link_url . '">Read more</a>';
         }
 		?>
-		<div class="blog-list-item clearfix">
-		<!--
-		<div class="share right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php //echo get_the_title(); ?>"
-		data-article-shortlink="<?php //echo wp_get_shortlink(); ?>"
-		data-article-permalink="<?php //echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a>
-        </div>
-    	-->
-        
-        <div class="news-meta small-12 columns">
-        <div class="blog-meta clearfix small-6 columns left">
-		<?php 
-        echo '<p>' . get_the_date('M j, Y') .' / ';
-		$termlist = '';
-		foreach ($terms as $term) {
-            $termlist .= '<a href="' . $url_current . '?tax='. $term->taxonomy . '&term=' . $term->slug . '">' . $term->name . '</a>, ';
-		}
-		$termlist = rtrim($termlist,', ');
-		echo $termlist;
-        ?>
-        </p>
-		</div>
-		<!--
-        <div class="blog-meta clearfix sharer small-6 columns right">
-        <?php //$title = rawurlencode(get_the_title());
-        //$shortlink = rawurlencode(wp_get_shortlink());
-        //$site_name = rawurlencode(get_bloginfo('name'));
-        //$twitter = get_option('twitter');
-        ?>
-        <a href=<?php//echo 'http://twitter.com/home?status=' . $title . '%20' . $shortlink . '%20from%20' . $twitter . ' target="_blank">' ?>
-        <?php //get_template_part('assets/img/icons/inline', 'twitter-circle.svg'); ?></a>
-        <a href=<?php //echo 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' . $shortlink . '&p[images][0]=&p[title]=' . $title . '%20from%20' . $site_name .'" target="_blank">'; ?>
-        <?php //get_template_part('assets/img/icons/inline', 'facebook-circle.svg'); ?></a>
-        <a href=<?php //echo 'mailto:?subject=' . $title . '&body=Check%20out%20this%20article%20from%20the%20' . $site_name .':%20' . $shortlink . '>'; ?>
-        <?php //get_template_part('assets/img/icons/inline', 'email-circle.svg'); ?></a>
-		</div>
-	-->
-		</div>
-            
-        <?php
-		echo '<h2><a href="' . $post_link_url . '"' . $post_link_target . '>' . get_the_title() . '</a></h2>';
-
-		echo '<div class="post">';
-		/*if (has_post_thumbnail()):
-		echo '<a class="right" style="margin-right: 2rem;" href="' . get_the_permalink() . '">';
-		the_post_thumbnail( 'medium' );
-		echo '</a>';
-		endif;*/
-		echo the_excerpt();
-		//echo $post_link;
-		'</div>';
-		echo '<div class="blog-links right">';
-		if($rows) {
-			foreach($rows as $row) {
-				if($row['blog_link_type'] == 'upload') {
-					echo '<a class="button" href="' . $row['blog_upload_file'] . '" target="_blank">' . $row['blog_file_link_text'] . '</a>';
-				} elseif ($row['blog_link_type'] == 'link') {
-					echo '<a class="button" href="' . $row['blog_link_url'] . '" target="_blank">' . $row['blog_link_text'] . '</a>';
-				} 
-			}
-		} ?>
-		</div>
-		</div>
-	</div>
-	<?php endwhile; ?>
+		<article class="blog-list-item post-<?php the_ID() ?> clearfix">
+        <header class="article__header">
+        	<div class="columns small-10 article-meta">
+	        	<p>
+				<?php 
+		        echo get_the_date('M j, Y');
+				$termlist = '';
+				foreach ($terms as $term) {
+		            $termlist .= '<a href="' . $url_current . '?tax='. $term->taxonomy . '&term=' . $term->slug . '">' . $term->name . '</a>, ';
+				}
+				$termlist = rtrim($termlist,', ');
+				if ( !empty( $terms ) ) {
+					echo ' / ' . $termlist;
+				}
+		        ?>
+		        </p>
+			</div>
+			<div class="small-2 right share" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php echo wp_get_shortlink(); ?>" data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a></div>
+        	<h2 class="small-12 left article__title"><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h2>
+		</header>   
+        <?php if (has_post_thumbnail()) { ?>
+			<div class="small-12 medium-3 right blog-thumb"><a class="right" href="<?php echo get_the_permalink(); ?>"><?php echo the_post_thumbnail( 'news_thumb' ); ?></a></div>
+			<div class="small-12 medium-9 left blog-content">
+			<?php } else { ?>
+			<div class="small-12 left">
+			<?php } ?>
+				<?php echo the_excerpt(); ?>
+			</div>
+	</article>
+	<?php } ?>
 	</div>
 	<div class="pager">
 	<?php if ( function_exists('FoundationPress_pagination') ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
@@ -164,16 +131,16 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		</nav>
 	<?php } ?>
 	</div>
-  	<?php else: ?>
+  	<?php } else { ?>
   	<p>We're sorry. Your crtieria did not match any posts. <a href="/research/publications">Return to all posts &raquo;</a></p>
-	<?php endif; ?>
+	<?php } ?>
 	  </div>		
-	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+	<?php if ( is_active_sidebar( 'after-content' ) ) { ?>
 	<?php do_action('foundationPress_after_content'); ?>
 	<ul class="widget-area after-content">
 	<?php dynamic_sidebar("after-content"); ?>
 	</ul>
-	<?php endif; ?>
+	<?php } ?>
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
 	</div>
@@ -186,19 +153,16 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		echo coenv_base_section_title($GLOBALS['post']->ID);
 		echo '</div>';
 		echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
-		echo '</div>';
-		
+		echo '</div>';	
 	}
 	?>
-	<?php the_widget('coenv_base_cats', 'title=Category'); ?>
-	<?php the_widget('coenv_base_date', 'title=Date'); ?>
 
 	<?php dynamic_sidebar('sidebar-widgets'); ?>
 	<?php
 	$ancestor_id = coenv_base_get_ancestor('ID');
-	if (!function_exists('dynamic_sidebar') || !dynamic_sidebar( $ancestor_id )):
+	if (!function_exists('dynamic_sidebar') || !dynamic_sidebar( $ancestor_id )) {
 		dynamic_sidebar( $ancestor_id );
-	endif;
+	}
 	?>
 	</aside>
 </div>

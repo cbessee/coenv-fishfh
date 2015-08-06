@@ -61,6 +61,11 @@ add_image_size( 'med_sq', '240', '240', true );
 add_image_size( 'sm_sq', '120', '120', true );
 add_image_size( 'faculty_sm', '120', '120', true );
 
+add_image_size( 'news_small', '250', '188', true );
+add_image_size( 'news_medium', '350', '262', true );
+
+
+
 
 /**
  * Gets the top-level ancestor for pages, posts and custom post types
@@ -230,12 +235,19 @@ $cats_args  = array(
 );
 $cats = get_categories($cats_args);
 	if ($cats) {
+		echo '<select name="select-category" class="select-category">';
+		echo '<option class="level-0" value="' . strtok($_SERVER['REQUEST_URI'],'?') . '">Chooose a category</option>';
 		echo '<ul class="select-category small-block-grid-3">';
-		foreach($cats as $cat) { 
+ 		foreach($cats as $cat) { 
+			$selected = $cat->slug == $tax_value ? ' selected="selected"' : '';
+			echo $cat->slug;
+			echo $tax_value;
+			echo '<option value="?tax=' . $tax . '&term=' . $cat->slug . '"' . $selected . '>' . $cat->name . '</option>';
 			echo '<li><a href="?tax=' . $tax . '&term=' . $cat->slug . '">' . $cat->name . '</a></li>';
-		}
+ 		}
+		echo '</select>';
 		echo '</ul>';
-	}
+ 	}
 }
 
 /* 
@@ -281,3 +293,55 @@ function coenv_url_ssl($url)
   return $url;
 }
 add_filter('wp_get_attachment_url', 'coenv_url_ssl');
+
+
+
+
+/**
+     * Gets all images attached to a post
+     * @return string
+     */
+    function wpse_get_images() {
+        global $post;
+        $id = intval( $post->ID );
+        $size = 'medium';
+        $attachments = get_children( array(
+                'post_parent' => $id,
+                'post_status' => 'inherit',
+                'post_type' => 'attachment',
+                'post_mime_type' => 'image',
+                'order' => 'ASC',
+                'orderby' => 'menu_order'
+            ) );
+        if ( empty( $attachments ) )
+                    return '';
+
+        $output = "\n";
+    /**
+     * Loop through each attachment
+     */
+    foreach ( $attachments as $id  => $attachment ) :
+
+        $title = esc_html( $attachment->post_title, 1 );
+        $img = wp_get_attachment_image_src( $id, $size );
+
+        $output .= '<a class="selector thumb" href="' . esc_url( wp_get_attachment_url( $id ) ) . '" title="' . esc_attr( $title ) . '">';
+        $output .= '<img class="aligncenter" src="' . esc_url( $img[0] ) . '" alt="' . esc_attr( $title ) . '" title="' . esc_attr( $title ) . '" />';
+        $output .= '</a>';
+
+    endforeach;
+
+        return $output;
+    }
+
+
+
+
+
+
+
+
+
+
+
+

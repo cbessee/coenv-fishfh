@@ -944,6 +944,7 @@ width: 30px;
     }
 
     @media #{$medium-up} {
+      transition: background-color 500ms ease-out 1s;
       &:hover {
 
         div.fac-stud-wrapper {
