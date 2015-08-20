@@ -1,5 +1,7 @@
 
-
+.blog-list-item .article__content {
+	padding-bottom: 0;
+}
 .row .row {
     	margin-left: 0;
     	margin-right: 0;
@@ -134,7 +136,9 @@ article {
 	} // .article__meta
 
 } // .article__header
-
+.page-template-faculty .article__content {
+	padding-bottom: 20px;
+}
 .article__content {
     @extend .clearfix;
     padding-bottom: 60px;
@@ -589,4 +593,27 @@ padding-bottom: 20px;
 	margin-top: 8px;
 
 
+}
+.single .article__links .button {
+	@include o_sans_bold;
+            background-color: #82cfcc;
+            border: solid 4px #b2eeec;
+            border-radius: 0;
+            color: #000;
+            font-size: rem-calc(11);
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 12px;
+            padding: rem-calc(4);
+            text-decoration: none;
+            text-transform: uppercase;
+
+            @media #{$medium-up} {
+              font-size: 12px;
+              padding: rem-calc(6) rem-calc(8);
+            }
+    &:hover {
+    	color: #000 !important;
+    }
 }
