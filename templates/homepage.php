@@ -193,7 +193,7 @@ if ($wp_query->have_posts()):
 <div class="full-news-events clearfix">
 	<div class="row">
 		<div class="columns large-12">
-			<h2 style="background-position: bottom center;">Latest News</h2>
+			<h2 style="background-position: bottom center;"><a href="/news-events">Latest News</a></h2>
 			<a class="more-news show-for-large-up" href="/news-events">More News</a>
 		</div>
 		</div>
