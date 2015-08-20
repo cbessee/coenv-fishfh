@@ -155,7 +155,7 @@ $feature_query = new WP_Query( $feature_args );
 
 <?php if( get_field('social_media', 'option') ) { ?>
 
-<div class="full-connect">
+<div class="full-connect clearfix">
 	<h2 style="background-position: bottom center;">Connect With Us</h2>
 	<div class="social-buttons">
 	<?php while( has_sub_field('social_media', 'option') ) { ?>

@@ -551,7 +551,7 @@ left: 0;
 .full-connect {
   background-color: #464646;
   border-top: solid 12px $orange;
-  padding: 50px 20px;
+  padding: 40px 20px;
   text-align: center;
   width: 100%;
 
@@ -563,8 +563,12 @@ left: 0;
 
   h2 {
      @include encode_black;
+     background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
+     background-position: bottom center;
+     background-repeat: no-repeat;
      color: #fff;
     font-size: rem-calc(26);
+    padding-bottom: 30px;
     text-transform: uppercase;
 
 
@@ -577,12 +581,15 @@ left: 0;
 
   }
 .social-buttons {
-  margin-top: 60px;
+  margin-top: 40px;
+  display: inline-block;
 }
  a.icon {
   display: inline-block;
+  float: left;
   margin-left: 40px; 
   text-indent: -10000px;
+  position: relative;
   top: 50%;
   transform: translateY(-50%);
 
@@ -594,25 +601,34 @@ left: 0;
 
 
 a.facebook {
-background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-facebook.svg');
-background-postition: top left;
-background-repeat: no-repeat;
+  background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-facebook.svg');
+  background-position: top left;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 13px;
+}
 
-height: 30px;
-width: 13px;
+a.twitter {
+  background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-twitter.svg');
+  background-position: top left;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 31px;
+}
 
-
-
-
-
+a.email-updates {
+  background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-email.svg');
+  background-position: top left;
+  background-repeat: no-repeat;
+  height: 23px;
+  width: 30px;
 }
 
 a.tumblr {
 background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-tumblr.svg');
-background-postition: top left !important;
+background-position: bottom left;
 background-repeat: no-repeat;
-
-height: 30px;
+height: 50px;
 width: 30px;
 
 
@@ -623,9 +639,9 @@ width: 30px;
 
 a.rss {
 background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-rss.svg');
-background-postition: top left;
+background-position: bottom left;
 background-repeat: no-repeat;
-height: 30px;
+height: 50px;
 width: 30px;
 
 
@@ -634,34 +650,8 @@ width: 30px;
 
 }
 
-a.twitter {
-background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-twitter.svg');
-background-postition: top left;
-background-repeat: no-repeat;
-
-height: 24px;
-width: 30px;
 
 
-
-
-
-}
-
-a.email-updates {
-background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-email.svg');
-background-postition: top left;
-background-repeat: no-repeat;
-
-height: 23px;
-width: 30px;
-top: 70%;
-
-
-
-
-
-}
 
 a.feed {
 background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-feed.svg');
