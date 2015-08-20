@@ -190,14 +190,14 @@ $home_col_2_args = array(
 $wp_query = new WP_Query( $home_col_1_args );
 if ($wp_query->have_posts()): 
 ?>
-<div class="full-news-events">
+<div class="full-news-events clearfix">
 	<div class="row">
 		<div class="columns large-12">
 			<h2 style="background-position: bottom center;">Latest News</h2>
 			<a class="more-news show-for-large-up" href="/news-events">More News</a>
 		</div>
 		</div>
-		<div class="home-news-section large-12 clearfix">
+		<div class="home-news-section columns large-12 clearfix">
 			<div class="row">
 				<div class="columns small-12 medium-4">
 
@@ -232,7 +232,7 @@ if ($wp_query->have_posts()):
 					}
 					?>
 
-					<div class="small-news dontsplit">
+					<div class="small-news">
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
@@ -285,10 +285,10 @@ if ($wp_query->have_posts()):
 				}
 				?>
 
-					<div class="small-news dontsplit">
+					<div class="small-news">
 						<?php if ( has_post_thumbnail() ) { ?>
 						<div class="featured-thumbnail" >
-							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'large' ); ?></a>
+							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'news_medium' ); ?></a>
 						</div>
 						<?php } ?>
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
@@ -358,7 +358,7 @@ if ($wp_query->have_posts()):
 						<a class="button columns large-3 right" href="/news-events/events/">More Events</a>
 					</section>
 					<?php } ?>
-					<div class="small-news dontsplit">
+					<div class="small-news">
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
 				        <div class="post-meta">
