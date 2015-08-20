@@ -770,43 +770,90 @@ width: 30px;
   small-news p {
     margin-bottom: 20px;
   }
+  
   .events {
     background-color: #fff;
-    border: 5px solid #ebebeb;
-    margin: 0;
+    border: 6px solid #ebebeb;
+    margin: 0 0 15px 0;
     padding: 0;
+
+     ul.event-list {
+     float: left;
+     margin-top: 20px;
+     width: 100%;
+     
+     }
+     ul.event-list li {
+       background-image: url('../assets/img/divider-teal-sm.svg');
+       background-position: bottom left;
+       background-repeat: no-repeat;
+       background-size: 38px 5px;
+       margin-bottom: 20px;
+       padding-bottom: 20px;
+
+       &:last-child {
+        margin-bottom: 30px;
+
+       }
+
+     }
+    ul.event-list li .date {
+        @include o_sans_bold;
+        font-size: rem-calc(14);
+    }
+    ul.event-list li .title {
+      margin-bottom: 0;
+      a {
+        @include encode_black;
+        color: #000;
+        font-size: rem-calc(18);
+      }
+    }
 
     header {
       border-bottom: 5px solid #ebebeb;
-          text-align: center;
+      text-align: center;
+      text-transform: uppercase;
 
       h3 {
-    @include encode_black;
+        @include encode_black;
+        margin-bottom: 15px;
+        margin-top: 15px;
 
-      a {
-        background-image: url('../assets/img/icon-events.svg');
-        background-position: center left;
+        a {
+          background-image: url('../assets/img/icon-events.svg');
+          background-position: center left;
+          background-repeat: no-repeat;
+          color: $black;
+          display: inline-block;
+          padding-left: 31px;
+        }  
+      }
+    }
+    footer {
+      background-color: #ebebeb;
+      padding-bottom: 10px;
+      padding-top: 15px;
+      width: 100%;
+      float: left;
+
+      .more-events {
+        @include o_sans_bold;
+        background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-more.svg');
+        background-position: center right;
         background-repeat: no-repeat;
         color: $black;
         display: inline-block;
-        padding-left: 31px;
+        line-height: 25px;
+        margin-right: 20px;
+        padding-right: 32px;
+        text-transform: uppercase;
       }
 
-    text-transform: uppercase;
 
 
 
     }
-
-
-
-
-    }
-
-    
-
-
-
   }
   ul.terms {
     margin-bottom: 0;

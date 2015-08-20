@@ -350,12 +350,12 @@ if ($wp_query->have_posts()):
 					}
 					?>
 					<?php if ( !empty( $events ) ) { ?>
-					<section class="events">
+					<section class="events clearfix">
 						<header>
 							<h3><a href="/news-events/events/">Events</a></h3>
 						</header>
 						<?php the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/sea_fish.rss&posts_per_page=4'); ?>
-						<a class="button columns large-3 right" href="/news-events/events/">More Events</a>
+						<footer><a class="more-events right" href="/news-events/events/">More Events</a></footer>
 					</section>
 					<?php } ?>
 					<div class="small-news">

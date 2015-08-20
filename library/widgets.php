@@ -587,7 +587,9 @@ class CoEnv_Widget_Events extends WP_Widget {
                     echo $before_title;
                 }
         ?>
-          <h4><span><a href="<?php echo $events_url; ?>"><?php echo $title ?></a></span></h4>
+          <header>
+              <h3><a href="/news-events/events/"><?php echo $title ?></a></h3>
+            </header>
             <?php
                 if (!is_front_page()) {
                     echo $after_title;
@@ -596,22 +598,19 @@ class CoEnv_Widget_Events extends WP_Widget {
 
       <ul class="event-list">
 
-      <?php if ( count( $events ) ) : ?>
-
-        <?php foreach ( $events as $key => $event ) : ?>
-
-
+      <?php
+      if ( count( $events ) ) : 
+        foreach ( $events as $key => $event ) :
+        $date = substr($event['date'], 0, -6);
+        $date = strtotime($date);
+        $date = date('l, M j, Y ', $date);
+      ?>
             <li>
-              <a href="<?php echo $event['url'] ?>">
-              <p class="date"><i class="fi-calendar"></i> <?php echo $event['date'] ?></p>
-              <p class="title"><?php echo $event['title'] ?></p>
+              <div class="date"><?php echo $date; ?></div>
+              <div class="title"><a href="<?php echo $event['url'] ?>"><?php echo $event['title']; ?></a></div>
               </a>
             </li>
-
-      
-
         <?php endforeach ?>
-
       <?php else : ?>
 
         <li><p>No events found.</p></li>
