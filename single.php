@@ -11,7 +11,7 @@
 					$terms = wp_get_post_terms( get_the_ID(), 'category');
 					$terms = wp_list_filter($terms, array('slug'=>'featured'),'NOT');
 					$terms = wp_list_filter($terms, array('slug'=>'uncategorized'),'NOT');
-
+					$rows = get_field('blog_link');
 					$attach_id = get_post_thumbnail_id();
 					$attach_id = str_replace('attachment_', '', $attach_id);
 					$photo_title = get_post_meta( $attach_id, '_wp_attachment_image_alt', true );
@@ -21,7 +21,12 @@
 					$photo_url = $photo_post->guid;
 					$photo_source = get_post_meta( $attach_id, '_credit_text', true );
 					$photo_source_url = get_post_meta( $attach_id, '_credit_link', true );
-			?>
+					if (get_field('story_link_url')) {
+						$post_link_url = get_field('story_link_url');
+						$post_link_target = ' target="_blank" ';
+			            $post_link = '<p><a class="button" href="' . $post_link_url . '"' . $post_link_target . '>' . get_field('story_source_name') . '</a></p>';
+		       		}
+				?>
 
 			<article class="blog-list-item post-<?php the_ID() ?> clearfix">
         		<header class="article__header">
@@ -47,12 +52,28 @@
 
 					<?php if (has_post_thumbnail()) { ?>
 					<figure title="<?php echo $photo_title; ?>" id="attachment_<?php echo $attach_id; ?>" aria-describedby="figcaption_attachment_<?php echo $attach_id; ?>" class="wp-caption right article__thumbnail"><a href="<?php echo $photo_url; ?>"><?php echo the_post_thumbnail( 'news_medium' ); ?></a>
-						<div class="source"><a href="<?php echo $photo_url; ?>" target="blank"><?php echo $photo_source; ?></a></div>
+						<div class="source"><a href="<?php echo $photo_source_url; ?>" target="blank"><?php echo $photo_source; ?></a></div>
 						<figcaption id="figcaption_attachment_<?php echo $attach_id; ?>" class="wp-caption-text" itemprop="description"><?php echo $photo_caption; ?></figcaption>
 					</figure>
 					<?php }  ?>
 					<?php echo the_content(); ?>
 				</div>
+				<div class="article__links">
+					<?php
+					if($rows) {
+						foreach($rows as $row) {
+							if($row['blog_link_type'] == 'upload') {
+								echo '<a class="button" href="' . $row['blog_upload_file'] . '" target="_blank">' . $row['blog_file_link_text'] . '</a>';
+							} elseif ($row['blog_link_type'] == 'link') {
+								echo '<a class="button" href="' . $row['blog_link_url'] . '" target="_blank">' . $row['blog_link_text'] . '</a>';
+							} 
+						}
+					} ?>
+				</div>
+
+
+
+
 			</article>
 			<?php
 				}
