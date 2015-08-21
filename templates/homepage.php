@@ -215,18 +215,14 @@ if ($wp_query->have_posts()):
 			        	$post_link_url = get_the_permalink();
 			            $post_link = '<a class="button left" href="' . $post_link_url . '">Read more</a>';
 			        }
-
-		    	    // Get categories
-		            $terms = wp_get_post_terms(get_the_id(), 'category');
-					if (!empty($terms)) {
-
-						$terms_list = '';
-						foreach ($terms as &$term) {
-							if ($term->slug != 'uncategorized') {
-								$terms_list .= '<li><a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
+			        $terms = wp_get_post_terms(get_the_id(), 'category');
+		    	    if ( !empty($terms) ) {
+						$terms_list = array();
+						foreach ( $terms as &$term ) {
+							if ( $term->slug != 'uncategorized' ) {
+								$terms_list[] = '<li><a href="/news-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
 							}
 						}
-
 					} else {
 						$terms_list = '';
 					}
@@ -237,19 +233,13 @@ if ($wp_query->have_posts()):
 
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
 
-				        <div class="post-meta row">
-			                <time class="article__time columns left small-6" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date('M j, Y'); ?></time>
-			               	
-			               	<?php if (!empty($terms)) { ?> 
-
-							<ul class="terms columns right small-6">
-
-								<?php echo $terms_list; ?>
-
+				        <div class="post-meta clearfix row">
+			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
+			               	<?php if ( !empty($terms ) ) { ?> 
+							<ul class="terms right columns small-12 medium-7 right text-right">
+								<?php echo implode(", ", $terms_list); ?>
 				            </ul>
-
 				            <?php } ?>
-
 				        </div>
 				    </div>
 
@@ -274,10 +264,10 @@ if ($wp_query->have_posts()):
 		        }
 	            $terms = wp_get_post_terms(get_the_id(), 'category');
 				if ( !empty($terms) ) {
-					$terms_list = '';
+					$terms_list = array();
 					foreach ( $terms as &$term ) {
 						if ( $term->slug != 'uncategorized' ) {
-							$terms_list .= '<li><a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
+							$terms_list[] = '<li><a href="/news-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
 						}
 					}
 				} else {
@@ -293,11 +283,11 @@ if ($wp_query->have_posts()):
 						<?php } ?>
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 				        <?php strip_tags( the_advanced_excerpt( 'length=30&finish=sentence' ),'' ); ?>
-				        <div class="post-meta">
-			                <time class="article__time left" datetime="<?php echo get_the_date( 'Y-m-d h:i:s' ); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
-			               	<?php if ( !empty( $terms ) ) { ?> 
-							<ul class="terms right">
-								<?php echo $terms_list; ?>
+				       <div class="post-meta clearfix row">
+			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
+			               	<?php if ( !empty($terms ) ) { ?> 
+							<ul class="terms right columns small-12 medium-7 right text-right">
+								<?php echo implode (", ", $terms_list); ?>
 				            </ul>
 				            <?php } ?>
 				        </div>
@@ -334,17 +324,13 @@ if ($wp_query->have_posts()):
 			            $post_link = '<a class="button left" href="' . $post_link_url . '">Read more</a>';
 			        }
 
-		    	    // Get categories
-		            $terms = wp_get_post_terms(get_the_id(), 'category');
-					if (!empty($terms)) {
-
-						$terms_list = '';
-						foreach ($terms as &$term) {
-							if ($term->slug != 'uncategorized') {
-								$terms_list .= '<li><a href="/news-and-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
+		    	    if ( !empty($terms) ) {
+						$terms_list = array();
+						foreach ( $terms as &$term ) {
+							if ( $term->slug != 'uncategorized' ) {
+								$terms_list[] = '<li><a href="/news-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
 							}
 						}
-
 					} else {
 						$terms_list = '';
 					}
@@ -361,11 +347,11 @@ if ($wp_query->have_posts()):
 					<div class="small-news">
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
-				        <div class="post-meta">
-			                <time class="article__time left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
+				        <div class="post-meta clearfix row">
+			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
 			               	<?php if ( !empty($terms ) ) { ?> 
-							<ul class="terms right">
-								<?php echo $terms_list; ?>
+							<ul class="terms right columns small-12 medium-7 right text-right">
+								<?php echo implode (", ", $terms_list); ?>
 				            </ul>
 				            <?php } ?>
 				        </div>

@@ -855,17 +855,29 @@ width: 30px;
 
     }
   }
+  time {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+
+  }
   ul.terms {
     margin-bottom: 0;
+    margin-left: 0;
+    padding-left: 0;
+  padding-right: 0;
 
     li {
       display: inline;
       list-style: none;
-      margin-left: 5px;
+      margin-left: 1px;
+
     }
 
     a {
       color: $black;
+      text-decoration: underline;
     }
 
   }
