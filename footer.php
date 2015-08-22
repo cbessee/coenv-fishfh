@@ -69,10 +69,16 @@
         <div class="medium-6 columns">
                 <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a> | 
                     <?php if (is_user_logged_in()) { ?>
-                        <a href="<?php echo wp_logout_url( home_url() ); ?>" title="Logout">Log out</a>	
-                    <?php } else { ?>
-                        <a href="<?php echo wp_login_url(); ?>" title="Staff Login">Staff login</a>
-                    <?php } ?>
+                        <a href="<?php echo wp_logout_url( home_url() ); ?>" title="Logout">Log Out</a>	
+                    <?php 
+                    } else {
+                        $login_url = str_replace('http://', 'https://',get_permalink());
+                        printf( '<a href="%s">%s</a>', 
+                        wp_login_url( $login_url ),
+                        __( 'Staff Login' )
+                        );
+                    }
+                    ?>
                 </p>
             </div>
             <div class="medium-6 columns uw-footer-links">
