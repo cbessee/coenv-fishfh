@@ -196,7 +196,10 @@
         $coenv_post = get_post($id);
         $coenv_post_section = get_post(array_pop(get_post_ancestors($id)));
 ?>
-    <?php if (($banner) && (!is_single())) {
+    <?php 
+        if (is_search()) {
+          $banner_style = '';
+        } elseif (($banner) && (!is_single())) {
             $banner_style = 'style="background-image: url(' . $banner['url'] . ')"';
         } elseif ($coenv_post->post_type == 'faculty' || $coenv_post->post_type == 'post') {
             $banner_style = 'style="background-image: url(' . $banner['url'] . ')"';
@@ -208,8 +211,11 @@
       <div class="container-section-title">
         <?php 
         
-        
-        if (!is_front_page() && !is_single() && ($coenv_post_section->ID == $coenv_post->ID)) {
+        if (is_404()) {
+          $section_title = '<h1>Not Found (404)</h1>';
+        } elseif (is_search()) {
+          $section_title = '<h1>Search Results</h1>';
+        } elseif (!is_front_page() && !is_single() && ($coenv_post_section->ID == $coenv_post->ID)) {
           $section_title = '<h1><a href="/' . $coenv_post_section->post_name . '">' . $coenv_post_section->post_title . '</a></h1>';
         } elseif ($coenv_post->post_type == 'faculty') {
           $section_title = '<h2><a href="/faculty-research">Faculty &amp; Research</a></h2>';

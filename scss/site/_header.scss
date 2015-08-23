@@ -299,7 +299,16 @@ margin-bottom: 0;
 .page-template-student-blog .section-row {
     height: 166px;
 }
-
+.error404 .section-row,
+.search-results .section-row,
+.search-no-results .section-row {
+    background-image: url('/wp-content/uploads/sites/4/2015/07/155.jpg');
+    background-color: #999;
+    background-position: center 45%;
+    background-size: cover;
+    position: relative;
+    height: 200px;  
+}
 .single-intranet_page .section-row {
     background-image: url('/wp-content/uploads/sites/4/2015/07/155.jpg');
     background-color: #999;

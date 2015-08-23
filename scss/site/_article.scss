@@ -533,11 +533,10 @@ padding-bottom: 20px;
 
 .panel {
 	background-color: #f6f6f6;
-	background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-home-intro.png');
-	border-top: none;
+	border-bottom: solid 5px #ebebeb;
 	border-left: solid 5px #ebebeb;
 	border-right: solid 5px #ebebeb;
-	border-bottom: solid 5px #ebebeb;
+	border-top: solid 5px #ebebeb;
 	display: block;
 	float:left;
 	font-size: 16px;
@@ -545,6 +544,10 @@ padding-bottom: 20px;
 	margin-bottom: 40px;
 	text-transform: uppercase;
 	width: 100%;
+
+	.page-template-news & {
+		border-top: 0;
+	}
 
 	strong {
 		@include o_sans_bold;
@@ -620,4 +623,61 @@ padding-bottom: 20px;
     &:hover {
     	color: #000 !important;
     }
+}
+
+
+
+.error404 article {
+	padding-bottom: rem-calc(60);
+}
+
+body.search .page-content,
+body.error404 .page-content {
+
+	.panel {
+		margin-bottom: 20px !important;
+	}
+	
+	form .field-wrap {
+		// .field-wrap is weird, doesn't cover submit
+		width: 91%;
+
+	input[type="text"] {
+		border-bottom: solid 1px #cccccc;
+	    border-left: solid 1px #ccc;
+	    border-right: 0;
+	    border-top: solid 1px #999;
+		font-size: 16px;
+		margin-bottom: 0;
+		padding: 20px 20px 20px 20px;
+		width: 100%;
+	}
+	button {
+		background-color: #000;
+		height: auto;
+		padding: 3px 0;
+	}
+	button[type="submit"] {
+		width: 10%;
+
+		i {
+			font-size: 26px !important;
+		}
+
+
+
+	}
+	.search-results {
+		margin: 0 27px;
+	}
+
+}
+
+
+
+
+
+
+
+
 }
