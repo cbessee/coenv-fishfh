@@ -3,6 +3,7 @@
 .home {
  a.button {
   font-size: 12px;
+  transition: all .5s ease;
   @media #{$medium-up} {
     font-size: rem-calc(14);
   }

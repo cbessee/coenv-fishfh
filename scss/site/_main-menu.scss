@@ -60,10 +60,14 @@
         
             .dropdown {
                 @include shadow;
+
+                ul {
+                    border-top: 0 !important;
+                }
     
                 a {
                     @include encode();
-                    font-size: rem-calc(14);
+                    font-size: rem-calc(16);
                     text-transform: none;
                     background-color: #f6f5f7;
                     border-bottom: 1px solid #fff;
@@ -125,8 +129,23 @@ background-image: none;
 }
 
 
+@media only screen and (min-width: 40.063em) {
+.top-bar-section .has-dropdown>a {
+    padding-right: 20px !important;
 
+    
 
+}
+}
+.top-bar-container .top-bar .top-bar-section #menu-main-menu .dropdown {
+    border-top: 6px solid $accent;
+}
+
+@media only screen and (min-width: 40.063em) {
+.top-bar-section .has-dropdown .dropdown li.has-dropdown>a:after {
+   content: '';
+}
+}
 
 
 
