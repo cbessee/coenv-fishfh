@@ -3,7 +3,6 @@
 .home {
  a.button {
   font-size: 12px;
-  transition: all 0.25s ease;
   @media #{$medium-up} {
     font-size: rem-calc(14);
   }
@@ -929,7 +928,6 @@ width: 30px;
 .full-student-faculty {
   background-color: $black;
   width: 100%;
-          transition: all .5s ease;
 
   &.row {
     max-width: none;
@@ -983,7 +981,6 @@ width: 30px;
     overflow: hidden;
     position: relative;
     text-align: center;
-    transition: all 1s ease;
 
     h2 {
       @media #{$small-only} {
@@ -1023,10 +1020,6 @@ width: 30px;
     }
 
     @media #{$medium-up} {
-      transition: all 2s ease;
-      &:after {
-          transition: all 3s ease;
-        }  
       &:hover {
 
         div.fac-stud-wrapper {
@@ -1049,7 +1042,6 @@ width: 30px;
           left: 0;
           right: 0;
           z-index: 10;
-          transition: all .5s ease;
         }  
       }
     }
@@ -1068,7 +1060,6 @@ width: 30px;
       padding: 20px 24px;
       width: 500px;
       z-index: 1000;
-      transition: all 1s ease;
       
       @media #{$small-only} { 
         border-top: none;
@@ -1083,7 +1074,6 @@ width: 30px;
     .fac-stud-content {
       // Don't show on page load
       display: none;
-      transition: all 1s ease;
 
       @media #{$small-only} { 
         display: block;
