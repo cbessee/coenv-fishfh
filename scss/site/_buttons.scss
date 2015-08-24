@@ -4,9 +4,8 @@
 .button {
 	display: inline-block;
 	vertical-align: middle;
-	@include rem('padding', 0.25, 1);
+	padding: rem-calc(6) rem-calc(8);
 	@include sans;
-	@include font-size(12);
 	font-weight: 400;
 	background: $white-button;
 	text-decoration: none;
@@ -39,12 +38,10 @@
     background-color: #82cfcc;
     border: solid 4px #b2eeec;
     border-radius: 0;
-    font-size: rem-calc(11);
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 12px;
-    padding: rem-calc(4);
 
     text-transform: uppercase;
 
@@ -52,8 +49,7 @@
       margin-right: 10px;
     }
 
-    @media #{$large-up} {
-      font-size: 12px;
+    @media #{$medium-up} {
       padding: rem-calc(6) rem-calc(8);
     }
 

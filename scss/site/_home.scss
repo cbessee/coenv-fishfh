@@ -2,7 +2,11 @@
 
 .home {
  a.button {
-  font-size: 1rem;
+  font-size: 12px;
+  transition: all 0.25s ease;
+  @media #{$medium-up} {
+    font-size: rem-calc(14);
+  }
  }
  .widget_coenv_base_index_dates ul {
   margin-left: 1rem;
@@ -103,14 +107,16 @@
             h2 {
 
               @include encode_black;
-              background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
+              background-image: url('../assets/img/divider-white-single.svg');
               background-position: bottom left;
               background-repeat: no-repeat;
+              background-size: 60px 5px;
+              display: block;
               color: $white;
               font-size: rem-calc(27);
               line-height: 1.2;
-              margin-bottom: 0 0 20px 0;
-              padding-bottom: 20px;
+              margin-bottom: 20px;
+              padding-bottom: 25px;
               text-transform: uppercase;
 
 
@@ -126,9 +132,8 @@
 
             p.feature-excerpt {
               @include o_sans_bold;
-              font-size: rem-calc(16);
-              margin-bottom: 30px;
-              margin-top: 30px;
+              font-size: rem-calc(18);
+              margin-bottom: 25px;
 
 
               @media #{$small-only} {
@@ -171,21 +176,24 @@
             background-color: #82cfcc;
             border: solid 4px #b2eeec;
             border-radius: 0;
-            font-size: rem-calc(11);
             margin-top: 0;
             margin-bottom: 0;
             margin-left: 0;
             margin-right: 12px;
-            padding: rem-calc(4);
-
             text-transform: uppercase;
+
+
+            &:hover {
+              background-color: #124d4b;
+              border: solid 4px #3e7a78;
+              color: #fff;
+            }
 
             &:first-child {
               margin-right: 10px;
             }
 
             @media #{$medium-up} {
-              font-size: 12px;
               padding: rem-calc(6) rem-calc(8);
             }
 
@@ -316,7 +324,7 @@ left: 0;
       background-color: #5f3e8d;
       border-color: #fff;
       color: #ffffff;
-      transition: background-color 300ms ease-out;
+      transition: background-color .5s ease-out;
       height: 18px;
       width: 13px;
      text-indent:-9999px;
@@ -397,9 +405,10 @@ left: 0;
 .full-intro {
     width: 100%;
     background-color: #f2f2f2;
-    background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-intro.png');
+    background-image: url('../assets/img/bg-intro.png');
     border-top: solid 10px #f29068;
-    padding: 46px 10px;
+    margin-bottom: 0;
+    padding: 46px 10px 30px 10px;
 
     @media #{$small-only} {
 
@@ -431,9 +440,10 @@ left: 0;
 
 
       h4 {
-        background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-orange.svg');
+        background-image: url('../assets/img/divider-orange-single.svg');
         background-position: bottom left;
         background-repeat: no-repeat;
+        background-size: 120px 10px;
 
         font-size: rem-calc(50);
         line-height: 1;
@@ -516,11 +526,15 @@ left: 0;
               background-color: $orange;
               border: solid 4px $orange-lt;
               border-radius: 0;
-              font-size: 14px;
+              font-size: rem-calc(18);
 
               text-transform: uppercase;
 
+              &:hover {
+                background-color: #c14211;
+                border: solid 4px #db5b10;
 
+              }
 
                 @media #{$small-only} {
 
@@ -563,9 +577,10 @@ left: 0;
 
   h2 {
      @include encode_black;
-     background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
+     background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-double.svg');
      background-position: bottom center;
      background-repeat: no-repeat;
+     background-size: 60px 5px;
      color: #fff;
     font-size: rem-calc(26);
     padding-bottom: 30px;
@@ -681,8 +696,9 @@ width: 30px;
 
   h2 {
     @include encode_black;
-    background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-teal.svg');
+    background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-teal-double.svg');
     background-repeat: no-repeat;
+    background-size: 120px 10px;
 
     font-size: rem-calc(50);
     margin-bottom: 30px;
@@ -784,10 +800,10 @@ width: 30px;
      
      }
      ul.event-list li {
-       background-image: url('../assets/img/divider-teal-sm.svg');
+       background-image: url('../assets/img/divider-teal-single.svg');
        background-position: bottom left;
        background-repeat: no-repeat;
-       background-size: 38px 5px;
+       background-size: 60px 5px;
        margin-bottom: 20px;
        padding-bottom: 20px;
 
@@ -913,6 +929,7 @@ width: 30px;
 .full-student-faculty {
   background-color: $black;
   width: 100%;
+          transition: all .5s ease;
 
   &.row {
     max-width: none;
@@ -932,9 +949,14 @@ width: 30px;
     background-color: #ffffff;
     border: solid 4px #cccccc;
     border-radius: 0;
-    font-size: 14px;
-    padding: rem-calc(7) rem-calc(10);
+    font-size: rem-calc(14);
+    padding: rem-calc(6) rem-calc(8);
     text-transform: uppercase;
+
+    &:hover {
+      backgroundc-color: #4f4f4f;
+      border: solid 4px #666;
+    }
 
     &:first-child {
       margin-right: 10px;
@@ -958,18 +980,22 @@ width: 30px;
     background-repeat: no-repeat;
     float: left;
     height: 425px;
+    overflow: hidden;
     position: relative;
     text-align: center;
+    transition: all 1s ease;
 
     h2 {
       @media #{$small-only} {
-        background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
+        background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-double.svg');
         background-position: center bottom;
+        background-size: 60px 5px;
         font-size: rem-calc(18);
         margin-bottom: 10px;
         padding-bottom: 20px;
         text-align: center;
         text-transform: uppercase;
+
       }
     }
 
@@ -982,8 +1008,9 @@ width: 30px;
 
       @media #{$medium-up} {
         h2 {
-          background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-dbl.svg');
+          background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-double.svg');
           background-position: center bottom;
+          background-size: 60px 5px;
           margin-bottom: 10px;
           padding-bottom: 20px;
         }
@@ -996,12 +1023,16 @@ width: 30px;
     }
 
     @media #{$medium-up} {
-      transition: background-color 500ms ease-out 1s;
+      transition: all 2s ease;
+      &:after {
+          transition: all 3s ease;
+        }  
       &:hover {
 
         div.fac-stud-wrapper {
           max-width: 600px;
           margin-top: 50px;
+          
         }
 
         div.fac-stud-content {
@@ -1018,6 +1049,7 @@ width: 30px;
           left: 0;
           right: 0;
           z-index: 10;
+          transition: all .5s ease;
         }  
       }
     }
@@ -1036,6 +1068,7 @@ width: 30px;
       padding: 20px 24px;
       width: 500px;
       z-index: 1000;
+      transition: all 1s ease;
       
       @media #{$small-only} { 
         border-top: none;
@@ -1050,6 +1083,7 @@ width: 30px;
     .fac-stud-content {
       // Don't show on page load
       display: none;
+      transition: all 1s ease;
 
       @media #{$small-only} { 
         display: block;
