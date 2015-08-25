@@ -1,5 +1,5 @@
 aside#sidebar {
-	padding-right: 1rem !important;
+	padding-right: rem-calc(18) !important;
 
 	article.widget ul {
 		margin-top: rem-calc(15);
@@ -15,7 +15,7 @@ aside#sidebar {
 		background-image: url("../assets/img/icon-menu.png");
 		background-position: 0px 17px;
 		background-repeat: no-repeat;
-	  	line-height: 1.2;
+	  	line-height: .9;
   		margin-bottom: 0;
   		margin-left: 16px;
   		padding-bottom: 0;
@@ -54,15 +54,18 @@ aside#sidebar {
 			background-image: url('../assets/img/nav-border-top-green.png');
 			background-repeat: no-repeat;
 			background-position: left top;
-			padding: 20px 16px 10px 14px;
+			padding: 20px 16px 5px 14px;
 			text-transform: uppercase;
-			font-size: 1rem; 
+
 			&.active,
 			&:hover {
-				
 				background-image: url('../assets/img/nav-border-black.png');
-
 			}
+
+			&:last-child {
+				padding: 20px 16px 0 14px;
+			}
+
 			a {
 				@include o_sans_bold;
 				display: block;
@@ -72,10 +75,8 @@ aside#sidebar {
 				padding: 0;
 
 				&.active {
-					color: #2a6e6b !important;
-
+				 color: #2a6e6b !important;
 				}
-
 				&:hover {
 					background-color: transparent;
 					color: #2a6e6b !important;
@@ -83,6 +84,7 @@ aside#sidebar {
 				&:not(.button) {
 					color: #000;
 				}
+
 			}
 			ul {
 				background-image: none;
@@ -127,30 +129,16 @@ aside#sidebar {
 						padding: 1rem 0 0 0;
 					}
 
-
-
 				}
 			}
 		}
 	}
 	.widget {
-		margin-bottom: rem-calc(30);
+		margin-bottom: rem-calc(25);
 	}
 	.solid-widget {
-	border: solid 6px #f29068;
-	margin-bottom: 27px;
-	padding: 0;
-
-
-	
-
-
-
+		border: solid 6px #f29068;
+		margin-bottom: 27px;
+		padding: 0;
 	}
-
-
-
-
-
-
 }
