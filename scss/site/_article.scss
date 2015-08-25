@@ -163,6 +163,9 @@ article {
     margin-left: 20px;
     }
 
+    img {
+	    border: solid 6px #ebebeb;
+	}
 
     h1,h2,h3,h4,h5,h6 {
     	@include encode_black;
@@ -289,6 +292,7 @@ article {
 	// alignment
 	.alignleft {
 		float: left;
+		margin: 0 25px 5px 0;
 	}
 
 	.alignright {
@@ -650,12 +654,4 @@ body.error404 .page-content {
 	}
 
 }
-
-
-
-
-
-
-
-
 }
