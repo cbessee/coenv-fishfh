@@ -175,20 +175,20 @@ article {
     }
 
 	h1 {
-		@include font-size(30);
+		@include font-size(28);
 		font-weight: 400;
 
 	} // h1
 
 	h2 {
-		font-size: rem-calc(30);
+		font-size: rem-calc(28);
 		font-weight: 400;
 		margin-bottom: rem-calc(25);
 
 	} // h2
 
 	h3 {
-		@include font-size(26);
+		@include font-size(24);
 		font-weight: 400;
 		margin-bottom: rem-calc(25);
 
@@ -196,7 +196,7 @@ article {
 	} // h3
 
 	h4 {
-		@include font-size(22);
+		@include font-size(20);
 	}
 
 	hr {
@@ -222,17 +222,29 @@ article {
 
 
 	// tables
+	table tr th, table tr td {
+
+	font-size: rem-calc(18);
+
+
+	}
+
+	table tr.even, table tr.alt, table tr:nth-of-type(even) {
+    background: #ebebeb;
+}
+
+
 	table {
 		width: 100%;
 
 		th,
 		td {
-			@include rem('padding', 0.25, 0.25, 0.25, 0.5);
+			padding: rem-calc(8);
 			text-align: left;
 		}
 
 		th {
-			background: #D9D9D9;
+			background: #ebebeb;
 			border-bottom: 1px solid #d0d0d0;
 		}
 
@@ -292,7 +304,7 @@ article {
 	// alignment
 	.alignleft {
 		float: left;
-		margin: 0 25px 5px 0;
+		margin: 0 25px px 0;
 	}
 
 	.alignright {
