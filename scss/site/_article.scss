@@ -16,16 +16,10 @@ strong {
 		
 		======================================================================== */
 
-.article h1,h2,h3,h4,h5,h6 {
-  	line-height: 1;
-  	}
 .blog {
 	margin-top: 40px;
 
-	p,li,ul li p {
-    	font-size: 1.2em;
-
-    }
+	
 }
 
 .single .blog {
@@ -160,7 +154,7 @@ article {
     }
 
     p,li,ul li p {
-    	font-size: 1.2em;
+    	font-size: rem-calc(18);
     	line-height: 1.5;
     }
 
@@ -170,50 +164,36 @@ article {
     }
 
 
-    h1,h2 {
-    	@include o_sans_bold;
-    	line-height: 1.25;
+    h1,h2,h3,h4,h5,h6 {
+    	@include encode_black;
+    	color: #1c1c1c;
+    	line-height: 1.2;
 
-    }
-
-    h3,h4,h5,h6 {
-    	@include o_sans_bold;
     }
 
 	h1 {
-		@include font-size(24);
-		@include line-height(30);
+		@include font-size(30);
 		font-weight: 400;
-
-		@media #{$medium-up} {
-			@include font-size(36);
-		}
 
 	} // h1
 
 	h2 {
-		@include font-size(18);
+		font-size: rem-calc(30);
 		font-weight: 400;
-
-		@media #{$medium-up} {
-			@include font-size(28);
-		}
+		margin-bottom: rem-calc(25);
 
 	} // h2
 
 	h3 {
-		@include font-size(16);
+		@include font-size(26);
 		font-weight: 400;
-		margin-bottom: rem-calc(20);
+		margin-bottom: rem-calc(25);
 
-		@media #{$medium-up} {
-			@include font-size(22);
-		}
 
 	} // h3
 
 	h4 {
-		@include font-size(14);
+		@include font-size(22);
 	}
 
 	hr {
@@ -425,9 +405,7 @@ article {
 div[role="main"] {
 
 
-h1,h2,h3,h4,h5,h6 {
-	@include o_sans_bold;
-}
+
 
 
 

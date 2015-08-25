@@ -15,7 +15,8 @@ aside#sidebar {
 		background-image: url("../assets/img/icon-menu.png");
 		background-position: 0px 17px;
 		background-repeat: no-repeat;
-	  	line-height: .9;
+		height: 53px;
+	  	line-height: 1.25;
   		margin-bottom: 0;
   		margin-left: 16px;
   		padding-bottom: 0;
@@ -112,7 +113,10 @@ aside#sidebar {
 
 					a {
 					font-size: rem-calc(18);
-					//padding: 6px 16px 6px 30px;
+					}
+
+					&:last-child {
+						padding: 0;
 					}
 					
 					li a {
