@@ -142,6 +142,44 @@ article {
     padding-bottom: 60px;
 
 
+    // accordion
+    .accordion-title {
+       background: $border;
+        padding: 1rem 2rem 1rem 1rem;
+        position: relative;
+        
+        &:hover {
+            cursor: pointer;
+            cursor: hand;
+            &:after {
+                color: $accent;
+            }
+        }
+        &:after {
+            content: "\f199";
+            float: right;
+            font-family: "foundation-icons";
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            text-decoration: inherit;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &.open:after {
+            content: "\f176";
+        }
+    }
+
+
+
+
     .article__header p {
 				line-height: 1;
 				margin-bottom: 0;
