@@ -162,6 +162,10 @@ article {
     display: block;
     margin-left: 20px;
     }
+    li {
+    	margin-bottom: 12px;
+    	margin-left: 25px;
+    }
 
     img.alignnone,
     img.alignright,
@@ -172,7 +176,7 @@ article {
     h1,h2,h3,h4,h5,h6 {
     	@include encode_black;
     	color: #1c1c1c;
-    	line-height: 1.2;
+    	line-height: 1.4;
 
     }
 
@@ -468,13 +472,8 @@ div[role="main"] {
 	background-image: url("../assets/img/nav-border-top-green-long.png");
 	background-repeat: no-repeat;
 	bakground-position: left top;
-	padding-top: 30px;
-
-
-	.gallery-item {
-	width: 221px !important;
-	margin-top: 0 !important;
-	}
+	margin-bottom: rem-calc(50);
+	padding-top: 25px;
 
 	img {
 		border-color: #ccc;
