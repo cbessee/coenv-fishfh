@@ -152,9 +152,6 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		echo '</div>';	
 	}
 	?>
-	<?php the_widget('coenv_base_cats', 'title=Category'); ?>
-	<?php the_widget('coenv_base_date', 'title=Date'); ?>
-
 	<?php dynamic_sidebar('sidebar-widgets'); ?>
 	<?php
 	$ancestor_id = coenv_base_get_ancestor('ID');
