@@ -111,19 +111,7 @@ height: 126px;
     }
 }
 
-.units {
-    list-style: none;
-    margin: rem-calc(51) 0 0 rem-calc(18);
-    padding-top: 4px;
-    
-    .slash {
-        margin: 0 rem-calc(12);
-    }
-    
-    .uw-name {
-        margin-right: rem-calc(16);
-    }
-}
+
 
 
 .title-area {
@@ -179,7 +167,7 @@ height: 126px;
         fill: $white;
         width: rem-calc(157);
         height: rem-calc(110);
-        margin-right: rem-calc(29);
+        margin-right: rem-calc(25);
         vertical-align: middle;
         
         span {
@@ -191,8 +179,27 @@ height: 126px;
         background-image: url('/wp-content/themes/coenv-fish/assets/img/logotype-divider.png');
         background-position: top left;
         background-repeat: no-repeat;
+        list-style: none;
+        margin: rem-calc(51) 0 0 0;
         padding-left: 29px;
+        padding-top: 4px;
         text-align: left;
+
+        .slash {
+            margin: 0 rem-calc(12);
+        }
+        .uw-name {
+            margin-right: rem-calc(16);
+        }
+
+
+
+
+
+
+
+
+
         a {
 
         img {
@@ -257,6 +264,7 @@ margin-bottom: 0;
     background-position: center top;
     background-size: cover;
     border-bottom: solid 2px #ccc;
+    box-shadow: inset 1px 4px 9px -6px;
     position: relative;
     height: 375px;
     width: 100%;
