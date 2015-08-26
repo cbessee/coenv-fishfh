@@ -388,7 +388,7 @@ article {
 
 		.wp-caption-text {
 			margin: 0;
-			padding: 12px 0 100px 12px;
+			padding: 12px 0 4px 12px;
 			@include font-size(18);
 			@include rem('line-height', 1.25);
 			color: $black;
