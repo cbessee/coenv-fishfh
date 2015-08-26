@@ -99,6 +99,7 @@ article.type-faculty {
 		border: solid 6px #ebebeb;
 	}
 	h3 {
+		@include o_sans_bold;
 		font-size: 1rem;
 		line-height: 1.25rem;
 		margin-top: .5rem;
