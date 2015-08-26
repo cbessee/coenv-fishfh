@@ -49,7 +49,11 @@
         			<h2 class="small-12 left article__title"><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h2>
 				</header>
 				<div class="article__content">
-					<?php echo the_content(); ?>
+					<?php 
+
+					echo the_content();
+					echo $post_link;
+					?>
 				</div>
 				<div class="article__links">
 					<?php
