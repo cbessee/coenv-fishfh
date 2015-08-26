@@ -22,13 +22,13 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 	<div class="columns" role="main">
 		<div class="article__content">
 		<div class="row filters">
--			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
--				<?php coenv_base_cat_filter('category', $coenv_cat_term_1); // Category filter ?>
--			</div>
--			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
--				<?php coenv_base_date_filter('post',$coenv_month,$coenv_year); // Date filter ?>
--		 	</div>
--		</div>
+			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
+				<?php coenv_base_cat_filter('category', $coenv_cat_term_1); // Category filter ?>
+			</div>
+			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
+				<?php coenv_base_date_filter('post',$coenv_month,$coenv_year); // Date filter ?>
+		 	</div>
+		</div>
 		<?php
 		/**
 		  * Blog loop
@@ -105,7 +105,7 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		        ?>
 		        </p>
 			</div>
-			<div class="small-3 right share" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php echo wp_get_shortlink(); ?>" data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a></div>
+			<!--<div class="small-3 right share" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php echo wp_get_shortlink(); ?>" data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a></div>-->
         	<h2 class="small-12 left article__title"><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h2>
 		</header>   
         <?php if (has_post_thumbnail()) { ?>

@@ -94,7 +94,7 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		?>
 		<article class="blog-list-item post-<?php the_ID() ?> clearfix">
         <header class="article__header">
-        	<div class="columns small-10 article-meta">
+        	<div class="columns small-12 article-meta">
 	        	<p>
 				<?php 
 		        echo get_the_date('M j, Y');
@@ -109,15 +109,10 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		        ?>
 		        </p>
 			</div>
-			<div class="small-2 right share" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php echo wp_get_shortlink(); ?>" data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a></div>
+			<!--<div class="small-2 right share" data-article-id="<?php the_ID(); ?>" data-article-title="<?php //echo get_the_title(); ?>" data-article-shortlink="<?php //echo wp_get_shortlink(); ?>" data-article-permalink="<?php //echo the_permalink(); ?>"><a href="#"><i class="fi-share"></i>Share</a></div>-->
         	<h2 class="small-12 left article__title"><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h2>
 		</header>   
-        <?php if (has_post_thumbnail()) { ?>
-			<div class="small-12 medium-4 right blog-thumb"><a class="right" href="<?php echo get_the_permalink(); ?>"><?php echo the_post_thumbnail( 'news_large' ); ?></a></div>
-			<div class="small-12 medium-8 left blog-content">
-			<?php } else { ?>
 			<div class="small-12 left">
-			<?php } ?>
 				<?php echo the_excerpt(); ?>
 			</div>
 	</article>
