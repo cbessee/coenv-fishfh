@@ -188,7 +188,16 @@ article {
     	color: #5c5c5c;
     	text-decoration: underline;
     }
+    p,li,td,th {
 
+    	strong {
+
+    		@include o_sans_bold;
+
+    	}
+
+
+    }
     p,li,ul li p {
     	font-size: rem-calc(18);
     	line-height: 1.5;
