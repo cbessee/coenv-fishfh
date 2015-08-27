@@ -261,7 +261,7 @@ article {
 	background-image: url("/wp-content/themes/coenv-fish/assets/img/bg-intro.png");
     margin: 2rem 0;
     padding: rem-calc(20) rem-calc(40);
-    border: solid 6px #ccc;
+    border: solid 6px #ebebeb;
     
 	    p {
 	        margin: 0!important;
@@ -756,4 +756,13 @@ body.error404 .page-content {
 }
 p.no-results {
 	margin-top: 25px;
+}
+
+.page-template-section-page .full-intro {
+
+	p {
+		font-size: rem-calc(25);
+		padding-left: rem-calc(25);
+		padding-right: rem-calc(25);
+	}
 }
