@@ -26,7 +26,7 @@
 
 aside#sidebar .solid-widget {
 float: left;
-padding-bottom: 20px;
+padding-bottom: 5px;
 width: 100%;
 
 	.widget_img {
@@ -75,13 +75,25 @@ width: 100%;
 			
 			a.button {
 				@include o_sans_bold;
-				background-color: #f29068;
-				border: solid 3px #f9b69b;
+				background-color: $orange;
+				border: solid 4px $orange-lt;
 				border-radius: 0;
-				color: #000;
-				font-size: rem-calc(12);
-				margin-bottom: 0;
+				font-size: rem-calc(14);
 				text-transform: uppercase;
+
+
+				&:hover {
+                	background-color: #c14211;
+                	border: solid 4px #db5b10;
+              	}
+
+                @media #{$small-only} {
+      				margin-bottom: 0;
+      			}
+
+				&:first-child {
+					margin-right: 10px;
+				}
 			}
 		}
 		.widget_links {
