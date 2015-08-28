@@ -230,6 +230,7 @@ $tax_obj = get_taxonomy($tax);
 $tax_str = $tax_obj->labels->name;
 
 $cats_args  = array(
+	'exclude' => '1',
 	'orderby' => 'name',
 	'order' => 'ASC',
 	'taxonomy' => $tax
