@@ -106,10 +106,15 @@ function jk_img_caption_shortcode_filter($val, $attr, $content = null)
 			$photo_source_div = "<div class=\"source\">$photo_source</div>";
 		} else
 			$photo_source_div= " ";
+		if ((int) $width > 500) {
+			$img_width = 'width-full';
+		} else {
+			$img_width = 'width-' . $width;
+		}
 	
 
 
-	return '<figure id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption ' . esc_attr($align) . '" itemscope itemtype="http://schema.org/ImageObject" style="width: ' . (0 + (int) $width) . 'px"><div class="wp-caption-wrap clearfix">' . do_shortcode( $content ) . $photo_source_div . '</div><figcaption id="figcaption_'. $id . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
+	return '<figure id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption ' . esc_attr($align) . ' ' . $img_width . '" itemscope itemtype="http://schema.org/ImageObject" style="width: ' . (0 + (int) $width) . 'px"><div class="wp-caption-wrap clearfix">' . do_shortcode( $content ) . $photo_source_div . '</div><figcaption id="figcaption_'. $id . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
 	
 }
 add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );

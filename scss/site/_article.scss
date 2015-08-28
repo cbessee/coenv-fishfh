@@ -212,11 +212,7 @@ article {
     	margin-left: 25px;
     }
 
-    img.alignnone,
-    img.alignright,
-    img.alignleft {
-	    border: solid 6px #ebebeb;
-	}
+    
 
     h1,h2,h3,h4,h5,h6 {
     	@include encode_black;
@@ -352,110 +348,12 @@ article {
 		max-width: 100%;
 	}
 
-	// alignment
-	.alignleft {
-		float: left;
-		margin: 0 25px 5px 0;
-	}
-
-	.alignright {
-		float: right;
-		margin: 0 0 5px 25px;
-	}
-
-	.aligncenter {
-		display: block;
-		margin-right: auto;
-		margin-left: auto;
-	}
+	
 
 	// margins
 
 
-	.size-medium {
-	width: 300px;
-	}
-
-
-	.wp-caption.right {
-		margin-top: 40px;
-		margin-left: 40px;
-	}
-	.wp-caption .alignleft,
-	.wp-caption.alignleft {
-		@include rem('margin', 0, 1, 1, 0);
-	}
-
-	img.alignright,
-	.wp-caption.alignright {
-		@include rem('margin', 0, 0, 1, 1);
-	}
-
-	// captions
-	.wp-caption {
-		margin: 0;
-		padding: 0;
-		color: rgba(0, 0, 0, 1);
-		background-color: rgba(235, 235, 235, 1);
-		border: solid 8px rgba(235, 235, 235, 1);
-		position: relative;
-
-		.wp-caption-wrap {
-			max-width: 100% !important;
-    		height: auto !important;
-			position: relative;
-		}
-
-		
-		.source {
-			float: right;
-			background-color: $black;
-			color: #fff;
-			display: inline-block;
-			font-size: rem-calc(12);
-			text-align: right;
-			text-transform: uppercase;
-			letter-spacing: .1em;
-			position: absolute;
-			bottom: 0; 
-			right: 0;
-			@include rem('padding', .25, 1);
-			
-			a {
-				color: white;
-				text-decoration: none;
-			}
-			
-			a:hover {
-				color: #fff;
-			}
-		}
-
-		.wp-caption-text {
-			margin: 0;
-			padding: 12px 0 4px 12px;
-			@include font-size(18);
-			@include rem('line-height', 1.25);
-			color: $black;
-			text-align: left;
-
-
-			a {
-				color: #000;
-				text-decoration: underline;
-			}
-
-			a:hover {
-				color: #000;
-			}
-		}
-
-		img {
-			margin: 0;
-			padding: 0;
-		}
-
-	} // .wp-caption
+	
 
 
 	// news index thumbnails
@@ -671,12 +569,7 @@ div:first-child {
 
 
 
-.article__thumbnail {
-	margin-left: 20px;
-	margin-top: 8px;
 
-
-}
 .single .article__links .button {
 	@include o_sans_bold;
             background-color: #82cfcc;
@@ -766,3 +659,107 @@ p.no-results {
 		padding-right: rem-calc(25);
 	}
 }
+
+// Cleanup
+
+.article__content {
+
+	// article images (all)
+
+	.alignleft {
+		float: left;
+		margin: 0 25px 5px 0;
+	}
+
+	.alignright {
+		float: right;
+		margin: 0 0 5px 25px;
+	}
+
+	.aligncenter {
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+	.size-medium {
+		width: 300px;
+	}
+
+	// article images (no caption)
+
+	img.alignleft,
+	img.alignright,
+	img.aligncenter,
+	img.noalign {
+		border: solid 6px #ebebeb;
+		margin-bottom: rem-calc(5);
+
+			&.size-full {
+				margin-bottom: 25px;
+			}
+	}
+
+	// article images (with captions)
+
+	figure.wp-caption.width-full {
+		margin-bottom: rem-calc(25);
+	}
+
+	.wp-caption {
+		padding: 0;
+		color: rgba(0, 0, 0, 1);
+		background-color: rgba(235, 235, 235, 1);
+		border: solid 8px rgba(235, 235, 235, 1);
+		position: relative;
+
+		img {
+			margin: 0;
+			padding: 0;
+		}
+		.wp-caption-wrap {
+			max-width: 100% !important;
+    		height: auto !important;
+			position: relative;
+		}
+		.source {
+			float: right;
+			background-color: $black;
+			color: #fff;
+			display: inline-block;
+			font-size: rem-calc(12);
+			text-align: right;
+			text-transform: uppercase;
+			letter-spacing: .1em;
+			position: absolute;
+			bottom: 0; 
+			right: 0;
+			@include rem('padding', .25, 1);
+
+			a {
+				color: white;
+				text-decoration: none;
+			}
+			a:hover {
+				color: #fff;
+			}
+		}
+		.wp-caption-text {
+			margin: 0;
+			padding: 12px 0 4px 12px;
+			@include font-size(18);
+			@include rem('line-height', 1.25);
+			color: $black;
+			text-align: left;
+			a {
+				color: #000;
+				text-decoration: underline;
+			}
+			a:hover {
+				color: #000;
+			}
+		}
+
+	} // .wp-caption
+
+} // .article__content
