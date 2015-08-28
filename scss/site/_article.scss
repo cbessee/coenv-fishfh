@@ -281,27 +281,7 @@ article {
 }
 
 
-	table {
-		width: 100%;
-
-		th,
-		td {
-			padding: rem-calc(8);
-			text-align: left;
-		}
-
-		th {
-			background: #ebebeb;
-			border-bottom: 1px solid #d0d0d0;
-		}
-
-		tbody th {
-			background: #eee;
-			font-weight: 400;
-			border: none;
-		}
-
-	} // table
+	
 
 	// definition lists
 	dl {
@@ -664,6 +644,32 @@ p.no-results {
 
 .article__content {
 
+
+	// article tables
+
+	table {
+		width: 100%;
+
+		th,
+		td {
+			padding: rem-calc(12);
+			text-align: left;
+			vertical-align: top;
+		}
+
+		th {
+			background: #ebebeb;
+			border-bottom: 1px solid #d0d0d0;
+		}
+
+		tbody th {
+			background: #eee;
+			font-weight: 400;
+			border: none;
+		}
+
+	} // table
+
 	// article images (all)
 
 	.alignleft {
@@ -681,7 +687,7 @@ p.no-results {
 		margin-right: auto;
 		margin-left: auto;
 	}
-	
+
 	.size-medium {
 		width: 300px;
 	}
