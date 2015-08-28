@@ -689,6 +689,12 @@ p.no-results {
 		margin-left: auto;
 	}
 
+	img.size-large,
+	img.size-full {
+
+		margin-bottom: rem-calc(25);
+	}
+
 	.size-medium {
 		width: 300px;
 	}
@@ -702,7 +708,8 @@ p.no-results {
 		border: solid 6px #ebebeb;
 		margin-bottom: rem-calc(5);
 
-			&.size-full {
+			&.size-full,
+			&.size-large {
 				margin-bottom: 25px;
 			}
 	}
