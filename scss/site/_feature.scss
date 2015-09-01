@@ -1,0 +1,94 @@
+.slick-slider {
+  margin-bottom: 0;
+}
+
+.playpause {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 500;
+}
+
+.feature-controls {
+
+
+  @media #{$small-only} {
+    background-color: transparent;
+    padding: 6px 0 0 2px;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    z-index: 1000;
+  }
+  @media #{$medium-up} {
+    background-color: #fff;
+    border-top: solid 6px #fff;
+    display: inline-block;
+    padding: 6px 0 0 2px;
+    width: 73px;
+    float: left;
+  }
+
+  .slick-p,
+  .slick-n {
+    background-position: left center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    text-indent: -5000;
+    white-space: nowrap;
+    overflow: hidden;
+
+    @media #{$medium-up} {
+      width: 27px;
+      height: 67px !important;
+    }
+
+  }
+
+  .slick-n {
+    background-image: url('/wp-content/themes/coenv-fish/assets/img/arrow-r.svg');
+    background-position: 9px center;
+    width: 40px;
+
+    @media #{$medium-up} {
+      border-left: 3px solid #ccc;
+    }
+
+    @media #{$small-only} {
+      float: right;
+    }
+
+  }
+  .slick-p {
+    background-image: url('../assets/img/arrow-l.svg');
+
+
+    @media #{$small-only} {
+      float: left;
+    }
+
+  }
+}
+
+.slick-dots {
+  bottom: rem-calc(10);
+
+  li button {
+    background: transparent;
+    border: solid 4px #fff;
+  }
+
+  li button:before {
+    content:"";
+  }
+
+  li.slick-active button {
+    background:rgba(255,255,255,0.75);
+  }
+
+  @media #{$small-only} {
+      display: none !important;
+    }
+
+
+}

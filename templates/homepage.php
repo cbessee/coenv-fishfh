@@ -63,10 +63,12 @@ $feature_query = new WP_Query( $feature_args );
 		?>
 			
 		<div class="feature">
-			<!--<div class="feature-controls hide-for-medium-up">
+			<!--
+			<div class="feature-controls hide-for-medium-up">
 				<a class="slick-p" href="#">Previous</a>
 				<a class="slick-n" href="#">Next</a>
-			</div>-->
+			</div>
+		-->
 			<div class="feature-image" id="pid-<?php echo $feature_query->post->ID; ?>" data-interchange="[<?php echo $feature_image[0]; ?>, (medium)]">
 				<div class="feature-info-container">
 					<img class="show-for-small-only mobile-hero" src="<?php echo $feature_image[0]; ?>" />
@@ -97,7 +99,7 @@ $feature_query = new WP_Query( $feature_args );
 							}
 							?>
 
-						</div><!-- .feature-content -->
+						</div>
 						<div class="feature-controls show-for-medium-up">
 							<a class="slick-p" href="#">Previous</a>
 							<a class="slick-n" href="#">Next</a>
