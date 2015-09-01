@@ -13,7 +13,7 @@
 
 
   @media #{$small-only} {
-    background-color: transparent;
+    background-color: #fff;
     padding: 6px 0 0 2px;
     position: absolute;
     top: 50px;
@@ -34,7 +34,7 @@
     background-position: left center;
     background-repeat: no-repeat;
     display: inline-block;
-    text-indent: -5000;
+    text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
 
