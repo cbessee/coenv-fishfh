@@ -37,7 +37,14 @@
 
 
             li {
-                margin-right: 15px;
+                margin-right: rem-calc(15);
+                @media #{$medium-only} {
+                    margin-right: rem-calc(5);
+                }
+
+
+
+
             }
             li a {
 
