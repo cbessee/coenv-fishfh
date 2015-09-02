@@ -1,4 +1,111 @@
-// Events Widget
+// All widgets
+
+.solid-widget {
+	float: left;
+	padding-bottom: rem-calc(5);
+	width: 100%;
+
+	.widget_img {
+		width: 100%;
+	}
+
+	.widget-title {
+		margin-top: rem-calc(20);
+		padding: 0 rem-calc(20);
+
+		h4 {
+
+			@include encode_black;
+	       	background-position: bottom left;
+	       	background-repeat: no-repeat;
+	       	background-size: rem-calc(60) rem-calc(5);
+			font-size: rem-calc(24);
+			line-height: 1.1;
+			padding-bottom: rem-calc(20);
+			text-transform: uppercase;
+
+			a {
+				color: $black;
+			}
+		}
+	}
+
+	.widget-content {
+		@include o_sans;
+		margin: rem-calc(16) rem-calc(20);
+		
+		p {
+			font-size: rem-calc(16);
+			line-height: 1.4;
+
+			a {
+				color: #5c5c5c;
+				text-decoration: underline;
+			}
+
+		}
+			
+		
+
+		ul,li {
+			list-style: none;
+			margin-left: 0;
+		}
+	}
+}
+
+// Sidebar widgets
+
+aside#sidebar .solid-widget {
+	border: solid 6px $orange;
+	margin-bottom: rem-calc(25);
+
+	.widget_img {
+		border-bottom: solid 6px $orange;	
+	}
+
+	.widget-title {
+
+		h4 {
+			background-image: url('../assets/img/divider-orange-single.svg');
+		}
+	}
+	.widget-content {
+		@include o_sans;
+		margin: rem-calc(16) rem-calc(20);
+		
+		p {
+			font-size: rem-calc(16);
+			line-height: 1.4;
+
+			a {
+				color: #5c5c5c;
+				text-decoration: underline;
+			}
+
+		}
+			
+		
+	}
+}
+
+// Bottom widgets
+
+#after-content .solid-widget {
+	border: solid 6px $teal;
+
+	.widget-title {
+
+		h4 {
+			background-image: url('../assets/img/divider-teal-single.svg');
+		}
+	}
+
+}
+
+
+
+// Events widget
 
 .event-list {
 	list-style: none;
@@ -12,344 +119,48 @@
 	}
 }
 
-// Social Widget
+// Faculty research area widget
 
-.widget-social {
-    ul {
-        list-style: none;
-        display: inline;
-    }
-}
-
-
-// Sidebar Widgets
-
-aside#sidebar .solid-widget {
-float: left;
-padding-bottom: 5px;
-width: 100%;
-
-	.widget_img {
-		border-bottom: solid 6px #f29068;
-		width: 100%;
-	}
-		.widget-title {
-			margin-top: 20px;
-			padding: 0 20px;
-
-
-			h4 {
-
-		@include encode_black;
-		background-image: url('../assets/img/slash-orange.png');
-		background-position: left bottom;
-		background-repeat: no-repeat;
-		font-size: rem-calc(24);
-		line-height: 1.1;
-		padding-bottom: 20px;
-		text-transform: uppercase;
-
-		a {
-			color: #000;
-		}
-
-	}
-
-
-
-		}
-		.widget-content {
-		@include o_sans;
-
-			margin: 16px 20px;
-
-			p {
-				font-size: rem-calc(16);
-				line-height: 1.4;
-
-				a {
-					color: #5c5c5c;
-					text-decoration: underline;
-				}
-			}
-			
-			a.button {
-				@include o_sans_bold;
-				background-color: $orange;
-				border: solid 4px $orange-lt;
-				border-radius: 0;
-				font-size: rem-calc(14);
-				text-transform: uppercase;
-
-
-				&:hover {
-                	background-color: #c14211;
-                	border: solid 4px #db5b10;
-              	}
-
-                @media #{$small-only} {
-      				margin-bottom: 0;
-      			}
-
-				&:first-child {
-					margin-right: 10px;
-				}
-			}
-		}
-		.widget_links {
-			float: left;
-			margin-bottom: 0;
-			margin-left: 0;
-			padding-left: 0;
-
-			li {
-				float: left;
-				list-style: none;
-				margin-right: .25rem;
-			}
-
-		}
-
-
-
-	}	
-
-
-aside#sidebar div.columns {
-
-	
-	// Content blocks
-	.widget_custom_post_widget,
-	.solid-widget {
-		.widget-title {
-
-		margin: 0 20px;
-		}
-		.widget_content {
-			padding: 0 rem-calc(20) rem-calc(5) rem-calc(20);
-			h4 {
-				@include encode_cb;
-				font-size: rem-calc(22);
-				letter-spacing: .1rem;
-			}
-			p {
-				margin-bottom: 0;
-			}
-		}
-		.widget_links {
-			margin-bottom: 0;
-			margin-left: 0;
-			margin-top: rem-calc(15);
-			li {
-				display: inline;
-				width: 100%;
-				a {
-					
-
-					
-					letter-spacing: rem-calc(1);
-					margin: 0 0 rem-calc(6) 0;
-					padding: rem-calc(10);
-					text-align: left;
-					width: 100%;
-				}
-				.button {
-					text-transform: uppercase;
-				}
-			}
-		}
-	}
-	&:nth-child(odd) {
-		.widget_custom_post_widget {
-			background-color: #f2f2f2;
-			.widget_content {
-				h4 a {
-					color:  #333;
-				}
-			}
-			.widget_links {
-				padding: 0 rem-calc(20) rem-calc(25) rem-calc(20);
-				.button {
-					background-color: #333;
-					color: $white;
-					text-align: left;
-				}
-			}
-			
-		}
-	}
-	&:nth-child(even) {
-		.widget_custom_post_widget {
-			background-color: #f2f2f2;
-		}
-		.widget_custom_post_widget .widget_content {
-
-		}
-		.widget_custom_post_widget .widget_links {
-			padding-top: 0;
-			padding-right: rem-calc(20);
-			padding-bottom: rem-calc(25);
-			padding-left: rem-calc(20);
-			background-image: url("/wp-content/themes/coenv-cig/assets/img/side-nav-bottom-tile.png");
-			background-repeat: no-repeat;
-			background-position: bottom center;
-		}
-		
-	}
-}
-
-// After Content Widgets
-#after-content div.columns {
-
-
-	.widget_links {
-
-	}
-	.widget_links li a {
-
-	}
-	
-	.widget_custom_post_widget {
-		border-top: 4px solid #333;
-		margin-bottom: rem-calc(20);
-		padding: rem-calc(20);
-		.widget_img {
-			float: left;
-			margin-right: 5%;
-			padding: 0;
-			width: 30%;
-		}	
-		.widget_content {
-			float: left;
-			margin-bottom: 0;
-			
-			width: 65%;
-			h4 {
-				@include encode_cb;
-				font-size: rem-calc(22);
-				letter-spacing: .1rem;
-			}
-			p {
-				margin-bottom: 0;
-			}
-		}
-		.widget_links {
-			float: right;
-			margin-bottom: 0;
-			margin-left: 0;
-			margin-top: rem-calc(5);
-			text-align: right;
-			width: 65%;
-			li {
-				display: inline;
-				width: 100%;
-				a {
-					
-					width: auto;
-					&:first-child {
-        				margin-left: rem-calc(10);
-					}
-					letter-spacing: rem-calc(1);
-					margin: 0 0 rem-calc(6) 0;
-					padding: rem-calc(10);
-					text-align: left;
-				}
-				.button {
-					text-transform: uppercase;
-				}
-			}
-		}
-	}
-	&:nth-child(odd) {
-		.widget_custom_post_widget {
-			background-color: #f2f2f2;
-			.widget_content {
-				h4 a {
-					color:  #333;
-				}
-			}
-			.widget_links {
-				padding: 0 rem-calc(20) rem-calc(25) rem-calc(20);
-				.button {
-					background-color: #333;
-					color: $white;
-					text-align: left;
-				}
-			}
-			
-		}
-	}
-	&:nth-child(even) {
-		.widget_custom_post_widget {
-			background-color: #f2f2f2;
-		}
-		.widget_custom_post_widget .widget_content {
-
-		}
-		.widget_custom_post_widget .widget_links {
-			padding-top: 0;
-			padding-right: rem-calc(20);
-			padding-bottom: rem-calc(25);
-			padding-left: rem-calc(20);
-			background-image: url("/wp-content/themes/coenv-cig/assets/img/side-nav-bottom-tile.png");
-			background-repeat: no-repeat;
-			background-position: bottom center;
-		}
-		
-	}
-}
-aside#sidebar {
-	padding-right: 0;
-}
-
-.widget_coenv_base_fac_cats,
-.widget_coenv_base_cats,
-.widget_coenv_base_date {
+.widget_coenv_base_fac_cats {
 
 	.filter-cap {
 		@include o_sans_bold;
 		text-transform: uppercase;
-		color: #000;
+		color: $black;
 		font-size: rem-calc(14);
-
 	}
 	
 	.widgettitle {
-
 		background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-black.svg');
 		background-position: bottom left;
 		background-repeat: no-repeat;
-		background-size: 45px 6px;
-		padding-bottom: 20px;
+		background-size: rem-calc(45) rem-calc(6);
+		padding-bottom: rem-calc(20);
 		text-transform: uppercase;
 		@include encode_black;
 		text-transform: uppercase;
-		color: #000;
+		color: $black;
 		font-size: rem-calc(26);
-
 	}
 
 	ul {
-
-
 		padding: 0;
-
-	margin-left:0;
+		margin-left:0;
+	}
 
 	li {
 		@include encode_black;
 		background-image: url('/wp-content/themes/coenv-fish/assets/img/filter-selecter.svg');
 		background-position: .5rem center;
 		background-repeat: no-repeat;
-		background-size: 25px 25px;
-
+		background-size: rem-calc(25) rem-calc(25);
 		list-style: none;
 		margin: 0 .5rem 0 0;
 		padding: .5rem 0 .5rem 3rem;
 		text-transform: uppercase;
 
 		a {
-			color: #000;
+			color: $black;
 		}
 
 		&:hover {
@@ -357,32 +168,4 @@ aside#sidebar {
 		}
 
 	}
-
-
-
-
-
-
-
-	}
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-

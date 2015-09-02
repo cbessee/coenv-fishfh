@@ -1,3 +1,120 @@
+body.home .feature {
+  color: $white;
+  display: relative;
+
+  li {
+    list-style-type: none;
+  }
+
+  .feature-image {
+    
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    overflow: hidden;
+    padding-top: 50px;
+    position: relative;
+    width: 100%;
+
+    @media #{$small-only} {
+      height: 350px;
+      padding-top: 0;
+    }
+
+  }
+
+  .feature-info-container {
+
+    @media #{$medium-up} {
+      position: relative;
+      bottom: auto;
+    }
+
+  .feature-info {
+    position: relative;
+    
+    h2 {
+      @include encode_black;
+      background-image: url('../assets/img/divider-white-single.svg');
+      background-position: bottom left;
+      background-repeat: no-repeat;
+      background-size: 60px 5px;
+      color: $white;
+      display: block;
+      
+      font-size: rem-calc(27);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      padding-bottom: 25px;
+      text-transform: uppercase;
+
+      @media #{$small-only} {
+        background-position: bottom center;
+        font-size: rem-calc(18);
+        text-align: center;
+      }
+
+    }
+
+    p.feature-excerpt {
+      @include o_sans_bold;
+      font-size: rem-calc(18);
+      margin-bottom: 25px;
+
+      @media #{$small-only} {
+        font-size: rem-calc(14);
+        margin-bottom: 20px;
+        margin-top: 10px;  
+        text-align: center;
+      }
+
+    }
+  }
+
+  .feature-content {
+    background-color: rgba(0,0,0,0.77);
+    display: inline-block;
+    float: left;
+    padding: rem-calc(20) rem-calc(20) rem-calc(26) rem-calc(20);
+
+    @media #{$medium-up} {
+      border: solid 13px #fff;
+      width: 480px;
+    }
+
+    @media #{$small-only} {
+      text-align: center;
+      padding: rem-calc(10) rem-calc(10) rem-calc(26) rem-calc(10);
+    }
+
+  
+}
+
+
+.feature-image-caption {
+  font-size: rem-calc(10);
+  margin-right: rem-calc(16);
+}
+
+p {
+  margin-bottom: rem-calc(10);
+}
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
 .slick-slider {
   margin-bottom: 0;
 }

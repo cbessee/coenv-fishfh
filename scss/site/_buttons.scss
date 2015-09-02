@@ -1,60 +1,69 @@
 /*	Module: button
-		======================================================================== */
+======================================================================== */
 
 .button {
+	@include o_sans_bold;
+	background-color: #ccc;
+	border-color: $gray-med;
+	border-width: rem-calc(4);
+	color: $black;
 	display: inline-block;
-	vertical-align: middle;
-	padding: rem-calc(6) rem-calc(8);
-	@include sans;
+	font-size: rem-calc(12);
 	font-weight: 400;
-	background: $white-button;
+	margin-bottom: 0;
+	margin-right: rem-calc(12);
+	padding: rem-calc(6) rem-calc(8);
 	text-decoration: none;
-	color: $text;
-	//@include border-radius( $radius );
-	border-radius: $radius;
-	//min-height: rem-calc(28);
+	text-transform: uppercase;
+	transition: all .5s ease;
 	
-	&:hover {
-		background: rgba(0,0,0,0.6);
-		color: #fff !important;
+	@media #{$medium-up} {
+		font-size: rem-calc(14);
 	}
-	
-	.dark {
-		background: $bg-dk;
+
+	&:hover {
+		background-color: rgba(0,0,0,0.6);
 		color: $white;
-		
-		&:hover {
-			background: $white-button;
-			color: $text;
-		}
 	}
 
 } // .button
 
+.home .feature-content .button,
+.article__content .blog-list-item .button,
+#after-content .solid-widget .button {
+	background-color: $teal;
+	border-color: $teal-lt;
+	
+	&:hover {
+		background-color: $teal-dk;
+		border-color: $teal-med;
+		color: $white;
+	}
 
- .home .feature-content .button,
- .article__content .blog-list-item .button {
-    @include o_sans_bold;
-    background-color: #82cfcc;
-    border: solid 4px #b2eeec;
-    border-radius: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 12px;
+}
 
-    text-transform: uppercase;
-
-    &:first-child {
-      margin-right: 10px;
-    }
-
-    @media #{$medium-up} {
-      padding: rem-calc(6) rem-calc(8);
-    }
-
-
-    
+.home .full-student-faculty .button {
+	background-color: $white;
+	border-color: #cccccc;
+	
+	&:hover {
+		background-color: $black;
+		border-color: #666;
+	}
 
 
-  }
+}
+
+.home .full-intro .button,
+aside#sidebar .solid-widget .button {
+	background-color: $orange;
+	border-color: $orange-lt;
+	
+	&:hover {
+		background-color: $orange-dk;
+		border-color: $orange-med;
+	}
+}
+.social-buttons .button {
+	border: 0;
+}
