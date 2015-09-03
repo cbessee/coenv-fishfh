@@ -124,10 +124,20 @@ $feature_query = new WP_Query( $feature_args );
 		<?php if ( is_active_sidebar( 'home-content' ) ) : ?>
 		<div class="large-12 columns programs">
 		<div class="widget-area home-content" role="complementary">
-			<?php dynamic_sidebar( 'home-content' ); ?>
-							<span class="show-for-small-only"><a class="button" href="/students">Explore our Programs</a><a class="button" href="/faculty-research">Meet Our Faculty</a></span>
-
-		</div><!-- .widget-area -->
+	<div class="solid-widget">
+		<div class="widget-title">
+			<h4><a title="Learn more" href="http://dev.fish.uw.dev/about/" target="_self">Join our community</a></h4>
+		</div>
+		<div class="widget-content">
+			<p><span class="intro">The School of Aquatic and Fishery Sciences (SAFS) is dedicated to sustaining healthy marine and freshwater environments. Our faculty conduct innovative research from the organism to the ecosystem scale, and are recognized leaders in aquatic biology, sustainable fisheries management and aquatic resource conservation.</span></p>
+			<ul class="widget_links">
+				<li class="show-for-small-only"><a class="button" href="/students">Explore our Programs</a></li>
+				<li class="show-for-small-only"><a class="button" href="/faculty-research">Meet Our Faculty</a></li>
+				<li><a class="button" title="Learn more" href="http://dev.fish.uw.dev/about/" target="_self">Learn more</a></li>
+			</ul>
+		</div>
+	</div>							
+</div>
 		</div>
 		<?php endif; ?>
 	</div>
