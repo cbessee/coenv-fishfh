@@ -23,16 +23,16 @@ body.home {
     background-image: url('../assets/img/bg-intro.png');
     border-top: solid 10px #f29068;
     margin-bottom: 0;
-    padding: 46px 10px 30px 10px;
+    padding-top: 10px;
     text-align: center;
 
     @media #{$medium-up} {
+      padding: 46px 10px 30px 10px;
       text-align: left; 
       }
 
     .solid-widget .widget-title {
       padding: 0;
-      width: 500px;
      
       @media #{$xlarge-up} {
         float: left;
@@ -40,6 +40,21 @@ body.home {
       }
 
       h4 {
+
+        background-position: bottom center;
+        font-size: rem-calc(18);
+        padding-bottom: 0;
+        text-align: center;
+        text-transform: uppercase;
+
+
+
+
+
+        
+
+        @media #{$medium-up} {
+
         background-image: url('../assets/img/divider-orange-single.svg');
         background-position: bottom left;
         background-repeat: no-repeat;
@@ -48,16 +63,9 @@ body.home {
         line-height: 1.2;
         margin-top: 0;
         padding-bottom: 42px;
-        padding-top: 0;
         text-transform: capitalize;
         width: 100%;
-
-        @media #{$small-only} {
-          background-position: bottom center;
-          font-size: rem-calc(18);
-          padding-bottom: 22px;
-          text-align: center;
-          text-transform: uppercase;
+          
         }
       }
 
@@ -81,20 +89,24 @@ body.home {
       }
 
       p {
-        font-size: rem-calc(18);
+        font-size: rem-calc(14);
+        
 
-        @media #{$small-only} {
-          font-size: rem-calc(14);
-          margin-bottom: 0;
+        @media #{$medium-up} {
+          font-size: rem-calc(18);
+          
         }
       }
       
       .intro {
-        @include o_sans_bold;
-        font-size: rem-calc(18);
+         @include o_sans_bold;
+        font-size: rem-calc(14);
+       
 
-        @media #{$small-only} {
-          font-size: rem-calc(14);
+        @media #{$medium-up} {
+
+        font-size: rem-calc(18);
+          
         }
       }
     }
@@ -115,17 +127,20 @@ body.home {
 
     h2 {
       @include encode_black;
-      background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-double.svg');
-      background-position: bottom center;
-      background-repeat: no-repeat;
-      background-size: 60px 5px;
+      
       color: #fff;
-      font-size: rem-calc(26);
-      padding-bottom: 30px;
+      font-size: rem-calc(18);
+      
+      padding-bottom: 0;
       text-transform: uppercase;
 
-      @media #{$small-only} {
-        font-size: rem-calc(18);
+      @media #{$medium-up} {
+        background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-double.svg');
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: 60px 5px;
+        font-size: rem-calc(26);
+        padding-bottom: 30px;
       }
     } // h2
 
@@ -309,8 +324,7 @@ width: 30px;
 
 
         @media #{$small-only} {
-         height: 350px;
-
+          height: 350px;
           padding-top: 0;
         }
 
@@ -459,22 +473,25 @@ width: 30px;
 
   h2 {
     @include encode_black;
-    background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-teal-double.svg');
-    background-repeat: no-repeat;
-    background-size: 120px 10px;
-
-    font-size: rem-calc(50);
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    
+    font-size: rem-calc(18);
+    text-transform: uppercase;
+    
+    
 
     a {
       color: #000;
     }
 
-    @media #{$small-only} {
-
-      font-size: rem-calc(18);
-      text-transform: uppercase;
+    @media #{$medium-up} {
+      background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-teal-double.svg');
+      background-repeat: no-repeat;
+      background-size: 120px 10px;
+      font-size: rem-calc(50);
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      text-transform: capitalize;
+      
 
     }
   }
@@ -529,16 +546,32 @@ width: 30px;
     background-color: #ebebeb;
   }
   .small-news h3 {
-  @include encode_black;
-  font-size: rem-calc(25);
+   @include encode_black;
+
+  font-size: rem-calc(18);
   line-height: 1.2;
-  text-transform: uppercase;
   margin-bottom: 20px;
-  padding: 16px 20px 0 20px;
+
 
   @media #{$small-only} {
+    background-image: url('../assets/img/divider-teal-single.svg');
+       background-position: bottom left;
+       background-repeat: no-repeat;
+       background-size: 60px 5px;
+       margin-bottom: 20px;
+       padding-bottom: 20px;
 
-    font-size: rem-calc(18);
+
+
+
+  }
+
+  @media #{$medium-up} {
+    
+     font-size: rem-calc(25);
+     padding: 16px 20px 0 20px;
+     text-transform: uppercase;
+     
   }
 
   a {
@@ -552,14 +585,30 @@ width: 30px;
   
   .events {
     background-color: #fff;
-    border: 6px solid #ebebeb;
+    
     margin: 0 0 15px 0;
     padding: 0;
 
+    @media #{$medium-up} {
+
+      border: 6px solid #ebebeb;
+
+    }
+
      ul.event-list {
      float: left;
+     
      margin-top: 20px;
      width: 100%;
+
+
+     @media #{$small-only} {
+
+      margin-left: 0;
+
+    }
+
+
      
      }
      ul.event-list li {
@@ -574,6 +623,8 @@ width: 30px;
         margin-bottom: 30px;
 
        }
+
+
 
      }
     ul.event-list li .date {
@@ -704,38 +755,43 @@ width: 30px;
     color: #fff;
     font-size: rem-calc(24);
     text-transform: uppercase;
+
+    a {
+      color: $white;
+    }
+
   }
 
 
+  @media #{$medium-up} {
+    .student-container {
+      background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-students-home.jpg');
+    }
 
-  .student-container {
-    background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-students-home.jpg');
-  }
-
-  .faculty-container {
-    background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-faculty-home.jpg');
+    .faculty-container {
+      background-image: url('/wp-content/themes/coenv-fish/assets/img/bg-faculty-home.jpg');
+    }
   }
 
   .student-container,
   .faculty-container {
     background-color: $black;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     float: left;
     height: 425px;
     overflow: hidden;
     position: relative;
     text-align: center;
 
+    @media #{$medium-up} {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
     h2 {
       @media #{$small-only} {
-        background-image: url('/wp-content/themes/coenv-fish/assets/img/divider-white-double.svg');
-        background-position: center bottom;
-        background-size: 60px 5px;
+        background-image: none;
         font-size: rem-calc(18);
-        margin-bottom: 10px;
-        padding-bottom: 20px;
         text-align: center;
         text-transform: uppercase;
 
@@ -821,9 +877,7 @@ width: 30px;
       // Don't show on page load
       display: none;
 
-      @media #{$small-only} { 
-        display: block;
-      }
+      
 
     }
   }    

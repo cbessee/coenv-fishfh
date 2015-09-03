@@ -69,7 +69,7 @@ $feature_query = new WP_Query( $feature_args );
 				<a class="slick-n" href="#">Next</a>
 			</div>
 		-->
-			<div class="feature-image" id="pid-<?php echo $feature_query->post->ID; ?>" data-interchange="[<?php echo $feature_image[0]; ?>, (medium)]">
+			<div class="feature-image" id="pid-<?php echo $feature_query->post->ID; ?>" data-interchange="['/wp-content/themes/coenv-fish/assets/img/black.png', (default)][<?php echo $feature_image[0]; ?>, (medium)]">
 				<div class="feature-info-container">
 					<img class="show-for-small-only mobile-hero" src="<?php echo $feature_image[0]; ?>" />
 					<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
@@ -135,7 +135,7 @@ $feature_query = new WP_Query( $feature_args );
 
 	<div class="student-container text-center columns small-12 medium-12 large-6">
 		<div class="fac-stud-wrapper" style="position: relative;">
-			<h2>Explore our Programs</h2>
+			<h2><a href="/students">Explore our Programs</a></h2>
 			<div class="fac-stud-content hover-start">
 				<p>SAFS students work alongside talented peers and faculty to engage in a rigorous and inclusive learning environment. Join us to connect with some of the best minds and immerse yourself in cutting-edge scientific research.</p>
 				<p><a class="button" href="/students">Learn more</a></p>
@@ -145,7 +145,7 @@ $feature_query = new WP_Query( $feature_args );
 
 	<div class="faculty-container text-center columns small-12 medium-12 large-6">
 		<div class="fac-stud-wrapper" style="position: relative;">
-			<h2>Meet Our Faculty</h2>
+			<h2><a href="/faculty-research">Meet Our Faculty</a></h2>
 			<div class="fac-stud-content">
 				<p>Our faculty are committed leaders with broad academic expertise and interests. With access to a network of local, national and international leaders, we contribute influential research on topics ranging from organisms, populations, ecosystems, to human users of aquatic ecosystems.</p>
 				<p><a class="button" href="/faculty-research">Learn more</a></p>
@@ -233,9 +233,9 @@ if ($wp_query->have_posts()):
 					<div class="small-news">
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 
-				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
+				        <span class="show-for-medium-up"><?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?></span>
 
-				        <div class="post-meta clearfix row">
+				        <div class="post-meta clearfix row show-for-medium-up">
 			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
 			               	<?php if ( !empty($terms ) ) { ?> 
 							<ul class="terms right columns small-12 medium-7 right text-right">
@@ -279,13 +279,13 @@ if ($wp_query->have_posts()):
 
 					<div class="small-news">
 						<?php if ( has_post_thumbnail() ) { ?>
-						<div class="featured-thumbnail" >
+						<div class="featured-thumbnail show-for-medium-up" >
 							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'news_medium' ); ?></a>
 						</div>
 						<?php } ?>
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
-				        <?php strip_tags( the_advanced_excerpt( 'length=30&finish=sentence' ),'' ); ?>
-				       <div class="post-meta clearfix row">
+				        <span class="show-for-medium-up"><?php strip_tags( the_advanced_excerpt( 'length=30&finish=sentence' ),'' ); ?></span>
+				       <div class="post-meta clearfix row show-for-medium-up">
 			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
 			               	<?php if ( !empty($terms ) ) { ?> 
 							<ul class="terms right columns small-12 medium-7 right text-right">
@@ -346,7 +346,7 @@ if ($wp_query->have_posts()):
 						<footer><a class="more-events right" href="/news-events/events/">More Events</a></footer>
 					</section>
 					<?php } ?>
-					<div class="small-news">
+					<div class="small-news show-for-medium-up">
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
 				        <div class="post-meta clearfix row">
