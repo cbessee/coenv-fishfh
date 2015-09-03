@@ -110,7 +110,7 @@ body.home {
         }
       }
     }
-  }
+  } //.full-intro
 
   .full-connect {
     background-color: #464646;
@@ -238,7 +238,12 @@ width: 30px;
 
 
 
-
+.full-news-events .columns.news-column {
+  @media #{$small-only} {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 
 
 
@@ -537,6 +542,7 @@ width: 30px;
       border-top: 0;
   border-left: 0;
   border-right: 0;
+  text-align: center;
 
 
    }
@@ -554,8 +560,8 @@ width: 30px;
 
 
   @media #{$small-only} {
-    background-image: url('../assets/img/divider-teal-single.svg');
-       background-position: bottom left;
+    background-image: url('../assets/img/divider-teal-double.svg');
+       background-position: bottom center;
        background-repeat: no-repeat;
        background-size: 60px 5px;
        margin-bottom: 20px;
@@ -612,12 +618,22 @@ width: 30px;
      
      }
      ul.event-list li {
-       background-image: url('../assets/img/divider-teal-single.svg');
-       background-position: bottom left;
+       background-image: url('../assets/img/divider-teal-double.svg');
+       background-position: bottom center;
        background-repeat: no-repeat;
        background-size: 60px 5px;
        margin-bottom: 20px;
        padding-bottom: 20px;
+       text-align: center;
+
+       @media #{$medium-up} {
+        background-image: url('../assets/img/divider-teal-single.svg');
+        background-position: bottom left;
+        text-align: left;
+
+
+       }
+
 
        &:last-child {
         margin-bottom: 30px;
@@ -641,9 +657,14 @@ width: 30px;
     }
 
     header {
-      border-bottom: 5px solid #ebebeb;
+      
       text-align: center;
       text-transform: uppercase;
+
+       @media #{$medium-up} {
+
+        border-bottom: 5px solid #ebebeb;
+       }
 
       h3 {
         @include encode_black;
@@ -882,3 +903,9 @@ width: 30px;
     }
   }    
 } // end student-faculty
+
+
+
+
+
+

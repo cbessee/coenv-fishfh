@@ -96,8 +96,7 @@ $feature_query = new WP_Query( $feature_args );
 										echo '<a class="button" href="' . $link_url . '" target="_' . $link_target . '">' . $link_title . '</a>';
 									} 
 								}
-							}
-							?>
+							} ?>
 
 						</div>
 						<div class="feature-controls show-for-medium-up">
@@ -126,12 +125,14 @@ $feature_query = new WP_Query( $feature_args );
 		<div class="large-12 columns programs">
 		<div class="widget-area home-content" role="complementary">
 			<?php dynamic_sidebar( 'home-content' ); ?>
+							<span class="show-for-small-only"><a class="button" href="/students">Explore our Programs</a><a class="button" href="/faculty-research">Meet Our Faculty</a></span>
+
 		</div><!-- .widget-area -->
 		</div>
 		<?php endif; ?>
 	</div>
 </div> <!-- end full-intro -->
-<div class="full-student-faculty row">
+<div class="full-student-faculty row show-for-medium-up">
 
 	<div class="student-container text-center columns small-12 medium-12 large-6">
 		<div class="fac-stud-wrapper" style="position: relative;">
@@ -201,7 +202,7 @@ if ($wp_query->have_posts()):
 		</div>
 		<div class="home-news-section columns large-12 clearfix">
 			<div class="row">
-				<div class="columns small-12 medium-4">
+				<div class="columns small-12 medium-4 news-column">
 
 				<?php
 				while ( $wp_query->have_posts() ) :
@@ -249,7 +250,7 @@ if ($wp_query->have_posts()):
 				<?php wp_reset_postdata(); ?>
 
 				</div>
-				<div class="columns small-12 medium-4">
+				<div class="columns small-12 medium-4 news-column">
 				
 				<?php
 				$wp_query = new WP_Query( $home_col_2_args );
@@ -300,7 +301,7 @@ if ($wp_query->have_posts()):
 				<?php wp_reset_postdata(); ?>
 
 				</div>
-				<div class="columns small-12 medium-4">
+				<div class="columns small-12 medium-4 news-column">
 
 				<?php
 				if ($events_count < 4) {
