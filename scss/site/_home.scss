@@ -30,7 +30,7 @@ body.home {
     background-image: url('../assets/img/bg-intro.png');
     border-top: solid 10px #f29068;
     margin-bottom: 0;
-    padding: rem-calc(15) rem-calc(10);
+    padding: rem-calc(25) rem-calc(10) rem-calc(15) rem-calc(10);
     text-align: left;
 
     @media #{$medium-up} {

@@ -72,7 +72,6 @@ $feature_query = new WP_Query( $feature_args );
 			<div class="feature-image" id="pid-<?php echo $feature_query->post->ID; ?>" data-interchange="['/wp-content/themes/coenv-fish/assets/img/black.png', (default)][<?php echo $feature_image[0]; ?>, (medium)]">
 				<div class="feature-info-container">
 					<img class="show-for-small-only mobile-hero" src="<?php echo $feature_image[0]; ?>" />
-					<p class="feature-image-caption right"><?php echo $feature_caption; ?></p>
 					<div class="feature-info row" style="background-color:<?php $feature_color; ?>">
 						<div class="feature-content">
 							<h2><?php echo get_the_title(); ?></h2>
