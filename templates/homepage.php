@@ -206,7 +206,7 @@ if ($wp_query->have_posts()):
 <div class="full-news-events clearfix">
 	<div class="row">
 		<div class="columns large-12">
-			<h2 style="background-position: bottom center;"><a href="/news-events">Latest News</a></h2>
+			<h2><a href="/news-events">Latest News</a></h2>
 			<a class="more-news show-for-large-up" href="/news-events">More News</a>
 		</div>
 		</div>
@@ -241,7 +241,7 @@ if ($wp_query->have_posts()):
 					}
 					?>
 
-					<div class="small-news">
+					<div class="small-news col-1">
 						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
 
 				        <span class="show-for-medium-up"><?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?></span>
@@ -288,7 +288,7 @@ if ($wp_query->have_posts()):
 				}
 				?>
 
-					<div class="small-news">
+					<div class="small-news col-2">
 						<?php if ( has_post_thumbnail() ) { ?>
 						<div class="featured-thumbnail show-for-medium-up" >
 							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'news_medium' ); ?></a>
