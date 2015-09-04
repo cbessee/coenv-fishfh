@@ -354,23 +354,33 @@ width: 30px;
             h2 {
 
               @include encode_black;
-              background-image: url('../assets/img/divider-white-single.svg');
-              background-position: bottom left;
-              background-repeat: no-repeat;
-              background-size: 60px 5px;
-              display: block;
               color: $white;
-              font-size: rem-calc(27);
               line-height: 1.2;
-              margin-bottom: 20px;
-              padding-bottom: 25px;
               text-transform: uppercase;
+              
 
 
 
               
 
-              @media #{$small-only} {
+              @media #{$medium-up} {
+
+
+                background-image: url('../assets/img/divider-white-single.svg');
+                background-position: bottom left;
+                background-repeat: no-repeat;
+                background-size: 60px 5px;
+                
+                font-size: rem-calc(27);
+                
+                margin-bottom: 20px;
+                padding-bottom: 25px;
+                
+
+
+
+
+
               background-position: bottom center;
               font-size: rem-calc(18);
               text-align: center;

@@ -36,24 +36,27 @@ body.home .feature {
     position: relative;
     
     h2 {
-      @include encode_black;
-      background-image: url('../assets/img/divider-white-single.svg');
-      background-position: bottom left;
-      background-repeat: no-repeat;
-      background-size: 60px 5px;
-      color: $white;
-      display: block;
-      
-      font-size: rem-calc(27);
-      line-height: 1.2;
-      margin-bottom: 20px;
-      padding-bottom: 25px;
-      text-transform: uppercase;
 
-      @media #{$small-only} {
-        background-position: bottom center;
-        font-size: rem-calc(18);
-        text-align: center;
+      @include encode_black;
+      color: $white;
+      font-size: rem-calc(18);
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+     
+
+      @media #{$medium-up} {
+        
+        background-image: url('../assets/img/divider-white-single.svg');
+        background-position: bottom left;
+        background-repeat: no-repeat;
+        background-size: 60px 5px;
+        
+        font-size: rem-calc(27);
+        
+        margin-bottom: 20px;
+        padding-bottom: 25px;
+          
       }
 
     }
