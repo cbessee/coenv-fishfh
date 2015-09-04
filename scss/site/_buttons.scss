@@ -34,6 +34,12 @@
 	background-color: $teal;
 	border-color: $teal-lt;
 	
+
+	@media #{$medium-up} {
+		margin-bottom: rem-calc(25);
+
+	}
+	
 	&:hover {
 		background-color: $teal-dk;
 		border-color: $teal-med;

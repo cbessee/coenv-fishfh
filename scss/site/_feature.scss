@@ -15,8 +15,8 @@ body.home .feature {
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      height: 500px;
       overflow: hidden;
+      padding-bottom: 50px;
       padding-top: 50px;
       position: relative;
       width: 100%;
@@ -50,11 +50,10 @@ body.home .feature {
         background-position: bottom left;
         background-repeat: no-repeat;
         background-size: 60px 5px;
-        
         font-size: rem-calc(27);
-        
         margin-bottom: 20px;
         padding-bottom: 25px;
+        text-align: left;
           
       }
 
@@ -79,16 +78,17 @@ body.home .feature {
     background-color: rgba(0,0,0,0.77);
     display: inline-block;
     float: left;
-    padding: rem-calc(20) rem-calc(20) rem-calc(50) rem-calc(20);
+    
 
     @media #{$medium-up} {
       border: solid 13px #fff;
+      padding: rem-calc(20) rem-calc(20) 0 rem-calc(20);
       width: 480px;
     }
 
     @media #{$small-only} {
       text-align: center;
-      padding: rem-calc(10) rem-calc(10) rem-calc(26) rem-calc(10);
+      padding: rem-calc(10) rem-calc(10) 0 rem-calc(10);
     }
 
   
