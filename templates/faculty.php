@@ -34,7 +34,13 @@ if( !empty( get_field( 'intro_text') ) ) {
 			</footer>
 		</article>
 	<?php endwhile;?>
-
+	<div id="filter" class="row filters show-for-small-only">
+			<h2 class="large-12 columns left">Filter By Research Area</h2>
+			
+			<div class="large-6 columns left" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="category">
+				<?php coenv_base_cat_filter('research_areas', $coenv_cat_term_1); // Category filter ?>
+			</div>
+		</div>
 	<?php
 
 	// Setup WP_QUERY
@@ -72,14 +78,15 @@ if( !empty( get_field( 'intro_text') ) ) {
 	?>
 
 	<?php if ($wp_query->have_posts()): ?>
-	<div class="faculty-list-teach clearfix">
-
 	<?php if ($coenv_cat_1): // Category filter ?>
-		<div class="panel">
-			<div class="left"><?php echo $wp_query->found_posts; ?> faculty working in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
-			<div class="right"><a href="/faculty-research/">All Faculty &raquo;</a></div>
+		<div class="panel clearfix">
+			<div class="left columns small-10"><?php echo $wp_query->found_posts; ?> faculty working in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
+			<div class="right columns small-2"><a href="/faculty-research/">All Faculty &raquo;</a></div>
 		</div>
 	<?php endif; ?>
+	<div class="faculty-list-teach clearfix">
+
+	
 		<?php
 		# The Loop
 		while ( $wp_query->have_posts() ) :

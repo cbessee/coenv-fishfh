@@ -320,7 +320,7 @@ e.breakpoint()&&(e.rtl?(g.css({right:"0%"}),a(">.name",g).css({right:"100%"})):(
         //var url = $(this).parent('div').attr('data-url');
         var cat = $(this).parent('div').attr('data-url');
         var catval = $(this).val();
-        window.location.href = cat + catval;
+        window.location.href = cat + catval + '#filter';
     } );
 });
 
@@ -359,7 +359,7 @@ $.fn.blogHeader = function () {
     $selectCategory.on( 'change', function () {
         var term_id = $(this).val(),
                 url = $(this).parent('div').attr('data-url');
-        window.location.href = url + term_id;
+        window.location.href = url + term_id + '#filter';
     } );
 
     $selectMonth.on( 'change', function () {

@@ -123,6 +123,12 @@ aside#sidebar .solid-widget {
 
 .widget_coenv_base_fac_cats {
 
+	display: none;
+
+	@media #{$medium-up} {
+
+	display: block;
+
 	.filter-cap {
 		@include o_sans_bold;
 		text-transform: uppercase;
@@ -169,3 +175,6 @@ aside#sidebar .solid-widget {
 
 	}
 }
+}
+
+

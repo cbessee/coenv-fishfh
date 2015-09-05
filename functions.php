@@ -242,10 +242,8 @@ $cats = get_categories($cats_args);
 		echo '<ul class="select-category small-block-grid-3">';
  		foreach($cats as $cat) { 
 			$selected = $cat->slug == $tax_value ? ' selected="selected"' : '';
-			echo $cat->slug;
-			echo $tax_value;
 			echo '<option value="?tax=' . $tax . '&term=' . $cat->slug . '"' . $selected . '>' . $cat->name . '</option>';
-			echo '<li><a href="?tax=' . $tax . '&term=' . $cat->slug . '">' . $cat->name . '</a></li>';
+			echo '<li><a href="?tax=' . $tax . '&term=' . $cat->slug . '#filter' . '">' . $cat->name . '</a></li>';
  		}
 		echo '</select>';
 		echo '</ul>';
