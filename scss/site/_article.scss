@@ -45,6 +45,7 @@ strong {
 
 } // .article
 article {
+
 	
 	.columns {
     	padding-left: 0 !important;
@@ -316,8 +317,27 @@ article {
 	img[class*="attachment-"],
 	.wp-caption,
 	.twitter-tweet-rendered {
-		max-width: 100% !important;
+		width: 100% !important;
 		height: auto !important;
+
+
+
+
+
+		@media #{$medium-up} {
+
+			max-width: 100% !important;
+
+		}
+
+		@media #{$small-only} {
+
+			margin-bottom: rem-calc(30) !important;
+
+		}
+
+
+
 	}
 
 	embed,
@@ -364,8 +384,7 @@ div[role="main"] {
 
 
 
-	padding-left: rem-calc(40);
-	margin-top: 2rem;
+	
 }
 
 
@@ -382,12 +401,19 @@ div[role="main"] {
 .page-content {
 	margin-top: 55px;
 }
-.page-template-section-page .page-content {
+.page-template-section-page .page-content,
+.page-template-faculty .page-content {
 	margin-top: 25px;
 }
+
+
 div[role="main"] {
+
+@media #{$medium-up} {
 	margin-top: 20px;
 	padding-bottom: 25px;
+	padding-left: rem-calc(40);
+}
 }
 
 .gallery {
