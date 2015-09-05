@@ -97,7 +97,28 @@
                 'exclude' => $exclude,
             ) );
             remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
-            ?>
+            echo '<ul class="off-canvas-list"><li>';
+           ?>
+
+
+          
+                <a class="primary-link columns small-9" href="/intranet/quicklinks/">
+                    <div class="parent">Quick Links</div>
+                </a>
+                <div class="accordion" data-accordion="">
+                  <div class="accordion-navigation">
+                      <a class="right columns small-3 expander-link" href="#accordion-50"> </a>
+                  </div>
+                </div>
+           
+
+
+
+       
+
+
+
+                
     </nav>
     <?php foundationPress_mobile_off_canvas(); ?>
   </aside>
