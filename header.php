@@ -94,7 +94,7 @@
                 'title_li' => false,
                 'sort_column' => 'menu_order, post_title',
                 'post_type'    => 'page',
-                'exclude' => '$exclude',
+                'exclude' => $exclude,
             ) );
             remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
             ?>
