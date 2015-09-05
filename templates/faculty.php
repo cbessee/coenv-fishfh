@@ -81,7 +81,7 @@ if( !empty( get_field( 'intro_text') ) ) {
 	<?php if ($coenv_cat_1): // Category filter ?>
 		<div class="panel clearfix">
 			<div class="left columns small-10"><?php echo $wp_query->found_posts; ?> faculty working in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
-			<div class="right columns small-2"><a href="/faculty-research/#filters">All Faculty &raquo;</a></div>
+			<div class="right columns small-2"><a href="/faculty-research/#filter">All Faculty &raquo;</a></div>
 		</div>
 	<?php endif; ?>
 	<div class="faculty-list-teach clearfix">
