@@ -15,7 +15,7 @@ if( !empty( get_field( 'intro_text') ) ) {
 ?>
 <div class="full-intro">
 	<div class="row">
-		<?php the_field( 'intro_text' ); ?>
+		<p><?php the_field( 'intro_text' ); ?></p>
 	</div>
 </div>
 <?php } ?>

@@ -630,12 +630,41 @@ p.no-results {
 	margin-top: 25px;
 }
 
-.page-template-section-page .full-intro {
+.page-template-section-page,
+.page-template-faculty {
+	.full-intro {
 
-	p {
-		font-size: rem-calc(25);
-		padding-left: rem-calc(25);
-		padding-right: rem-calc(25);
+		width: 100%;
+		background-color: #f2f2f2;
+		background-image: url('../assets/img/bg-intro.png');
+
+		margin-bottom: 0;
+		padding: rem-calc(50) rem-calc(10) rem-calc(15) rem-calc(10);
+
+		@media #{$medium-up} {
+
+		padding: rem-calc(50) rem-calc(10) rem-calc(35) rem-calc(10);
+			
+		}
+
+		p {
+			font-size: rem-calc(20);
+			line-height: 1.4;
+			padding-left: rem-calc(25);
+			padding-right: rem-calc(25);
+
+			@media #{$medium-up} {
+
+			font-size: rem-calc(25);
+
+			line-height: 1.25;
+			
+			}
+
+
+
+
+		}
 	}
 }
 
