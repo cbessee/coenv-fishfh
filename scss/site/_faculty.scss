@@ -387,7 +387,8 @@ ul.faculty_contact_fields li {
 		
 
 			}
-			&.google-scholar a {
+			&.google-scholar a,
+			&.researchgate a {
 	
 				@media #{$small-only} {
 					background-image: url('../assets/img/icon-fac-google-scholar.svg');
@@ -498,7 +499,10 @@ ul.faculty_contact_fields li {
 
 }
 
-
+.faculty-pubs {
+	border-top: solid 2px #ddd;
+	padding-top: rem-calc(15);
+}
 .faculty-pubs ul li p {
 	font-size: 18px !important;
 	margin-bottom: 0;
