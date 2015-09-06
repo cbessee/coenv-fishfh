@@ -84,7 +84,11 @@ if( !empty( get_field( 'intro_text') ) ) {
 			<div class="right columns small-2"><a href="/faculty-research/#filter">All Faculty &raquo;</a></div>
 		</div>
 	<?php endif; ?>
-	<div class="faculty-list-teach clearfix">
+
+
+
+
+	<ul class="faculty-list-teach clearfix small-block-grid-3 medium-block-grid-4 large-block-grid-5">
 
 	
 		<?php
@@ -104,10 +108,10 @@ if( !empty( get_field( 'intro_text') ) ) {
 		if ( !$faculty_img_src ) {
 			$faculty_img_src = get_template_directory_uri() . '/assets/img/blank-153x153.jpg';
 		}
-		echo '<div class="faculty-list-item">';
+		echo '<li class="faculty-list-item">';
 			echo '<a href="' . $faculty_link . '"><img src="' . $faculty_img_src . '"" alt="' . get_the_title() . '" /></a>';
 			echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
-		echo '</div>';
+		echo '</li>';
 		endwhile;
 		?>
 		<div class="pager">
@@ -116,8 +120,8 @@ if( !empty( get_field( 'intro_text') ) ) {
 			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'FoundationPress' ) ); ?></div>
 			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
 		</nav>
-	<?php } ?>
-  </div>
+		<?php } ?>
+  	</ul>
 		
 
 	</div>
@@ -131,9 +135,7 @@ if( !empty( get_field( 'intro_text') ) ) {
 	<?php endif; ?>
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action( 'foundationPress_after_content' ); ?>
-	</div>
-	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
-	<aside id="sidebar" class="columns">
+	<aside id="sidebar" class="columns show-for-medium-up">
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';
@@ -154,5 +156,8 @@ if( !empty( get_field( 'intro_text') ) ) {
 	endif;
 	?>
 	</aside>
+	</div>
+	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
+	
 </div>
 <?php get_footer(); ?>

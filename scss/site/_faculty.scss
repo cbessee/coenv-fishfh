@@ -90,11 +90,7 @@ article.type-faculty {
 }
 
 .faculty-list-teach .faculty-list-item {
-	float: left;
-	margin-bottom: rem-calc(16px);
-	margin-right: rem-calc(18px);
-	width: rem-calc(143px);
-	min-height: 195px;
+
 	img {
 		border: solid 6px #ebebeb;
 	}
@@ -113,36 +109,7 @@ article.type-faculty {
 
 }
 
-.faculty-list-research .faculty-list,
-.faculty-list-adjunct .faculty-list,
-.faculty-list-emeritus .faculty-list {
-	display:table;
-	width: 100%;
-}
-.faculty-list-research .faculty-list .faculty-list-item,
-.faculty-list-adjunct .faculty-list .faculty-list-item,
-.faculty-list-emeritus .faculty-list .faculty-list-item {
-	display:table-row;
 
-	.faculty-name h3 {
-		font-weight: normal;
-		font-size: 1rem;
-		@include sans;
-	}
-
-	&.even {
-		background-color: #ddd;
-	}
-}
-.faculty-list-research .faculty-list .faculty-list-item div,
-.faculty-list-adjunct .faculty-list .faculty-list-item div,
-.faculty-list-emeritus .faculty-list .faculty-list-item div {
-	display:table-cell;
-    width:25%;
-}
-.faculty-list-emeritus {
-	margin-bottom: rem-calc(153px);
-}
 .page-id-80 h2 {
 	@include font-size(24);	
 }

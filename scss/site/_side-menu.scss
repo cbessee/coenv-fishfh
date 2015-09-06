@@ -12,17 +12,27 @@ aside#sidebar {
   		border-right: 6px solid #ebebeb;
 
 		h2 {
-		background-image: url("../assets/img/icon-menu.png");
-		background-position: 0px 17px;
-		background-repeat: no-repeat;
+
+
 		font-size: rem-calc(26);
 		line-height: 1;
 		min-height: 55px;
   		margin-bottom: 0;
-  		margin-left: 16px;
+  		
   		padding-bottom: 0;
+  		padding-left: rem-calc(15);
   		padding-top: 24px;
-  		padding-left: 50px;
+
+  		@media #{$large-up} {
+
+		background-image: url("../assets/img/icon-menu.png");
+		background-position: 0px 17px;
+		background-repeat: no-repeat;
+		margin-left: 16px;
+		padding-left: 50px;
+
+		}
+  		
   		}
 
 		a {

@@ -140,7 +140,7 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 	<?php do_action('foundationPress_after_content'); ?>
 	</div>
 <?php wp_reset_postdata(); wp_reset_query(); ?>
-	<aside id="sidebar" class="columns">
+	<aside id="sidebar" class="columns show-for-medium-up">
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';

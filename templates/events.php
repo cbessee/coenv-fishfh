@@ -47,7 +47,7 @@ get_header();
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_before_content'); ?>
 	</div>
-	<aside id="sidebar" class="columns">
+	<aside id="sidebar" class="columns show-for-medium-up">
 	<?php
 	if (!is_front_page()) {
 		echo '<div class="coenv_base_subnav">';

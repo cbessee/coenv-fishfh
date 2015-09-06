@@ -19,9 +19,14 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 ?>
 
 <div class="row page-content">
-	<div class="columns" role="main">
-		<div class="article__header faculty__header">
-			<h1 class="article__title"><?php the_title(); ?></h1>
+
+
+
+	<aside id="sidebar" class="columns">
+	<div class="faculty-info right">
+	<?php echo $faculty_img; ?>
+	<div class="show-for-small-only">
+		<h1><?php the_title(); ?></h1>
 			<?php if( have_rows('job_titles') ) { ?>
 			<ul class="job-titles">
 			<?php while ( have_rows('job_titles') ) : the_row(); ?>
@@ -29,44 +34,7 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 			<?php endwhile; ?>
 			</ul>
 			<?php } ?>
-		</div>
-		<div class="entry-content">
-
-		<?php if ( have_posts() ) : ?>
-		<?php while ( have_posts() ) : the_post() ?>
-			<div class="article__categories">
-				<h2>Research areas</h2>
-				<?php coenv_base_fac_terms($post->ID); ?>
-			</div>
-			<div class="article__content">
-			<?php the_content(); ?>
-			<?php if( have_rows( 'selected_pubs' ) ) { ?>
-				<div class="faculty-pubs">
-					<h2>Selected publications</h3>
-					<ul>
-						<?php while ( have_rows( 'selected_pubs' ) ) : the_row(); ?>
-						<li><?php echo the_sub_field( 'publication' ); ?></li>
-						<?php endwhile; ?>
-					</ul>
-				</div>
-			<?php } ?>
-			</div>
-
-<?php endwhile ?>
-<?php endif ?>
-</div>
-
-<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
-<div id="after-content" class="after-content widget-area" role="complementary">
-<?php dynamic_sidebar( 'after-content' ); ?>
-</div><!-- #after-content -->
-<?php endif; ?>
-</article>	
-<?php do_action('foundationPress_after_content'); ?>
-</div>
-<aside id="sidebar" class="columns">
-	<div class="faculty-info right">
-	<?php echo $faculty_img; ?>
+	</div>
 	<ul class="faculty_contact_fields">
 
 	<?php 
@@ -135,5 +103,57 @@ if ($faculty_website_url) { ?>
 </ul>		
 </div>
 </aside>
+
+
+
+
+
+
+	<div class="columns" role="main">
+		<div class="article__header faculty__header">
+			<h1 class="article__title"><?php the_title(); ?></h1>
+			<?php if( have_rows('job_titles') ) { ?>
+			<ul class="job-titles">
+			<?php while ( have_rows('job_titles') ) : the_row(); ?>
+				<li><?php the_sub_field('job_title'); ?></li>
+			<?php endwhile; ?>
+			</ul>
+			<?php } ?>
+		</div>
+		<div class="entry-content">
+
+		<?php if ( have_posts() ) : ?>
+		<?php while ( have_posts() ) : the_post() ?>
+			<div class="article__categories">
+				<h2>Research areas</h2>
+				<?php coenv_base_fac_terms($post->ID); ?>
+			</div>
+			<div class="article__content">
+			<?php the_content(); ?>
+			<?php if( have_rows( 'selected_pubs' ) ) { ?>
+				<div class="faculty-pubs">
+					<h2>Selected publications</h3>
+					<ul>
+						<?php while ( have_rows( 'selected_pubs' ) ) : the_row(); ?>
+						<li><?php echo the_sub_field( 'publication' ); ?></li>
+						<?php endwhile; ?>
+					</ul>
+				</div>
+			<?php } ?>
+			</div>
+
+<?php endwhile ?>
+<?php endif ?>
+</div>
+
+<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+<div id="after-content" class="after-content widget-area" role="complementary">
+<?php dynamic_sidebar( 'after-content' ); ?>
+</div><!-- #after-content -->
+<?php endif; ?>
+</article>	
+<?php do_action('foundationPress_after_content'); ?>
+</div>
+
 </div>	
 <?php get_footer(); ?>
