@@ -18,11 +18,11 @@
                 <?php get_search_form() ?>
                 <div class="social-buttons">
                 <?php if (get_option('facebook')) { ?>
-                    <a class="facebook button" href="<?php echo get_option('facebook'); ?>" title="Join us on Facebook">
+                    <a class="facebook button" href="<?php echo get_option('facebook'); ?>" title="Join us on Facebook" target="_blank">
                         <i class="fi-social-facebook"></i>
                     </a><?php } ?>
                 <?php if (get_option('twitter')) { ?>
-                    <a class="twitter button" href="<?php echo 'http://twitter.com/' . get_option('twitter'); ?>" data-site-twitter="<?php echo get_option('twitter'); ?>" title="Join us on Twitter">
+                    <a class="twitter button" href="<?php echo 'http://twitter.com/' . get_option('twitter'); ?>" data-site-twitter="<?php echo get_option('twitter'); ?>" title="Join us on Twitter" target="_blank">
                             <i class="fi-social-twitter"></i>
                     </a><?php } ?>
                 <?php if (get_option('youtube')) { ?>
