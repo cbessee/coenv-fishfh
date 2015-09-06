@@ -50,20 +50,26 @@ figcaption {
 div[role="main"] {
     @extend .right;
     @extend .small-12;
-    @media #{$small-up} { 
+    @media #{$small-only} { 
         width: 100% !important;
     }
-    @media #{$medium-up} { 
+    @media #{$medium-only} { 
+        width: 65% !important;
+    }
+    @media #{$large-up} { 
         width: 72% !important;
     }
 
 }
 #sidebar {
     @extend .left;
-    @media #{$small-up} { 
+    @media #{$small-only} { 
         width: 100% !important;
     }
-    @media #{$medium-up} { 
+    @media #{$medium-only} { 
+        width: 35% !important;
+    }
+    @media #{$large-up} { 
         width: 28% !important;
     }
     

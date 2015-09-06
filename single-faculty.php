@@ -25,8 +25,8 @@ $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 	<aside id="sidebar" class="columns">
 	<div class="faculty-info right">
 	<?php echo $faculty_img; ?>
-	<div class="show-for-small-only">
-		<h1><?php the_title(); ?></h1>
+	<div class="show-for-small-only faculty__header">
+		<h1 class="article__title"><?php the_title(); ?></h1>
 			<?php if( have_rows('job_titles') ) { ?>
 			<ul class="job-titles">
 			<?php while ( have_rows('job_titles') ) : the_row(); ?>
@@ -110,7 +110,7 @@ if ($faculty_website_url) { ?>
 
 
 	<div class="columns" role="main">
-		<div class="article__header faculty__header">
+		<div class="article__header faculty__header show-for-medium-up">
 			<h1 class="article__title"><?php the_title(); ?></h1>
 			<?php if( have_rows('job_titles') ) { ?>
 			<ul class="job-titles">
@@ -120,7 +120,7 @@ if ($faculty_website_url) { ?>
 			</ul>
 			<?php } ?>
 		</div>
-		<div class="entry-content">
+		<div class="entry-content left">
 
 		<?php if ( have_posts() ) : ?>
 		<?php while ( have_posts() ) : the_post() ?>

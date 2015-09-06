@@ -372,16 +372,7 @@ article {
 
 
 
-div[role="main"] {
 
-
-
-
-
-
-
-	
-}
 
 
 
@@ -404,12 +395,24 @@ div[role="main"] {
 
 
 div[role="main"] {
-
-@media #{$medium-up} {
 	margin-top: 20px;
 	padding-bottom: 25px;
-	padding-left: rem-calc(40);
-}
+
+	@media #{$medium-only} {
+		padding-left: rem-calc(0);
+	}
+
+	@media #{$large-up} {
+		padding-left: rem-calc(40);
+	}
+
+
+
+
+
+
+
+
 }
 
 .gallery {
@@ -497,7 +500,7 @@ div:first-child {
 	
 	h2 {
 		@include encode_black;
-		font-size: rem-calc(16);
+		font-size: rem-calc(18);
 		margin-bottom: rem-calc(5);
 		text-transform: uppercase;
 	}

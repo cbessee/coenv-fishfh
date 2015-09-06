@@ -121,13 +121,7 @@ article.type-faculty {
 .article__categories {
 	margin-bottom: 1rem;
 }
-.article__categories h2 {
-	@include rem('font-size', 1);
-	line-height: 1;
-	@include sans;
-	padding: 0;
-	margin: 0 0 20px 0;
-}
+
 
 
 div[role="main"] ul.fac-cats {
@@ -144,7 +138,8 @@ li {
 		@include o_sans_bold;
 		border: solid 4px #82cfcc;
 		color: #000;
-		margin-right: 10px;
+		margin-bottom: rem-calc(5);
+		margin-right: rem-calc(5);
 		padding: 5px 10px;
 		text-transform: uppercase;
 
@@ -167,14 +162,35 @@ li {
 
 
 .faculty__header {
-background-image: url("/wp-content/themes/coenv-fish/assets/img/bg-intro.png");
-border: 5px solid #ebebec;
-margin-bottom: 30px;
-padding: 18px 40px;
+
+	background-image: url("/wp-content/themes/coenv-fish/assets/img/bg-intro.png");
+	border-top: 5px solid #ebebec;
+	padding: rem-calc(15);
+
+
+
+
+
+@media #{$medium-up} {
+	border: 5px solid #ebebec;
+	margin-bottom: 30px;
+	padding: 18px 40px;
+
+}
+
+
+
 
 h1.article__title {
-	font-size: 40px;
+	@include encode_black;
+	font-size: rem-calc(24);
 	margin-bottom: 0;
+	text-transform: uppercase;
+
+	@media #{$medium-up} {
+
+	font-size: rem-calc(32);
+	}
 }
 	
 }
@@ -189,19 +205,31 @@ ul.job-titles {
 
 	li {
 	@include encode;
-	font-size: 26px;
+	font-size: rem-calc(18);
 	list-style: none;
+
+	@media #{$medium-up} {
+
+		font-size: rem-calc(22);
+
+
+	}
 	}
 
 }
 .single-faculty {
 	.entry-content {
-		margin-left: 40px;
+		margin-left: 0;
+		margin-top: rem-calc(25);
 	}
 	.article__categories h2 {
 		@include encode_black;
-		font-size: 14px;
+		
 		text-transform: uppercase;
+		font-size: rem-calc(18);
+		line-height: 1;
+		padding: 0;
+		margin: 0 0 20px 0;
 	}
 }
 .faculty-info {
@@ -216,7 +244,7 @@ ul.job-titles {
 		line-height: 10px;
 		width: 100%;
 
-ul {	
+ul.faculty_contact_fields {	
 	background-image: url('../assets/img/nav-border-top-green.png');
 		background-position: left bottom;
 		background-repeat: no-repeat;
@@ -224,7 +252,7 @@ ul {
 		margin-left: 0;
 }
 
-li {
+ul.faculty_contact_fields li {
 			@include o_sans_bold;
 			display: block;
 			background-image: url('../assets/img/nav-border-top-green.png');
@@ -232,9 +260,19 @@ li {
 			background-position: left top;
 			line-height: 1.2;
 			margin: 0;
-			padding: 0 0 0 15px;
+			
 			text-transform: uppercase;
 			font-size: 1rem;
+
+			@media #{$small-only} {
+				padding-left: rem-calc(15);
+			}
+
+
+
+			@media #{$large-up} {
+				padding-left: rem-calc(15);
+			}
 
 			
 
@@ -246,7 +284,7 @@ li {
 			}
 			a {
 				@include o_sans_bold;
-				display: block;
+				display: inline-block;
 				font-size: rem-calc(18);
 				padding: 16px 16px 14px 16px;
 
@@ -261,97 +299,172 @@ li {
 			&.email a {
 	
 
+					
+				display: inline-block;
+				
+
+				@media #{$small-only} {
 					background-image: url('../assets/img/icon-fac-mail.svg');
 					background-position: left center;
 					background-repeat: no-repeat;
 					background-size: 29px 20px;
-					display: inline-block;
 					padding-left: 40px;
+
+				}
+
+				@media #{$large-up} {
+					background-image: url('../assets/img/icon-fac-mail.svg');
+					background-position: left center;
+					background-repeat: no-repeat;
+					background-size: 29px 20px;
+					padding-left: 40px;
+
+				}
 		
 
 			}
 			&.phone-numbers a {
 	
-
+				@media #{$small-only} {
 					background-image: url('../assets/img/icon-fac-phone.svg');
 					background-position: left center;
 					background-repeat: no-repeat;
 					background-size: 25px 27px;
-					display: inline-block;
 					padding-left: 40px;
+				}
+
+				@media #{$large-up} {
+					background-image: url('../assets/img/icon-fac-phone.svg');
+					background-position: left center;
+					background-repeat: no-repeat;
+					background-size: 25px 27px;
+					padding-left: 40px;
+				}
 		
 
 			}
 			&.location a {
 	
-
+				@media #{$small-only} {
 					background-image: url('../assets/img/icon-fac-loc.svg');
 					background-position: left center;
 					background-repeat: no-repeat;
 					background-size: 28px 27px;
-					display: inline-block;
 					padding-left: 40px;
+				}
+
+				@media #{$large-up} {
+					background-image: url('../assets/img/icon-fac-loc.svg');
+					background-position: left center;
+					background-repeat: no-repeat;
+					background-size: 28px 27px;
+					padding-left: 40px;
+				}
 		
 
 			}
 			&.twitter a {
+
+				@media #{$small-only} {
 	
 
 					background-image: url('../assets/img/icon-fac-twitter.svg');
 					background-position: left center;
 					background-repeat: no-repeat;
 					background-size: 25px 20px;
-					display: inline-block;
 					padding-left: 40px;
+				}
+
+				@media #{$large-up} {
+	
+
+					background-image: url('../assets/img/icon-fac-twitter.svg');
+					background-position: left center;
+					background-repeat: no-repeat;
+					background-size: 25px 20px;
+					padding-left: 40px;
+				}
 		
 
 			}
 			&.google-scholar a {
 	
-
+				@media #{$small-only} {
 					background-image: url('../assets/img/icon-fac-google-scholar.svg');
 					background-position: left center;
 					background-repeat: no-repeat;
 					background-size: 29px 19px;
-					display: inline-block;
 					padding-left: 40px;
+				}
+
+				@media #{$large-up} {
+					background-image: url('../assets/img/icon-fac-google-scholar.svg');
+					background-position: left center;
+					background-repeat: no-repeat;
+					background-size: 29px 19px;
+					padding-left: 40px;
+				}
 		
 
 			}
 			&.scival a {
 	
-
+				@media #{$small-only} {
 					background-image: url('../assets/img/icon-fac-scival.svg');
 					background-position: left center;
 					background-repeat: no-repeat;
 					background-size: 28px 29px;
-					display: inline-block;
 					padding-left: 40px;
+				}
+
+				@media #{$large-up} {
+					background-image: url('../assets/img/icon-fac-scival.svg');
+					background-position: left center;
+					background-repeat: no-repeat;
+					background-size: 28px 29px;
+					padding-left: 40px;
+				}
 		
 
 			}
 			&.cv a {
 	
-
+				@media #{$small-only} {
 					background-image: url('../assets/img/icon-fac-cv.svg');
 					background-position: left center;
 					background-repeat: no-repeat;
 					background-size: 19px 27px;
-					display: inline-block;
 					padding-left: 40px;
+				}
+
+				@media #{$large-up} {
+					background-image: url('../assets/img/icon-fac-cv.svg');
+					background-position: left center;
+					background-repeat: no-repeat;
+					background-size: 19px 27px;
+					padding-left: 40px;
+				}
 		
 
 			}
 
 			&.faculty-website a {
-	
-
+				
+				@media #{$small-only} {
 					background-image: url('../assets/img/icon-fac-link.svg');
 					background-position: left center;
 					background-repeat: no-repeat;
 					background-size: 28px 28px;
-					display: inline-block;
 					padding-left: 40px;
+				}
+
+				@media #{$large-up} {
+					background-image: url('../assets/img/icon-fac-link.svg');
+					background-position: left center;
+					background-repeat: no-repeat;
+					background-size: 28px 28px;
+					padding-left: 40px;
+				}
 		
 
 			}
