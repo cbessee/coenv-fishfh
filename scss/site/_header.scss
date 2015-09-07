@@ -132,171 +132,74 @@ height: 126px;
 // Production styles
 
 .full-header {
-
-
- 
-
-
-
-    background: $black;
+    background-color: $black;
     border-bottom: solid 7px #4b2e83;
-    height: 125px;
-    width: 100%;
+    height: 126px;
 
-
-
-    // Trying different header
-
-
-
-#desktop-logo {
-
-    
-    
-
-        svg {
-        fill: $white;
-        height: rem-calc(110);
-        margin: rem-calc(18) 0 0 0;
-
-        
-        }
-
-
-}
-
-.unit-name {
-height: rem-calc(150);
-margin-left: 25px;
-position: relative;
-    width: 61%;
-
-
-    @media #{$large-only} {
-
-        width: 80%;
-
-    }
-    
-}
-h1 {
-
+    .name {
+    h1 {
         @include encode_black;
-        float: left;
-        font-size: rem-calc(27);
-        letter-spacing: .15rem;
-        margin-top: 0;
-        margin-bottom: 0;
-        vertical-align: center;
-        
+        font-weight: 500!important;
         text-transform: uppercase;
-        
-        position: absolute;
-        top: 45%;
-        transform: translateY(-45%);
-
-         @media #{$medium-only} {
-
-
-         top: 30%;
-    transform: translateY(-30%);
-
-
-
-
-
-         }
-        
-        @media #{$small-only} {
-            font-size: rem-calc(16);
+        font-size: rem-calc(20)!important;
+        margin-top: rem-calc(18);
+        margin-bottom: -1px;
+        padding-left: 25px;
+        @media #{$large-up} {
+            font-size: rem-calc(30)!important;
         }
-        
+        float: left;
+
         a {
             color: $white;
         }
+        img {
+            height: 108px;
+        }
+        span {
+             display: inline-block;
+            padding-left: 20px;
+        }
     }
-    .unit-wrapper {
-         background-image: url('/wp-content/themes/coenv-fish/assets/img/logotype-divider.png');
+    #desktop-logo {
+        fill: $accent;
+        width: rem-calc(158);
+        height: rem-calc(106);
+        margin-right: rem-calc(10);
+        vertical-align: middle;
+        
+        span {
+            @extend .visuallyhidden;
+
+        }
+    }
+
+    .units {
+    background-image: url('/wp-content/themes/coenv-fish/assets/img/logotype-divider.png');
         background-position: center left;
         background-repeat: no-repeat;
-        height: rem-calc(126);
-        margin-left: 18px;
-        width: 260px;
-
-
-
-
-
-    }
-    .units {
-
-       
-        
-        list-style: none;
-        
- position: relative;
-  top: 49%;
-  transform: translateY(-49%);
-        text-align: left;
-
-        .slash {
-            margin: 0 rem-calc(12);
-        }
-        .uw-name {
-            margin-right: rem-calc(16);
-        }
-
-
-
-
-
-
-
-
-        a {
-
-        img {
-
-            &.logotype-college {
-            height: 12px;
-            width: 205px;
-
-            }
-            &.logotype-uw {
-                 height: 13px;
-                width: 189px;
-
-
-            }
-
-
-
-        }
-
-
-    }
-
-
-
-
-    // end experiment
-
-
-
-
-
-
-
-
+    float: right;
+    list-style: none;
+    margin: rem-calc(48) 0 0 0;
+    padding-left: 40px;
+    padding-top: 5px;
     
-
-
+    .slash {
+        margin: 0 rem-calc(12);
+    }
     
+    .uw-name {
+        margin-right: rem-calc(16);
+    }
+    }
+}
+
+
+
 }
 .title-row .columns {
     padding-left: 0;
     padding-right: 0;
-}
 }
 .page-row {
     background-repeat: no-repeat;
