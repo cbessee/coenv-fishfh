@@ -145,61 +145,19 @@ height: 126px;
 
 
 
-    // Trying different header
 
-
-
-#desktop-logo {
-
-
-    
-
-        svg {
-        fill: $white;
-        height: rem-calc(110);
-        margin: rem-calc(18) 0 -3px 0;
-
-        vertical-align: middle;
-        
-        }
-
-
-}
-
-.unit-name {
-height: rem-calc(126);
-margin-left: 25px;
-    width: 61%;
-
-
-    @media #{$large-only} {
-
-        width: 80%;
-
-    }
-    
-}
-h1 {
+    h1 {
 
         @include encode_black;
         float: left;
         font-size: rem-calc(27);
         letter-spacing: .15rem;
-        vertical-align: center;
+        margin: rem-calc(18) 0 -3px 0;
         
         text-transform: uppercase;
-        
-        position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-
-         @media #{$medium-only} {
 
 
 
-
-
-         }
         
         @media #{$small-only} {
             font-size: rem-calc(16);
@@ -209,28 +167,26 @@ h1 {
             color: $white;
         }
     }
-    .unit-wrapper {
-         background-image: url('/wp-content/themes/coenv-fish/assets/img/logotype-divider.png');
-        background-position: center left;
-        background-repeat: no-repeat;
-        height: rem-calc(126);
-        margin-left: 18px;
-        width: 260px;
-
-
-
-
-
+    #desktop-logo {
+        fill: $white;
+        width: rem-calc(157);
+        height: rem-calc(110);
+        margin-right: rem-calc(25);
+        vertical-align: middle;
+        
+        span {
+            @extend .visuallyhidden;
+        }
     }
-    .units {
 
-       
-        
+    .units {
+        background-image: url('/wp-content/themes/coenv-fish/assets/img/logotype-divider.png');
+        background-position: top left;
+        background-repeat: no-repeat;
         list-style: none;
-        
- position: relative;
-  top: 49%;
-  transform: translateY(-49%);
+        margin: rem-calc(51) 0 0 0;
+        padding-left: 29px;
+        padding-top: 4px;
         text-align: left;
 
         .slash {
@@ -239,6 +195,7 @@ h1 {
         .uw-name {
             margin-right: rem-calc(16);
         }
+
 
 
 
@@ -269,27 +226,6 @@ h1 {
 
 
     }
-
-
-
-
-    // end experiment
-
-
-
-
-
-
-
-
-    
-
-
-    
-}
-.title-row .columns {
-    padding-left: 0;
-    padding-right: 0;
 }
 }
 .page-row {
