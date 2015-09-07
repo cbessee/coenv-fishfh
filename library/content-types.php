@@ -15,7 +15,7 @@ function coenv_base_post_types_init() {
       'edit_item' => __( 'Edit Faculty Member'),
       'new_item' => __( 'New Faculty'),
       ),
-    //'hierarchical' => true,
+    'hierarchical' => true,
     'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
     'public' => true,
     'has_archive' => false,
@@ -53,9 +53,9 @@ function coenv_base_post_types_init() {
       'new_item' => __( 'New Blog Post'),
       ),
     //'hierarchical' => true,
-    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+    'supports' => array('title', 'editor', 'thumbnail', 'revisions'),
     'public' => true,
-    'has_archive' => false,
+    //'has_archive' => false,
     'show_ui' => true,
     //'rewrite' => array('slug' => '/news-events/student-services-blog/'),
   'menu_icon' => 'dashicons-exerpt-view',
@@ -86,7 +86,7 @@ add_action( 'init', 'coenv_base_post_types_init' );
 
 /*
  * Add author option to existing post types
- */
+
 
 function coenv_author_support() {
   add_post_type_support( 'faculty', 'author' );
