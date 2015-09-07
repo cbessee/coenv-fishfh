@@ -151,15 +151,14 @@ height: 126px;
 
 #desktop-logo {
 
-
+    
     
 
         svg {
         fill: $white;
         height: rem-calc(110);
-        margin: rem-calc(18) 0 -3px 0;
+        margin: rem-calc(18) 0 0 0;
 
-        vertical-align: middle;
         
         }
 
@@ -167,8 +166,9 @@ height: 126px;
 }
 
 .unit-name {
-height: rem-calc(126);
+height: rem-calc(150);
 margin-left: 25px;
+position: relative;
     width: 61%;
 
 
@@ -185,15 +185,21 @@ h1 {
         float: left;
         font-size: rem-calc(27);
         letter-spacing: .15rem;
+        margin-top: 0;
+        margin-bottom: 0;
         vertical-align: center;
         
         text-transform: uppercase;
         
-        position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+        position: absolute;
+        top: 45%;
+        transform: translateY(-45%);
 
          @media #{$medium-only} {
+
+
+         top: 30%;
+    transform: translateY(-30%);
 
 
 
