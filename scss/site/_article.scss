@@ -313,8 +313,7 @@ article {
 	img[class*="attachment-"],
 	.wp-caption,
 	.twitter-tweet-rendered {
-		width: 100% !important;
-		height: auto !important;
+
 
 
 
@@ -327,9 +326,9 @@ article {
 		}
 
 		@media #{$small-only} {
-
+			height: auto !important;
 			margin-bottom: rem-calc(30) !important;
-
+			width: 100% !important;
 		}
 
 
