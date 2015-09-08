@@ -371,7 +371,11 @@ width: 30px;
 
 
 
+.full-news-events .columns {
+  padding-right: 0!important;
 
+
+}
 
 
 
@@ -472,9 +476,7 @@ width: 30px;
   border-top: 5px solid #ebebeb;
   border-left: 5px solid #ebebeb;
   border-right: 5px solid #ebebeb;
-  margin-right: 15px;
   text-align: left;
-  width: 370px; 
 
 
   }
@@ -503,6 +505,10 @@ width: 30px;
       padding: 16px 20px 0 20px;
       text-decoration: none;
       text-transform: uppercase;
+    }
+    @media #{$medium-only} {
+
+      font-size: rem-calc(18);
     }
 
     
