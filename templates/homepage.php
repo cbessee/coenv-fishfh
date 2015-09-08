@@ -260,7 +260,6 @@ if ($wp_query->have_posts()):
 
 				</div>
 				<div class="columns small-12 medium-4 news-column">
-				
 				<?php
 				$wp_query = new WP_Query( $home_col_2_args );
 				while ( $wp_query->have_posts() ) :
@@ -311,14 +310,13 @@ if ($wp_query->have_posts()):
 
 				</div>
 				<div class="columns small-12 medium-4 news-column">
-
 				<?php
 				if ($events_count < 4) {
 					$posted_exclude = implode(',',$posted);
 					$home_col_3_args = array(
 						'offset' => 1,
 						'post_type' => 'post',
-						'post__not_in' => array($posted_exclude),//$posted,
+						'post__not_in' => $posted,//$posted,
 						'posts_per_page' => 1,
 						'post_status' => 'publish',
 				);
