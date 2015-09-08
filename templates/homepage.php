@@ -318,7 +318,7 @@ if ($wp_query->have_posts()):
 					$home_col_3_args = array(
 						'offset' => 1,
 						'post_type' => 'post',
-						'post__not_in' => $posted,//$posted,
+						'post__not_in' => array($posted_exclude),//$posted,
 						'posts_per_page' => 1,
 						'post_status' => 'publish',
 				);
