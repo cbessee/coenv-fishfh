@@ -23,10 +23,10 @@ $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
 		<div class="article__content">
 		<div class="row filters">
 			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-				<?php coenv_base_cat_filter('category', $coenv_cat_term_1); // Category filter ?>
+				<?php coenv_base_cat_filter('blog_category', $coenv_cat_term_1); // Category filter ?>
 			</div>
 			<div class=" large-6 columns" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="blog_category">
-				<?php coenv_base_date_filter('post',$coenv_month,$coenv_year); // Date filter ?>
+				<?php coenv_base_date_filter('student_blog',$coenv_month,$coenv_year); // Date filter ?>
 		 	</div>
 		</div>
 		<?php
