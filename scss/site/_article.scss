@@ -385,7 +385,7 @@ article {
 
 }
 .page-content {
-	margin-top: 0;
+	margin-top: rem-calc(25);
 
 
 	@media #{$medium-up} {
@@ -552,16 +552,9 @@ div:first-child {
 	font-size: 16px;
 	@include o_sans;
 	margin-bottom: 40px;
-	padding-left: 0;
-	padding-right: 0;
+
 	text-transform: uppercase;
 	width: 100%;
-
-
-
-	.page-template-news & {
-		border-top: 0;
-	}
 
 	strong {
 		@include o_sans_bold;
@@ -578,15 +571,13 @@ div:first-child {
 		width: 20px;
 		text-indent: 100%;
 		white-space: nowrap;
-overflow: hidden;
+		overflow: hidden;
 
-		&:hover {
-			background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-close-on.svg');
+			&:hover {
+				background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-close-on.svg');
 
+			}
 		}
-		}
-
-
 	p:first-child {
 		float:left;
 		width: 75%;
@@ -595,13 +586,6 @@ overflow: hidden;
 		float: right;
 		width: 25%;
 		text-align: right;
-
-
-
-
-
-
-
 	}
 	.button {
 	margin-bottom: 0;
