@@ -32,7 +32,7 @@
 			margin: 0;
 			color: $white;
 			font-size: rem-calc(20);
-			@include line-height(20);
+			line-height: 1.2;
 			@include encode_cb;
 			text-transform: uppercase;
 
