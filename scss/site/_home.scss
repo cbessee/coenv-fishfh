@@ -6,13 +6,13 @@ body.home {
 .full-feature {
    
   background-color: $black;
-  min-height: 358px;
+  min-height: rem-calc(356);
   overflow: visible;
   position: relative;
   width: 100%;
 
   @media #{$medium-up} {
-    height: 458px;
+    height: rem-calc(456);
     overflow: hidden;
   }
 
@@ -169,41 +169,19 @@ body.home {
       }
     } // h2
 
+
 .social-buttons {
-  
+  margin-top: 40px;
   display: inline-block;
-  float: right;
-  padding: rem-calc(18) 0 0 0;
-
-  @media #{$medium-up} {
-
-    float: none;
-    margin-top: 30px;
-
-
-
-  }
-
-
-
-
 }
  a.icon {
- background-size: 70%;
   display: inline-block;
   float: left;
-  margin-left: 20px; 
+  margin-left: 40px; 
   text-indent: -10000px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-
-  @media #{$medium-up} {
-
-    background-size: 100%;
-    margin-left: 30px;
-
-  }
 
   &:first-child {
     margin-left: 0;
@@ -213,23 +191,11 @@ body.home {
 
 
 a.facebook {
-  background-size: 70%;
-  
-
-
-
   background-image: url('/wp-content/themes/coenv-fish/assets/img/icon-facebook.svg');
   background-position: top left;
   background-repeat: no-repeat;
   height: 30px;
-  margin-left: 15px;
   width: 13px;
-
-  @media #{$medium-up} {
-    
-  }
-
-  
 }
 
 a.twitter {
@@ -290,6 +256,11 @@ width: 30px;
 
 
 }
+
+
+
+
+
 
 
 
