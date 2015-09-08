@@ -385,7 +385,7 @@ article {
 
 }
 .page-content {
-	margin-top: rem-calc(25);
+	margin-top: 0;
 
 
 	@media #{$medium-up} {
@@ -406,7 +406,7 @@ article {
 
 
 	@media #{$medium-up} {
-		margin-top: rem-calc(55);
+		margin-top: rem-calc(35);
 
 
 
@@ -578,6 +578,8 @@ div:first-child {
 
 			}
 		}
+
+
 	p:first-child {
 		float:left;
 		width: 75%;
