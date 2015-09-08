@@ -157,12 +157,12 @@ aside#sidebar .solid-widget {
 	li {
 		@include encode_black;
 		background-image: url('/wp-content/themes/coenv-fish/assets/img/filter-selecter.svg');
-		background-position: .5rem center;
+		background-position: left top;
 		background-repeat: no-repeat;
 		background-size: rem-calc(25) rem-calc(25);
 		list-style: none;
 		margin: 0 .5rem 0 0;
-		padding: .5rem 0 .5rem 3rem;
+		padding: .2rem 0 .5rem 3rem;
 		text-transform: uppercase;
 
 		a {
