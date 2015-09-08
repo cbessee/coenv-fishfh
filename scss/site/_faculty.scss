@@ -1,6 +1,37 @@
-body.page-template-templatesfaculty-php .pager {
+body.page-template-templatesfaculty-php {
+
+.pager {
 	width: 100%;
 	float: left;
+}
+
+@media #{$small-only} {
+
+
+	.row.filters h2 {
+
+		text-align: center;
+
+
+	}
+}
+
+.article__content {
+
+	@media #{$small-only} {
+
+	text-align: center;
+
+	}
+
+	.row.filters h2 {
+
+		text-align: center;
+
+
+	}
+}
+
 }
 
 article.type-faculty {
@@ -91,9 +122,29 @@ article.type-faculty {
 
 .faculty-list-teach .faculty-list-item {
 
-	img {
-		border: solid 6px #ebebeb;
-	}
+	&:hover {
+            img {
+                -webkit-transform:scale(1.05);
+                -moz-transform:scale(1.05);
+                -ms-transform:scale(1.05);
+                -o-transform:scale(1.05);
+                 transform:scale(1.05);
+            }
+        }
+
+
+
+
+	overflow: hidden;
+    img {
+    	border: 5px solid #ebebec;
+        -webkit-transition: all .2s ease; 
+        -moz-transition: all .2s ease;
+        -o-transition: all .2s ease; 
+        -ms-transition: all .2s ease;
+        transition: all .2s ease;
+        max-width: 100%;
+    }
 	h3 {
 		@include o_sans_bold;
 		font-size: 1rem;

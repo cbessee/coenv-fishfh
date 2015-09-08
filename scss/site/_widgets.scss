@@ -128,7 +128,8 @@ aside#sidebar .solid-widget {
 	@media #{$medium-up} {
 
 	display: block;
-
+	margin-bottom: rem-calc(30) !important;
+	margin-left: rem-calc(20);
 	.filter-cap {
 		@include o_sans_bold;
 		text-transform: uppercase;
@@ -141,7 +142,8 @@ aside#sidebar .solid-widget {
 		background-position: bottom left;
 		background-repeat: no-repeat;
 		background-size: rem-calc(45) rem-calc(6);
-		padding-bottom: rem-calc(20);
+		margin-top: 0;
+		padding-bottom: rem-calc(10);
 		text-transform: uppercase;
 		@include encode_black;
 		text-transform: uppercase;
