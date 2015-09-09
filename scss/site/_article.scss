@@ -373,46 +373,43 @@ article {
 
 
 
-
-
-.page-template-section-page,
-.page-template-faculty, 
-.page-template-news,
-.page-template-student_blog {
-
-
-
-
-}
 .page-content {
 	margin-top: 0;
 
+	.page-template-section-page & {
+		margin-top: 0;
 
-	@media #{$medium-up} {
-		margin-top: rem-calc(55);
-
-
-
+		@media #{$medium-up} {
+			margin-top: rem-calc(35);
+		}
 
 	}
-
-
-
-
-}
-.page-template-section-page .page-content,
-.page-template-faculty .page-content {
-	margin-top: 0;
-
-
-	@media #{$medium-up} {
+	.single-post &,
+	.single-student-blog &,
+	.single-faculty &,
+	.page-template-student-blog & {
+		
 		margin-top: rem-calc(35);
 
-
-
+		@media #{$medium-up} {
+			margin-top: rem-calc(55);
+		}
 
 	}
+	.page-template-faculty & {
+		margin-top: 0;
+
+		@media #{$medium-up} {
+			margin-top: rem-calc(35);
+		}
+
+	}
+	
+	@media #{$medium-up} {
+		margin-top: rem-calc(55);
+	}
 }
+ 
 
 
 div[role="main"] {
