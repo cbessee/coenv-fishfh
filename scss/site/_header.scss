@@ -265,7 +265,7 @@ margin-bottom: 0;
 
     .container-section-title {
 
-        margin-bottom: -34px;
+        margin-bottom: -24px;
         position: absolute;
         bottom: 0;
 
@@ -273,6 +273,10 @@ margin-bottom: 0;
         display: inline-block;
         text-align: center;
         width: 100%;
+
+        @media #{$medium-up} {
+            margin-bottom: -34px;
+        }
 
      h1,h2 {
         background-color: #fff;
