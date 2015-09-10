@@ -131,6 +131,15 @@ height: 126px;
 
 // Production styles
 
+.title-row {
+    @media #{$medium-only} {
+        margin-bottom: -100px;
+        }
+
+
+    
+}
+
 .full-header {
     background-color: $black;
     border-bottom: solid 7px #4b2e83;
@@ -148,6 +157,8 @@ height: 126px;
         @media #{$large-up} {
             font-size: rem-calc(30)!important;
         }
+
+
         float: left;
 
         a {
@@ -159,17 +170,25 @@ height: 126px;
         span {
              display: inline-block;
             padding-left: 20px;
+
+
+             @media #{$medium-only} {
+            padding-left: rem-calc(5);   
+
+
+        }
+
+
         }
     }
-    #desktop-logo {
-        fill: $accent;
-        width: rem-calc(158);
-        height: rem-calc(106);
-        margin-right: rem-calc(10);
-        vertical-align: middle;
+    #logo {
         
-        span {
-            @extend .visuallyhidden;
+
+        @media #{$medium-only} {
+        width: rem-calc(133);
+        height: rem-calc(90);
+
+
 
         }
     }
