@@ -241,7 +241,7 @@ if ($wp_query->have_posts()):
 					?>
 
 					<div class="small-news col-1">
-						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
+						<h3><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
 
 				        <span class="show-for-medium-up"><?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?></span>
 
@@ -292,7 +292,7 @@ if ($wp_query->have_posts()):
 							<a href="<?php echo $post_link_url; ?>" class="img" <?php echo $post_link_target; ?>><?php echo the_post_thumbnail( 'news_medium' ); ?></a>
 						</div>
 						<?php } ?>
-						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
+						<h3><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
 				        <span class="show-for-medium-up"><?php strip_tags( the_advanced_excerpt( 'length=30&finish=sentence' ),'' ); ?></span>
 				       <div class="post-meta clearfix row show-for-medium-up">
 			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
@@ -354,7 +354,7 @@ if ($wp_query->have_posts()):
 					</section>
 					<?php } ?>
 					<div class="small-news show-for-medium-up">
-						<h3><a href="<?php echo $post_link_url; ?>" <?php echo $post_link_target; ?>><?php echo get_the_title(); ?></a></h3>
+						<h3><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
 				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
 				        <div class="post-meta clearfix row">
 			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
