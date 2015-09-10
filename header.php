@@ -69,7 +69,7 @@
   s9.9,39.7,10,40.2c0.5,0,13.5,0,13.9,0c0.1-0.5,6.6-25.3,6.6-25.3s6.2,24.8,6.3,25.3c0.5,0,13.5,0,13.9,0
   c0.1-0.5,10.6-40.2,10.6-40.2s5.1,0,5.7,0c0-0.6,0-8.3,0-8.8C72.3,0,54.1,0,53.5,0z"/>
 </svg>
-</svg></a>
+</a>
     </div>
     <div class="middle tab-bar-section">
       <h1 class="title"><a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>"><?php bloginfo( 'name' ); ?></a></h1>

@@ -114,6 +114,7 @@ if( !empty( get_field( 'intro_text') ) ) {
 		echo '</li>';
 		endwhile;
 		?>
+		</ul>
 		<div class="pager">
 		<?php if ( function_exists( 'FoundationPress_pagination' ) ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
@@ -121,10 +122,7 @@ if( !empty( get_field( 'intro_text') ) ) {
 			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
 		</nav>
 		<?php } ?>
-  	</ul>
-		
-
-	</div>
+  		</div>
 	<?php endif; ?>
         </div>
 	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
