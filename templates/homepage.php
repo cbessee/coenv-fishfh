@@ -314,7 +314,6 @@ if ($wp_query->have_posts()):
 				if ($events_count < 4) {
 					$posted_exclude = implode(',',$posted);
 					$home_col_3_args = array(
-						'offset' => 1,
 						'post_type' => 'post',
 						'post__not_in' => $posted,//$posted,
 						'posts_per_page' => 1,
