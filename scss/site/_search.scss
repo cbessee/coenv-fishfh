@@ -35,7 +35,7 @@ body.error404 .page-content{
 		padding: 3px 0;
 	}
 	button[type="submit"] {
-		width: 10%;
+		max-width: 80px;
 
 		i {
 			font-size: 26px !important;
@@ -44,9 +44,13 @@ body.error404 .page-content{
 
 
 	}
+
 	.search-results {
 		margin: 0 27px;
 	}
 
 }
+.search-form button {
+		min-width: rem-calc(25);
+	}
 }

@@ -387,7 +387,10 @@ article {
 	.single-post &,
 	.single-student-blog &,
 	.single-faculty &,
-	.page-template-student-blog & {
+	.page-template-student-blog &,
+	.page-template-default &,
+	.search &,
+	.error404 & {
 		
 		margin-top: rem-calc(35);
 
