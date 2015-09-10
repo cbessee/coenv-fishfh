@@ -372,9 +372,17 @@ width: 30px;
 
 
 .full-news-events .columns {
-  padding-right: 0!important;
+  padding-right: 0;
 
 
+
+
+
+  &:nth-child(3n) {
+    padding-right: rem-calc(15);
+
+
+  }
 }
 
 
