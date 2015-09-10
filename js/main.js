@@ -53,7 +53,7 @@ jQuery(function ($) {
         $(".homepage-features").slickNext(); // Switched to '.slick-slider'
     });
             
-           // var numItems = $('.feature').length;
+           var numItems = $('.feature').length;
            if (numItems > 2) {
                 var autoplay = $('.homepage-features').slickGetOption('autoplay');
                 if (autoplay == null || autoplay === false) {

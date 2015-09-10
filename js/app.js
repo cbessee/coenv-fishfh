@@ -290,7 +290,7 @@ e.breakpoint()&&(e.rtl?(g.css({right:"0%"}),a(">.name",g).css({right:"100%"})):(
         $(".homepage-features").slickNext(); // Switched to '.slick-slider'
     });
             
-           // var numItems = $('.feature').length;
+           var numItems = $('.feature').length;
            if (numItems > 2) {
                 var autoplay = $('.homepage-features').slickGetOption('autoplay');
                 if (autoplay == null || autoplay === false) {
