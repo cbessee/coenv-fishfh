@@ -17,78 +17,74 @@ if( !empty( get_field( 'intro_text') ) ) {
 	<div class="row">
 		<p><?php the_field( 'intro_text' ); ?></p>
 	</div>
-</div>
+</div> <!-- // full-intro -->
 <?php } ?>
 <div class="row page-content">
 	<div class="columns" role="main">
-        <div class="entry-content">
 			<?php while (have_posts()) : the_post(); ?>
 			<article <?php post_class() ?> id="post-<?php the_ID(); ?>" class="template-page">
-			<?php do_action('foundationPress_page_before_entry_content'); ?>
-			<div class="entry-content">
+				<?php do_action('foundationPress_page_before_entry_content'); ?>
 				<?php get_template_part( 'partials/partial', 'article' ); ?>
-			</div>
-			<footer>
-				<?php wp_link_pages( array( 'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'FoundationPress' ), 'after' => '</p></nav>' ) ); ?>
-				<p><?php the_tags(); ?></p>
-			</footer>
-		</article>
-	<?php endwhile;?>
-	<div id="filter" class="row filters show-for-small-only">
+				<footer>
+					<?php wp_link_pages( array( 'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'FoundationPress' ), 'after' => '</p></nav>' ) ); ?>
+					<p><?php the_tags(); ?></p>
+				</footer>
+			</article>
+			<?php endwhile;?>
+		<div id="filter" class="row filters show-for-small-only">
 			<h2 class="large-12 columns left">Filter By Research Area</h2>
-			
 			<div class="large-6 columns left" data-url="<?php $_SERVER['REQUEST_URI']; ?>" data-cat="category">
 				<?php coenv_base_cat_filter('research_areas', $coenv_cat_term_1); // Category filter ?>
 			</div>
 		</div>
-	<?php
+		<?php
 
-	// Setup WP_QUERY
-	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-	$temp = $wp_query;
-	$wp_query = null;
-	$wp_query = new WP_Query();
-	$wp_query->query;
+		// Setup WP_QUERY
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		$temp = $wp_query;
+		$wp_query = null;
+		$wp_query = new WP_Query();
+		$wp_query->query;
 
-	$query_args = array(
-		'post_type'	=> 'faculty',
-		'post_status' => 'publish',
-		'posts_per_page' => -1,
-		'taxonomy' => 'research_areas',
-		'term' => $fac_cat->slug,
-		'meta_key' => 'last_name',
-		'orderby' => 'meta_value',
-		'order' => 'ASC',
-		'paged' => $paged,
-		'meta_query' => array(
-			array(
-				'key'     => 'last_name',
-				'compare' => 'IN',
+		$query_args = array(
+			'post_type'	=> 'faculty',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+			'taxonomy' => 'research_areas',
+			'term' => $fac_cat->slug,
+			'meta_key' => 'last_name',
+			'orderby' => 'meta_value',
+			'order' => 'ASC',
+			'paged' => $paged,
+			'meta_query' => array(
+				array(
+					'key'     => 'last_name',
+					'compare' => 'IN',
+				),
 			),
-		),
-	);
+		);
 
-	// Category filter
-	if($coenv_cat_1 && $coenv_cat_term_1) :
-		$query_args['taxonomy'] = $coenv_cat_1;
-		$query_args['term'] = $coenv_cat_term_1;
-	endif;
-	$wp_query = new WP_Query( $query_args );
+		// Category filter
+		if($coenv_cat_1 && $coenv_cat_term_1) :
+			$query_args['taxonomy'] = $coenv_cat_1;
+			$query_args['term'] = $coenv_cat_term_1;
+		endif;
+		$wp_query = new WP_Query( $query_args );
 
-	?>
+		?>
 
-	<?php if ($wp_query->have_posts()): ?>
-	<?php if ($coenv_cat_1): // Category filter ?>
-		<div class="panel clearfix">
-			<div class="left columns small-10"><?php echo $wp_query->found_posts; ?> faculty working in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
-			<div class="right columns small-2"><a href="/faculty-research/#filter">All Faculty &raquo;</a></div>
-		</div>
-	<?php endif; ?>
-
+		<?php if ($wp_query->have_posts()): ?>
+		<?php if ($coenv_cat_1): // Category filter ?>
+			<div class="panel clearfix">
+				<div class="left columns small-10"><?php echo $wp_query->found_posts; ?> faculty working in <strong><?php echo $coenv_cat_term_1_val; ?></strong></div>
+				<div class="right columns small-2"><a href="/faculty-research/#filter">All Faculty &raquo;</a></div>
+			</div>
+		<?php endif; ?>
 
 
 
-	<ul class="faculty-list-teach clearfix small-block-grid-3 medium-block-grid-4 large-block-grid-5">
+
+		<ul class="faculty-list-teach clearfix small-block-grid-3 medium-block-grid-4 large-block-grid-5">
 
 	
 		<?php
@@ -114,25 +110,14 @@ if( !empty( get_field( 'intro_text') ) ) {
 		echo '</li>';
 		endwhile;
 		?>
+  		</ul>
+  		<ul class="widget-area after-content">
+			<?php dynamic_sidebar( "after-content" ); ?>
 		</ul>
-		<div class="pager">
-		<?php if ( function_exists( 'FoundationPress_pagination' ) ) { FoundationPress_pagination(); } else if ( is_paged() ) { ?>
-		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'FoundationPress' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'FoundationPress' ) ); ?></div>
-		</nav>
-		<?php } ?>
-  		</div>
+
 	<?php endif; ?>
-        </div>
-	<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
-	<?php do_action( 'foundationPress_after_content' ); ?>
-	<ul class="widget-area after-content">
-	<?php dynamic_sidebar( "after-content" ); ?>
-	</ul>
-	<?php endif; ?>
-	<a href="#" class="back-to-top">Back to Top</a>
-	<?php do_action( 'foundationPress_after_content' ); ?>
+    </div>
+
 	<aside id="sidebar" class="columns show-for-medium-up">
 	<?php
 	if (!is_front_page()) {
@@ -156,6 +141,5 @@ if( !empty( get_field( 'intro_text') ) ) {
 	</aside>
 	</div>
 	    <?php wp_reset_postdata(); wp_reset_query(); //roll back query vars to as per the request ?>
-	
-</div>
+
 <?php get_footer(); ?>
