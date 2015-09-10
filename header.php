@@ -43,8 +43,6 @@
     <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/assets/img/ms-icon-144x144.png">
     <meta name="theme-color" content="#4b2e84">
     <?php wp_head(); ?>
-  </head>
-  <body <?php body_class(); ?>>
     <?php 
     $coenv_host = $_SERVER['HTTP_HOST'];
     $coenv_host_dev = strpos($coenv_host,'.dev');
@@ -59,6 +57,9 @@
       ga('send', 'pageview');
     </script>
     <?php } ?>
+  </head>
+  <body <?php body_class(); ?>>
+    
   
   <div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
   <?php do_action('foundationPress_after_body'); ?>
