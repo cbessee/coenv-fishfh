@@ -42,16 +42,23 @@
     <meta name="msapplication-TileColor" content="#4b2e84">
     <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/assets/img/ms-icon-144x144.png">
     <meta name="theme-color" content="#4b2e84">
-      
-    <!--<script type="text/javascript" src="//use.typekit.net/dyq8fxo.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
-
-  
     <?php wp_head(); ?>
-      
-    
   </head>
   <body <?php body_class(); ?>>
+    <?php 
+    $coenv_host = $_SERVER['HTTP_HOST'];
+    $coenv_host_dev = strpos($coenv_host,'.dev');
+    if (!$coenv_host_dev)  { ?>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-67450612-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <?php } ?>
   
   <div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
   <?php do_action('foundationPress_after_body'); ?>
