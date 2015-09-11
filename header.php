@@ -2,7 +2,6 @@
 <html class="no-js" <?php language_attributes(); ?> >
   <head>
     <meta charset="utf-8" />
-    <meta name='robots' content='noindex,follow' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php if ( is_category() ) {
       echo 'Category Archive for &quot;'; single_cat_title(); echo '&quot; | '; bloginfo( 'name' );
@@ -21,6 +20,7 @@
     } else {
       echo wp_title( ' | ', 'false', 'right' ); bloginfo( 'name' );
     } ?></title>
+    <meta name="description" content="We are dedicated to sustaining healthy marine and freshwater environments. Our faculty are recognized leaders in aquatic biology, sustainable fisheries management and aquatic resource conservation."></meta>
     
   <script src="//www.washington.edu/static/alert.js" type="text/javascript"></script>
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ; ?>/css/app.css" />
