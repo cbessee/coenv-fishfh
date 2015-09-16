@@ -14,7 +14,7 @@ Template Name: Student Blog
 			if ( have_posts() ) {
 				while ( have_posts() ) {
 					the_post();
-					$terms = wp_get_post_terms( get_the_ID(), 'category');
+					$terms = wp_get_post_terms( get_the_ID(), 'blog_category');
 					$terms = wp_list_filter($terms, array('slug'=>'featured'),'NOT');
 					$terms = wp_list_filter($terms, array('slug'=>'uncategorized'),'NOT');
 					$rows = get_field('blog_link');
@@ -42,12 +42,12 @@ Template Name: Student Blog
 				        echo get_the_date('M j, Y');
 						$termlist = '';
 						foreach ($terms as $term) {
-				            $termlist .= '<a href="/news-events/?tax='. $term->taxonomy . '&term=' . $term->slug . '">' . $term->name . '</a>, ';
+				            $termlist .= '<a href="/news-events/student-blog/?tax='. $term->taxonomy . '&term=' . $term->slug . '">' . $term->name . '</a>, ';
 						}
 						$termlist = rtrim($termlist,', ');
-						if ( !empty( $terms ) ) {
+						//if ( !empty( $termlist ) ) {
 							echo ' / ' . $termlist;
-						}
+						//}
 				        ?>
 				        </p>
 					</div>
