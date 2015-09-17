@@ -8,6 +8,8 @@ $url_current = $url = preg_replace('/\?.*/', '', $_SERVER['REQUEST_URI']);
 // Dates
 $coenv_year = (int) urlencode(htmlentities($_GET['coenv-year']));
 $coenv_month = (int) urlencode(htmlentities($_GET['coenv-month']));
+
+// Month needs an offset because php and WordPress calculate dates differently.
 $coenv_date = date('F Y',mktime(10,0,0,$coenv_month+1,0,$coenv_year));
 
 //Categories
