@@ -41,7 +41,16 @@ jQuery(function ($) {
                 infinite: true,
                 speed: 500,
                 fade: true,
-                cssEase: 'linear'
+                cssEase: 'linear',
+                responsive: [
+                    {
+                      
+                      breakpoint: 641,
+                      settings: {
+                        dots: false
+                      }
+                    }
+                ]
             });
 
 

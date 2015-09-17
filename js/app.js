@@ -278,7 +278,16 @@ e.breakpoint()&&(e.rtl?(g.css({right:"0%"}),a(">.name",g).css({right:"100%"})):(
                 infinite: true,
                 speed: 500,
                 fade: true,
-                cssEase: 'linear'
+                cssEase: 'linear',
+                responsive: [
+                    {
+                      
+                      breakpoint: 641,
+                      settings: {
+                        dots: false,
+                      }
+                    }
+                ]
             });
 
 

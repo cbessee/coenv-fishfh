@@ -104,9 +104,7 @@ $feature_query = new WP_Query( $feature_args );
 						</div>
 					</div><!-- .feature-info -->
 				</div><!-- .feature-info-container -->
-				<div style="position: absolute; bottom: 0; text-align: center; width: 100%;">
-					<ul class="my-slick-dots here show-for-medium-up" style="display: block;"></ul>
-				</div>
+				
 			</div><!-- .feature -->
 		</div>
 
