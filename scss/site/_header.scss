@@ -257,38 +257,19 @@ margin-bottom: 0;
 }
 
 .section-row {
-    background-position: center top;
+    background-image: url('/wp-content/uploads/sites/4/2015/07/155.jpg');
+    background-color: #999;
+    background-position: center 45%;
     background-size: cover;
-    
     border-bottom: solid 2px #ccc;
     box-shadow: inset 1px 4px 9px -6px;
-    height: rem-calc(140);
+    height: rem-calc(200);
     position: relative;
-    
     width: 100%;
-
-    @media #{$medium-up} {
-        background-position: center top;
-        background-size: cover;
-        height: 375px;
-
-
-
-
-
-    }
-
-
-
-
-
     .container-section-title {
-
         margin-bottom: -24px;
         position: absolute;
         bottom: 0;
-
-
         display: inline-block;
         text-align: center;
         width: 100%;
@@ -297,46 +278,36 @@ margin-bottom: 0;
             margin-bottom: -34px;
         }
 
-     h1,h2 {
-        background-color: #fff;
-        border: solid 2px #ccc;
-        display: inline-block;
-        font-size: rem-calc(26);
-        padding: 5px 20px;
-        margin: 0 auto;
-        
+        h1,h2 {
+            @include encode_black;
+            background-color: #fff;
+            border: solid 2px #ccc;
+            color: #000;
+            display: inline-block;
+            font-size: rem-calc(26);
+            padding: 5px 20px;
+            margin: 0 auto;
+            text-transform: uppercase;
 
+            a {
+                color: #000;
+            }
 
-        
-        @include encode_black;
-        color: #000;
-        
-        text-transform: uppercase;
-
-        @media #{$medium-up} {
-
-            font-size: rem-calc(40);
-
+            @media #{$medium-up} {
+                font-size: rem-calc(40);
+            }
         }
-
-
-
-
-
-
-    a {
-        color: #000;
     }
-        
-    }
-
-    }
-
-   
 }
+.page-template-section-page .section-row,
+.page-template-faculty .section-row,
+.page-template-news .section-row,
 .page-template-student-blog .section-row {
-    height: 166px;
+    @media #{$medium-up} {
+        height: rem-calc(375);
+    }
 }
+
 .error404 .section-row,
 .search-results .section-row,
 .search-no-results .section-row {

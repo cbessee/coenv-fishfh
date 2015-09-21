@@ -244,6 +244,8 @@
           $section_title = '<h2><a href="/news-events/student-services-blog/">Student Services Blog</a></h2>';
         } elseif ($coenv_post->post_type == 'post') {
           $section_title = '<h2><a href="/news-events">News &amp; Events</a></h2>';
+        } elseif ($coenv_post->post_title =='Archives') {
+          $section_title = '';
         } else {
           $section_title = '<h1>' . $coenv_post->post_title . '</h1>';
         }

@@ -79,14 +79,14 @@ ul.select-category {
     li {
         width: 33%;
     }
-
-
-
-
-
-
 }
 .f-dropdown,
 .f-dropdown.content {
     max-width: 500px;
     }
+
+#content.widecolumn {
+    max-width: 1150px;
+    margin: rem-calc(50) auto;
+    padding: 0 rem-calc(30);
+}
