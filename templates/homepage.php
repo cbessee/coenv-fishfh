@@ -7,7 +7,7 @@ get_header();
 
 // Check for events
 
-$events_xml = file_get_contents( 'http://www.trumba.com/calendars/sea_fish.rss' );
+$events_xml = file_get_contents( 'https://www.trumba.com/calendars/sea_fish.rss' );
 $xml = new SimpleXmlElement( $events_xml );
 $events = array();
 
@@ -29,8 +29,7 @@ $feature_args = array(
 	'orderby' => 'menu_order',
 );
 
-$feature_query = new WP_Query( $feature_args ); 
-
+$feature_query = new WP_Query( $feature_args );
 ?>
 <div class="full-feature">
 	<!--<div class="playpause"></div>-->
@@ -309,6 +308,7 @@ if ($wp_query->have_posts()):
 				</div>
 				<div class="columns small-12 medium-4 news-column">
 				<?php
+				/*
 				if ($events_count < 4) {
 					$posted_exclude = implode(',',$posted);
 					$home_col_3_args = array(
@@ -341,33 +341,36 @@ if ($wp_query->have_posts()):
 					} else {
 						$terms_list = '';
 					}
+					*/
 					?>
-					<?php if ( !empty( $events ) ) { ?>
+					<?php //if ( !empty( $events ) ) { ?>
 					<section class="events clearfix">
 						<header>
 							<h3><a href="/news-events/events/">Events</a></h3>
 						</header>
-						<?php the_widget('CoEnv_Widget_Events', 'feed_url=http://www.trumba.com/calendars/sea_fish.rss&posts_per_page=4'); ?>
+						<?php the_widget('CoEnv_Widget_Events', 'feed_url=https://www.trumba.com/calendars/sea_fish.rss&posts_per_page=4'); ?>
 						<footer><a class="more-events right" href="/news-events/events/">More Events</a></footer>
 					</section>
-					<?php } ?>
+					<?php //} ?>
+					<!--
 					<div class="small-news show-for-medium-up">
-						<h3><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
-				        <?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
+						<h3><a href="<?php //echo get_the_permalink(); ?>"><?php //echo get_the_title(); ?></a></h3>
+				        <?php //strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
 				        <div class="post-meta clearfix row">
-			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
-			               	<?php if ( !empty($terms ) ) { ?> 
+			                <time class="article__time columns small-12 medium-5 left" datetime="<?php //echo get_the_date('Y-m-d h:i:s'); ?>"><?php //echo get_the_date( 'M j, Y' ); ?></time>
+			               	<?php //if ( !empty($terms ) ) { ?> 
 							<ul class="terms right columns small-12 medium-7 right text-right">
-								<?php echo implode (", ", $terms_list); ?>
+								<?php //echo implode (", ", $terms_list); ?>
 				            </ul>
-				            <?php } ?>
+				            <?php //} ?>
 				        </div>
 				    </div>
+				-->
 
 				<?php 
-				endwhile;
-				wp_reset_postdata();
-				} 
+				//endwhile;
+				//wp_reset_postdata();
+				//} 
 				?>
 
 				</div>
