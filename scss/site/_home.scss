@@ -578,11 +578,13 @@ width: 30px;
      ul.event-list li {
        margin-bottom: 20px;
        padding-bottom: 20px;
+       background-repeat: no-repeat;
        
 
        @media #{$medium-up} {
         background-image: url('../assets/img/divider-teal-single.svg');
         background-position: bottom left;
+        background-repeat: no-repeat;
         margin-left: rem-calc(25);
         margin-right: rem-calc(25);
         text-align: left;
