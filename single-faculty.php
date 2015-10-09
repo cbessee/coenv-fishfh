@@ -14,7 +14,6 @@ $faculty_fname = $faculty_fields["first_name"];
 $faculty_lname = $faculty_fields["last_name"];
 $faculty_name = $faculty_fname . ' ' . $faculty_lname;
 $faculty_cv = $faculty_fields["curriculum_vitae"];
-$faculty_pubs = $faculty_fields["selected_publications"];
 $faculty_img = get_the_post_thumbnail($page->ID, 'med');
 ?>
 
