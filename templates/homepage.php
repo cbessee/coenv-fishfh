@@ -5,21 +5,6 @@
 
 get_header();
 
-// Check for events
-
-$events_xml = file_get_contents( 'https://www.trumba.com/calendars/sea_fish.rss' );
-$xml = new SimpleXmlElement( $events_xml );
-$events = array();
-
-foreach ( $xml->channel->item as $item ) {     
-	$events[] = array(
-		'title' => $item->title,
-		'date'  => $item->category,
-		'url' => $item->link
-	);
-}
-$events_count = count( $events );
-
 // Query for homepage features.
 
 $feature_args = array(
@@ -178,29 +163,23 @@ $feature_query = new WP_Query( $feature_args );
 <?php 
 } 
 
-// News queries, 3 in total, not ideal. col_3 is below.
-
+// Keep track of posted news items 
 $posted = array();
-
-$home_col_1_args = array(
-	'post_type' => 'post',
-	'category__not_in' => '922',
-	'posts_per_page' => 2,
-	'post_status' => 'publish',
-);
-
-$home_col_2_args = array(
-	'post_type' => 'post',
-	'category__in' => '922',
-	'posts_per_page' => 1,
-	'post_status' => 'publish',
-);
- 
-$wp_query = new WP_Query( $home_col_1_args );
-if ($wp_query->have_posts()): 
 ?>
 <div class="full-news-events clearfix">
 	<div class="row">
+	
+	<?php
+	// Column 1: 2 news posts, no featured, no images
+	$home_col_1_args = array(
+		'post_type' => 'post',
+		'category__not_in' => '922',
+		'posts_per_page' => 2,
+		'post_status' => 'publish',
+	);
+	$wp_query = new WP_Query( $home_col_1_args );
+	if ($wp_query->have_posts()): 
+	?>
 		<div class="columns large-12">
 			<h2><a href="/news-events">Latest News</a></h2>
 			<a class="more-news show-for-large-up" href="/news-events">More News</a>
@@ -209,10 +188,8 @@ if ($wp_query->have_posts()):
 		<div class="home-news-section columns large-12 clearfix">
 			<div class="row">
 				<div class="columns small-12 medium-4 news-column">
-
 				<?php
 				while ( $wp_query->have_posts() ) :
-		
 					// Get field vars
 					$wp_query->the_post();
 					$posted[] = get_the_id();
@@ -257,31 +234,40 @@ if ($wp_query->have_posts()):
 
 				</div>
 				<div class="columns small-12 medium-4 news-column">
+
 				<?php
+				// Column 2: 1 featured news post with photo, or 2 posts, no featured, no photo.
+				$home_col_2_args = array(
+					'post_type' => 'post',
+					'category__in' => '922',
+					'posts_per_page' => 1,
+					'post_status' => 'publish',
+				);
 				$wp_query = new WP_Query( $home_col_2_args );
-				while ( $wp_query->have_posts() ) :
-				$wp_query->the_post();
-				$posted[] = get_the_id();
-				if ( get_field( 'story_link_url' ) ) {
-					$post_link_url = get_field('story_link_url');
-					$post_link_target = 'target="_blank"';
-		            $post_link = '<p><a class="button" href="' . $post_link_url . '"' . $post_link_target . '>' . get_field('story_source_name') . '</a></p>';
-		        } else {
-		        	$post_link_url = get_the_permalink();
-		            $post_link = '<a class="button left" href="' . $post_link_url . '">Read more</a>';
-		        }
-	            $terms = wp_get_post_terms(get_the_id(), 'category');
-				if ( !empty($terms) ) {
-					$terms_list = array();
-					foreach ( $terms as &$term ) {
-						if ( $term->slug != 'uncategorized' ) {
-							$terms_list[] = '<li><a href="/news-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
+				if ( $wp_query->have_posts() ) {
+					while ( $wp_query->have_posts() ) :
+					$wp_query->the_post();
+					$posted[] = get_the_id();
+					if ( get_field( 'story_link_url' ) ) {
+						$post_link_url = get_field('story_link_url');
+						$post_link_target = 'target="_blank"';
+		            	$post_link = '<p><a class="button" href="' . $post_link_url . '"' . $post_link_target . '>' . get_field('story_source_name') . '</a></p>';
+		        	} else {
+		        		$post_link_url = get_the_permalink();
+		            	$post_link = '<a class="button left" href="' . $post_link_url . '">Read more</a>';
+		        	}
+	            	$terms = wp_get_post_terms(get_the_id(), 'category');
+					if ( !empty($terms) ) {
+						$terms_list = array();
+						foreach ( $terms as &$term ) {
+							if ( $term->slug != 'uncategorized' ) {
+								$terms_list[] = '<li><a href="/news-events/?tax=category&amp;term=' . $term->slug . '">' . $term->name . '</a></li>';
+							}
 						}
+					} else {
+						$terms_list = '';
 					}
-				} else {
-					$terms_list = '';
-				}
-				?>
+					?>
 
 					<div class="small-news col-2">
 						<?php if ( has_post_thumbnail() ) { ?>
@@ -300,28 +286,23 @@ if ($wp_query->have_posts()):
 				            <?php } ?>
 				        </div>
 				    </div>
-						
-				
-				<?php endwhile;?>
-				<?php wp_reset_postdata(); ?>
-
-				</div>
-				<div class="columns small-12 medium-4 news-column">
 				<?php
-				/*
-				if ($events_count < 4) {
-					$posted_exclude = implode(',',$posted);
-					$home_col_3_args = array(
-						'post_type' => 'post',
-						'post__not_in' => $posted,//$posted,
-						'posts_per_page' => 1,
-						'post_status' => 'publish',
+				endwhile;
+				wp_reset_postdata();
+				} else {
+				wp_reset_postdata();
+				$home_col_2_nofeature_args = array(
+					'post_type' => 'post',
+					'category__not_in' => '922',
+					'post__not_in' => $posted,//$posted,
+					'posts_per_page' => 2,
+					'post_status' => 'publish',
 				);
-				$wp_query = new WP_Query( $home_col_3_args );
-
+				$wp_query = new WP_Query( $home_col_2_nofeature_args );
 				while ( $wp_query->have_posts() ) :
-
+					// Get field vars
 					$wp_query->the_post();
+					$posted[] = get_the_id();
 					if (get_field('story_link_url')) {
 						$post_link_url = get_field('story_link_url');
 						$post_link_target = 'target="_blank"';
@@ -330,7 +311,7 @@ if ($wp_query->have_posts()):
 			        	$post_link_url = get_the_permalink();
 			            $post_link = '<a class="button left" href="' . $post_link_url . '">Read more</a>';
 			        }
-
+			        $terms = wp_get_post_terms(get_the_id(), 'category');
 		    	    if ( !empty($terms) ) {
 						$terms_list = array();
 						foreach ( $terms as &$term ) {
@@ -341,38 +322,40 @@ if ($wp_query->have_posts()):
 					} else {
 						$terms_list = '';
 					}
-					*/
+					?>
+
+					<div class="small-news col-1">
+						<h3><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+
+				        <span class="show-for-medium-up"><?php strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?></span>
+
+				        <div class="post-meta clearfix row show-for-medium-up">
+			                <time class="article__time columns small-12 medium-5 left" datetime="<?php echo get_the_date('Y-m-d h:i:s'); ?>"><?php echo get_the_date( 'M j, Y' ); ?></time>
+			               	<?php if ( !empty($terms ) ) { ?> 
+							<ul class="terms right columns small-12 medium-7 right text-right">
+								<?php echo implode(", ", $terms_list); ?>
+				            </ul>
+				            <?php } ?>
+				        </div>
+				    </div>
+				<?php
+				endwhile;
+				} 
+				?>
+				<?php wp_reset_postdata(); ?>
+
+				</div>
+				<div class="columns small-12 medium-4 news-column">
+				<?php
 					?>
 					<?php //if ( !empty( $events ) ) { ?>
 					<section class="events clearfix">
 						<header>
 							<h3><a href="/news-events/events/">Events</a></h3>
 						</header>
-						<?php the_widget('CoEnv_Widget_Events', 'feed_url=https://www.trumba.com/calendars/sea_fish.rss&posts_per_page=4'); ?>
+						<?php the_widget('CoEnv_Widget_Events', 'feed_url=https://www.trumba.com/calendars/sea_fish.rss&posts_per_page=4&'); ?>
 						<footer><a class="more-events right" href="/news-events/events/">More Events</a></footer>
 					</section>
-					<?php //} ?>
-					<!--
-					<div class="small-news show-for-medium-up">
-						<h3><a href="<?php //echo get_the_permalink(); ?>"><?php //echo get_the_title(); ?></a></h3>
-				        <?php //strip_tags(the_advanced_excerpt('length=30&finish=sentence'),''); ?>
-				        <div class="post-meta clearfix row">
-			                <time class="article__time columns small-12 medium-5 left" datetime="<?php //echo get_the_date('Y-m-d h:i:s'); ?>"><?php //echo get_the_date( 'M j, Y' ); ?></time>
-			               	<?php //if ( !empty($terms ) ) { ?> 
-							<ul class="terms right columns small-12 medium-7 right text-right">
-								<?php //echo implode (", ", $terms_list); ?>
-				            </ul>
-				            <?php //} ?>
-				        </div>
-				    </div>
-				-->
-
-				<?php 
-				//endwhile;
-				//wp_reset_postdata();
-				//} 
-				?>
-
 				</div>
 				
 				<?php endif; ?>

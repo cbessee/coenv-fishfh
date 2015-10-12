@@ -541,9 +541,9 @@ class CoEnv_Widget_Events extends WP_Widget {
   public function widget( $args, $instance ) {
     extract( $args );
 
-    $title = apply_filters( 'widget_title', $instance['title'] );
+    //$title = apply_filters( 'widget_title', $instance['title'] );
     $feed_url = apply_filters( 'feed_url', $instance['feed_url'] );
-    $events_url = apply_filters( 'events_url', $instance['events_url'] );
+    //$events_url = apply_filters( 'events_url', $instance['events_url'] );
     $posts_per_page = (int) $instance['posts_per_page'];
 
     if ( !isset( $feed_url ) || empty( $feed_url ) ) {
@@ -577,23 +577,23 @@ class CoEnv_Widget_Events extends WP_Widget {
 
     ?>
       <?php echo $before_widget; ?>
-            <?php if ( $events_url != '' ) : ?>
+            <?php //if ( $events_url != '' ) : ?>
                                    
-            <a href="<?php echo $events_url; ?>" class="button right" title="View All Events">More</a>
-            <?php endif ?>
+            <!--<a href="<?php //echo $events_url; ?>" class="button right" title="View All Events">More</a>-->
+            <?php //endif ?>
         
         
-            <?php if (!is_front_page()) {
-                    echo $before_title;
-                }
+            <?php //if (!is_front_page()) {
+                    //echo $before_title;
+               // }
         ?>
-          <header>
-              <h3><a href="/news-events/events/"><?php echo $title ?></a></h3>
-            </header>
+          <!--<header>
+              <h3><a href="/news-events/events/"><?php //echo $title ?></a></h3>
+            </header>-->
             <?php
-                if (!is_front_page()) {
-                    echo $after_title;
-                }
+               // if (!is_front_page()) {
+              //      echo $after_title;
+             //   }
         ?>
 
       <ul class="event-list">
