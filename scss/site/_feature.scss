@@ -8,13 +8,10 @@ body.home .feature {
 
   .feature-image {
     
-    
-    
-
     @media #{$medium-up} {
       background-repeat: no-repeat;
       background-size: cover;
-      background-position: bottom center;
+      background-position: center center;
       overflow: hidden;
       min-height: rem-calc(480);
       padding-bottom: 50px;
