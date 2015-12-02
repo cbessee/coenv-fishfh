@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php if ( is_category() ) {
+    <title><?php if (is_front_page()) {
+      echo bloginfo( 'name' );
+    } elseif ( is_category() ) {
       echo 'Category Archive for &quot;'; single_cat_title(); echo '&quot; | '; bloginfo( 'name' );
     } elseif ( is_tag() ) {
       echo 'Tag Archive for &quot;'; single_tag_title(); echo '&quot; | '; bloginfo( 'name' );
@@ -23,7 +25,7 @@
     <meta name="description" content="We are dedicated to sustaining healthy marine and freshwater environments. Our faculty are recognized leaders in aquatic biology, sustainable fisheries management and aquatic resource conservation."></meta>
     
   <script src="//www.washington.edu/static/alert.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ; ?>/css/app.css" />
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ; ?>/css/app.css?time=<?php echo time(); ?>" />
       
     <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-60x60.png">
@@ -107,12 +109,6 @@
             remove_filter( 'page_css_class', 'add_parent_class', 10, 4 );
             echo '<ul class="off-canvas-list"><li>';
            ?>
-
-
-          
-                <a class="primary-link columns small-9" href="/intranet/quicklinks/">
-                    <div class="parent">Quick Links</div>
-                </a>
                 <div class="accordion" data-accordion="">
                   <div class="accordion-navigation">
                       <a class="right columns small-3 expander-link" href="#accordion-50"> </a>
