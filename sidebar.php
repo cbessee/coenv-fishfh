@@ -1,9 +1,4 @@
-<!--
-	<?php //do_action('foundationPress_before_sidebar'); ?>
-	<?php //dynamic_sidebar("sidebar-widgets"); ?>
-	<?php //do_action('foundationPress_after_sidebar'); ?>
-</aside>-->
-<?php  
+<?php
 /**
  * The sidebar template
  *
@@ -11,25 +6,8 @@
  */
 ?>
 <aside id="sidebar" class="columns">
-<?php
-if (!is_front_page()) {
-	echo '<div class="coenv_base_subnav">';
-	//if ($GLOBALS['post']->post_parent) {
-	echo '<div class="section-title">';
-	echo coenv_base_section_title($GLOBALS['post']->ID);
-	echo '</div>';
-	//}
-	echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
-	echo '</div>';
-	
-}
-?>
-<?php dynamic_sidebar('sidebar-widgets'); ?>
-<?php
-$ancestor_id = coenv_base_get_ancestor('ID');
-if (!function_exists('dynamic_sidebar') || !dynamic_sidebar( $ancestor_id )):
-
-	dynamic_sidebar( $ancestor_id );
-endif;
-?>
+	<?php do_action('foundationPress_before_sidebar'); ?>
+	<?php dynamic_sidebar("sidebar-widgets"); ?>
+	<?php do_action('foundationPress_after_sidebar'); ?>
 </aside>
+

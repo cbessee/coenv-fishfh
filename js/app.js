@@ -284,7 +284,7 @@ e.breakpoint()&&(e.rtl?(g.css({right:"0%"}),a(">.name",g).css({right:"100%"})):(
                       
                       breakpoint: 641,
                       settings: {
-                        dots: false,
+                        dots: false
                       }
                     }
                 ]

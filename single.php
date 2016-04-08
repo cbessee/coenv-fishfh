@@ -87,25 +87,6 @@
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_after_content'); ?>
 	</div>
-	<aside id="sidebar" class="columns show-for-medium-up">
-	<?php
-	if (!is_front_page()) {
-		echo '<div class="coenv_base_subnav">';
-		echo '<div class="section-title">';
-		echo coenv_base_section_title($GLOBALS['post']->ID);
-		echo '</div>';
-		echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
-		echo '</div>';	
-	}
-	?>
-
-	<?php dynamic_sidebar('sidebar-widgets'); ?>
-	<?php
-	$ancestor_id = coenv_base_get_ancestor('ID');
-	if (!function_exists('dynamic_sidebar') || !dynamic_sidebar( $ancestor_id )) {
-		dynamic_sidebar( $ancestor_id );
-	}
-	?>
-	</aside>
+    <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

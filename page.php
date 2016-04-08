@@ -4,6 +4,7 @@
 	<?php do_action('foundationPress_before_content'); ?>
 	<?php dynamic_sidebar("before-content"); ?>
 	<?php while (have_posts()) : the_post(); ?>
+        <h2 class="small-12 left article__title"><a href=""><?php the_title(); ?></a></h2>
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>" class="template-page">
 			<?php do_action('foundationPress_page_before_entry_content'); ?>
 			<div class="entry-content">
@@ -23,27 +24,6 @@
 	<a href="#" class="back-to-top">Back to Top</a>
 	<?php do_action('foundationPress_before_content'); ?>
 	</div>
-	<aside id="sidebar" class="columns show-for-medium-up">
-	<?php
-	if (!is_front_page()) {
-		echo '<div class="coenv_base_subnav">';
-		//if ($GLOBALS['post']->post_parent) {
-		echo '<div class="section-title">';
-		echo coenv_base_section_title($GLOBALS['post']->ID);
-		echo '</div>';
-		//}
-		echo coenv_base_hierarchical_submenu($GLOBALS['post']->ID);
-		echo '</div>';
-		
-	}
-	?>
-	<?php dynamic_sidebar('sidebar-widgets'); ?>
-	<?php
-	$ancestor_id = coenv_base_get_ancestor('ID');
-	if (!function_exists('dynamic_sidebar') || !dynamic_sidebar( $ancestor_id )):
-		dynamic_sidebar( $ancestor_id );
-	endif;
-	?>
-	</aside>
+    <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

@@ -11,6 +11,6 @@
     "sizzle": "latest",
     "modernizr": "latest",
     "jquery.cookie": "latest",
-    "jquery-placeholder": "latest",
+    "jquery-placeholder": "latest"
   }
 }
